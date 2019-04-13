@@ -1,5 +1,4 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Layout from '../layouts/default';
@@ -15,9 +14,9 @@ const NotFoundPage = props => (
   <Layout>
     <Grid container justify="center" className={props.classes.container}>
       <Grid item>
-        <Typography variant="display1" gutterBottom>
+        <h1>
           NOT FOUND
-        </Typography>
+        </h1>
         <p>This page does not exist.</p>
       </Grid>
     </Grid>

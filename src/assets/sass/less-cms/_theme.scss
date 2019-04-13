@@ -1,0 +1,55 @@
+/* ----------- Typography -----------*/
+
+html, body {
+  font-family: $body-font;
+  font-size: 14px;
+  color: $black;
+  background: $white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  font-weight: 600;
+}
+
+.title {
+  font-weight: 4em;
+}
+
+p {
+  font-size: 16px;
+}
+
+a {
+  color: $black;
+
+  &:active {
+    background-color: $yellow;
+  }
+}
+
+.bg-primary {
+  background-color: $theme-primary !important;
+  color: $white;
+}
+
+.bg-secondary {
+  background-color: $theme-secondary !important;
+}
+
+.bg-dark {
+  background-color: $black !important;
+}
+
+.bg-light {
+  background-color: $light-gray !important;
+}
+
+.slider-height-sm {
+  max-height: 400px;
+  display: flex;
+
+  img {
+    object-fit: cover;
+  }
+}

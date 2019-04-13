@@ -5,9 +5,12 @@ import {
   updatePage,
   loadPageData,
 } from "../redux/actions";
+import { EditableText, EditableParagraph, EditableBackgroundImage, EditableImageUpload, EditableLink } from "react-easy-editables";
 
 import Layout from "../layouts/default.js";
-import { EditableText, EditableParagraph } from "react-easy-editables";
+import Section from "../components/common/Section";
+import Container from "../components/common/Container";
+import ImageCarousel from "../components/common/ImageCarousel";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -47,15 +50,96 @@ class HomePage extends React.Component {
 
     return (
       <Layout>
+        <main>
+          <div className="slider-area pos-relative">
+            <div className="shape d-none d-xl-block">
+                <div className="shape-item slider-02 bounce-animate"><img src="img/slider/sl2.png" alt="" /></div>
+                <div className="shape-item slider-03 bounce-animate"><img src="img/slider/sl3.png" alt="" /></div>
+                <div className="shape-item slider-04 bounce-animate"><img src="img/slider/sl4.png" alt="" /></div>
+                <div className="shape-item slider-05 bounce-animate"><img src="img/slider/sl5.png" alt="" /></div>
+            </div>
+            <div className="slider-active">
+              <EditableBackgroundImage classes="single-slider full-screen d-flex align-items-center" content={content["header-bg"]} handleSave={this.onSave("header-bg")}>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-xl-10 col-lg-10 offset-lg-1 offset-xl-1">
+                      <div className="slider-content slider-text slider-2-text text-center mt-80">
+                        <h1 data-animation="fadeInUp" data-delay=".5s">
+                          <EditableText content={content["demo-title"]} handleSave={this.onSave("demo-title")} />
+                        </h1>
+                        <span data-animation="fadeInUp" data-delay=".3s">
+                          <EditableParagraph content={content["demo-subtitle"]} handleSave={this.onSave("demo-subtitle")} />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </EditableBackgroundImage>
+            </div>
+          </div>
 
-        <section className="no-padding">
-          <EditableText content={content["demo-title"]} handleSave={this.onSave("demo-title")} />
-        </section>
+          <Section className="wow fadeIn pt-80 pb-80">
+            <Container>
+              <h2 data-animation="fadeInUp" data-delay=".5s">
+                <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
+              </h2>
+              <div className="mt-40 mb-40">
+                <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
+              </div>
+            </Container>
+          </Section>
 
-        <section id="about" className="wow fadeIn">
-          <EditableParagraph content={content["demo-description"]} handleSave={this.onSave("demo-description")} />
-        </section>
+          <Section className="wow fadeIn pt-80 pb-80 bg-light">
+            <Container>
+              <h2 data-animation="fadeInUp" data-delay=".5s">
+                <EditableText content={content["territory-title"]} handleSave={this.onSave("territory-title")} />
+              </h2>
+              <div className="mt-40 mb-40">
+                <EditableParagraph content={content["territory-description"]} handleSave={this.onSave("territory-description")} />
+              </div>
+            </Container>
+            <ImageCarousel />
+            <Container>
+              <div className="mt-40 mb-40">
+                <EditableParagraph content={content["territory-description2"]} handleSave={this.onSave("territory-description2")} />
+              </div>
+            </Container>
+          </Section>
 
+          <Section className="wow fadeIn pt-80 pb-80">
+            <Container>
+              <h2 data-animation="fadeInUp" data-delay=".5s">
+                <EditableText content={content["research-title"]} handleSave={this.onSave("research-title")} />
+              </h2>
+              <div className="mt-40 mb-40">
+                <EditableParagraph content={content["research-description"]} handleSave={this.onSave("research-description")} />
+              </div>
+            </Container>
+
+          </Section>
+
+          <Section className="wow fadeIn pt-80 pb-80 bg-primary">
+            <Container>
+              <h2 data-animation="fadeInUp" data-delay=".5s">
+                <EditableText content={content["cr-app-title"]} handleSave={this.onSave("cr-app-title")} />
+              </h2>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="mt-40 mb-40">
+                    <EditableImageUpload />
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="mt-40 mb-40">
+                    <EditableParagraph content={content["cr-app-description"]} handleSave={this.onSave("cr-app-description")} />
+                  </div>
+                  <EditableLink classes={"btn"} ontent={content["cr-app-button"]} handleSave={this.onSave("cr-app-button")} />
+                </div>
+              </div>
+            </Container>
+          </Section>
+        </main>
       </Layout>
     );
   }

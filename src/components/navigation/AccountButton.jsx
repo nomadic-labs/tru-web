@@ -21,6 +21,7 @@ const styles = {
     position: "fixed",
     left: "10px",
     bottom: "10px",
+    zIndex: "1000",
   },
   iconLabel: {
     display: "flex",

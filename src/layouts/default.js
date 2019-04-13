@@ -4,13 +4,23 @@ import { connect } from "react-redux";
 import withRoot from '../utils/withRoot';
 
 import Notification from "../components/notifications/Notification";
-import AccountButton from "../components/navigation/AccountButton"
+import AccountButton from "../components/navigation/AccountButton";
+import Navigation from "../components/navigation/Navigation";
+import Footer from "../components/common/Footer";
 
 import {
   EditablesContext,
   theme
 } from 'react-easy-editables';
 
+import "../assets/css/animate.min.css";
+import "../assets/css/bootstrap.min.css";
+import "../assets/css/fontawesome-all.min.css";
+import "../assets/css/default.css";
+import "../assets/css/meanmenu.css";
+import "../assets/css/responsive.css";
+import "../assets/css/slick.css";
+import "../assets/sass/style.scss";
 import "../assets/sass/less-cms/base.scss";
 
 import favicon from '../assets/images/icon.png'
@@ -38,7 +48,7 @@ const DefaultLayout = props => (
   <div style={styles.container}>
     <Helmet>
       <title>
-        React CMS Starter
+        Visualizing Environmental & Colonial Violence
       </title>
       <meta
         charSet="utf-8"
@@ -50,12 +60,14 @@ const DefaultLayout = props => (
     </Helmet>
     <Notification />
     <AccountButton />
+    <Navigation />
 
     <EditablesContext.Provider value={ { theme: theme, showEditingControls: props.isEditingPage } }>
       <div className="page-wrapper">
         <Fragment>{props.children}</Fragment>
       </div>
     </EditablesContext.Provider>
+    <Footer />
   </div>
 );
 

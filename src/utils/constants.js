@@ -4,3 +4,9 @@ export const NOTIFICATION_MESSAGES = {
   'contact-form-success': "Thanks for your message, we'll get back to you soon!",
   'project-form-success': "Thanks for submitting your project! We will review it before publishing it on the website."
 }
+
+export const CONTENT_MAP = {
+  header: { type: "header" },
+  paragraph: { type: "paragraph" },
+  image: { type: "image" },
+}

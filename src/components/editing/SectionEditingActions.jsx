@@ -12,22 +12,24 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     right: "45%",
+    bottom: 0,
     zIndex: "99",
     position: "absolute"
   },
   button: {
-    backgroundColor: "#000",
-    color: "#fff",
-    border: "1px solid #fff",
+    backgroundColor: "#fff",
+    color: "#000",
+    border: "1px solid #000",
     height: "30px",
     width: "30px",
+    padding: "unset",
     margin: "4px",
     "&:hover": {
-      backgroundColor: "#000"
+      backgroundColor: "#eee"
     }
   },
   icon: {
-    fontSize: "20px"
+    fontSize: "16px"
   }
 };
 
@@ -44,47 +46,25 @@ class SectionEditingActions extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  handleDuplicate = () => {
-    this.props.saveChanges(() =>
-      this.props.onDuplicate(this.props.sectionIndex)
-    );
-  };
-
-  handleDelete = () => {
-    this.props.saveChanges(() => this.props.onDelete(this.props.sectionIndex));
-  };
-
-  generateAddContentItemHandler = contentType => {
-    return () =>
-      this.props.saveChanges(() => {
-        this.props.onAddContentItem(this.props.sectionIndex, contentType);
-      });
-  };
-
-  generateAddSectionHandler = sectionType => {
-    return () =>
-      this.props.saveChanges(() => {
-        this.props.onAddSection(this.props.sectionIndex, sectionType);
-      });
-  };
-
   render() {
     const open = Boolean(this.state.anchorEl);
 
     return (
       <div className={this.props.classes.editActions}>
-        {this.props.onDuplicate && (
+        {this.props.onDuplicateSection && (
           <IconButton
-            onClick={this.handleDuplicate}
+            onClick={this.props.onDuplicateSection}
             className={this.props.classes.button}
+            title={"Duplicate section"}
           >
             <CopyIcon className={this.props.classes.icon} />
           </IconButton>
         )}
-        {this.props.onDelete && (
+        {this.props.onDeleteSection && (
           <IconButton
-            onClick={this.handleDelete}
+            onClick={this.props.onDeleteSection}
             className={this.props.classes.button}
+            title={"Delete section"}
           >
             <DeleteIcon className={this.props.classes.icon} />
           </IconButton>
@@ -113,43 +93,22 @@ class SectionEditingActions extends React.Component {
               open={open}
               onClose={this.closeMenu}
             >
+              <MenuItem onClick={() => this.props.onAddContentItem("header")}>
+                Header
+              </MenuItem>
+
               <MenuItem
-                onClick={this.generateAddContentItemHandler("paragraph")}
+                onClick={() => this.props.onAddContentItem("paragraph")}
               >
                 Paragraph
               </MenuItem>
-              <MenuItem onClick={this.generateAddContentItemHandler("header")}>
-                Header
-              </MenuItem>
-              <MenuItem onClick={this.generateAddContentItemHandler("image")}>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("image")} divider>
                 Image
               </MenuItem>
-              <MenuItem onClick={this.generateAddContentItemHandler("file")}>
-                File
-              </MenuItem>
-              <MenuItem onClick={this.generateAddContentItemHandler("button")}>
-                Button
-              </MenuItem>
-              <MenuItem onClick={this.generateAddContentItemHandler("action")}>
-                Link
-              </MenuItem>
-              <MenuItem
-                onClick={this.generateAddContentItemHandler("survey")}
-              >
-                Quiz
-              </MenuItem>
-              <MenuItem onClick={this.generateAddSectionHandler("section")}>
+
+              <MenuItem onClick={this.props.onAddSection}>
                 Section
-              </MenuItem>
-              <MenuItem
-                onClick={this.generateAddSectionHandler("call_to_action")}
-              >
-                Call To Action
-              </MenuItem>
-              <MenuItem
-                onClick={this.generateAddSectionHandler("page_navigation")}
-              >
-                Page Navigation
               </MenuItem>
             </Menu>
           </div>

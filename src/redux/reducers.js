@@ -1,3 +1,5 @@
+import { CONTENT_MAP } from "../utils/constants.js"
+
 
 export const adminTools = (state={}, action) => {
   switch (action.type) {
@@ -53,6 +55,8 @@ export const navigation = (state={}, action) => {
 }
 
 export const page = (state={}, action) => {
+  console.log("page state", state)
+  let newSectionArr, newSection, emptyContentItem;
   switch (action.type) {
     case 'LOAD_PAGE_DATA':
       return {
@@ -70,10 +74,72 @@ export const page = (state={}, action) => {
           }
         }
       }
+    case 'ADD_SECTION':
+      newSectionArr = [...state.data.content.sections];
+      newSection = { content: [] };
+      newSectionArr.splice((action.sectionIndex + 1), 0, newSection);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
+          }
+        }
+      }
+    case 'DELETE_SECTION':
+      newSectionArr = [...state.data.content.sections];
+      newSectionArr.splice(action.sectionIndex, 1);
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
+          }
+        }
+      }
+    case 'DUPLICATE_SECTION':
+      newSectionArr = [...state.data.content.sections];
+      newSection = { ...newSectionArr[action.sectionIndex] }
+      newSectionArr.splice(action.sectionIndex, 0, newSection);
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
+          }
+        }
+      }
+
+    case 'ADD_CONTENT_ITEM':
+      newSection = { ...state.data.content.sections[action.sectionIndex] }
+      emptyContentItem = CONTENT_MAP[action.contentType];
+      newSection.content.push(emptyContentItem);
+      console.log("new section", newSection)
+      console.log("state.data.content.sections", state.data.content.sections)
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: [...state.data.content.sections].splice(action.sectionIndex, 1, newSection)
+          }
+        }
+      }
     default:
       return state
   }
 }
+
 
 export const projectForm = (state={}, action) => {
   switch (action.type) {

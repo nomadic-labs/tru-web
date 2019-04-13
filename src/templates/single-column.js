@@ -33,20 +33,19 @@ const mapStateToProps = state => {
 class SingleColumnPage extends React.Component {
   static propTypes = {};
 
-  componentDidMount() {
-    console.log(this.props)
+  constructor(props) {
+    super(props);
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
     };
-
     this.props.onLoadPageData(initialPageData);
-  }
+  };
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const sections = content.sections || [];
-    console.log(content)
+    const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
+    console.log("this.props.pageData.content", content)
 
     return (
       <div>
@@ -56,7 +55,13 @@ class SingleColumnPage extends React.Component {
         <Layout>
           {
             sections.map((section, index) => {
-              return <DynamicSection content={ section.content } key={index} />
+              return(
+                <DynamicSection
+                  content={ section.content }
+                  sectionIndex={index}
+                  key={index}
+                />
+              )
             })
           }
         </Layout>

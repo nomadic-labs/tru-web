@@ -25,6 +25,11 @@ import "../assets/sass/less-cms/base.scss";
 
 import favicon from '../assets/images/icon.png'
 
+const customEditorTheme = {
+  ...theme,
+
+}
+
 
 const styles = {
   container: {

@@ -36,6 +36,40 @@ export function showNotificationByName(name) {
 
 // PAGE EDITING ------------------------
 
+
+export function updateSectionContent(sectionIndex, contentIndex, newContent) {
+  return {
+    type: "UPDATE_SECTION_CONTENT",
+    sectionIndex,
+    contentIndex,
+    newContent
+  };
+}
+
+export function addSection(sectionIndex, sectionType=null) {
+  return { type: "ADD_SECTION", sectionIndex, sectionType };
+}
+
+export function duplicateSection(sectionIndex) {
+  return { type: "DUPLICATE_SECTION", sectionIndex };
+}
+
+export function deleteSection(sectionIndex) {
+  return { type: "DELETE_SECTION", sectionIndex };
+}
+
+export function addContentItem(sectionIndex, contentType) {
+  return { type: "ADD_CONTENT_ITEM", sectionIndex, contentType };
+}
+
+export function updateContentItem(sectionIndex, contentIndex, content) {
+  return { type: "UPDATE_CONTENT_ITEM", sectionIndex, contentIndex , content};
+}
+
+export function deleteContentItem(sectionIndex, contentIndex) {
+  return { type: "DELETE_CONTENT_ITEM", sectionIndex, contentIndex };
+}
+
 export function toggleEditing() {
   return { type: "TOGGLE_EDITING" };
 }
@@ -44,6 +78,8 @@ export function toggleNewPageModal() {
   return { type: "TOGGLE_NEW_PAGE_MODAL" };
 }
 
+
+// rename to updateContent
 export function updatePage(pageId, contentId, content) {
   return dispatch => {
     const db = firebase.database();
@@ -65,6 +101,35 @@ export function updatePage(pageId, contentId, content) {
           "success"
         )
       );
+    });
+  };
+}
+
+export function savePageContent(innerFunction) {
+  return (dispatch, getState) => {
+    Promise.resolve(dispatch(innerFunction)).then(() => {
+      const content = getState().page.data.content;
+      const pageId = getState().page.data.id;
+
+      const db = firebase.database();
+
+      db.ref(`pages/${pageId}/content/`).update(content, error => {
+        if (error) {
+          return dispatch(
+            showNotification(
+              `There was an error saving your changes: ${error}`,
+              "success"
+            )
+          );
+        }
+
+        dispatch(
+          showNotification(
+            "Your changes have been saved. Publish your changes to make them public.",
+            "success"
+          )
+        );
+      });
     });
   };
 }

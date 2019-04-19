@@ -12,6 +12,10 @@ import Section from "../components/common/Section";
 import Container from "../components/common/Container";
 import ImageCarousel from "../components/common/ImageCarousel";
 
+import { uploadImage } from "../firebase/operations";
+
+const PAGE_ID = "contact"
+
 const mapDispatchToProps = dispatch => {
   return {
     onUpdatePageData: (page, id, data) => {
@@ -42,7 +46,7 @@ class HomePage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData("home", id, content);
+    this.props.onUpdatePageData(PAGE_ID, id, content);
   };
 
   render() {
@@ -51,7 +55,12 @@ class HomePage extends React.Component {
     return (
       <Layout>
         <main>
-          <EditableBackgroundImage classes="breadcrumb-area pt-260 pb-180">
+          <EditableBackgroundImage classes="breadcrumb-area pt-260 pb-180"
+            content={content["header-bg"]}
+            handleSave={this.onSave("header-bg")}
+            uploadImage={ uploadImage }
+            styles={{ backgroundColor: "transparent" }}
+          >
             <div className="container">
               <div className="row">
                 <div className="col-xl-12">
@@ -59,7 +68,7 @@ class HomePage extends React.Component {
                     <h1><EditableText content={content["contact-title"]} onSave={this.onSave("contact-title")} /></h1>
                     <ul className="breadcrumb-menu">
                       <li><a href="/">home</a></li>
-                      <li><span>contact</span></li>
+                      <li><span>contact us</span></li>
                     </ul>
                   </div>
                 </div>
@@ -149,7 +158,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
 export const query = graphql`
   query {
-    pages(id: { eq: "home" }) {
+    pages(id: { eq: "contact" }) {
       id
       content
       title

@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "./Container";
+import { Link } from "gatsby";
 
 export default (props) => {
   return (
@@ -12,13 +13,12 @@ export default (props) => {
                     <h4>Links</h4>
                   </div>
                   <ul className="footer-menu">
-                      <li><a href="#">Help and Ordering</a></li>
-                      <li><a href="#">Privacy Policy</a></li>
-                      <li><a href="#">Return &amp; Cancellation</a></li>
-                      <li><a href="#">Delevery Schedule</a></li>
-                      <li><a href="#">Get a Call</a></li>
-                      <li><a href="#">Online Enquiry</a></li>
-                      <li><a href="#">My Account</a></li>
+                      <li><Link to="/">Home</Link></li>
+                      <li><Link to="/about">About</Link></li>
+                      <li><Link to="/news">News</Link></li>
+                      <li><Link to="/resources">Resources</Link></li>
+                      <li><Link to="/get-involved">Get Involved</Link></li>
+                      <li><Link to="/contact">Contact Us</Link></li>
                   </ul>
               </div>
           </div>

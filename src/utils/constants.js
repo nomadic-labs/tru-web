@@ -9,4 +9,5 @@ export const CONTENT_MAP = {
   header: { type: "header" },
   paragraph: { type: "paragraph" },
   image: { type: "image" },
+  embeddedIframe: { type: "embeddedIframe" },
 }

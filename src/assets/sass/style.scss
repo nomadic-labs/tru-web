@@ -215,7 +215,10 @@ label {
 	letter-spacing: 2px;
 	font-family: 'Rubik', sans-serif;
 }
-.btn:hover{background:$theme-highlight;color:#fff;}
+.btn:hover {
+	background: $theme-highlight;
+	color:#fff;
+}
 .breadcrumb > .active {
 	color: #888;
 }
@@ -601,7 +604,7 @@ label {
 /* slider 2 */
 .slider-text{}
 .slider-text span {
-	font-size: 14px;
+	font-size: 1.4em;
 	color: #5ba760;
 	font-weight: 600;
 	letter-spacing: 2px;
@@ -1799,6 +1802,13 @@ label {
 .shape-item {
 	position: absolute;
 	z-index: 1;
+
+	&.invert-color {
+		img {
+			filter: invert(1);
+	    opacity: 0.5;
+		}
+	}
 }
 .shape-01 {
 	bottom: 5%;
@@ -3875,7 +3885,6 @@ ul.cat li a:hover {
 }
 #contact-form .btn {
 	cursor: pointer;
-	border-radius: 0;
 	padding: 18px 60px;
 	background: $theme-highlight;
 	transition: .3s;

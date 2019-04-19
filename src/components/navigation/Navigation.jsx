@@ -24,50 +24,21 @@ class Navigation extends React.Component {
         <div id="sticky-header" className="main-menu-area header-2-menu pl-55 pr-55">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-xl-2 col-lg-2 d-flex align-items-center">
-                        <div className="logo">
-                            <a href="index.html"><img src="img/logo/logo.png" alt="" /></a>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-7">
+                    <div className="col-xl-8 col-lg-9 col-9">
                         <div className="main-menu">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li className="active"><a href="index.html">home</a>
-                                        <ul className="sub-menu text-left">
-                                            <li><a href="index.html">home 1</a></li>
-                                            <li><a href="index-2.html">home 2</a></li>
-                                            <li><a href="index-3.html">home 3</a></li>
-                                        </ul>
+                                    <li className="active">
+                                        <Link to="/">The Land and the Refinery</Link>
                                     </li>
-                                    <li><a href="about.html">about</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="shop.html">shop</a></li>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="#">pages</a>
-                                        <ul className="sub-menu text-left">
-                                            <li><a href="gallery.html">gallery 01</a></li>
-                                            <li><a href="gallery-no-gutter.html">gallery 02</a></li>
-                                            <li><a href="gallery-2-col.html">gallery 03</a></li>
-                                            <li><a href="gallery-2-col-no-gutter.html">gallery 04</a></li>
-                                            <li><a href="gallery-details.html">Gallery Details</a></li>
-                                            <li><a href="faq.html">faq</a></li>
-                                            <li><a href="team.html">team</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li><a href="product-details.html">Product Details</a></li>
-                                            <li><a href="services-details.html">Services Details</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contact</a></li>
                                 </ul>
                             </nav>
                         </div>
                         <div className="mobile-menu"></div>
                     </div>
-                    <div className="col-xl-4 col-lg-3">
-                        <div className="header2-right d-none d-md-none d-lg-block">
-                            <div className={`menu-bar f-right info-bar text-right d-none d-md-none d-lg-block`} onClick={this.toggleMenu}>
+                    <div className="col-xl-4 col-lg-3 col-3">
+                        <div className="header2-right">
+                            <div className={`menu-bar f-right info-bar text-right`} onClick={this.toggleMenu}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -94,11 +65,11 @@ class Navigation extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <Link to={"/"}><h4>Home</h4></Link>
-                        <Link to={"/"}><h4>About</h4></Link>
-                        <Link to={"/"}><h4>News</h4></Link>
-                        <Link to={"/"}><h4>Resources</h4></Link>
-                        <Link to={"/"}><h4>Get Involved</h4></Link>
-                        <Link to={"/"}><h4>Contact Us</h4></Link>
+                        <Link to={"/about"}><h4>About</h4></Link>
+                        <Link to={"/news"}><h4>News</h4></Link>
+                        <Link to={"/resources"}><h4>Resources</h4></Link>
+                        <Link to={"/get-involved"}><h4>Get Involved</h4></Link>
+                        <Link to={"/contact"}><h4>Contact Us</h4></Link>
 
                         <div className="social-icon-right mt-20">
                             <a href="#">

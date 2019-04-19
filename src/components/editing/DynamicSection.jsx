@@ -13,12 +13,14 @@ import {
 import Header from "../common/Header";
 import Paragraph from "../common/Paragraph";
 import Image from "../common/Image";
+import EmbeddedIframe from "../common/EmbeddedIframe";
 import SectionEditingActions from "./SectionEditingActions"
 
 const componentMap = {
   header: Header,
   paragraph: Paragraph,
   image: Image,
+  embeddedIframe: EmbeddedIframe,
 }
 
 

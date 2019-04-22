@@ -9,7 +9,7 @@ export default (props) => {
         <div className="row">
           <div className="col-xl-12">
             <div className="breadcrumb-text text-center">
-              <h1><EditableText content={ props.content } onSave={ props.handleSave } /></h1>
+              <h1><EditableText { ...props } /></h1>
             </div>
           </div>
         </div>

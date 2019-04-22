@@ -56,7 +56,7 @@ export const navigation = (state={}, action) => {
 
 export const page = (state={}, action) => {
   console.log("page state", state)
-  let newSectionArr, newSection, emptyContentItem;
+  let newSectionArr, newSection, emptyContentItem, newContentItem;
   switch (action.type) {
     case 'LOAD_PAGE_DATA':
       return {
@@ -122,7 +122,10 @@ export const page = (state={}, action) => {
       newSection = { ...state.data.content.sections[action.sectionIndex] }
       emptyContentItem = CONTENT_MAP[action.contentType];
       newSection.content.push(emptyContentItem);
-      console.log("new section", newSection)
+      newSectionArr = [...state.data.content.sections]
+      newSectionArr.splice(action.sectionIndex, 1, newSection)
+
+      console.log("action.sectionIndex", action.sectionIndex)
       console.log("state.data.content.sections", state.data.content.sections)
 
       return {
@@ -131,7 +134,42 @@ export const page = (state={}, action) => {
           ...state.data,
           content: {
             ...state.data.content,
-            sections: [...state.data.content.sections].splice(action.sectionIndex, 1, newSection)
+            sections: newSectionArr
+          }
+        }
+      }
+
+    case 'UPDATE_CONTENT_ITEM':
+      newSection = { ...state.data.content.sections[action.sectionIndex] }
+      newContentItem = { ...newSection.content[action.contentIndex], content: action.content }
+      newSection.content.splice(action.contentIndex, 1, newContentItem);
+      newSectionArr = [...state.data.content.sections]
+      newSectionArr.splice(action.sectionIndex, 1, newSection)
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
+          }
+        }
+      }
+
+    case 'DELETE_CONTENT_ITEM':
+      newSection = { ...state.data.content.sections[action.sectionIndex] }
+      newSection.content.splice(action.contentIndex, 1);
+      newSectionArr = [...state.data.content.sections]
+      newSectionArr.splice(action.sectionIndex, 1, newSection)
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
           }
         }
       }

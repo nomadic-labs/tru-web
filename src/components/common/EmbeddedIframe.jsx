@@ -7,7 +7,7 @@ const EmbeddedIframe = props => {
   return (
     <Container>
       <div className="iframe-container">
-        <EditableEmbeddedIframe content={ props.content } onSave={ props.handleSave } />
+        <EditableEmbeddedIframe { ...props } />
       </div>
     </Container>
   );

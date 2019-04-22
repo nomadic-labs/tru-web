@@ -6,7 +6,7 @@ import Container from "./Container"
 export default (props) => {
   return (
     <Container>
-      <EditableImageUpload content={ props.content } onSave={ props.handleSave } />
+      <EditableImageUpload { ...props } />
     </Container>
   );
 };

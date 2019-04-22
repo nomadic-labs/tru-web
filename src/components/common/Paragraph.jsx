@@ -6,7 +6,7 @@ import Container from "./Container"
 export default (props) => {
   return (
     <Container>
-      <EditableParagraph content={ props.content } onSave={ props.handleSave } />
+      <EditableParagraph { ...props } />
     </Container>
   );
 };

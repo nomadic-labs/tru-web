@@ -78,6 +78,28 @@ export function toggleNewPageModal() {
   return { type: "TOGGLE_NEW_PAGE_MODAL" };
 }
 
+export function updatePageTitle(title) {
+  return { type: "UPDATE_PAGE_TITLE", title };
+}
+
+export function createPage(pageData, pageId) {
+  return dispatch => {
+    const db = firebase.database();
+    db
+      .ref(`pages/${pageId}/`)
+      .set(pageData)
+      .then(snap => {
+        dispatch(toggleNewPageModal());
+        dispatch(
+          showNotification(
+            "Your page has been saved. Publish your changes to view and edit your new page.",
+            "success"
+          )
+        );
+      });
+  };
+}
+
 
 // rename to updateContent
 export function updatePage(pageId, contentId, content) {
@@ -95,6 +117,34 @@ export function updatePage(pageId, contentId, content) {
       }
 
       dispatch(updatePageData(contentId, content));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
+  };
+}
+
+export function updateTitle(title) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const pageId = getState().page.data.id;
+    console.log('pageId', pageId)
+    console.log('title', title)
+
+    db.ref(`pages/${pageId}/`).update({ title }, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(updatePageTitle(title));
       dispatch(
         showNotification(
           "Your changes have been saved. Publish your changes to make them public.",

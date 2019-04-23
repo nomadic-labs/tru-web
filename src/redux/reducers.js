@@ -13,6 +13,8 @@ export const adminTools = (state={}, action) => {
       return { ...state, isEditingPage: !state.isEditingPage }
     case 'TOGGLE_REGISTRATION_MODAL':
       return { ...state, showRegistrationModal: !state.showRegistrationModal }
+    case 'TOGGLE_NEW_PAGE_MODAL':
+      return { ...state, showNewPageModal: !state.showNewPageModal }
     default:
       return state
   }
@@ -74,9 +76,19 @@ export const page = (state={}, action) => {
           }
         }
       }
+
+    case 'UPDATE_PAGE_TITLE':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          title: action.title
+        }
+      }
+
     case 'ADD_SECTION':
       newSectionArr = [...state.data.content.sections];
-      newSection = { content: [] };
+      newSection = { content: [], type: action.sectionType };
       newSectionArr.splice((action.sectionIndex + 1), 0, newSection);
       return {
         ...state,

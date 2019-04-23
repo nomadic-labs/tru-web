@@ -114,6 +114,10 @@ class SectionEditingActions extends React.Component {
               <MenuItem onClick={this.props.onAddSection}>
                 Section
               </MenuItem>
+
+              <MenuItem onClick={this.props.onAddContrastSection}>
+                Contrast Section
+              </MenuItem>
             </Menu>
           </div>
         )}

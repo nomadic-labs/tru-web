@@ -7,6 +7,7 @@ import Notification from "../components/notifications/Notification";
 import AccountButton from "../components/navigation/AccountButton";
 import Navigation from "../components/navigation/Navigation";
 import Footer from "../components/common/Footer";
+import CreatePageModal from "../components/editing/CreatePageModal";
 
 import {
   EditablesContext,
@@ -27,7 +28,10 @@ import favicon from '../assets/images/icon.png'
 
 const customEditorTheme = {
   ...theme,
-
+  editContainer: {
+    ...theme.editContainer,
+    padding: "18px 4px 4px 4px",
+  }
 }
 
 
@@ -67,12 +71,13 @@ const DefaultLayout = props => (
     <AccountButton />
     <Navigation />
 
-    <EditablesContext.Provider value={ { theme: theme, showEditingControls: props.isEditingPage } }>
+    <EditablesContext.Provider value={ { theme: customEditorTheme, showEditingControls: props.isEditingPage } }>
       <div className="page-wrapper">
         <Fragment>{props.children}</Fragment>
       </div>
     </EditablesContext.Provider>
     <Footer />
+    <CreatePageModal />
   </div>
 );
 

@@ -66,10 +66,6 @@ class HomePage extends React.Component {
                 <div className="col-xl-12">
                   <div className="breadcrumb-text text-center">
                     <h1><EditableText content={content["contact-title"]} onSave={this.onSave("contact-title")} /></h1>
-                    <ul className="breadcrumb-menu">
-                      <li><a href="/">home</a></li>
-                      <li><span>contact us</span></li>
-                    </ul>
                   </div>
                 </div>
               </div>

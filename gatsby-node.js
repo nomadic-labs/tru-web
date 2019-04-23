@@ -7,7 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-          allPages(filter: {template: { in: ["single-column.js"]}}) {
+          allPages(filter: {template: { in: ["single-column.js", "fixed-sidebar.js"]}}) {
             edges {
               node {
                 id
@@ -34,6 +34,8 @@ exports.createPages = ({ graphql, actions }) => {
           const template = path.resolve(
             `src/templates/${edge.node.template}`
           );
+
+          console.log("CREATING PAGE", edge.node.title);
           createPage({
             path: edge.node.slug, // required
             component: template,

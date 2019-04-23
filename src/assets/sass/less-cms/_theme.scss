@@ -49,6 +49,10 @@ a {
   background-color: $light-gray !important;
 }
 
+.bg-lighter {
+  background-color: $lighter-gray !important;
+}
+
 .slider-height-sm {
   max-height: 400px;
   display: flex;
@@ -67,5 +71,11 @@ a {
 
   &:hover {
     background: $red;
+  }
+}
+
+section.dynamic-section {
+  &:nth-of-type(even) {
+    background-color: $lighter-gray;
   }
 }

@@ -3495,11 +3495,20 @@ ul.cat li a:hover {
 }
 .breadcrumb-text > h1 {
 	font-size: 90px;
-	margin-bottom: 34px;
+	margin-bottom: 48px;
 	text-transform: capitalize;
 	line-height: 1;
 	font-weight: 600;
-	color: #112433;
+	color: $black;
+}
+
+.breadcrumb-text span {
+	font-size: 1.4em;
+	color: $dark-green;
+	font-weight: 600;
+	letter-spacing: 2px;
+	font-family: 'Rubik', sans-serif;
+	text-transform: uppercase;
 }
 .breadcrumb-menu {}
 .breadcrumb-menu li {

@@ -8,6 +8,7 @@ import {
   userLoggedIn,
   userLoggedOut,
   toggleRegistrationModal,
+  toggleNewPageModal,
   deploy,
   toggleEditing
 } from "../../redux/actions";
@@ -126,6 +127,17 @@ class AccountButton extends React.Component {
             {props.allowEditing && (
               <MenuItem
                 onClick={() => {
+                  props.onToggleNewPageModal();
+                  closeMenu();
+                }}
+              >
+                Add new page
+              </MenuItem>
+            )}
+
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
                   props.deploy();
                   closeMenu();
                 }}
@@ -175,6 +187,9 @@ const mapDispatchToProps = dispatch => {
     },
     onToggleRegistrationModal: () => {
       dispatch(toggleRegistrationModal());
+    },
+    onToggleNewPageModal: () => {
+      dispatch(toggleNewPageModal());
     },
     onToggleEditing: () => {
       dispatch(toggleEditing());

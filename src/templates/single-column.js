@@ -7,9 +7,11 @@ import { connect } from "react-redux";
 import {
   updatePage,
   loadPageData,
+  updateTitle,
 } from "../redux/actions";
 
 import Layout from "../layouts/default.js";
+import PageHeader from "../components/common/PageHeader";
 import DynamicSection from "../components/editing/DynamicSection";
 
 const mapDispatchToProps = dispatch => {
@@ -19,6 +21,9 @@ const mapDispatchToProps = dispatch => {
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
+    },
+    onUpdateTitle: title => {
+      dispatch(updateTitle(title));
     },
   };
 };
@@ -42,17 +47,27 @@ class SingleColumnPage extends React.Component {
     this.props.onLoadPageData(initialPageData);
   };
 
+  onSave = id => content => {
+    this.props.onUpdatePageData(this.props.data.pages.id, id, content);
+  };
+
+  onUpdateTitle = content => {
+    this.props.onUpdateTitle(content.text)
+  }
+
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+
+    const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
-    console.log("this.props.pageData.content", content)
 
     return (
       <div>
-        <Helmet>
-          <title>DEMO</title>
-        </Helmet>
         <Layout>
+          <Helmet>
+            <title>{pageData.title}</title>
+          </Helmet>
+          <PageHeader title={pageData.title} onSave={this.onSave} content={content} onUpdateTitle={this.onUpdateTitle}/>
           {
             sections.map((section, index) => {
               return(
@@ -60,6 +75,7 @@ class SingleColumnPage extends React.Component {
                   content={ section.content }
                   sectionIndex={index}
                   key={index}
+                  type={ section.type }
                 />
               )
             })

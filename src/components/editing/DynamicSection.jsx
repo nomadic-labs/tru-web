@@ -25,14 +25,13 @@ const componentMap = {
   embeddedIframe: EmbeddedIframe,
 }
 
-
 const mapDispatchToProps = dispatch => {
   return {
     onUpdatePageData: (page, id, data) => {
       dispatch(updatePage(page, id, data));
     },
-    addSection: (sectionIndex) => {
-      dispatch(addSection(sectionIndex));
+    addSection: (sectionIndex, sectionType) => {
+      dispatch(addSection(sectionIndex, sectionType));
     },
     deleteSection: (sectionIndex) => {
       dispatch(deleteSection(sectionIndex));
@@ -63,10 +62,14 @@ const mapStateToProps = state => {
 };
 
 
-const DynamicSection = ({ content, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
+const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
 
   const onAddSection = () => {
     savePageContent(() => addSection(sectionIndex))
+  }
+
+  const onAddContrastSection = () => {
+    savePageContent(() => addSection(sectionIndex, "contrast"))
   }
 
   const onDeleteSection = () => {
@@ -89,8 +92,10 @@ const DynamicSection = ({ content, sectionIndex, pageData, isEditingPage, onUpda
     savePageContent(() => deleteContentItem(sectionIndex, contentIndex))
   }
 
+  const classes = type === "contrast" ? "bg-primary" : "";
+
   return(
-    <div className="dynamic-section pos-relative pt-60 pb-60">
+    <section className={`dynamic-section pos-relative pt-60 pb-60 ${classes}`}>
       {
         content.map((component, index ) => {
           const Component = componentMap[component.type];
@@ -110,10 +115,11 @@ const DynamicSection = ({ content, sectionIndex, pageData, isEditingPage, onUpda
           onDuplicateSection={onDuplicateSection}
           onDeleteSection={onDeleteSection}
           onAddSection={onAddSection}
+          onAddContrastSection={onAddContrastSection}
           onAddContentItem={onAddContentItem}
         />
       }
-    </div>
+    </section>
   )
 };
 

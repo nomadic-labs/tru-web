@@ -25,7 +25,7 @@ class Affix extends Component {
 
     componentDidMount() {
         this.getInitPosition();
-        const listenTarget = this.props.target();
+        const listenTarget = this.props.target ? this.props.target() : window;
         if (listenTarget) {
             listenTarget.addEventListener('resize', this.handleTargetChange)
             listenTarget.addEventListener('scroll', this.handleTargetChange)
@@ -33,7 +33,7 @@ class Affix extends Component {
     }
 
     componentWillUnmount() {
-        const listenTarget = this.props.target();
+        const listenTarget = this.props.targe ? this.props.target() : window;
         if (listenTarget) {
             listenTarget.removeEventListener('scroll', this.handleTargetChange)
             listenTarget.removeEventListener('resize', this.handleTargetChange)
@@ -154,8 +154,7 @@ Affix.propTypes = {
 Affix.defaultProps = {
     offsetTop: 0,
     horizontal: false,
-    container: document.body,
-    target: () => window,
+    container: "body",
     onChange: (affixed) => ({}),
     onTargetChange: (state) => ({}),
     zIndex: 2,

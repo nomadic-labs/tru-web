@@ -6,6 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import {
   updatePage,
   loadPageData,
+  updateTitle,
+  updateHeaderImage,
 } from "../redux/actions";
 import {
   EditableText,
@@ -26,7 +28,7 @@ import Explore from "../components/common/Explore";
 import Affix from "../components/common/Affix";
 import TopicSelector from "../components/common/TopicSelector";
 import EmbeddedIframe from "../components/common/EmbeddedIframe";
-
+import PageHeader from "../components/common/PageHeader";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -35,6 +37,12 @@ const mapDispatchToProps = dispatch => {
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
+    },
+    onUpdateTitle: title => {
+      dispatch(updateTitle(title));
+    },
+    onUpdateHeaderImage: image => {
+      dispatch(updateHeaderImage(image));
     },
   };
 };
@@ -66,38 +74,29 @@ class HomePage extends React.Component {
     this.props.onUpdatePageData("home", id, content);
   };
 
+  onUpdateTitle = content => {
+    this.props.onUpdateTitle(content.text)
+  }
+
+  onUpdateHeaderImage = content => {
+    this.props.onUpdateHeaderImage(content)
+  }
+
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
       <Layout>
         <main>
-          <div className="slider-area pos-relative">
-            <div className="slider-active" data-animation="fadeIn">
-              <EditableBackgroundImage
-                classes="single-slider full-screen d-flex align-items-center"
-                content={content["header-bg"]}
-                handleSave={this.onSave("header-bg")}
-                uploadImage={ uploadImage }
-                styles={{ backgroundColor: "transparent" }}
-              >
-                <div className="container">
-                  <div className="row">
-                    <div className="col-xl-10 col-lg-10 offset-lg-1 offset-xl-1">
-                      <div className="slider-content slider-text slider-2-text text-center mt-80">
-                        <h1 data-animation="fadeInUp" data-delay=".5s">
-                          <EditableText content={content["demo-title"]} handleSave={this.onSave("demo-title")} />
-                        </h1>
-                        <span data-animation="fadeInUp" data-delay=".3s">
-                          <EditableText content={content["demo-subtitle"]} handleSave={this.onSave("demo-subtitle")} />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </EditableBackgroundImage>
-            </div>
-          </div>
+          <PageHeader
+            title={pageData.title}
+            onSave={this.onSave}
+            content={ content }
+            headerImage={pageData.header_image}
+            onUpdateHeaderImage={this.onUpdateHeaderImage}
+            onUpdateTitle={this.onUpdateTitle}
+          />
 
           <Section className="wow fadeIn pt-80 pb-80 pos-relative">
             <div className="shape d-none d-xl-block">

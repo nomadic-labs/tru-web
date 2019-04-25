@@ -1,18 +1,7 @@
 $(document).ready(function() {
 "use strict";
 
-console.log("document ready")
 
-// meanmenu
-
-	window.setTimeout(function() {
-		console.log('mean menu')
-		$('#mobile-menu').meanmenu({
-			meanMenuContainer: '.mobile-menu',
-			meanScreenWidth: "992"
-		});
-
-	}, 500)
 
 	// sticky
 	var wind = $(window);
@@ -73,7 +62,7 @@ function mainSlider() {
         });
     }
 }
-mainSlider();
+
 
 
 	/* testimonial-active */
@@ -288,11 +277,11 @@ mainSlider();
 	});
 
 
-	/* counter */
-	$('.counter').counterUp({
-		delay: 10,
-		time: 1000
-	});
+	// /* counter */
+	// $('.counter').counterUp({
+	// 	delay: 10,
+	// 	time: 1000
+	// });
 
 
 	/* magnificPopup video view */
@@ -392,6 +381,19 @@ mainSlider();
 	if ($('#contact-map').length != 0) {
 		google.maps.event.addDomListener(window, 'load', basicmap);
 	}
+
+	// meanmenu
+
+	window.setTimeout(function() {
+
+		$('#mobile-menu').meanmenu({
+			meanMenuContainer: '.mobile-menu',
+			meanScreenWidth: "992"
+		});
+
+		mainSlider();
+
+	}, 500)
 
 
 

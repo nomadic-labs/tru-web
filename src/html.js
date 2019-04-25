@@ -27,8 +27,6 @@ export default class HTML extends React.Component {
           <script src={ withPrefix("/js/vendor/jquery-1.12.4.min.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/popper.min.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/bootstrap.min.js")} type="text/javascript"></script>
-          <script src={ withPrefix("/js/jquery.counterup.min.js")} type="text/javascript"></script>
-          <script src={ withPrefix("/js/jquery.counterdown.min.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/waypoints.min.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/owl.carousel.min.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/isotope.pkgd.min.js")} type="text/javascript"></script>

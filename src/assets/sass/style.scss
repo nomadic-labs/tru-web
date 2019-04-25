@@ -396,12 +396,15 @@ label {
   width: 100%;
 }
 .social-icon-right > a {
-	color: $theme-primary;
+	color: $blue;
 	display: inline-block;
 	margin-right: 20px;
 	text-align: center;
 }
 .social-icon-right > a:hover {
+	color: $red;
+}
+.social-icon-right > a:focus {
 	color: $theme-highlight;
 }
 .instagram {

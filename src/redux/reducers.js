@@ -221,22 +221,20 @@ export const projectForm = (state={}, action) => {
   }
 }
 
-export const projects = (state={}, action) => {
+export const topics = (state={}, action) => {
   switch (action.type) {
-    case 'UPDATE_PROJECTS':
-      return action.projects;
-    case 'UPDATE_PROJECT':
+    case 'SELECT_TOPIC':
+      console.log("selected topic", action.selected)
       return {
         ...state,
-        [action.projectId]: {
-          ...state[action.projectId],
-          ...action.projectData
-        }
+        selected: action.selected
       }
     default:
       return state
   }
 }
+
+
 
 export const appReducers = (state = {}, action) => {
   return {
@@ -245,7 +243,7 @@ export const appReducers = (state = {}, action) => {
     navigation: navigation(state.navigation, action),
     page: page(state.page, action),
     projectForm: projectForm(state.projectForm, action),
-    projects: projects(state.projects, action),
+    topics: topics(state.topics, action),
   }
 }
 

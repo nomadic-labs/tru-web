@@ -1,8 +1,24 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 import { TOPICS } from "../../utils/constants";
 import plants10 from "../../assets/images/illustrations/plants-10.svg";
 
+import { selectTopic } from "../../redux/actions";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    selectTopic: (topic) => {
+      dispatch(selectTopic(topic));
+    },
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    selectedTopics: state.topics.selected,
+  };
+};
 
 
 const TopicSelector = props => {
@@ -16,9 +32,11 @@ const TopicSelector = props => {
         <ul>
         {
           TOPICS.map(topic => {
+            const onClick = () => props.selectTopic(topic);
+            const selected = (topic === props.selectedTopics) ? 'selected' : '';
             return(
-              <li className="topic" key={ topic.value }>
-                <span className="text">{ topic.label }</span>
+              <li className={`topic ${selected}`} key={ topic.value }>
+                <a className="text" onClick={onClick}>{ topic.label }</a>
               </li>
             )
           })
@@ -29,4 +47,4 @@ const TopicSelector = props => {
   )
 }
 
-export default TopicSelector;
+export default connect(mapStateToProps, mapDispatchToProps)(TopicSelector);

@@ -228,7 +228,7 @@ a:not([href]):not([tabindex]) {
   position: relative;
   cursor: pointer;
 
-  span {
+  .text {
     display: inline-block;
     transition: transform .2s ease;
   }
@@ -239,18 +239,18 @@ a:not([href]):not([tabindex]) {
     background-color: $blue;
     width: 16px;
     height: 2px;
-    top: 11px;
+    top: 14px;
     transform-origin: left center;
     transform: scaleX(0);
     transition: transform .2s ease;
   }
 
-  &:hover {
+  &:hover, &.selected {
     &:before {
       transform: scaleX(1);
     }
 
-    span {
+    .text {
       transform: translateX(30px);
       color: $blue;
     }

@@ -1,10 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Collapsible from 'react-collapsible';
 import { StaticQuery, Link, graphql } from "gatsby";
+
 import { MENU_CATEGORIES } from "../../utils/constants";
 import Affix from "./Affix";
 
 import dylan7 from "../../assets/images/illustrations/Dylan_Minor7.png";
+
+const mapStateToProps = state => {
+  return {
+    selectedTopics: state.topics.selected,
+  };
+};
 
 const CategoryTitle = ({ label, count, open }) => {
   return(
@@ -21,7 +29,6 @@ const ArticlePreview = ({ article }) => {
   const image = article.header_image ? article.header_image.imageSrc : dylan7;
   const topics = JSON.parse(article.topics) || [];
   const topicsString = topics.map(topic => topic.label).join(", ")
-  console.log('topics', topics)
   return(
     <div className="article col-12 col-md-4 my-3">
       <Link to={`/${article.slug}`}>
@@ -42,11 +49,22 @@ class Research extends Component {
   }
 
   render() {
+    console.log(this.props)
+    console.log('this.props.selectedTopics', this.props.selectedTopics)
     return(
       <div className="explore">
         {
           MENU_CATEGORIES.map((category, index) => {
-            const articles = this.props.pages.filter(page => page.node.navigation.group === category.value)
+            let articles = this.props.pages.filter(page => page.node.navigation.group === category.value);
+
+            if (this.props.selectedTopics) {
+              articles = articles.filter(article => {
+                console.log("article", article)
+
+                return article.node.topics && JSON.parse(article.node.topics).includes(this.props.selectedTopics)
+              })
+            }
+
             if (articles.length > 0) {
               return(
                 <div className="py-2" key={ category.value }>
@@ -101,4 +119,4 @@ const Explore = props => (
 );
 
 
-export default Explore;
+export default connect(mapStateToProps, null)(Explore);

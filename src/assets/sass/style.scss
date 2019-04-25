@@ -379,16 +379,12 @@ label {
 }
 .extra-info-left{right:inherit;left: 0;transform: translateX(-100%);}
 .extra-info.extra-info-left.info-open{transform: translateX(0);}
-.close-icon {
-  margin-top: -16px;
-  text-align: right;
-}
 .close-icon > button {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 0 none;
-  color: $theme-highlight;
+  color: $blue;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 28px;
   padding: 0;
 }
 .extra-info > p {

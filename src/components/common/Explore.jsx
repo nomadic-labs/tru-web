@@ -38,10 +38,12 @@ class Research extends Component {
                     {
                       articles.map(article => (
                         <div className="article col-12 col-md-4 my-3" key={ article.node.slug }>
-                          <div className="image">
-                            <img src="https://via.placeholder.com/300x150" className="img-fluid" />
-                          </div>
-                          <h5 className="my-2"><Link to={`/${article.node.slug}`}>{article.node.title}</Link></h5>
+                          <Link to={`/${article.node.slug}`}>
+                            <div className="image">
+                              <img src="https://via.placeholder.com/300x150" className="img-fluid" />
+                            </div>
+                            <h5 className="my-2">{article.node.title}</h5>
+                          </Link>
                         </div>
                       ))
                     }

@@ -115,7 +115,6 @@ a:not([href]):not([tabindex]) {
 }
 
 .page-container {
-  margin-right: 80px;
 }
 
 #full-page-menu {
@@ -123,8 +122,8 @@ a:not([href]):not([tabindex]) {
   height: 100%;
   width: 100%;
   background: $white;
-  z-index: 999;
-  left: calc(100vw - 80px);
+  z-index: 10000;
+  left: 100%;
   transition: all ease-in-out 0.5s;
 
   &.info-open {
@@ -143,10 +142,9 @@ a:not([href]):not([tabindex]) {
   }
 
   .explore-content {
-    margin-left: 80px;
     height: 100%;
 
-    > div {
+    > div.row {
       height: inherit;
     }
 
@@ -160,6 +158,20 @@ a:not([href]):not([tabindex]) {
         flex-grow: 1;
         display: flex;
         align-items: center;
+      }
+    }
+  }
+
+  .close-icon {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+
+    button {
+      transition: all 0.3s ease-out 0s;
+
+      &:active, &:focus {
+        color: $theme-highlight;
       }
     }
   }
@@ -230,3 +242,23 @@ section.dynamic-section {
     background-color: $lighter-gray;
   }
 }
+
+.freeze {
+  overflow: hidden !important;
+}
+
+.header-2-menu .menu-bar {
+  &:hover {
+    span {
+      background: $theme-primary;
+    }
+  }
+
+  &:focus, &:active {
+    span {
+      background: $theme-highlight;
+    }
+  }
+}
+
+

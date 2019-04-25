@@ -1,13 +1,31 @@
 import React from "react";
 import { Link } from "gatsby";
 import Grid from "@material-ui/core/Grid";
+import { connect } from "react-redux";
 
 import { EditableImageUpload } from "react-easy-editables";
 
 import Explore from "../common/Explore";
 import Affix from "../common/Affix";
 import TopicSelector from "../common/TopicSelector";
-import plants06 from "../../assets/images/illustrations/plants-06.svg"
+import plants06 from "../../assets/images/illustrations/plants-06.svg";
+
+import { closeMenu } from "../../redux/actions";
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    closeMenu: () => {
+      dispatch(closeMenu());
+    }
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    showMenu: state.navigation.showMenu,
+  };
+};
 
 const styles = {
   button: {
@@ -19,33 +37,14 @@ const styles = {
 }
 
 
-class FullPageNavigation extends React.Component {
-  state = { menuOpen: false }
-
-  toggleMenu = () => {
-    this.setState({ menuOpen: !this.state.menuOpen })
-  }
-
-  render() {
+const FullPageNavigation = ({ showMenu, closeMenu }) => {
     return (
       <aside>
-        <div id="full-page-menu" className={`${this.state.menuOpen ? 'info-open' : ''}`}>
-            <div className="sidebar d-flex justify-content-center align-items-center" onClick={this.toggleMenu}>
-                <div className="rotate">
-                    {
-                        this.state.menuOpen ?
-                        <div className="d-flex align-items-center justify-content-center">
-                            <a>Go back</a><i className="fas fa-angle-up mx-2"></i>
-                        </div> :
-                        <div className="d-flex align-items-center justify-content-center">
-                            <a>Explore</a><i className="fas fa-angle-down mx-2"></i>
-                        </div>
-                    }
-                </div>
-            </div>
-            <div className="explore-content px-3">
+        <div id="full-page-menu" className={`${showMenu ? 'info-open' : ''}`}>
+            <div className="explore-content px-3 pos-relative">
                 <div className="row">
                     <div className="col-md-3 bg-light p-5">
+
                         <div className="inner-content">
                             <div className="image">
                                 <img src={plants06} style={{ width: "100px" }} />
@@ -75,6 +74,11 @@ class FullPageNavigation extends React.Component {
                     </div>
 
                     <div className="col-md-9" style={{height: "inherit"}}>
+                        <div class="close-icon">
+                            <button onClick={closeMenu}>
+                                <i class="far fa-window-close"></i>
+                            </button>
+                        </div>
                         <Grid container>
                           <Grid item xs={10} sm={2} md={3} lg={3}>
                               <TopicSelector />
@@ -97,8 +101,7 @@ class FullPageNavigation extends React.Component {
             </div>
         </div>
       </aside>
-    );
-  }
+    )
 }
 
-export default FullPageNavigation;
+export default connect(mapStateToProps, mapDispatchToProps)(FullPageNavigation);

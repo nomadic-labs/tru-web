@@ -51,6 +51,11 @@ export const navigation = (state={}, action) => {
         ...state,
         showMenu: false
       }
+    case 'TOGGLE_MENU':
+      return {
+        ...state,
+        showMenu: !state.showMenu
+      }
     default:
       return state
   }

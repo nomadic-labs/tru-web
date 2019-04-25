@@ -355,8 +355,8 @@ mainSlider();
 		activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
 	});
 
-// WOW active
-new WOW().init();
+	// WOW active
+	new WOW().init();
 
 
 
@@ -392,5 +392,8 @@ new WOW().init();
 	if ($('#contact-map').length != 0) {
 		google.maps.event.addDomListener(window, 'load', basicmap);
 	}
+
+
+
 
 });

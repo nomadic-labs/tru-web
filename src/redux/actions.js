@@ -3,6 +3,7 @@ import firebase from "../firebase/init";
 import slugify from "slugify";
 import { NOTIFICATION_MESSAGES } from "../utils/constants";
 
+
 // AUTHENTICATION ------------------------
 
 export function userLoggedIn(user = null) {
@@ -244,6 +245,10 @@ export function openMenu() {
 
 export function closeMenu() {
   return { type: "CLOSE_MENU" };
+}
+
+export function toggleMenu() {
+  return { type: "TOGGLE_MENU" };
 }
 
 // FORMS ------------------------

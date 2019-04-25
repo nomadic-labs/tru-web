@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
+import { connect } from "react-redux";
+
+import { openMenu } from "../../redux/actions";
 
 const styles = {
   button: {
@@ -10,26 +13,43 @@ const styles = {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    openMenu: () => {
+      dispatch(openMenu());
+    },
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    showMenu: state.navigation.showMenu,
+  };
+};
+
 
 class Navigation extends React.Component {
-  state = { menuOpen: false }
 
-  toggleMenu = () => {
-    this.setState({ menuOpen: !this.state.menuOpen })
+  componentDidUpdate(prevProps) {
+    if (this.props.showMenu) {
+      document.body.classList.add("freeze")
+    } else {
+      document.body.classList.remove("freeze")
+    }
   }
 
   render() {
     return (
       <header>
-        <div className="main-menu-area header-2-menu pl-55 pr-55">
+        <div id="sticky-header" className="main-menu-area header-2-menu pl-55 pr-55">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-xl-8 col-lg-8 d-flex align-items-stretch">
+                    <div className="col-xl-6 col-lg-6 d-flex align-items-stretch">
                         <div className="header-logo text-left d-flex align-items-center">
                             <a href="/">The Land and the Refinery</a>
                         </div>
                     </div>
-                    <div className="col-xl-4 col-lg-4">
+                    <div className="col-xl-5 col-lg-5">
                         <div className="main-menu">
                             <nav id="mobile-menu">
                                 <ul className="text-right">
@@ -43,6 +63,13 @@ class Navigation extends React.Component {
                             </nav>
                         </div>
                     </div>
+                    <div className="col-xl-1 col-lg-1 d-flex justify-content-end">
+                        <div className="menu-bar info-bar text-right d-none d-md-none d-lg-block" onClick={this.props.openMenu}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
                     <div className="col-12">
                         <div className="mobile-menu"></div>
                     </div>
@@ -54,4 +81,4 @@ class Navigation extends React.Component {
   }
 }
 
-export default Navigation;
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

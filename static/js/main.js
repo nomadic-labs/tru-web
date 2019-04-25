@@ -1,8 +1,6 @@
 $(document).ready(function() {
 "use strict";
 
-
-
 	// sticky
 	var wind = $(window);
 	var sticky = $('#sticky-header');

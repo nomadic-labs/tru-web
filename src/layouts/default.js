@@ -27,6 +27,8 @@ import "../assets/sass/less-cms/base.scss";
 
 import favicon from '../assets/images/icon.png'
 
+import { closeMenu } from "../redux/actions";
+
 const customEditorTheme = {
   ...theme,
   editContainer: {
@@ -53,38 +55,58 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    closeMenu: () => {
+      dispatch(closeMenu());
+    }
+  };
+};
 
-const DefaultLayout = props => (
-  <div style={styles.container}>
-    <Helmet>
-      <title>
-        Visualizing Environmental & Colonial Violence
-      </title>
-      <meta
-        charSet="utf-8"
-        description="Simple and flexible CMS for static sites"
-        keywords="static site, CMS, React, Gatsby"
-        viewport="width=device-width,initial-scale=1.0,maximum-scale=1"
-      />
-      <link rel="icon" href={favicon} type="image/x-icon" />
-    </Helmet>
-    <Notification />
-    <AccountButton />
-    <EditablesContext.Provider value={ { theme: customEditorTheme, showEditingControls: props.isEditingPage } }>
-      <div className="page-container">
-        <FullPageNavigation />
 
-        <div className="page-wrapper">
-          <Navigation />
-            {props.children}
-          <Footer />
-        </div>
-        <CreatePageModal />
+class DefaultLayout extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.closeMenu();
+  }
+
+  render() {
+    return(
+      <div style={styles.container}>
+        <Helmet>
+          <title>
+            Visualizing Environmental & Colonial Violence
+          </title>
+          <meta
+            charSet="utf-8"
+            description="Simple and flexible CMS for static sites"
+            keywords="static site, CMS, React, Gatsby"
+            viewport="width=device-width,initial-scale=1.0,maximum-scale=1"
+          />
+          <link rel="icon" href={favicon} type="image/x-icon" />
+        </Helmet>
+        <Notification />
+        <AccountButton />
+        <EditablesContext.Provider value={ { theme: customEditorTheme, showEditingControls: this.props.isEditingPage } }>
+          <div className="page-container">
+            <FullPageNavigation />
+
+            <div className="page-wrapper">
+              <Navigation />
+                {this.props.children}
+              <Footer />
+            </div>
+            <CreatePageModal />
+          </div>
+        </EditablesContext.Provider>
       </div>
-    </EditablesContext.Provider>
-  </div>
-);
+    )
+  }
+};
 
-export default withRoot(connect(mapStateToProps, null)(DefaultLayout));
+export default withRoot(connect(mapStateToProps, mapDispatchToProps)(DefaultLayout));
 
 

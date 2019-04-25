@@ -6,7 +6,7 @@ import Container from "./Container"
 export default (props) => {
   return (
     <Container>
-      <h2 data-animation="fadeInUp" data-delay=".5s">
+      <h2>
         <EditableText { ...props } />
       </h2>
     </Container>

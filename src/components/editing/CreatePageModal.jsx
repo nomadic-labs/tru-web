@@ -13,9 +13,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
+import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import Chip from '@material-ui/core/Chip';
 
 import { PAGE_TYPES, MENU_CATEGORIES } from "../../utils/constants";
 
@@ -46,7 +48,8 @@ class CreatePageModalComponent extends React.Component {
         title: "",
         type: "",
         navigationGroup: "",
-        displayTitle: ""
+        displayTitle: "",
+        topics: [],
       }
     };
     this.updatePage = (field, value) => {
@@ -79,7 +82,8 @@ class CreatePageModalComponent extends React.Component {
         group: this.state.page.navigationGroup,
         displayTitle: this.state.page.displayTitle,
       },
-      content: defaultContentJSON
+      content: defaultContentJSON,
+      topics: this.state.page.topics,
     };
 
     this.props.createPage(pageData, slugifiedTitle);
@@ -156,6 +160,32 @@ class CreatePageModalComponent extends React.Component {
             </Select>
           </FormControl>
 
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="select-multiple-tag">Tags (optional)</InputLabel>
+            <Select
+              multiple
+              value={this.state.page.topics}
+              onChange={selected =>
+                this.updatePage("topics", selected.target.value)
+              }
+              input={<Input id="select-multiple-tag" />}
+              renderValue={selected => (
+                <div>
+                  {selected.map(topic => {
+                    const label = this.props.topics.find(t => t.id === topic)
+                    return <Chip key={topic} label={label.label} className="mx-1" />
+                  })}
+                </div>
+              )}
+            >
+              {this.props.topics.map(topic => (
+                <MenuItem key={topic.id} value={topic.id}>
+                  {topic.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
         </DialogContent>
 
         <DialogActions>
@@ -188,10 +218,18 @@ const CreatePageModalContainer = props => (
             }
           }
         }
+        allTopics {
+          edges {
+            node {
+              id
+              label
+            }
+          }
+        }
       }
     `}
     render={data => (
-      <CreatePageModalComponent {...props} />
+      <CreatePageModalComponent {...props} topics={data.allTopics.edges.map(edge => edge.node)} />
     )}
   />
 );

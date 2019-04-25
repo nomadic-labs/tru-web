@@ -70,7 +70,7 @@ class ContactPage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <main>
             <PageHeader
               title={pageData.title}

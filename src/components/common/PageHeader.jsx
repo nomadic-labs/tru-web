@@ -16,7 +16,9 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
         <div className="row">
           <div className="col-xl-12">
             <div className="breadcrumb-text text-center">
-              <h1 className="text-glow"><EditableText content={{ text: title }} onSave={ onUpdateTitle } /></h1>
+              <h1 className="text-glow" data-animation="fadeInUp" data-delay=".5s">
+                <EditableText content={{ text: title }} onSave={ onUpdateTitle } />
+              </h1>
               <span data-animation="fadeInUp" data-delay=".3s">
                 <EditableText content={ content["header-subtitle"] } handleSave={ onSave("header-subtitle") } placeholder="Subtitle" />
               </span>

@@ -87,7 +87,7 @@ class HomePage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <main>
           <PageHeader
             title={pageData.title}
@@ -137,7 +137,7 @@ class HomePage extends React.Component {
             <Container>
               <div className="mt-40 mb-40">
                 <EditableParagraph content={content["territory-description"]} handleSave={this.onSave("territory-description")} />
-                <EmbeddedIframe content={content["territory-gmap"]} handleSave={this.onSave("territory-gmap")} classes={"my-5"} xs={12} sm={12} md={12} lg={12} />
+                <EmbeddedIframe content={content["territory-gmap"]} handleSave={this.onSave("territory-gmap")} classes={"my-4"} xs={12} sm={12} md={12} lg={12} />
                 <EditableParagraph content={content["territory-description1"]} handleSave={this.onSave("territory-description1")} />
                 <EditableLink classes={"btn btn-primary mt-20"} content={content["territory-more-btn"]} handleSave={this.onSave("territory-more-btn")} />
               </div>

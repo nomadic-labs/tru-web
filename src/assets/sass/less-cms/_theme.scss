@@ -45,6 +45,13 @@ a:not([href]):not([tabindex]) {
   }
 }
 
+p {
+  a {
+    color: $theme-primary;
+    text-decoration: underline;
+  }
+}
+
 .paragraph {
   ul {
     padding-left: 40px;

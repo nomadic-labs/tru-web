@@ -73,7 +73,7 @@ class SingleColumnPage extends React.Component {
 
     return (
       <div>
-        <Layout>
+        <Layout location={this.props.location}>
           <Helmet>
             <title>{pageData.title}</title>
           </Helmet>

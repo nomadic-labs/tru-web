@@ -53,18 +53,18 @@ class Research extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('prevProps', prevProps)
-    console.log('this.props', this.props)
-    if (this.props.selectedTopics && prevProps.selectedTopics != this.props.selectedTopics) {
-      const topicId = this.props.selectedTopics.id
-      const filteredPages = this.props.pages.filter(page => page.topics && page.topics.includes(topicId))
-      console.log("filteredPages", filteredPages)
-      this.setState({ pages: filteredPages })
+    if (prevProps.selectedTopics != this.props.selectedTopics) {
+      if (this.props.selectedTopics) {
+        const topicId = this.props.selectedTopics.id
+        const filteredPages = this.props.pages.filter(page => page.topics && page.topics.includes(topicId))
+        return this.setState({ pages: filteredPages })
+      }
+
+      return this.setState({ pages: this.props.pages })
     }
    }
 
   render() {
-
     return(
       <div className="explore">
         {

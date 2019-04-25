@@ -335,3 +335,7 @@ export function submitProjectForm(formData, e) {
 export function selectTopic(selected) {
   return { type: "SELECT_TOPIC", selected };
 }
+
+export function removeTopic(selected) {
+  return { type: "REMOVE_TOPIC", selected };
+}

@@ -228,6 +228,11 @@ export const topics = (state={}, action) => {
         ...state,
         selected: action.selected
       }
+    case 'REMOVE_TOPIC':
+      return {
+        ...state,
+        selected: null,
+      }
     default:
       return state
   }

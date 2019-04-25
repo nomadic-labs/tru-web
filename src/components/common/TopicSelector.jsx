@@ -5,12 +5,15 @@ import { StaticQuery, graphql } from "gatsby";
 import { TOPICS } from "../../utils/constants";
 import plants10 from "../../assets/images/illustrations/plants-10.svg";
 
-import { selectTopic } from "../../redux/actions";
+import { selectTopic, removeTopic } from "../../redux/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
     selectTopic: (topic) => {
       dispatch(selectTopic(topic));
+    },
+    removeTopic: (topic) => {
+      dispatch(removeTopic(topic));
     },
   };
 };
@@ -49,10 +52,16 @@ const TopicSelector = props => {
               <ul>
               {
                 topics.map(topic => {
-                  const onClick = () => props.selectTopic(topic);
-                  const selected = (topic === props.selectedTopics) ? 'selected' : '';
+                  const selected = topic === props.selectedTopics;
+                  const onClick = () => {
+                    if (selected) {
+                      props.removeTopic(topic);
+                    } else {
+                      props.selectTopic(topic);
+                    }
+                  }
                   return(
-                    <li className={`topic ${selected}`} key={ topic.id }>
+                    <li className={`topic ${selected ? 'selected' : ''}`} key={ topic.id }>
                       <a className="text" onClick={onClick}>{ topic.label }</a>
                     </li>
                   )

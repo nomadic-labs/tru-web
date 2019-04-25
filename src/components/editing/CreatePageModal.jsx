@@ -137,7 +137,7 @@ class CreatePageModalComponent extends React.Component {
           </FormControl>
 
           <FormControl fullWidth margin="normal">
-            <InputLabel htmlFor="menu-group">Select menu group</InputLabel>
+            <InputLabel htmlFor="menu-group">Select menu group (optional)</InputLabel>
             <Select
               value={this.state.page.navigationGroup}
               onChange={selected =>

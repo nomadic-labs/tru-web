@@ -28,6 +28,7 @@
     "node-sass": "^4.9.2",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
+    "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.0",
     "react-easy-editables": "^0.1.0",
     "react-firebaseui": "^1.1.6",

@@ -6,6 +6,7 @@ import withRoot from '../utils/withRoot';
 import Notification from "../components/notifications/Notification";
 import AccountButton from "../components/navigation/AccountButton";
 import Navigation from "../components/navigation/Navigation";
+import FullPageNavigation from "../components/navigation/FullPageNavigation";
 import Footer from "../components/common/Footer";
 import CreatePageModal from "../components/editing/CreatePageModal";
 
@@ -69,15 +70,18 @@ const DefaultLayout = props => (
     </Helmet>
     <Notification />
     <AccountButton />
-    <Navigation />
-
     <EditablesContext.Provider value={ { theme: customEditorTheme, showEditingControls: props.isEditingPage } }>
-      <div className="page-wrapper">
-        <Fragment>{props.children}</Fragment>
+      <div className="page-container">
+        <FullPageNavigation />
+
+        <div className="page-wrapper">
+          <Navigation />
+            {props.children}
+          <Footer />
+        </div>
+        <CreatePageModal />
       </div>
     </EditablesContext.Provider>
-    <Footer />
-    <CreatePageModal />
   </div>
 );
 

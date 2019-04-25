@@ -72,7 +72,7 @@ a:focus,
 a:hover,
 .portfolio-cat a:hover,
 .footer -menu li a:hover {
-	color: #2B96CC;
+	color: $theme-primary;
 	text-decoration: none;
 }
 a,
@@ -153,18 +153,18 @@ label {
 	font-weight: 400;
 }
 *::-moz-selection {
-	background: #d6b161;
-	color: #fff;
+	background: $theme-highlight;
+	/*color: #fff;*/
 	text-shadow: none;
 }
 ::-moz-selection {
-	background: #444;
-	color: #fff;
+	background: $theme-highlight;
+	/*color: #fff;*/
 	text-shadow: none;
 }
 ::selection {
-	background: #444;
-	color: #fff;
+	background: $theme-highlight;
+	/*color: #fff;*/
 	text-shadow: none;
 }
 *::-moz-placeholder {
@@ -324,6 +324,9 @@ label {
 }
 .header-logo {
 	margin-top: 3px;
+	padding: 8px 0;
+	font-family: $header-font;
+	font-weight: 700;
 }
 .heder-button{}
 .heder-button a.btn {
@@ -397,13 +400,13 @@ label {
   width: 100%;
 }
 .social-icon-right > a {
-	color: #fff;
+	color: $theme-primary;
 	display: inline-block;
 	margin-right: 20px;
 	text-align: center;
 }
 .social-icon-right > a:hover {
-	color: $pink;
+	color: $theme-highlight;
 }
 .instagram {
   overflow: hidden;
@@ -477,7 +480,6 @@ label {
 }
 .main-menu nav > ul > li:first-child{margin-left:0;}
 .main-menu nav > ul > li > a {
-	color: $black;
 	display: block;
 	font-size: 14px;
 	font-weight: 600;
@@ -487,9 +489,9 @@ label {
 	line-height: 1;
 	position: relative;
 	text-transform: uppercase;
-	font-family: 'Rubik', sans-serif;
+	font-family: $header-font;
 }
-.main-menu nav > ul  > li:hover > a,.main-menu nav > ul  > li.active > a{color:#112433;}
+/*.main-menu nav > ul  > li:hover > a,.main-menu nav > ul  > li.active > a{color:#112433;}*/
 /* sub-menu */
 .main-menu nav > ul  > li .sub-menu {
   background: #ffffff none repeat scroll 0 0;
@@ -518,7 +520,6 @@ label {
 .main-menu nav > ul  > li:hover > .sub-menu li > a:hover{color:#fff;background:$theme-highlight;}
 /* header 3 */
 .header-2-menu .main-menu nav > ul > li > a {
-	color: #252525;
 	padding: 42px 0;
 	text-transform: capitalize;
 }
@@ -3500,6 +3501,7 @@ ul.cat li a:hover {
 	line-height: 1;
 	font-weight: 600;
 	color: $black;
+	hyphens: auto;
 }
 
 .breadcrumb-text span {

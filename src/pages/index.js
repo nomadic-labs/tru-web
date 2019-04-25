@@ -1,6 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import Grid from "@material-ui/core/Grid";
+
 import {
   updatePage,
   loadPageData,
@@ -19,18 +21,10 @@ import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import Container from "../components/common/Container";
 import ImageCarousel from "../components/common/ImageCarousel";
+import Explore from "../components/common/Explore";
+import Affix from "../components/common/Affix";
+import TopicSelector from "../components/common/TopicSelector";
 
-import plants01 from "../assets/images/illustrations/plants-01.svg";
-import plants02 from "../assets/images/illustrations/plants-02.svg";
-import plants03 from "../assets/images/illustrations/plants-03.svg";
-import plants04 from "../assets/images/illustrations/plants-04.svg";
-import plants05 from "../assets/images/illustrations/plants-05.svg";
-import plants07 from "../assets/images/illustrations/plants-07.svg";
-import plants08 from "../assets/images/illustrations/plants-08.svg";
-import plants09 from "../assets/images/illustrations/plants-09.svg";
-import plants10 from "../assets/images/illustrations/plants-10.svg";
-import plants11 from "../assets/images/illustrations/plants-11.svg";
-import plants23 from "../assets/images/illustrations/plants-23.svg";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -51,6 +45,10 @@ const mapStateToProps = state => {
 };
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.exploreContainer = React.createRef();
+  }
 
   componentDidMount() {
     console.log(this.props)
@@ -145,9 +143,9 @@ class HomePage extends React.Component {
             </Container>
           </Section>
 
-          <Section className="wow fadeIn pt-80 pb-80 pos-relative">
+          <Section className="wow fadeIn pos-relative">
             <div className="shape d-none d-xl-block">
-              <div className={`shape-item slider-03 ${this.props.isEditingPage ? '' : 'bounce-animate'}`}>
+              <div className={`shape-item slider-03 ${this.props.isEditingPage ? '' : 'bounce-animate'}`} style={{top: "4%"}}>
                 <EditableImageUpload
                   content={content["intro-img-3"]}
                   onSave={this.onSave("intro-img-3")}
@@ -157,14 +155,25 @@ class HomePage extends React.Component {
               </div>
             </div>
 
-            <Container>
-              <h2 data-animation="fadeInUp" data-delay=".5s">
-                <EditableText content={content["research-title"]} handleSave={this.onSave("research-title")} />
-              </h2>
-              <div className="mt-40 mb-40">
-                <EditableParagraph content={content["research-description"]} handleSave={this.onSave("research-description")} />
-              </div>
-            </Container>
+            <Grid container id="explore-container">
+              <Grid item xs={10} sm={2} md={3} lg={3}>
+                <Affix container={"#explore-container"}>
+                  <TopicSelector />
+                </Affix>
+              </Grid>
+
+              <Grid item xs={10} sm={8} md={6} lg={6}>
+                <div className="pt-80 pb-80">
+                  <h2 data-animation="fadeInUp" data-delay=".5s">
+                    <EditableText content={content["research-title"]} handleSave={this.onSave("research-title")} />
+                  </h2>
+                  <div className="mt-40 mb-40">
+                    <EditableParagraph content={content["research-description"]} handleSave={this.onSave("research-description")} />
+                    <Explore />
+                  </div>
+                </div>
+              </Grid>
+            </Grid>
 
           </Section>
 

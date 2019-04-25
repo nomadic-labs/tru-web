@@ -5,7 +5,7 @@ import Container from "./Container"
 
 const EmbeddedIframe = props => {
   return (
-    <Container>
+    <Container lg={11} md={11} sm={11} xs={12}>
       <div className="iframe-container">
         <EditableEmbeddedIframe { ...props } />
       </div>

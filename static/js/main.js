@@ -1,11 +1,18 @@
 $(document).ready(function() {
 "use strict";
 
+console.log("document ready")
+
 // meanmenu
-	$('#mobile-menu').meanmenu({
-		meanMenuContainer: '.mobile-menu',
-		meanScreenWidth: "992"
-	});
+
+	window.setTimeout(function() {
+		console.log('mean menu')
+		$('#mobile-menu').meanmenu({
+			meanMenuContainer: '.mobile-menu',
+			meanScreenWidth: "992"
+		});
+
+	}, 500)
 
 	// sticky
 	var wind = $(window);

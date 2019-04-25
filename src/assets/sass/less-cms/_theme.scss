@@ -16,15 +16,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 4em;
 }
 
-p {
+p, ul, li {
   font-size: 16px;
+  line-height: 1.8em;
 }
 
 a {
   color: $black;
 
   &:hover {
-    color: $theme-primary;
+    color: $red;
   }
 
   &:active, &:focus {
@@ -36,11 +37,22 @@ a:not([href]):not([tabindex]) {
   color: $black;
 
   &:hover {
-    color: $theme-primary;
+    color: $red;
   }
 
   &:active, &:focus {
     color: $theme-highlight;
+  }
+}
+
+.paragraph {
+  ul {
+    padding-left: 40px;
+
+    li {
+      list-style: unset;
+      margin-bottom: 1em;
+    }
   }
 }
 
@@ -104,6 +116,14 @@ a:not([href]):not([tabindex]) {
 
 .text-blue {
   color: $blue !important;
+}
+
+.text-dark-gray {
+  color: $dark-gray !important;
+}
+
+.text-small {
+  font-size: 14px;
 }
 
 .btn-highlight {
@@ -250,7 +270,7 @@ section.dynamic-section {
 .header-2-menu .menu-bar {
   &:hover {
     span {
-      background: $theme-primary;
+      background: $red;
     }
   }
 
@@ -260,5 +280,10 @@ section.dynamic-section {
     }
   }
 }
+
+.text-glow {
+  text-shadow: 0px 0px 120px transparentize($white, 0.5);
+}
+
 
 

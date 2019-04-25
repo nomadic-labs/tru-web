@@ -31,6 +31,7 @@ module.exports = {
             path: "pages",
             map: node => {
               node.content = JSON.stringify(node.content);
+              node.topics = JSON.stringify(node.topics);
 
               return node
             },

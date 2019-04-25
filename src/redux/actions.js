@@ -83,6 +83,10 @@ export function updatePageTitle(title) {
   return { type: "UPDATE_PAGE_TITLE", title };
 }
 
+export function updatePageHeaderImage(content) {
+  return { type: "UPDATE_PAGE_HEADER_IMAGE", content };
+}
+
 export function createPage(pageData, pageId) {
   return dispatch => {
     const db = firebase.database();
@@ -132,8 +136,6 @@ export function updateTitle(title) {
   return (dispatch, getState) => {
     const db = firebase.database();
     const pageId = getState().page.data.id;
-    console.log('pageId', pageId)
-    console.log('title', title)
 
     db.ref(`pages/${pageId}/`).update({ title }, error => {
       if (error) {
@@ -146,6 +148,34 @@ export function updateTitle(title) {
       }
 
       dispatch(updatePageTitle(title));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
+  };
+}
+
+export function updateHeaderImage(content) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const pageId = getState().page.data.id;
+
+    console.log("header image", content)
+
+    db.ref(`pages/${pageId}/`).update({ "header-image": content }, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(updatePageHeaderImage(content));
       dispatch(
         showNotification(
           "Your changes have been saved. Publish your changes to make them public.",

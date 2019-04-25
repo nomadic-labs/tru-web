@@ -12,7 +12,8 @@ import {
   EditableParagraph,
   EditableBackgroundImage,
   EditableImageUpload,
-  EditableLink
+  EditableLink,
+  EditableEmbeddedIframe,
 } from "react-easy-editables";
 
 import { uploadImage } from "../firebase/operations";
@@ -24,6 +25,7 @@ import ImageCarousel from "../components/common/ImageCarousel";
 import Explore from "../components/common/Explore";
 import Affix from "../components/common/Affix";
 import TopicSelector from "../components/common/TopicSelector";
+import EmbeddedIframe from "../components/common/EmbeddedIframe";
 
 
 const mapDispatchToProps = dispatch => {
@@ -131,8 +133,19 @@ class HomePage extends React.Component {
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["territory-title"]} handleSave={this.onSave("territory-title")} />
               </h2>
+            </Container>
+
+            <Container>
               <div className="mt-40 mb-40">
                 <EditableParagraph content={content["territory-description"]} handleSave={this.onSave("territory-description")} />
+              </div>
+            </Container>
+
+            <EmbeddedIframe content={{ src: "https://www.google.com/maps/d/embed?mid=1KguylevGy353eIjdwTMvgsePsSlrsjNW" }} />
+
+            <Container>
+              <div className="mt-40 mb-40">
+                <EditableParagraph content={content["territory-description1"]} handleSave={this.onSave("territory-description1")} />
               </div>
             </Container>
             <ImageCarousel onSave={this.onSave} content={content} />
@@ -145,7 +158,7 @@ class HomePage extends React.Component {
 
           <Section className="wow fadeIn pos-relative">
             <div className="shape d-none d-xl-block">
-              <div className={`shape-item slider-03 ${this.props.isEditingPage ? '' : 'bounce-animate'}`} style={{top: "4%"}}>
+              <div className={`shape-item slider-03 ${this.props.isEditingPage ? '' : 'bounce-animate'}`} style={{top: "60px"}}>
                 <EditableImageUpload
                   content={content["intro-img-3"]}
                   onSave={this.onSave("intro-img-3")}

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import {
   updatePage,
   loadPageData,
+  updateTitle,
+  updateHeaderImage,
 } from "../redux/actions";
 import { EditableText, EditableParagraph, EditableBackgroundImage, EditableImageUpload, EditableLink } from "react-easy-editables";
 
@@ -11,6 +13,7 @@ import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import Container from "../components/common/Container";
 import ImageCarousel from "../components/common/ImageCarousel";
+import PageHeader from "../components/common/PageHeader";
 
 import { uploadImage } from "../firebase/operations";
 
@@ -24,6 +27,12 @@ const mapDispatchToProps = dispatch => {
     onLoadPageData: data => {
       dispatch(loadPageData(data));
     },
+    onUpdateTitle: title => {
+      dispatch(updateTitle(title));
+    },
+    onUpdateHeaderImage: image => {
+      dispatch(updateHeaderImage(image));
+    },
   };
 };
 
@@ -33,10 +42,9 @@ const mapStateToProps = state => {
   };
 };
 
-class HomePage extends React.Component {
+class ContactPage extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
@@ -49,28 +57,29 @@ class HomePage extends React.Component {
     this.props.onUpdatePageData(PAGE_ID, id, content);
   };
 
+  onUpdateTitle = content => {
+    this.props.onUpdateTitle(content.text)
+  }
+
+  onUpdateHeaderImage = content => {
+    this.props.onUpdateHeaderImage(content)
+  }
+
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
       <Layout>
         <main>
-          <EditableBackgroundImage classes="breadcrumb-area pt-260 pb-180"
-            content={content["header-bg"]}
-            handleSave={this.onSave("header-bg")}
-            uploadImage={ uploadImage }
-            styles={{ backgroundColor: "transparent" }}
-          >
-            <div className="container">
-              <div className="row">
-                <div className="col-xl-12">
-                  <div className="breadcrumb-text text-center">
-                    <h1><EditableText content={content["contact-title"]} onSave={this.onSave("contact-title")} /></h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </EditableBackgroundImage>
+            <PageHeader
+              title={pageData.title}
+              onSave={this.onSave}
+              content={ content }
+              headerImage={pageData.header_image}
+              onUpdateHeaderImage={this.onUpdateHeaderImage}
+              onUpdateTitle={this.onUpdateTitle}
+            />
             <div className="contact-area pt-115 pb-75">
                 <Container>
                     <div className="row">
@@ -150,7 +159,7 @@ class HomePage extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactPage);
 
 export const query = graphql`
   query {
@@ -158,6 +167,9 @@ export const query = graphql`
       id
       content
       title
+      header_image {
+        imageSrc
+      }
       slug
     }
   }

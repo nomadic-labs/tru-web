@@ -8,6 +8,7 @@ import {
   updatePage,
   loadPageData,
   updateTitle,
+  updateHeaderImage,
 } from "../redux/actions";
 
 import Layout from "../layouts/default.js";
@@ -24,6 +25,9 @@ const mapDispatchToProps = dispatch => {
     },
     onUpdateTitle: title => {
       dispatch(updateTitle(title));
+    },
+    onUpdateHeaderImage: image => {
+      dispatch(updateHeaderImage(image));
     },
   };
 };
@@ -55,11 +59,17 @@ class SingleColumnPage extends React.Component {
     this.props.onUpdateTitle(content.text)
   }
 
+  onUpdateHeaderImage = content => {
+    this.props.onUpdateHeaderImage(content)
+  }
+
   render() {
 
     const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
+
+    console.log("pageData", pageData)
 
     return (
       <div>
@@ -67,7 +77,14 @@ class SingleColumnPage extends React.Component {
           <Helmet>
             <title>{pageData.title}</title>
           </Helmet>
-          <PageHeader title={pageData.title} onSave={this.onSave} content={content} onUpdateTitle={this.onUpdateTitle}/>
+          <PageHeader
+            title={pageData.title}
+            onSave={this.onSave}
+            content={ content }
+            headerImage={pageData.header_image}
+            onUpdateHeaderImage={this.onUpdateHeaderImage}
+            onUpdateTitle={this.onUpdateTitle}
+          />
           {
             sections.map((section, index) => {
               return(
@@ -96,6 +113,9 @@ export const query = graphql`
       title
       slug
       template
+      header_image {
+        imageSrc
+      }
       navigation {
         displayTitle
         order

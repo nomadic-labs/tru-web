@@ -62,7 +62,6 @@ export const navigation = (state={}, action) => {
 }
 
 export const page = (state={}, action) => {
-  console.log("page state", state)
   let newSectionArr, newSection, emptyContentItem, newContentItem;
   switch (action.type) {
     case 'LOAD_PAGE_DATA':
@@ -88,6 +87,15 @@ export const page = (state={}, action) => {
         data: {
           ...state.data,
           title: action.title
+        }
+      }
+
+    case 'UPDATE_PAGE_HEADER_IMAGE':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          header_image: action.content
         }
       }
 

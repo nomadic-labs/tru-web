@@ -18,6 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
                 navigation {
                   displayTitle
                   order
+                  group
                 }
               }
             }

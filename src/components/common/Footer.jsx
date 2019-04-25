@@ -16,7 +16,6 @@ export default (props) => {
                       <li><Link to="/">Home</Link></li>
                       <li><Link to="/about">About</Link></li>
                       <li><Link to="/news">News</Link></li>
-                      <li><Link to="/resources">Resources</Link></li>
                       <li><Link to="/get-involved">Get Involved</Link></li>
                       <li><Link to="/contact">Contact Us</Link></li>
                   </ul>

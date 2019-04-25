@@ -9,6 +9,7 @@ import Explore from "../common/Explore";
 import Affix from "../common/Affix";
 import TopicSelector from "../common/TopicSelector";
 import plants06 from "../../assets/images/illustrations/plants-06.svg";
+import dylan5 from "../../assets/images/illustrations/Dylan_Minor5.png";
 
 import { closeMenu } from "../../redux/actions";
 
@@ -47,13 +48,13 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
 
                         <div className="inner-content">
                             <div className="image">
-                                <img src={plants06} style={{ width: "100px" }} />
+                                <img src={dylan5} style={{ width: "200px" }} />
                             </div>
                             <div className="menu">
                                 <Link to={"/"}><h4>Resources</h4></Link>
                                 <Link to={"/"}><h4>Timeline</h4></Link>
                                 <Link to={"/"}><h4>Data Visualization</h4></Link>
-                                <Link to={"/"}><h4>Chemical Responsibilities App</h4></Link>
+                                <Link to={"/chemical-responsibilities-app"}><h4>Chemical Responsibilities App</h4></Link>
 
                                 <div className="social-icon-right mt-20">
                                     <a href="#">
@@ -74,9 +75,9 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                     </div>
 
                     <div className="col-md-9" style={{height: "inherit"}}>
-                        <div class="close-icon">
+                        <div className="close-icon">
                             <button onClick={closeMenu}>
-                                <i class="far fa-window-close"></i>
+                                <i className="far fa-window-close"></i>
                             </button>
                         </div>
                         <Grid container>
@@ -89,7 +90,7 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                               <h2 data-animation="fadeInUp" data-delay=".5s">
                                 Explore the Research
                               </h2>
-                              <div className="mt-40 mb-40" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
+                              <div className="mt-40 mb-40 pr-3" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
                                 <Explore />
                               </div>
                             </div>

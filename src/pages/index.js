@@ -159,9 +159,7 @@ class HomePage extends React.Component {
 
             <Grid container id="explore-container">
               <Grid item xs={10} sm={2} md={3} lg={3}>
-                <Affix container={"#explore-container"}>
-                  <TopicSelector />
-                </Affix>
+                <TopicSelector />
               </Grid>
 
               <Grid item xs={10} sm={8} md={6} lg={6}>
@@ -169,9 +167,10 @@ class HomePage extends React.Component {
                   <h2 data-animation="fadeInUp" data-delay=".5s">
                     <EditableText content={content["research-title"]} handleSave={this.onSave("research-title")} />
                   </h2>
-                  <div className="mt-40 mb-40">
-                    <EditableParagraph content={content["research-description"]} handleSave={this.onSave("research-description")} />
-                    <Explore />
+                  <div className="mt-40">
+                    <div style={{ maxHeight: "calc(100vh - 160px)", overflow: "auto" }}>
+                      <Explore />
+                    </div>
                   </div>
                 </div>
               </Grid>

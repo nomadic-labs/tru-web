@@ -68,6 +68,9 @@ class Research extends Component {
     return(
       <div className="explore">
         {
+          (this.state.pages.length === 0) && <div>No results.</div>
+        }
+        {
           MENU_CATEGORIES.map((category) => {
             let pages = this.state.pages.filter(article => article.navigation.group === category.value);
 

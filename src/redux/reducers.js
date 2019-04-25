@@ -224,7 +224,6 @@ export const projectForm = (state={}, action) => {
 export const topics = (state={}, action) => {
   switch (action.type) {
     case 'SELECT_TOPIC':
-      console.log("selected topic", action.selected)
       return {
         ...state,
         selected: action.selected

@@ -126,6 +126,22 @@ a:not([href]):not([tabindex]) {
   font-size: 14px;
 }
 
+.btn-primary {
+  background: $theme-primary;
+
+  &:hover {
+    background: $theme-secondary;
+  }
+}
+
+.btn-secondary {
+  background: $theme-secondary;
+
+  &:hover {
+    background: $theme-highlight;
+  }
+}
+
 .btn-highlight {
   background: $theme-highlight;
 

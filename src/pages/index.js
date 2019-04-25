@@ -137,22 +137,12 @@ class HomePage extends React.Component {
             <Container>
               <div className="mt-40 mb-40">
                 <EditableParagraph content={content["territory-description"]} handleSave={this.onSave("territory-description")} />
-              </div>
-            </Container>
-
-            <EmbeddedIframe content={{ src: "https://www.google.com/maps/d/embed?mid=1KguylevGy353eIjdwTMvgsePsSlrsjNW" }} />
-
-            <Container>
-              <div className="mt-40 mb-40">
+                <EmbeddedIframe content={content["territory-gmap"]} handleSave={this.onSave("territory-gmap")} classes={"my-5"} xs={12} sm={12} md={12} lg={12} />
                 <EditableParagraph content={content["territory-description1"]} handleSave={this.onSave("territory-description1")} />
+                <EditableLink classes={"btn btn-primary mt-20"} content={content["territory-more-btn"]} handleSave={this.onSave("territory-more-btn")} />
               </div>
             </Container>
-            <ImageCarousel onSave={this.onSave} content={content} />
-            <Container>
-              <div className="mt-40 mb-40">
-                <EditableParagraph content={content["territory-description2"]} handleSave={this.onSave("territory-description2")} />
-              </div>
-            </Container>
+
           </Section>
 
           <Section className="wow fadeIn pos-relative">
@@ -248,7 +238,7 @@ class HomePage extends React.Component {
                   <div className="mt-40 mb-40 text-white">
                     <EditableParagraph content={content["cr-app-description"]} handleSave={this.onSave("cr-app-description")} />
                   </div>
-                  <EditableLink classes={"btn"} content={content["cr-app-button"]} handleSave={this.onSave("cr-app-button")} />
+                  <EditableLink classes={"btn btn-secondary"} content={content["cr-app-button"]} handleSave={this.onSave("cr-app-button")} />
                 </div>
               </div>
             </Container>
@@ -268,6 +258,9 @@ export const query = graphql`
       content
       title
       slug
+      header_image {
+        imageSrc
+      }
     }
   }
 `;

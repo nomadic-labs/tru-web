@@ -25,10 +25,11 @@ const CategoryTitle = ({ label, count, open }) => {
   )
 }
 
-const ArticlePreview = ({ article }) => {
+const ArticlePreview = ({ article, topics }) => {
   const image = article.header_image ? article.header_image.imageSrc : dylan7;
-  const topics = JSON.parse(article.topics) || [];
-  const topicsString = topics.map(topic => topic.label).join(", ")
+  const tags = article.topics || [];
+  const tagsString = tags.map(tag => topics[tag]).join(", ")
+
   return(
     <div className="article col-12 col-md-4 my-3">
       <Link to={`/${article.slug}`}>
@@ -37,7 +38,7 @@ const ArticlePreview = ({ article }) => {
           style={{ background: `url(${image}) no-repeat center center`, backgroundSize: "cover", height: "180px" }}
         />
         <h5 className="mt-3 mb-1">{ article.title }</h5>
-        <p className="text-dark-gray text-small">{ topicsString }</p>
+        <p className="text-dark-gray text-small">{ tagsString }</p>
       </Link>
     </div>
   )
@@ -46,36 +47,41 @@ const ArticlePreview = ({ article }) => {
 class Research extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pages: this.props.pages,
+    }
   }
 
+  componentDidUpdate(prevProps) {
+    console.log('prevProps', prevProps)
+    console.log('this.props', this.props)
+    if (this.props.selectedTopics && prevProps.selectedTopics != this.props.selectedTopics) {
+      const topicId = this.props.selectedTopics.id
+      const filteredPages = this.props.pages.filter(page => page.topics && page.topics.includes(topicId))
+      console.log("filteredPages", filteredPages)
+      this.setState({ pages: filteredPages })
+    }
+   }
+
   render() {
-    console.log(this.props)
-    console.log('this.props.selectedTopics', this.props.selectedTopics)
+
     return(
       <div className="explore">
         {
-          MENU_CATEGORIES.map((category, index) => {
-            let articles = this.props.pages.filter(page => page.node.navigation.group === category.value);
+          MENU_CATEGORIES.map((category) => {
+            let pages = this.state.pages.filter(article => article.navigation.group === category.value);
 
-            if (this.props.selectedTopics) {
-              articles = articles.filter(article => {
-                console.log("article", article)
-
-                return article.node.topics && JSON.parse(article.node.topics).includes(this.props.selectedTopics)
-              })
-            }
-
-            if (articles.length > 0) {
+            if (pages.length > 0) {
               return(
                 <div className="py-2" key={ category.value }>
                   <Collapsible
-                    trigger={<CategoryTitle label={category.label} count={articles.length} />}
-                    triggerWhenOpen={<CategoryTitle label={category.label} count={articles.length} open={true} />}
+                    trigger={<CategoryTitle label={category.label} count={pages.length} />}
+                    triggerWhenOpen={<CategoryTitle label={category.label} count={pages.length} open={true} />}
                     open={true}
                   >
                     <div className="row">
                     {
-                      articles.map(article => (<ArticlePreview article={article.node} key={ article.node.slug } />))
+                      pages.map(page => (<ArticlePreview article={page} key={ page.slug } topics={this.props.topics} />))
                     }
                     </div>
                   </Collapsible>
@@ -110,11 +116,26 @@ const Explore = props => (
             }
           }
         }
+        allTopics {
+          edges  {
+            node {
+              id
+              label
+            }
+          }
+        }
       }
     `}
-    render={data => (
-      <Research {...props} pages={data.allPages.edges} />
-    )}
+    render={data => {
+      const pages = data.allPages.edges.map(edge => edge.node);
+      const topicsArr = data.allTopics.edges.map(edge => edge.node);
+      const topics = topicsArr.reduce((obj, topic) => {
+        obj[topic.id] = topic.label
+        return obj
+      }, {})
+
+      return <Research {...props} pages={pages} topics={topics} />
+    }}
   />
 );
 

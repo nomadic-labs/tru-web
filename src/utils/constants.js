@@ -18,7 +18,7 @@ export const PAGE_TYPES = [
 ];
 
 export const MENU_CATEGORIES = [
-  // { label: "Traditional Territory", value: "traditional-territory" },
+  { label: "Traditional Territory", value: "traditional-territory" },
   { label: "Indian Act and Reserve System", value: "indian-act-and-reserve-system" },
   { label: "Imperial Oil Refinery", value: "imperial-oil-refinery" },
   { label: "Permission to Pollute Government", value: "permission-to-pollute" },

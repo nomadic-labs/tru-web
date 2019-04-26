@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Collapsible from 'react-collapsible';
 import { StaticQuery, Link, graphql } from "gatsby";
+import Grid from "@material-ui/core/Grid";
 
 import { MENU_CATEGORIES } from "../../utils/constants";
 import Affix from "./Affix";
@@ -16,11 +17,11 @@ const mapStateToProps = state => {
 
 const CategoryTitle = ({ label, count, open }) => {
   return(
-    <div className={`category d-flex align-items-center justify-content-between ${open ? 'open' : ''}`}>
-      <h4>
+    <div className={`category d-flex align-items-center my-2 cursor-pointer ${open ? 'open' : ''}`}>
+      { open ? <i className="fas fa-caret-up pr-3"></i> : <i className="fas fa-caret-down pr-3"></i> }
+      <h4 className="mb-0">
         {`${label} (${count})`}
       </h4>
-      { open ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i> }
     </div>
   )
 }
@@ -31,16 +32,19 @@ const ArticlePreview = ({ article, topics }) => {
   const tagsString = tags.map(tag => topics[tag]).join(", ")
 
   return(
-    <div className="article col-12 col-md-4 my-3">
-      <Link to={`/${article.slug}`}>
+    <Link to={`/${article.slug}`}>
+      <div className="article d-flex pos-relative align-items-center pl-20 pt-20 pb-20">
         <div
-          className="image"
-          style={{ background: `url(${image}) no-repeat center center`, backgroundSize: "cover", height: "180px" }}
+          className="image pos-absolute"
+          style={{ background: `url(${image}) no-repeat center center`, backgroundSize: 'cover' }}
         />
-        <h5 className="mt-3 mb-1">{ article.title }</h5>
-        <p className="text-dark-gray text-small">{ tagsString }</p>
-      </Link>
-    </div>
+        <div className="ml-80 p-2 align-items-center pos-relative flex-grow bg-white info">
+          <h4 className="mb-0">{ article.title }</h4>
+          <div className="line mx-3"/>
+          <p className="mb-0 topics">{ tagsString }</p>
+        </div>
+      </div>
+    </Link>
   )
 }
 
@@ -71,7 +75,7 @@ class Research extends Component {
           (this.state.pages.length === 0) && <div>No results.</div>
         }
         {
-          MENU_CATEGORIES.map((category) => {
+          MENU_CATEGORIES.map((category, index) => {
             let pages = this.state.pages.filter(article => article.navigation.group === category.value);
 
             if (pages.length > 0) {
@@ -80,9 +84,9 @@ class Research extends Component {
                   <Collapsible
                     trigger={<CategoryTitle label={category.label} count={pages.length} />}
                     triggerWhenOpen={<CategoryTitle label={category.label} count={pages.length} open={true} />}
-                    open={true}
+                    open={index===0}
                   >
-                    <div className="row">
+                    <div>
                     {
                       pages.map(page => (<ArticlePreview article={page} key={ page.slug } topics={this.props.topics} />))
                     }

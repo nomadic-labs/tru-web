@@ -242,6 +242,13 @@
 .mb-200 {
 	margin-bottom: 200px;
 }
+.ml-80 {
+	margin-left: 80px;
+}
+.mr-80 {
+	margin-right: 80px;
+}
+
 /*-- Padding Top --*/
 
 .pt-5 {

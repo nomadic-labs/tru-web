@@ -44,7 +44,7 @@ const TopicSelector = props => {
         const topics = data.allTopics.edges.map(edge => edge.node);
         return(
           <div className="topic-selector p-5 pt-40 pb-80">
-            <div className="image">
+            <div className="image bounce-animate">
               <img src={plants10} style={{ width: "120px", height: "120px" }} />
             </div>
             <div className="topics mt-4">

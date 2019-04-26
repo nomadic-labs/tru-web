@@ -146,31 +146,19 @@ class HomePage extends React.Component {
           </Section>
 
           <Section className="wow fadeIn pos-relative">
-            <div className="shape d-none d-xl-block">
-              <div className={`shape-item slider-03 ${this.props.isEditingPage ? '' : 'bounce-animate'}`} style={{top: "60px"}}>
-                <EditableImageUpload
-                  content={content["intro-img-3"]}
-                  onSave={this.onSave("intro-img-3")}
-                  styles={{ container: {width: "120px"} }}
-                  uploadImage={uploadImage}
-                />
-              </div>
-            </div>
 
-            <Grid container id="explore-container">
-              <Grid item xs={10} sm={2} md={3} lg={3}>
+            <Grid container id="explore-container" justify="left">
+              <Grid item xs={11} sm={3} md={3} lg={3}>
                 <TopicSelector />
               </Grid>
 
-              <Grid item xs={10} sm={8} md={6} lg={6}>
+              <Grid item xs={11} sm={9} md={9} lg={9}>
                 <div className="pt-80 pb-80">
                   <h2 data-animation="fadeInUp" data-delay=".5s">
                     <EditableText content={content["research-title"]} handleSave={this.onSave("research-title")} />
                   </h2>
-                  <div className="mt-40">
-                    <div style={{ maxHeight: "calc(100vh - 160px)", overflow: "auto" }}>
-                      <Explore />
-                    </div>
+                  <div className="mt-40 pr-3" style={{ maxHeight: "calc(100vh - 160px)", overflow: "auto" }}>
+                    <Explore />
                   </div>
                 </div>
               </Grid>

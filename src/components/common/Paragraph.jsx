@@ -6,7 +6,7 @@ import Container from "./Container"
 export default (props) => {
   return (
     <Container>
-      <EditableParagraph { ...props } classes={"paragraph"} />
+      <EditableParagraph { ...props } classes={"paragraph my-4"} />
     </Container>
   );
 };

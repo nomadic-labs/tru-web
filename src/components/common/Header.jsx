@@ -7,7 +7,7 @@ export default (props) => {
   return (
     <Container>
       <h2>
-        <EditableText { ...props } />
+        <EditableText { ...props } classes={"my-4"} />
       </h2>
     </Container>
   );

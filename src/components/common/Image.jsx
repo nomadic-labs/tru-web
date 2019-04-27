@@ -8,7 +8,9 @@ import { uploadImage } from "../../firebase/operations";
 export default (props) => {
   return (
     <Container>
-      <EditableImageUpload { ...props } uploadImage={uploadImage} showCaption={true} editCaption={true} />
+      <div className={"my-4"}>
+        <EditableImageUpload { ...props } uploadImage={uploadImage} showCaption={true} editCaption={true} />
+      </div>
     </Container>
   );
 };

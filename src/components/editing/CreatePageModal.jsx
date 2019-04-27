@@ -25,7 +25,9 @@ import defaultContentJSON from "../../fixtures/pageContent.json";
 
 const mapStateToProps = state => {
   return {
-    showNewPageModal: state.adminTools.showNewPageModal
+    showNewPageModal: state.adminTools.showNewPageModal,
+    newPage: state.adminTools.newPage,
+    page: state.page.data,
   };
 };
 
@@ -40,16 +42,23 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const emptyPage = {
+    title: "",
+    category: "",
+    order: "",
+    topics: [],
+    type: PAGE_TYPES[0].value,
+  }
+
 class CreatePageModalComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       page: {
-        title: "",
-        type: "",
-        navigationGroup: "",
-        displayTitle: "",
-        topics: [],
+        ...this.props.page,
+        topics: this.props.page.topics || [],
+        category: this.props.page.category || "",
+        order: this.props.order || 0,
       }
     };
     this.updatePage = (field, value) => {
@@ -58,6 +67,17 @@ class CreatePageModalComponent extends React.Component {
     this.onSubmit = () => {
       this._onSubmit();
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.newPage != this.props.newPage) {
+      this.setState({ page: this.props.newPage ? emptyPage : {
+        ...this.props.page,
+        topics: this.props.page.topics || [],
+        category: this.props.page.category || "",
+        order: this.props.order || "",
+      } })
+    }
   }
 
   _updatePage(field, value) {
@@ -74,19 +94,22 @@ class CreatePageModalComponent extends React.Component {
       lower: true,
       remove: /[$*_+~.,()'"!\-:@%^&?=]/g
     })
-    const pageData = {
+    let pageData = {
       title: this.state.page.title,
-      slug: `${this.state.page.navigationGroup}/${slugifiedTitle}`,
-      template: this.state.page.type.template,
-      navigation: {
-        group: this.state.page.navigationGroup,
-        displayTitle: this.state.page.displayTitle,
-      },
-      content: defaultContentJSON,
+      category: this.state.page.category,
+      order: this.state.page.order,
       topics: this.state.page.topics,
     };
 
-    this.props.createPage(pageData, slugifiedTitle);
+    if (this.props.newPage) {
+      pageData.content = defaultContentJSON;
+      pageData.slug = `${this.state.page.category}/${slugifiedTitle}`;
+      pageData.template = this.state.page.type.template;
+    }
+
+    const pageId = this.props.newPage ? slugifiedTitle : this.props.page.id;
+
+    this.props.createPage(pageData, pageId);
   }
 
   render() {
@@ -94,28 +117,34 @@ class CreatePageModalComponent extends React.Component {
 
     return (
       <Dialog open={open} aria-labelledby="create-page-dialogue">
-        <DialogTitle id="create-page-dialogue">Add new page</DialogTitle>
+        <DialogTitle id="create-page-dialogue">
+          { this.props.newPage ? "Create new page" : "Page Configuration" }
+        </DialogTitle>
+
 
         <DialogContent>
-          <FormControl fullWidth margin="normal">
-            <InputLabel htmlFor="page-type">Select page type</InputLabel>
-            <Select
-              value={this.state.page.type}
-              onChange={selected =>
-                this.updatePage("type", selected.target.value)
-              }
-              inputProps={{
-                name: "page-type",
-                id: "page-type"
-              }}
-            >
-              {PAGE_TYPES.map(type => (
-                <MenuItem key={type.label} value={type.value}>
-                  {type.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          {
+            this.props.newPage &&
+            <FormControl fullWidth margin="normal">
+              <InputLabel htmlFor="page-type">Select page type</InputLabel>
+              <Select
+                value={this.state.page.type}
+                onChange={selected =>
+                  this.updatePage("type", selected.target.value)
+                }
+                inputProps={{
+                  name: "page-type",
+                  id: "page-type"
+                }}
+              >
+                {PAGE_TYPES.map(type => (
+                  <MenuItem key={type.label} value={type.value}>
+                    {type.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          }
 
           <FormControl fullWidth margin="normal">
             <TextField
@@ -128,36 +157,36 @@ class CreatePageModalComponent extends React.Component {
           </FormControl>
 
           <FormControl fullWidth margin="normal">
-            <TextField
-              name="page_display_title"
-              className="form-control"
-              type="text"
-              label={"Title to display in menu (optional)"}
-              value={this.state.page.displayTitle}
-              onChange={e =>
-                this.updatePage("displayTitle", e.currentTarget.value)
-              }
-            />
-          </FormControl>
-
-          <FormControl fullWidth margin="normal">
-            <InputLabel htmlFor="menu-group">Select menu group (optional)</InputLabel>
+            <InputLabel htmlFor="menu-group">Select category (optional)</InputLabel>
             <Select
-              value={this.state.page.navigationGroup}
+              value={this.state.page.category}
               onChange={selected =>
-                this.updatePage("navigationGroup", selected.target.value)
+                this.updatePage("category", selected.target.value)
               }
               inputProps={{
                 name: "menu-group",
                 id: "menu-group"
               }}
             >
-              {MENU_CATEGORIES.map(group => (
-                <MenuItem key={group.label} value={group.value}>
-                  {group.label}
+              {MENU_CATEGORIES.map(category => (
+                <MenuItem key={category.label} value={category.value}>
+                  {category.label}
                 </MenuItem>
               ))}
             </Select>
+          </FormControl>
+
+          <FormControl fullWidth margin="normal">
+            <TextField
+              name="page_order"
+              className="form-control"
+              type="number"
+              label={"Page order (optional)"}
+              value={this.state.page.order}
+              onChange={e =>
+                this.updatePage("order", e.currentTarget.value)
+              }
+            />
           </FormControl>
 
           <FormControl fullWidth margin="normal">
@@ -193,7 +222,7 @@ class CreatePageModalComponent extends React.Component {
             Close
           </Button>
           <Button color="secondary" onClick={this.onSubmit}>
-            Create Page
+            { this.props.newPage ? "Create page" : "Save" }
           </Button>
         </DialogActions>
       </Dialog>
@@ -211,10 +240,7 @@ const CreatePageModalContainer = props => (
               id
               title
               slug
-              navigation {
-                order
-                displayTitle
-              }
+              order
             }
           }
         }
@@ -233,6 +259,10 @@ const CreatePageModalContainer = props => (
     )}
   />
 );
+
+CreatePageModalComponent.defaultProps = {
+  page: emptyPage
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   CreatePageModalContainer

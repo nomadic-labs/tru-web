@@ -78,7 +78,7 @@ class DefaultLayout extends React.Component {
       <div style={styles.container}>
         <Helmet>
           <title>
-            Visualizing Environmental & Colonial Violence
+            The Land and the Refinery
           </title>
           <meta
             charSet="utf-8"

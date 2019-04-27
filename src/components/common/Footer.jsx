@@ -16,6 +16,7 @@ export default (props) => {
                       <li><Link to="/">Home</Link></li>
                       <li><Link to="/about">About</Link></li>
                       <li><Link to="/news">News</Link></li>
+                      <li><Link to="/resources">Resources</Link></li>
                       <li><Link to="/get-involved">Get Involved</Link></li>
                       <li><Link to="/contact">Contact Us</Link></li>
                   </ul>
@@ -43,7 +44,7 @@ export default (props) => {
           <div className="row">
               <div className="col-xl-12 text-center">
                   <div className="copyright">
-                      <p>Copyright <i className="far fa-copyright"></i> 2019 <a href="#">TRU.</a> All Rights Reserved</p>
+                      <p>Copyright <i className="far fa-copyright"></i> 2019 <a href="https://technoscienceunit.org/">TRU.</a> All Rights Reserved</p>
                   </div>
               </div>
           </div>

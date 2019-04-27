@@ -75,8 +75,8 @@ export function toggleEditing() {
   return { type: "TOGGLE_EDITING" };
 }
 
-export function toggleNewPageModal() {
-  return { type: "TOGGLE_NEW_PAGE_MODAL" };
+export function toggleNewPageModal(create=false) {
+  return { type: "TOGGLE_NEW_PAGE_MODAL", create };
 }
 
 export function updatePageTitle(title) {
@@ -89,15 +89,17 @@ export function updatePageHeaderImage(content) {
 
 export function createPage(pageData, pageId) {
   return dispatch => {
+    console.log('pageId', pageId)
+    console.log('pageData', pageData)
     const db = firebase.database();
     db
       .ref(`pages/${pageId}/`)
-      .set(pageData)
+      .update(pageData)
       .then(snap => {
         dispatch(toggleNewPageModal());
         dispatch(
           showNotification(
-            "Your page has been saved. Publish your changes to view and edit your new page.",
+            "Your page has been saved. Publish your changes to view and edit the page.",
             "success"
           )
         );

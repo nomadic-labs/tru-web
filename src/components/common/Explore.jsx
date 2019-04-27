@@ -17,8 +17,8 @@ const mapStateToProps = state => {
 
 const CategoryTitle = ({ label, count, open }) => {
   return(
-    <div className={`category d-flex align-items-center my-2 cursor-pointer ${open ? 'open' : ''}`}>
-      { open ? <i className="fas fa-caret-up pr-3"></i> : <i className="fas fa-caret-down pr-3"></i> }
+    <div className={`category d-flex align-items-center my-2 cursor-pointer text-primary ${open ? 'open' : ''}`}>
+      { open ? <i className="fas fa-minus pr-3"></i> : <i className="fas fa-plus pr-3"></i> }
       <h4 className="mb-0">
         {`${label} (${count})`}
       </h4>
@@ -56,6 +56,22 @@ class Research extends Component {
     }
   }
 
+  sortPages = pages => {
+    return pages.sort((a, b) => (a.order - b.order));
+  }
+
+  filterPagesByTopic = pages => {
+    if (this.props.selectedTopics) {
+      return pages.filter(page => page.topics && page.topics.includes(this.props.selectedTopics.id));
+    }
+
+    return pages;
+  }
+
+  filterPagesByCategory = (pages, category) => {
+    return pages.filter(page => page.category === category.value);
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.selectedTopics != this.props.selectedTopics) {
       if (this.props.selectedTopics) {
@@ -69,32 +85,44 @@ class Research extends Component {
    }
 
   render() {
+    if (this.state.pages.length === 0) {
+      return (
+        <div className="explore">
+          <div>No results.</div>
+        </div>
+      )
+    }
+
+    let categories = [];
+
+    MENU_CATEGORIES.forEach(category => {
+      const pages = this.sortPages(this.filterPagesByCategory(this.state.pages, category))
+
+      if (pages.length > 0) {
+        categories.push({ ...category, pages })
+      }
+    })
+
     return(
       <div className="explore">
         {
-          (this.state.pages.length === 0) && <div>No results.</div>
-        }
-        {
-          MENU_CATEGORIES.map((category, index) => {
-            let pages = this.state.pages.filter(article => article.navigation.group === category.value);
-
-            if (pages.length > 0) {
-              return(
-                <div className="py-2" key={ category.value }>
-                  <Collapsible
-                    trigger={<CategoryTitle label={category.label} count={pages.length} />}
-                    triggerWhenOpen={<CategoryTitle label={category.label} count={pages.length} open={true} />}
-                    open={index===0}
-                  >
-                    <div>
-                    {
-                      pages.map(page => (<ArticlePreview article={page} key={ page.slug } topics={this.props.topics} />))
-                    }
-                    </div>
-                  </Collapsible>
-                </div>
-              )
-            }
+          categories.map((category, index) => {
+            return(
+              <div className="py-2" key={ category.value }>
+                <Collapsible
+                  trigger={<CategoryTitle label={category.label} count={category.pages.length} />}
+                  triggerWhenOpen={<CategoryTitle label={category.label} count={category.pages.length} open={true} />}
+                  open={index===0}
+                  lazyRender={true}
+                >
+                  <div>
+                  {
+                    category.pages.map(page => (<ArticlePreview article={page} key={ page.slug } topics={this.props.topics} />))
+                  }
+                  </div>
+                </Collapsible>
+              </div>
+            )
           })
         }
       </div>
@@ -115,11 +143,9 @@ const Explore = props => (
                 imageSrc
               }
               topics
-              navigation {
-                group
-                order
-                displayTitle
-              }
+              category
+              menuTitle
+              order
             }
           }
         }

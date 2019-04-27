@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import Helmet from "react-helmet";
 import {
   updatePage,
   loadPageData,
@@ -44,14 +45,14 @@ const mapStateToProps = state => {
 
 class ContactPage extends React.Component {
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
     };
-
     this.props.onLoadPageData(initialPageData);
-  }
+  };
 
   onSave = id => content => {
     this.props.onUpdatePageData(PAGE_ID, id, content);
@@ -71,6 +72,9 @@ class ContactPage extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <Helmet>
+          <title>{pageData.title}</title>
+        </Helmet>
         <main>
             <PageHeader
               title={pageData.title}
@@ -165,12 +169,16 @@ export const query = graphql`
   query {
     pages(id: { eq: "contact" }) {
       id
+      slug
       content
       title
+      topics
+      order
+      category
+      menuTitle
       header_image {
         imageSrc
       }
-      slug
     }
   }
 `;

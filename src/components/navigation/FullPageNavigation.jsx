@@ -9,7 +9,7 @@ import Explore from "../common/Explore";
 import Affix from "../common/Affix";
 import TopicSelector from "../common/TopicSelector";
 import plants06 from "../../assets/images/illustrations/plants-06.svg";
-import dylan5 from "../../assets/images/illustrations/Dylan_Minor5.png";
+import dylan3 from "../../assets/images/illustrations/Dylan_Minor3.png";
 
 import { closeMenu } from "../../redux/actions";
 
@@ -48,15 +48,17 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
 
                         <div className="inner-content">
                             <div className="image">
-                                <img src={dylan5} style={{ width: "200px" }} />
+                                <img src={dylan3} style={{ width: "200px" }} />
                             </div>
                             <div className="menu">
-                                <Link to={"/"}><h4>Resources</h4></Link>
-                                <Link to={"/"}><h4>Timeline</h4></Link>
-                                <Link to={"/"}><h4>Data Visualization</h4></Link>
+                                <Link to={"/"}><h4>Home</h4></Link>
+                                <Link to={"/news"}><h4>News</h4></Link>
+                                <Link to={"/indian-act-and-reserve-system/colonial-histories"}><h4>Timeline</h4></Link>
+                                <Link to={"/data-visualization"}><h4>Data Visualization</h4></Link>
                                 <Link to={"/chemical-responsibilities-app"}><h4>Chemical Responsibilities App</h4></Link>
+                                <Link to={"/resources"}><h4>Resources</h4></Link>
 
-                                <div className="social-icon-right mt-20">
+                                <div className="social-icon-right mt-40">
                                     <a href="#">
                                         <i className="fab fa-facebook-f"></i>
                                     </a>

@@ -69,8 +69,6 @@ class SingleColumnPage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
 
-    console.log("pageData", pageData)
-
     return (
       <div>
         <Layout location={this.props.location}>
@@ -113,12 +111,12 @@ export const query = graphql`
       title
       slug
       template
+      topics
+      order
+      category
+      menuTitle
       header_image {
         imageSrc
-      }
-      navigation {
-        displayTitle
-        order
       }
     }
   }

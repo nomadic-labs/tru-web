@@ -131,6 +131,17 @@ class AccountButton extends React.Component {
                   closeMenu();
                 }}
               >
+                Page configuration
+              </MenuItem>
+            )}
+
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
+                  props.onToggleNewPageModal(true);
+                  closeMenu();
+                }}
+              >
                 Add new page
               </MenuItem>
             )}
@@ -188,8 +199,8 @@ const mapDispatchToProps = dispatch => {
     onToggleRegistrationModal: () => {
       dispatch(toggleRegistrationModal());
     },
-    onToggleNewPageModal: () => {
-      dispatch(toggleNewPageModal());
+    onToggleNewPageModal: (create) => {
+      dispatch(toggleNewPageModal(create));
     },
     onToggleEditing: () => {
       dispatch(toggleEditing());

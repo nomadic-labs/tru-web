@@ -55,20 +55,15 @@ const mapStateToProps = state => {
 };
 
 class HomePage extends React.Component {
+
   constructor(props) {
     super(props);
-    this.exploreContainer = React.createRef();
-  }
-
-  componentDidMount() {
-    console.log(this.props)
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
     };
-
     this.props.onLoadPageData(initialPageData);
-  }
+  };
 
   onSave = id => content => {
     this.props.onUpdatePageData("home", id, content);
@@ -147,7 +142,7 @@ class HomePage extends React.Component {
 
           <Section className="wow fadeIn pos-relative">
 
-            <Grid container id="explore-container" justify="left">
+            <Grid container id="explore-container" justify="flex-start">
               <Grid item xs={11} sm={3} md={3} lg={3}>
                 <TopicSelector />
               </Grid>
@@ -245,6 +240,10 @@ export const query = graphql`
       content
       title
       slug
+      topics
+      order
+      category
+      menuTitle
       header_image {
         imageSrc
       }

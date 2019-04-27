@@ -25,7 +25,7 @@ a {
   color: $black;
 
   &:hover {
-    color: $red;
+    color: $theme-secondary;
   }
 
   &:active, &:focus {
@@ -37,7 +37,7 @@ a:not([href]):not([tabindex]) {
   color: $black;
 
   &:hover {
-    color: $red;
+    color: $theme-secondary;
   }
 
   &:active, &:focus {
@@ -214,8 +214,13 @@ p {
     right: 20px;
     top: 16px;
 
+
     button {
       transition: all 0.3s ease-out 0s;
+
+      &:hover {
+        color: $theme-secondary;
+      }
 
       &:active, &:focus {
         color: $theme-highlight;
@@ -263,7 +268,7 @@ p {
   &:before {
     content: '';
     position: absolute;
-    background-color: $blue;
+    background-color: $theme-primary;
     width: 16px;
     height: 2px;
     top: 14px;
@@ -279,7 +284,7 @@ p {
 
     .text {
       transform: translateX(30px);
-      color: $blue;
+      color: $theme-primary;
     }
   }
 }
@@ -297,7 +302,7 @@ section.dynamic-section {
 .header-2-menu .menu-bar {
   &:hover {
     span {
-      background: $red;
+      background: $theme-secondary;
     }
   }
 
@@ -364,6 +369,12 @@ section.dynamic-section {
 
 /* tablet and below */
 @media (max-width: 991px) {
+  .breadcrumb-text {
+    h1 {
+      hyphens: auto;
+    }
+  }
+
   .explore {
     margin-right: 0;
     .article {

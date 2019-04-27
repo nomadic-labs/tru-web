@@ -15,11 +15,9 @@ exports.createPages = ({ graphql, actions }) => {
                 slug
                 template
                 content
-                navigation {
-                  displayTitle
-                  order
-                  group
-                }
+                order
+                category
+                menuTitle
               }
             }
           }

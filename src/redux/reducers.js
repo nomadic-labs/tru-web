@@ -14,7 +14,7 @@ export const adminTools = (state={}, action) => {
     case 'TOGGLE_REGISTRATION_MODAL':
       return { ...state, showRegistrationModal: !state.showRegistrationModal }
     case 'TOGGLE_NEW_PAGE_MODAL':
-      return { ...state, showNewPageModal: !state.showNewPageModal }
+      return { ...state, showNewPageModal: !state.showNewPageModal, newPage: action.create }
     default:
       return state
   }

@@ -225,7 +225,7 @@ label {
 
 /* scrollUp */
 #scrollUp {
-	background: $light-green;
+	background: $theme-secondary;
 	height: 35px;
 	width: 35px;
 	right: 50px;
@@ -239,7 +239,7 @@ label {
 	z-index: 200;
 }
 #scrollUp:hover {
-	background: $dark-green;
+	background: $theme-highlight;
 }
 /* 2. header */
 .header-transparent {
@@ -396,13 +396,13 @@ label {
   width: 100%;
 }
 .social-icon-right > a {
-	color: $blue;
+	color: $theme-primary;
 	display: inline-block;
 	margin-right: 20px;
 	text-align: center;
 }
 .social-icon-right > a:hover {
-	color: $red;
+	color: $theme-secondary;
 }
 .social-icon-right > a:focus {
 	color: $theme-highlight;
@@ -2842,7 +2842,7 @@ ul.cat li a:hover {
 .footer-title h4::before {
 	height: 3px;
 	width: 50px;
-	background: $theme-highlight;
+	background: $theme-secondary;
 	content: "";
 	position: absolute;
 	left: 0;
@@ -2922,10 +2922,10 @@ ul.cat li a:hover {
 .copyright p {
 	margin-bottom: 0;
 	font-size: 14px;
-	color: #385871;
+	color: $dark-gray;
 }
 .copyright p a {
-	color: $theme-highlight;
+	color: $theme-secondary;
 }
 .footer-bottom-link{}
 .footer-bottom-link li {
@@ -3500,12 +3500,11 @@ ul.cat li a:hover {
 	line-height: 1;
 	font-weight: 600;
 	color: $black;
-	hyphens: auto;
 }
 
 .breadcrumb-text span {
 	font-size: 1.4em;
-	color: $dark-green;
+	color: $theme-primary;
 	font-weight: 600;
 	letter-spacing: 2px;
 	font-family: 'Rubik', sans-serif;

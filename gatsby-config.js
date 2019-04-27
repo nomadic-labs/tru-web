@@ -2,7 +2,7 @@ const firebaseConfig = require("./config/firebase-config.json")
 
 module.exports = {
   siteMetadata: {
-    title: `Connecting the Dots`,
+    title: `The Land and the Refinery`,
   },
   pathPrefix: `/`,
   plugins: [

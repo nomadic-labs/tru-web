@@ -1,6 +1,6 @@
 import React from 'react'
 import firebase from "../firebase/init";
-import { navigateTo } from 'gatsby-link';
+import { navigate } from 'gatsby-link';
 import { connect } from "react-redux";
 import { FirebaseAuth } from 'react-firebaseui';
 import {
@@ -15,7 +15,7 @@ const uiConfig = {
   ],
   credentialHelper: 'NONE',
   callbacks: {
-      signInSuccess: () => navigateTo('/')
+      signInSuccess: () => navigate('/')
     }
 };
 

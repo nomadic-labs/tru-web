@@ -275,13 +275,6 @@ function mainSlider() {
 	});
 
 
-	// /* counter */
-	// $('.counter').counterUp({
-	// 	delay: 10,
-	// 	time: 1000
-	// });
-
-
 	/* magnificPopup video view */
 	$('.popup-video').magnificPopup({
 		type: 'iframe'

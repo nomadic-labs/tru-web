@@ -21,7 +21,7 @@ $black: #303539;
 $light-gray: #e2eaf2;
 $white: #FFFFFF;
 $dark-gray: #A2A1A8;
-$lighter-gray: #e2eaf27d;
+$lighter-gray: transparentize($light-gray, 0.5);
 
 
 $theme-primary: $blue;

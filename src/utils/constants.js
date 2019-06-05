@@ -10,6 +10,7 @@ export const CONTENT_MAP = {
   paragraph: { type: "paragraph", content: { text: "Paragraph" } },
   image: { type: "image" },
   embeddedIframe: { type: "embeddedIframe" },
+  timeline: { type: "timeline" },
 }
 
 export const PAGE_TYPES = [

@@ -16,6 +16,7 @@ import Header from "../common/Header";
 import Paragraph from "../common/Paragraph";
 import Image from "../common/Image";
 import EmbeddedIframe from "../common/EmbeddedIframe";
+import Timeline from "../common/Timeline";
 import SectionEditingActions from "./SectionEditingActions"
 
 const componentMap = {
@@ -23,6 +24,7 @@ const componentMap = {
   paragraph: Paragraph,
   image: Image,
   embeddedIframe: EmbeddedIframe,
+  timeline: Timeline,
 }
 
 const mapDispatchToProps = dispatch => {

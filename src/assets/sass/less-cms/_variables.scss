@@ -12,9 +12,11 @@ $blue: #3C5C78;
 $light-blue: #E2EAF2;
 $light-green: #c3dbbc;
 $yellow: #ffac2a;
+$light-yellow: #f9e1b7;
 $dark-green: #2f6165;
 $dark-purple: #423243;
 $green: #5FAA03;
+$brown: #b46547;
 
 
 $black: #303539;
@@ -22,11 +24,31 @@ $light-gray: #e2eaf2;
 $white: #FFFFFF;
 $dark-gray: #A2A1A8;
 $lighter-gray: transparentize($light-gray, 0.5);
+$dull-gray: #817270;
 
+
+/* DEFAULT THEME */
 
 $theme-primary: $blue;
 $theme-secondary: $green;
 $theme-highlight: $yellow;
+
+
+/* LIGHT THEME */
+
+$light-theme-primary: $green;
+$light-theme-secondary: $yellow;
+$light-theme-highlight: $red;
+$light-theme-bg: transparentize($light-yellow, 0.75);
+
+
+/* DARK THEME */
+
+$dark-theme-primary: $dark-purple;
+$dark-theme-secondary: $dark-green;
+$dark-theme-highlight: $brown;
+$dark-theme-bg: transparentize($dull-gray, 0.9);
+$dark-theme-bg-alt: transparentize($dark-purple, 0.85);
 
 
 /*--------------------------- background Color variations ----------------------*/

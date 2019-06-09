@@ -198,7 +198,6 @@ class HomePage extends React.Component {
                   uploadImage={uploadImage}
                 />
               </div>
-
             </div>
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">

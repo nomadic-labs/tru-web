@@ -71,7 +71,7 @@ class SingleColumnPage extends React.Component {
 
     return (
       <div>
-        <Layout location={this.props.location}>
+        <Layout location={this.props.location} palette={pageData.palette}>
           <Helmet>
             <title>{pageData.title}</title>
           </Helmet>
@@ -111,6 +111,7 @@ export const query = graphql`
       title
       slug
       template
+      palette
       topics
       order
       category

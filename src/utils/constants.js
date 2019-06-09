@@ -11,6 +11,10 @@ export const CONTENT_MAP = {
   image: { type: "image" },
   embeddedIframe: { type: "embeddedIframe" },
   timeline: { type: "timeline" },
+  bouncingImageTopLeft: { type: "bouncingImageTopLeft" },
+  bouncingImageTopRight: { type: "bouncingImageTopRight" },
+  bouncingImageBottomLeft: { type: "bouncingImageBottomLeft" },
+  bouncingImageBottomRight: { type: "bouncingImageBottomRight" },
 }
 
 export const PAGE_TYPES = [
@@ -25,4 +29,11 @@ export const MENU_CATEGORIES = [
   { label: "Permission to Pollute Government", value: "permission-to-pollute" },
   { label: "Land Futures", value: "land-futures" },
   { label: "Timelines", value: "timelines" }
+];
+
+
+export const PALETTE_OPTIONS = [
+  { label: "Default", value: "default" },
+  { label: "Light", value: "light" },
+  { label: "Dark", value: "dark" },
 ];

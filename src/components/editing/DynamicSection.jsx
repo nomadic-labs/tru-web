@@ -17,6 +17,10 @@ import Paragraph from "../common/Paragraph";
 import Image from "../common/Image";
 import EmbeddedIframe from "../common/EmbeddedIframe";
 import Timeline from "../common/Timeline";
+import BouncingImageTopLeft from "../common/BouncingImageTopLeft";
+import BouncingImageTopRight from "../common/BouncingImageTopRight";
+import BouncingImageBottomLeft from "../common/BouncingImageBottomLeft";
+import BouncingImageBottomRight from "../common/BouncingImageBottomRight";
 import SectionEditingActions from "./SectionEditingActions"
 
 const componentMap = {
@@ -25,6 +29,10 @@ const componentMap = {
   image: Image,
   embeddedIframe: EmbeddedIframe,
   timeline: Timeline,
+  bouncingImageTopLeft: BouncingImageTopLeft,
+  bouncingImageTopRight: BouncingImageTopRight,
+  bouncingImageBottomLeft: BouncingImageBottomLeft,
+  bouncingImageBottomRight: BouncingImageBottomRight,
 }
 
 const mapDispatchToProps = dispatch => {
@@ -107,6 +115,7 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
               onSave={onUpdateContentItem(sectionIndex, index)}
               onDelete={onDeleteContentItem(sectionIndex, index)}
               key={index}
+              isEditingPage={isEditingPage}
             />
           )
         })

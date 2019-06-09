@@ -18,6 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
                 order
                 category
                 menuTitle
+                palette
               }
             }
           }

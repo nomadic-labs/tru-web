@@ -74,8 +74,10 @@ class DefaultLayout extends React.Component {
   }
 
   render() {
+    const palette = this.props.palette ? `${this.props.palette}-palette` : 'default-palette'
+
     return(
-      <div style={styles.container}>
+      <div style={styles.container} className={palette}>
         <Helmet>
           <title>
             The Land and the Refinery

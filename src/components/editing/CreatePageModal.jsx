@@ -19,7 +19,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Chip from '@material-ui/core/Chip';
 
-import { PAGE_TYPES, MENU_CATEGORIES } from "../../utils/constants";
+import { PAGE_TYPES, PALETTE_OPTIONS } from "../../utils/constants";
 
 import defaultContentJSON from "../../fixtures/pageContent.json";
 
@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => {
 const emptyPage = {
     title: "",
     category: "",
-    order: "",
+    palette: "default",
     topics: [],
     type: PAGE_TYPES[0].value,
   }
@@ -58,7 +58,7 @@ class CreatePageModalComponent extends React.Component {
         ...this.props.page,
         topics: this.props.page.topics || [],
         category: this.props.page.category || "",
-        order: this.props.order || 0,
+        palette: this.props.page.palette || "default",
       }
     };
     this.updatePage = (field, value) => {
@@ -75,7 +75,7 @@ class CreatePageModalComponent extends React.Component {
         ...this.props.page,
         topics: this.props.page.topics || [],
         category: this.props.page.category || "",
-        order: this.props.order || "",
+        palette: this.props.page.palette || "default",
       } })
     }
   }
@@ -97,7 +97,7 @@ class CreatePageModalComponent extends React.Component {
     let pageData = {
       title: this.state.page.title,
       category: this.state.page.category,
-      order: this.state.page.order,
+      palette: this.state.page.palette,
       topics: this.state.page.topics,
     };
 
@@ -157,6 +157,26 @@ class CreatePageModalComponent extends React.Component {
           </FormControl>
 
           <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="menu-group">Select palette (optional)</InputLabel>
+            <Select
+              value={this.state.page.palette}
+              onChange={selected =>
+                this.updatePage("palette", selected.target.value)
+              }
+              inputProps={{
+                name: "menu-group",
+                id: "menu-group"
+              }}
+            >
+              {PALETTE_OPTIONS.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl fullWidth margin="normal">
             <InputLabel htmlFor="menu-group">Select category (optional)</InputLabel>
             <Select
               value={this.state.page.category}
@@ -168,25 +188,12 @@ class CreatePageModalComponent extends React.Component {
                 id: "menu-group"
               }}
             >
-              {MENU_CATEGORIES.map(category => (
-                <MenuItem key={category.label} value={category.value}>
+              {this.props.categories.map(category => (
+                <MenuItem key={category.id} value={category.id}>
                   {category.label}
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
-
-          <FormControl fullWidth margin="normal">
-            <TextField
-              name="page_order"
-              className="form-control"
-              type="number"
-              label={"Page order (optional)"}
-              value={this.state.page.order}
-              onChange={e =>
-                this.updatePage("order", e.currentTarget.value)
-              }
-            />
           </FormControl>
 
           <FormControl fullWidth margin="normal">
@@ -252,10 +259,22 @@ const CreatePageModalContainer = props => (
             }
           }
         }
+        allCategories {
+          edges  {
+            node {
+              id
+              label
+            }
+          }
+        }
       }
     `}
     render={data => (
-      <CreatePageModalComponent {...props} topics={data.allTopics.edges.map(edge => edge.node)} />
+      <CreatePageModalComponent
+        {...props}
+        topics={data.allTopics.edges.map(edge => edge.node)}
+        categories={data.allCategories.edges.map(edge => edge.node)}
+      />
     )}
   />
 );

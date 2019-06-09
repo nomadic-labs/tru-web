@@ -131,7 +131,7 @@ class Research extends Component {
         {
           pagesByCategory.map((category, index) => {
             return(
-              <div className="py-2" key={ category.value }>
+              <div className="py-2" key={ category.id }>
                 <Collapsible
                   trigger={<CategoryTitle label={category.label} count={category.pages.length} />}
                   triggerWhenOpen={<CategoryTitle label={category.label} count={category.pages.length} open={true} />}

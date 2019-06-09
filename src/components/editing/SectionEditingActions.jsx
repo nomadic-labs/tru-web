@@ -111,8 +111,24 @@ class SectionEditingActions extends React.Component {
                 Embedded Iframe
               </MenuItem>
 
-              <MenuItem onClick={() => this.props.onAddContentItem("timeline")} divider>
+              <MenuItem onClick={() => this.props.onAddContentItem("timeline")}>
                 Timeline
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("bouncingImageTopLeft")}>
+                Bouncing Image (top left)
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("bouncingImageTopRight")}>
+                Bouncing Image (top right)
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("bouncingImageBottomLeft")}>
+                Bouncing Image (bottom left)
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("bouncingImageBottomRight")} divider>
+                Bouncing Image (bottom right)
               </MenuItem>
 
               <MenuItem onClick={this.props.onAddSection}>

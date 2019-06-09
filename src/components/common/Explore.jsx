@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Collapsible from 'react-collapsible';
 import { StaticQuery, Link, graphql } from "gatsby";
+import { find } from "lodash"
 import Grid from "@material-ui/core/Grid";
 
 import { MENU_CATEGORIES } from "../../utils/constants";
@@ -69,7 +70,24 @@ class Research extends Component {
   }
 
   filterPagesByCategory = (pages, category) => {
-    return pages.filter(page => page.category === category.value);
+    return pages.filter(page => page.category === category.id);
+  }
+
+  nextCategory = category => {
+    return this.props.categories[category.next];
+  }
+
+  prevCategory = category => {
+    return this.props.categories[category.prev];
+  }
+
+  orderedCategories = (category, arr=[]) => {
+    if (!category) {
+      return arr
+    }
+
+    arr.push(category)
+    return this.orderedCategories(this.nextCategory(category), arr)
   }
 
   componentDidUpdate(prevProps) {
@@ -93,20 +111,25 @@ class Research extends Component {
       )
     }
 
-    let categories = [];
+    console.log('this.props.categories', this.props.categories)
 
-    MENU_CATEGORIES.forEach(category => {
+    const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
+    const pagesByCategory = [];
+
+    console.log('orderedCategories', orderedCategories)
+
+    orderedCategories.forEach(category => {
       const pages = this.sortPages(this.filterPagesByCategory(this.state.pages, category))
 
       if (pages.length > 0) {
-        categories.push({ ...category, pages })
+        pagesByCategory.push({ ...category, pages })
       }
     })
 
     return(
       <div className="explore">
         {
-          categories.map((category, index) => {
+          pagesByCategory.map((category, index) => {
             return(
               <div className="py-2" key={ category.value }>
                 <Collapsible
@@ -157,6 +180,16 @@ const Explore = props => (
             }
           }
         }
+        allCategories {
+          edges  {
+            node {
+              id
+              label
+              next
+              prev
+            }
+          }
+        }
       }
     `}
     render={data => {
@@ -166,8 +199,13 @@ const Explore = props => (
         obj[topic.id] = topic.label
         return obj
       }, {})
+      const categoriesArr = data.allCategories.edges.map(edge => edge.node)
+      const categories = categoriesArr.reduce((obj, cat) => {
+        obj[cat.id] = cat
+        return obj
+      }, {})
 
-      return <Research {...props} pages={pages} topics={topics} />
+      return <Research {...props} pages={pages} topics={topics} categories={categories} />
     }}
   />
 );

@@ -347,6 +347,178 @@ export function selectTopic(selected) {
   return { type: "SELECT_TOPIC", selected };
 }
 
-export function removeTopic(selected) {
-  return { type: "REMOVE_TOPIC", selected };
+export function unselectTopic(selected) {
+  return { type: "UNSELECT_TOPIC", selected };
+}
+
+export function addTopic(topic) {
+  return { type: "ADD_TOPIC", topic }
+}
+
+export function deleteTopic(topic) {
+  return { type: "DELETE_TOPIC", topic }
+}
+
+export function setTopics(topics) {
+  return { type: "SET_TOPICS", topics }
+}
+
+export function fetchTopics() {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+
+    db.ref(`topics`)
+      .once('value')
+      .then(snap => {
+        console.log("snap.val()", snap.val());
+        dispatch(setTopics(snap.val()));
+      })
+      .catch(error => {
+        console.log("Error fetching topics", error)
+      })
+  };
+}
+
+export function pushTopic(topic) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+
+    db.ref(`topics/${topic.id}`).update(topic, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "error"
+          )
+        );
+      }
+
+      dispatch(addTopic(topic));
+      dispatch(
+        showNotification(
+          "Your changes have been saved.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
+export function removeTopic(topicId) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const state = getState();
+    const pageId = state.page.data.id;
+
+    db.ref(`topics/`).update({[topicId]: null}, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      let allTopics = { ...state.topics.topics };
+      delete allTopics[topicId]
+
+      dispatch(setTopics(allTopics));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
+
+// CATEGORIES ------------------------
+
+export function selectCategory(selected) {
+  return { type: "SELECT_CATEGORY", selected };
+}
+
+export function unselectCategory(selected) {
+  return { type: "UNSELECT_CATEGORY", selected };
+}
+
+export function addCategory(category) {
+  return { type: "ADD_CATEGORY", category }
+}
+
+export function setCategories(categories) {
+  return { type: "SET_CATEGORIES", categories }
+}
+
+export function fetchCategories() {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+
+    db.ref(`categories`)
+      .once('value')
+      .then(snap => {
+        dispatch(setCategories(snap.val()));
+      })
+      .catch(error => {
+        console.log("Error fetching categories", error)
+      })
+  };
+}
+
+export function pushCategory(category) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+
+    db.ref(`categories/${category.id}`).update(category, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "error"
+          )
+        );
+      }
+
+      dispatch(addCategory(category));
+      dispatch(
+        showNotification(
+          "Your changes have been saved.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
+export function removeCategory(categoryId) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const state = getState();
+    const pageId = state.page.data.id;
+
+    db.ref(`categories/`).update({[categoryId]: null}, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      let allCategories = { ...state.categories.categories };
+      delete allCategories[categoryId]
+
+      dispatch(setCategories(allCategories));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    })
+  };
 }

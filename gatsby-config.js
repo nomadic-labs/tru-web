@@ -40,6 +40,10 @@ module.exports = {
             type: "Topics",
             path: "topics"
           },
+          {
+            type: "Categories",
+            path: "categories"
+          },
         ]
       }
     },

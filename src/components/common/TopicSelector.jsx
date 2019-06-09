@@ -2,18 +2,17 @@ import React from 'react';
 import { connect } from "react-redux";
 import { StaticQuery, graphql } from "gatsby";
 
-import { TOPICS } from "../../utils/constants";
 import plants10 from "../../assets/images/illustrations/plants-10.svg";
 
-import { selectTopic, removeTopic } from "../../redux/actions";
+import { selectTopic, unselectTopic } from "../../redux/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
     selectTopic: (topic) => {
       dispatch(selectTopic(topic));
     },
-    removeTopic: (topic) => {
-      dispatch(removeTopic(topic));
+    unselectTopic: (topic) => {
+      dispatch(unselectTopic(topic));
     },
   };
 };
@@ -55,7 +54,7 @@ const TopicSelector = props => {
                   const selected = topic === props.selectedTopics;
                   const onClick = () => {
                     if (selected) {
-                      props.removeTopic(topic);
+                      props.unselectTopic(topic);
                     } else {
                       props.selectTopic(topic);
                     }

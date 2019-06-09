@@ -221,23 +221,69 @@ export const projectForm = (state={}, action) => {
   }
 }
 
-export const topics = (state={}, action) => {
+export const topics = (state={topics: {}}, action) => {
   switch (action.type) {
     case 'SELECT_TOPIC':
       return {
         ...state,
         selected: action.selected
       }
-    case 'REMOVE_TOPIC':
+    case 'UNSELECT_TOPIC':
       return {
         ...state,
         selected: null,
+      }
+
+    case 'SET_TOPICS':
+      return {
+        ...state,
+        topics: action.topics
+      }
+
+    case 'ADD_TOPIC':
+      return {
+        ...state,
+        topics: {
+          ...state.topics,
+          [action.topic.id]: action.topic
+        }
       }
     default:
       return state
   }
 }
 
+export const categories = (state={ categories: {}}, action) => {
+  switch (action.type) {
+    case 'SELECT_CATEGORY':
+      return {
+        ...state,
+        selected: action.selected
+      }
+    case 'UNSELECT_CATEGORY':
+      return {
+        ...state,
+        selected: null,
+      }
+
+    case 'ADD_CATEGORY':
+      return {
+        ...state,
+        categories: {
+          ...state.categories,
+          [action.category.id]: action.category
+        }
+      }
+
+    case 'SET_CATEGORIES':
+      return {
+        ...state,
+        categories: action.categories
+      }
+    default:
+      return state
+  }
+}
 
 
 export const appReducers = (state = {}, action) => {
@@ -248,6 +294,7 @@ export const appReducers = (state = {}, action) => {
     page: page(state.page, action),
     projectForm: projectForm(state.projectForm, action),
     topics: topics(state.topics, action),
+    categories: categories(state.categories, action),
   }
 }
 

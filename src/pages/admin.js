@@ -1,7 +1,6 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import { connect } from "react-redux";
-import { map, find } from 'lodash'
+import { map, find, filter } from 'lodash'
 import slugify from "slugify";
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
@@ -26,7 +25,11 @@ import {
   setTopics,
   setCategories,
   fetchTopics,
-  fetchCategories
+  fetchCategories,
+  fetchPages,
+  updatePageData,
+  updateFirebaseData,
+  deploy,
 } from "../redux/actions";
 
 
@@ -56,6 +59,15 @@ const mapDispatchToProps = dispatch => {
     fetchCategories: () => {
       dispatch(fetchCategories())
     },
+    updateFirebaseData: command => {
+      dispatch(updateFirebaseData(command))
+    },
+    fetchPages: () => {
+      dispatch(fetchPages())
+    },
+    deploy: () => {
+      dispatch(deploy())
+    },
   };
 };
 
@@ -63,7 +75,8 @@ const mapStateToProps = state => {
   return {
     isEditingPage: state.adminTools.isEditingPage,
     categories: state.categories.categories,
-    topics: state.topics.topics
+    topics: state.topics.topics,
+    pages: state.pages.pages,
   };
 };
 
@@ -73,10 +86,10 @@ class AdminPage extends React.Component {
     this.state = {
       topicLabel: "",
       categoryLabel: "",
-      pages: this.props.data.allPages.edges.map(edge => edge.node),
     }
     this.props.fetchTopics()
     this.props.fetchCategories()
+    this.props.fetchPages()
   }
 
   createTopic = () => {
@@ -104,15 +117,10 @@ class AdminPage extends React.Component {
   }
 
   filterPagesByCategory = (pages, category) => {
-    return pages.filter(page => page.category === category.id);
-  }
-
-  sortPages = pages => {
-    return pages.sort((a, b) => (a.order - b.order));
+    return filter(pages, page => page.category === category.id);
   }
 
   nextCategory = category => {
-    console.log(category)
     return this.props.categories[category.next];
   }
 
@@ -122,7 +130,6 @@ class AdminPage extends React.Component {
 
   orderedCategories = (category, arr=[]) => {
     if (!category) {
-      console.log('return arr!')
       return arr
     }
 
@@ -130,12 +137,80 @@ class AdminPage extends React.Component {
     return this.orderedCategories(this.nextCategory(category), arr)
   }
 
+  nextPage = page => {
+    return this.props.pages[page.next];
+  }
+
+  prevPage = page => {
+    return this.props.pages[page.prev];
+  }
+
+  orderedPages = (page, arr=[]) => {
+    if (!page) {
+      return arr
+    }
+
+    arr.push(page)
+    return this.orderedPages(this.nextPage(page), arr)
+  }
+
+  movePageForward = currentPage => () => {
+    if (!currentPage.next) return false;
+
+    const nextPage = this.nextPage(currentPage)
+    const prevPage = this.prevPage(currentPage)
+    const nextNextPage = this.nextPage(nextPage)
+
+    let dataToUpdate = {
+      [`pages/${currentPage.id}/next`]: nextPage.next || null,
+      [`pages/${currentPage.id}/prev`]: nextPage.id,
+      [`pages/${nextPage.id}/next`]: currentPage.id,
+      [`pages/${nextPage.id}/prev`]: currentPage.prev || null,
+    }
+
+    if (prevPage) {
+      dataToUpdate[`pages/${prevPage.id}/next`] = nextPage.id
+    }
+
+    if (nextNextPage) {
+      dataToUpdate[`pages/${nextNextPage.id}/prev`] = currentPage.id
+    }
+
+    this.props.updateFirebaseData(dataToUpdate)
+  }
+
+  movePageBack = currentPage => () => {
+    if (!currentPage.prev) return false;
+
+    const prevPage = this.prevPage(currentPage)
+    const nextPage = this.nextPage(currentPage)
+    const prevPrevPage = this.prevPage(prevPage)
+
+    let dataToUpdate = {
+      [`pages/${currentPage.id}/next`]: prevPage.id,
+      [`pages/${currentPage.id}/prev`]: prevPage.prev || null,
+      [`pages/${prevPage.id}/next`]: currentPage.next || null,
+      [`pages/${prevPage.id}/prev`]: currentPage.id,
+    }
+
+    if (nextPage) {
+      dataToUpdate[`pages/${nextPage.id}/prev`] = prevPage.id
+    }
+
+    if (prevPrevPage) {
+      dataToUpdate[`pages/${prevPrevPage.id}/next`] = currentPage.id
+    }
+
+    this.props.updateFirebaseData(dataToUpdate)
+  }
+
   render() {
     const pagesByCategory = [];
     const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
 
     orderedCategories.forEach(category => {
-      const pages = this.sortPages(this.filterPagesByCategory(this.state.pages, category))
+      const categoryPages = this.filterPagesByCategory(this.props.pages, category)
+      const pages = this.orderedPages(categoryPages.find(page => !page.prev))
 
       if (pages.length > 0) {
         pagesByCategory.push({ ...category, pages })
@@ -156,8 +231,8 @@ class AdminPage extends React.Component {
                 map(this.props.topics, topic => {
                   return (
                     <Chip
+                      key={topic.label}
                       className="my-2 mr-2"
-                      key={topic.id}
                       label={topic.label}
                       onDelete={() => props.removeTopic(topic)}
                     />
@@ -187,10 +262,10 @@ class AdminPage extends React.Component {
             <div className="my-4">
               { orderedCategories.map(cat => (
                 <Chip
-                  className="my-2 mr-2"
                   key={cat.id}
+                  className="my-2 mr-2"
                   label={cat.label}
-                  onDelete={() => props.removeTopic(cat)}
+                  onDelete={() => props.removeCategory(cat)}
                 />
               ))}
               <div className="my-2">
@@ -218,14 +293,14 @@ class AdminPage extends React.Component {
               {
                 pagesByCategory.map(category => {
                   return(
-                    <div>
-                      <p>{category.label}</p>
+                    <div key={category.id}>
+                      <h4 className="mt-3">{category.label}</h4>
                       {
                         category.pages.map(page => {
                           return(
-                            <div className="ranked-item">
-                              <IconButton size="small" color="primary"><ArrowUp /></IconButton>
-                              <IconButton size="small" color="primary"><ArrowDown /></IconButton>
+                            <div className="ranked-item" key={page.id}>
+                              <IconButton size="small" color="primary" onClick={this.movePageBack(page)} disabled={!page.prev}><ArrowUp /></IconButton>
+                              <IconButton size="small" color="primary" onClick={this.movePageForward(page)} disabled={!page.next}><ArrowDown /></IconButton>
                               <span className="ml-3">{page.title}</span>
                             </div>
                           )
@@ -237,6 +312,12 @@ class AdminPage extends React.Component {
               }
             </div>
           </Container>
+
+          <Container>
+            <div className="my-5">
+              <Button onClick={this.props.deploy} variant="contained" color="primary">Publish changes</Button>
+            </div>
+          </Container>
         </ProtectedPage>
       </Layout>
     )
@@ -246,20 +327,3 @@ class AdminPage extends React.Component {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminPage);
-
-export const query = graphql`
-  query {
-    allPages(filter: {template: { in: ["single-column.js", "fixed-sidebar.js"]}}) {
-      edges {
-        node {
-          id
-          title
-          slug
-          order
-          category
-          menuTitle
-        }
-      }
-    }
-  }
-`;

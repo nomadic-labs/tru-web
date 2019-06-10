@@ -111,12 +111,9 @@ class Research extends Component {
       )
     }
 
-    console.log('this.props.categories', this.props.categories)
 
     const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
     const pagesByCategory = [];
-
-    console.log('orderedCategories', orderedCategories)
 
     orderedCategories.forEach(category => {
       const pages = this.sortPages(this.filterPagesByCategory(this.state.pages, category))

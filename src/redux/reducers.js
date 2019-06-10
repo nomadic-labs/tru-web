@@ -81,6 +81,15 @@ export const page = (state={}, action) => {
         }
       }
 
+    case 'UPDATE_PAGE_FIELD':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.field]: action.value
+        }
+      }
+
     case 'UPDATE_PAGE_TITLE':
       return {
         ...state,
@@ -285,6 +294,18 @@ export const categories = (state={ categories: {}}, action) => {
   }
 }
 
+export const pages = (state={ pages: {}}, action) => {
+  switch (action.type) {
+    case 'SET_PAGES':
+      return {
+        ...state,
+        pages: action.pages
+      }
+    default:
+      return state
+  }
+}
+
 
 export const appReducers = (state = {}, action) => {
   return {
@@ -295,6 +316,7 @@ export const appReducers = (state = {}, action) => {
     projectForm: projectForm(state.projectForm, action),
     topics: topics(state.topics, action),
     categories: categories(state.categories, action),
+    pages: pages(state.pages, action),
   }
 }
 

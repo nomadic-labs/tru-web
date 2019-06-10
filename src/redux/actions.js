@@ -1,6 +1,7 @@
 import axios from "axios";
 import firebase from "../firebase/init";
 import slugify from "slugify";
+import { map } from "lodash";
 import { NOTIFICATION_MESSAGES } from "../utils/constants";
 
 
@@ -188,6 +189,34 @@ export function updateHeaderImage(content) {
   };
 }
 
+export function updateFirebaseData(updates) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    console.log(updates)
+
+    db.ref().update(updates, error => {
+      if (error) {
+        console.log('FIREBASE ERROR', error)
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(fetchPages())
+
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
+  };
+}
+
 export function savePageContent(innerFunction) {
   return (dispatch, getState) => {
     Promise.resolve(dispatch(innerFunction)).then(() => {
@@ -273,9 +302,34 @@ export function loadPageData(data) {
 }
 
 export function updatePageData(contentId, content) {
-  console.log("updating", contentId);
-  console.log("content", content);
   return { type: "UPDATE_PAGE_DATA", contentId, content };
+}
+
+export function updatePageField(field, value) {
+  return { type: "UPDATE_PAGE_FIELD", field, value };
+}
+
+export function setPages(pages) {
+  return { type: "SET_PAGES", pages }
+}
+
+export function fetchPages() {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+
+    db.ref(`pages`)
+      .once('value')
+      .then(snap => {
+        const pages = Object.entries(snap.val()).reduce((obj, [id, page]) => {
+          obj[id] = {...page, id}
+          return obj
+        }, {})
+        dispatch(setPages(pages));
+      })
+      .catch(error => {
+        console.log("Error fetching pages", error)
+      })
+  };
 }
 
 // NAVIGATION ------------------------
@@ -290,54 +344,6 @@ export function closeMenu() {
 
 export function toggleMenu() {
   return { type: "TOGGLE_MENU" };
-}
-
-// FORMS ------------------------
-
-export function submitProjectFormSuccess() {
-  return { type: "SUBMIT_PROJECT_FORM_SUCCESS" };
-}
-
-export function submitProjectFormError(error) {
-  return { type: "SUBMIT_PROJECT_FORM_ERROR" };
-}
-
-export function updateForm(data) {
-  return { type: "UPDATE_PROJECT_FORM", data };
-}
-
-export function submitProjectForm(formData, e) {
-  return dispatch => {
-    const db = firebase.database();
-    const user = slugify(formData.name);
-    const date = new Date();
-    const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getTime()}`;
-    const submissionId = `${user}-${dateString}`;
-    const status = "pending";
-
-    const data = {
-      ...formData,
-      "submitted-on": date.toString(),
-      status
-    };
-
-    db.ref(`projectSubmissions/${submissionId}`).update(data, error => {
-      if (error) {
-        console.log("Error submitting form", error);
-        dispatch(submitProjectFormError(error));
-
-        return dispatch(
-          showNotification(
-            `There was an error submitting your form: ${error}`,
-            "success"
-          )
-        );
-      }
-
-      dispatch(submitProjectFormSuccess());
-      e.target.submit();
-    });
-  };
 }
 
 
@@ -370,7 +376,6 @@ export function fetchTopics() {
     db.ref(`topics`)
       .once('value')
       .then(snap => {
-        console.log("snap.val()", snap.val());
         dispatch(setTopics(snap.val()));
       })
       .catch(error => {

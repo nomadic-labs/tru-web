@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { filter, orderBy } from 'lodash';
 
 import { connect } from "react-redux";
-import { toggleNewPageModal, createPage } from "../../redux/actions";
+import { toggleNewPageModal, createPage, updateFirebaseData } from "../../redux/actions";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -35,6 +35,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onToggleNewPageModal: () => {
       dispatch(toggleNewPageModal());
+    },
+    updateFirebaseData: (data, callback) => {
+      dispatch(updateFirebaseData(data, callback))
     },
     createPage: (pageData, pageId) => {
       dispatch(createPage(pageData, pageId));
@@ -94,6 +97,10 @@ class CreatePageModalComponent extends React.Component {
       lower: true,
       remove: /[$*_+~.,()'"!\-:@%^&?=]/g
     })
+    const lastPageInCategory = this.props.pages.find(page => page.category === this.state.page.category && !page.next)
+    debugger;
+    console.log(lastPageInCategory);
+
     let pageData = {
       title: this.state.page.title,
       category: this.state.page.category,
@@ -105,11 +112,18 @@ class CreatePageModalComponent extends React.Component {
       pageData.content = defaultContentJSON;
       pageData.slug = `${this.state.page.category}/${slugifiedTitle}`;
       pageData.template = this.state.page.type.template;
+      pageData.prev = lastPageInCategory ? lastPageInCategory.id : null;
     }
 
     const pageId = this.props.newPage ? slugifiedTitle : this.props.page.id;
 
     this.props.createPage(pageData, pageId);
+
+    if (lastPageInCategory) {
+      this.props.updateFirebaseData({
+        [`pages/${lastPageInCategory.id}/next`]: pageId,
+      })
+    }
   }
 
   render() {
@@ -248,6 +262,9 @@ const CreatePageModalContainer = props => (
               title
               slug
               order
+              prev
+              next
+              category
             }
           }
         }
@@ -274,6 +291,7 @@ const CreatePageModalContainer = props => (
         {...props}
         topics={data.allTopics.edges.map(edge => edge.node)}
         categories={data.allCategories.edges.map(edge => edge.node)}
+        pages={data.allPages.edges.map(edge => edge.node)}
       />
     )}
   />

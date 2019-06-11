@@ -189,7 +189,7 @@ export function updateHeaderImage(content) {
   };
 }
 
-export function updateFirebaseData(updates) {
+export function updateFirebaseData(updates, callback=null) {
   return (dispatch, getState) => {
     const db = firebase.database();
     console.log(updates)
@@ -205,7 +205,9 @@ export function updateFirebaseData(updates) {
         );
       }
 
-      dispatch(fetchPages())
+      if (callback) {
+        callback()
+      }
 
       dispatch(
         showNotification(

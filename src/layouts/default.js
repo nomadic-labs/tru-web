@@ -77,7 +77,7 @@ class DefaultLayout extends React.Component {
     const palette = this.props.palette ? `${this.props.palette}-palette` : 'default-palette'
 
     return(
-      <div style={styles.container} className={palette}>
+      <div style={styles.container}>
         <Helmet>
           <title>
             The Land and the Refinery
@@ -96,7 +96,7 @@ class DefaultLayout extends React.Component {
           <div className="page-container">
             <FullPageNavigation />
 
-            <div className="page-wrapper">
+            <div className={`page-wrapper ${palette}`}>
               <Navigation />
                 {this.props.children}
               <Footer />

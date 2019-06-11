@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import { connect } from "react-redux";
 import { map, find, filter } from 'lodash'
 import slugify from "slugify";
@@ -59,8 +60,8 @@ const mapDispatchToProps = dispatch => {
     fetchCategories: () => {
       dispatch(fetchCategories())
     },
-    updateFirebaseData: command => {
-      dispatch(updateFirebaseData(command))
+    updateFirebaseData: (data, callback) => {
+      dispatch(updateFirebaseData(data, callback))
     },
     fetchPages: () => {
       dispatch(fetchPages())
@@ -110,9 +111,17 @@ class AdminPage extends React.Component {
       lower: true,
       remove: /[$*_+~.,()'"!\-:@%^&?=]/g
     })
+    const lastCategory = find(this.props.categories, cat => !cat.next)
+    const category = { id, label, prev: lastCategory ? lastCategory.id : null }
 
-    const category = { id, label }
     this.props.pushCategory(category);
+
+    if (lastCategory) {
+      this.props.updateFirebaseData({
+        [`categories/${lastCategory.id}/next`]: id
+      }, this.props.fetchCategories)
+    }
+
     this.setState({ categoryLabel: "" })
   }
 
@@ -151,6 +160,13 @@ class AdminPage extends React.Component {
     }
 
     arr.push(page)
+
+    const nextPage = this.nextPage(page)
+    console.log('page', page)
+    console.log('nextPage', nextPage)
+    if (page === nextPage) {
+      return arr
+    }
     return this.orderedPages(this.nextPage(page), arr)
   }
 
@@ -176,7 +192,7 @@ class AdminPage extends React.Component {
       dataToUpdate[`pages/${nextNextPage.id}/prev`] = currentPage.id
     }
 
-    this.props.updateFirebaseData(dataToUpdate)
+    this.props.updateFirebaseData(dataToUpdate, this.props.fetchPages)
   }
 
   movePageBack = currentPage => () => {
@@ -201,7 +217,57 @@ class AdminPage extends React.Component {
       dataToUpdate[`pages/${prevPrevPage.id}/next`] = currentPage.id
     }
 
-    this.props.updateFirebaseData(dataToUpdate)
+    this.props.updateFirebaseData(dataToUpdate, this.props.fetchPages)
+  }
+
+  moveCategoryForward = current => () => {
+    if (!current.next) return false;
+
+    const nextCategory = this.nextCategory(current)
+    const prevCategory = this.prevCategory(current)
+    const nextNextCategory = this.nextCategory(nextCategory)
+
+    let dataToUpdate = {
+      [`categories/${current.id}/next`]: nextCategory.next || null,
+      [`categories/${current.id}/prev`]: nextCategory.id,
+      [`categories/${nextCategory.id}/next`]: current.id,
+      [`categories/${nextCategory.id}/prev`]: current.prev || null,
+    }
+
+    if (prevCategory) {
+      dataToUpdate[`categories/${prevCategory.id}/next`] = nextCategory.id
+    }
+
+    if (nextNextCategory) {
+      dataToUpdate[`categories/${nextNextCategory.id}/prev`] = current.id
+    }
+
+    this.props.updateFirebaseData(dataToUpdate, this.props.fetchCategories)
+  }
+
+  moveCategoryBack = current => () => {
+    if (!current.prev) return false;
+
+    const prevCategory = this.prevCategory(current)
+    const nextCategory = this.nextPage(current)
+    const prevPrevCategory = this.prevCategory(prevCategory)
+
+    let dataToUpdate = {
+      [`categories/${current.id}/next`]: prevCategory.id,
+      [`categories/${current.id}/prev`]: prevCategory.prev || null,
+      [`categories/${prevCategory.id}/next`]: current.next || null,
+      [`categories/${prevCategory.id}/prev`]: current.id,
+    }
+
+    if (nextCategory) {
+      dataToUpdate[`categories/${nextCategory.id}/prev`] = prevCategory.id
+    }
+
+    if (prevPrevCategory) {
+      dataToUpdate[`categories/${prevPrevCategory.id}/next`] = current.id
+    }
+
+    this.props.updateFirebaseData(dataToUpdate, this.props.fetchCategories)
   }
 
   render() {
@@ -210,6 +276,7 @@ class AdminPage extends React.Component {
 
     orderedCategories.forEach(category => {
       const categoryPages = this.filterPagesByCategory(this.props.pages, category)
+      console.log(categoryPages);
       const pages = this.orderedPages(categoryPages.find(page => !page.prev))
 
       if (pages.length > 0) {
@@ -260,14 +327,15 @@ class AdminPage extends React.Component {
           <Container>
             <h2>Categories</h2>
             <div className="my-4">
-              { orderedCategories.map(cat => (
-                <Chip
-                  key={cat.id}
-                  className="my-2 mr-2"
-                  label={cat.label}
-                  onDelete={() => props.removeCategory(cat)}
-                />
-              ))}
+              { orderedCategories.map(cat => {
+                return(
+                  <div className="ranked-item" key={cat.id}>
+                    <IconButton size="small" color="primary" onClick={this.moveCategoryBack(cat)} disabled={!cat.prev}><ArrowUp /></IconButton>
+                    <IconButton size="small" color="primary" onClick={this.moveCategoryForward(cat)} disabled={!cat.next}><ArrowDown /></IconButton>
+                    <span className="ml-3">{cat.label}</span>
+                  </div>
+                )
+              })}
               <div className="my-2">
                 <FormControl>
                   <TextField
@@ -301,7 +369,7 @@ class AdminPage extends React.Component {
                             <div className="ranked-item" key={page.id}>
                               <IconButton size="small" color="primary" onClick={this.movePageBack(page)} disabled={!page.prev}><ArrowUp /></IconButton>
                               <IconButton size="small" color="primary" onClick={this.movePageForward(page)} disabled={!page.next}><ArrowDown /></IconButton>
-                              <span className="ml-3">{page.title}</span>
+                              <span className="ml-3"><Link to={`/${page.slug}`}>{page.title}</Link></span>
                             </div>
                           )
                         })

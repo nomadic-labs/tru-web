@@ -15,6 +15,7 @@ import {
 import Header from "../common/Header";
 import Paragraph from "../common/Paragraph";
 import Image from "../common/Image";
+import ImageCarousel from "../common/ImageCarousel";
 import EmbeddedIframe from "../common/EmbeddedIframe";
 import Timeline from "../common/Timeline";
 import BouncingImageTopLeft from "../common/BouncingImageTopLeft";
@@ -27,6 +28,7 @@ const componentMap = {
   header: Header,
   paragraph: Paragraph,
   image: Image,
+  imageCarousel: ImageCarousel,
   embeddedIframe: EmbeddedIframe,
   timeline: Timeline,
   bouncingImageTopLeft: BouncingImageTopLeft,

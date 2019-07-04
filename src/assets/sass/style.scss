@@ -257,7 +257,7 @@ label {
 	top: 0;
 	width: 100%;
 	box-shadow: 0 0 60px 0 rgba(0, 0, 0, .07);
-	z-index: 9999;
+	z-index: 999;
 	-webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
 	animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
 	-webkit-box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
@@ -645,7 +645,7 @@ label {
 .slider-active button.slick-arrow {
 	position: absolute;
 	top: 50%;
-	left: 70px;
+	left: 2%;
 	transform: translateY(-50%);
 	background: none;
 	border: 0;
@@ -670,13 +670,13 @@ label {
 }
 .slider-active button.slick-next {
 	left: auto;
-	right: 70px;
+	right: 2%;
 }
 .slider-active:hover button.slick-next {
-	right: 70px;
+	right: 2%;
 }
 .slider-active:hover button.slick-prev {
-	left: 70px;
+	left: 2%;
 }
 .slider-active button:hover {
 	border:2px solid $theme-highlight;

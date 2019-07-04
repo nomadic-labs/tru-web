@@ -9,6 +9,7 @@ export const CONTENT_MAP = {
   header: { type: "header", content: { text: "Header" } },
   paragraph: { type: "paragraph", content: { text: "Paragraph" } },
   image: { type: "image" },
+  imageCarousel: { type: "imageCarousel", content: {} },
   embeddedIframe: { type: "embeddedIframe" },
   timeline: { type: "timeline" },
   bouncingImageTopLeft: { type: "bouncingImageTopLeft" },

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
+import littlefoot from 'littlefoot'
 import withRoot from '../utils/withRoot';
 
 import Notification from "../components/notifications/Notification";
@@ -71,6 +72,24 @@ class DefaultLayout extends React.Component {
 
   componentDidMount() {
     this.props.closeMenu();
+    if (!this.props.isEditingPage) {
+      console.log("littlefoot!")
+      littlefoot({
+        anchorPattern: /(fn|footnote|note)[:\-_\w+]/gi,
+        footnoteSelector: 'div',
+        buttonTemplate: `<button
+          aria-controls="fncontent:<%= id %>"
+          aria-expanded="false"
+          aria-label="Footnote <%= number %>"
+          class="littlefoot-footnote__button"
+          id="<%= reference %>"
+          rel="footnote"
+          title="See Footnote <%= number %>"
+        />
+          <%= number %>
+        </button>`
+      })
+    }
   }
 
   render() {

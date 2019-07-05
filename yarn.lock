@@ -1212,6 +1212,18 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@pacote/get-style@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pacote/get-style/-/get-style-1.0.0.tgz#a4cb94913ee459656f6778b1fe26f7fa4c4d10b6"
+  integrity sha512-pajqFJY5xqT1vLGEtKBotELcL+Vxh3P35psgWngvqZtmMKsDsNrMYMOvtlTGByyadh8mfM70QGN3TKnaJqkaUA==
+
+"@pacote/pixels@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pacote/pixels/-/pixels-1.0.1.tgz#04f6d8a9998a3e5fa9ea4813bef07eeca5d971cb"
+  integrity sha512-NSM/N1Ej+Yq4ubb06J4BNvLsQkP5+k0PMH/O32DCD6h4vjLm81wuUkQRJReu4WPJnDkniwhsQuakaKJkSm6ZzA==
+  dependencies:
+    "@pacote/get-style" "^1.0.0"
+
 "@pieh/friendly-errors-webpack-plugin@1.7.0-chalk-2":
   version "1.7.0-chalk-2"
   resolved "https://registry.yarnpkg.com/@pieh/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-1.7.0-chalk-2.tgz#2e9da9d3ade9d18d013333eb408c457d04eabac0"
@@ -4298,6 +4310,13 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
+
+delegated-events@^1.0.10:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/delegated-events/-/delegated-events-1.1.0.tgz#0c154ea3259b5147c9a823bc392f64ed9231516a"
+  integrity sha512-hMKQPOezUgBxmNiXWmC7naLes9M1a+9SJKeUJRUWIrVQBl4xMOI7u0y7i0xnoZb46+jLqReKoWpqfuyKRrCcrQ==
+  dependencies:
+    selector-set "^1.1.3"
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -8494,6 +8513,17 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+littlefoot@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/littlefoot/-/littlefoot-2.0.2.tgz#ef9f9e8da502b8bee0faa1cbfcb77420c53acb2b"
+  integrity sha512-sgreg4/DVlQwGjI9/dGikrfFO7hp591aaED8q2Y+DWQAKonfJHYTEL6tmZ2jwJBLsT3yIXnvfNnQPr2njOrNjw==
+  dependencies:
+    "@pacote/get-style" "^1.0.0"
+    "@pacote/pixels" "^1.0.0"
+    delegated-events "^1.0.10"
+    lodash.template "^4.4.0"
+    lodash.throttle "^4.1.1"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -8756,6 +8786,11 @@ lodash.templatesettings@^4.0.0:
   integrity sha1-K01OlbpEDZFf8IvImeRVNmZxMxY=
   dependencies:
     lodash._reinterpolate "~3.0.0"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash.toarray@^4.4.0:
   version "4.4.0"
@@ -12212,6 +12247,11 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
+
+selector-set@^1.1.3:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.4.tgz#435f84f94b8c87d9d220df785ec5a049680b46dc"
+  integrity sha512-p852Z9CGCtWamKUcDpOaXFsggjTW5jS9MNQjvUEr6+l2tC2SflbqaMsd39+hnYmIfVx0hl0Sj4w1a7oaL8wLoA==
 
 selfsigned@^1.10.4:
   version "1.10.4"

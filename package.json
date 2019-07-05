@@ -24,6 +24,7 @@
     "gatsby-plugin-sass": "next",
     "gatsby-source-firebase": "^1.0.0",
     "jss": "^9.8.7",
+    "littlefoot": "^2.0.2",
     "lodash": "^4.17.4",
     "node-sass": "^4.9.2",
     "prop-types": "^15.6.2",

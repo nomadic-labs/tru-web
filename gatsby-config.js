@@ -32,6 +32,7 @@ module.exports = {
             map: node => {
               node.content = JSON.stringify(node.content);
               node.order = parseInt(node.order);
+              node.footnotes = JSON.stringify(node.footnotes)
 
               return node
             },

@@ -78,9 +78,7 @@ class ImageCarousel extends React.Component {
       ]
     };
 
-
     const contentKeys = Object.keys(this.props.content);
-    console.log(contentKeys)
 
     return (
       <div className="slider-active">

@@ -207,6 +207,27 @@ export const page = (state={}, action) => {
           }
         }
       }
+
+    case 'UPDATE_FOOTNOTE':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          footnotes: {
+            ...state.data.footnotes,
+            [action.id]: action.footnote
+          }
+        }
+      }
+
+    case 'SET_FOOTNOTES':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          footnotes: action.footnotes
+        }
+      }
     default:
       return state
   }

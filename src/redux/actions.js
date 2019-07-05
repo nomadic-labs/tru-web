@@ -88,6 +88,70 @@ export function updatePageHeaderImage(content) {
   return { type: "UPDATE_PAGE_HEADER_IMAGE", content };
 }
 
+export function updateFootnote(id, footnote) {
+  return { type: "UPDATE_FOOTNOTE", id, footnote }
+}
+
+export function setFootnotes(footnotes) {
+  return { type: "SET_FOOTNOTES", footnotes }
+}
+
+export function saveFootnote(footnoteId, footnote) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const pageId = getState().page.data.id;
+
+    db.ref(`pages/${pageId}/footnotes/${footnoteId}`).update(footnote, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "error"
+          )
+        );
+      }
+
+      dispatch(updateFootnote(footnoteId, footnote));
+      dispatch(
+        showNotification(
+          "Your changes have been saved.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
+export function removeFootnote(footnoteId) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const state = getState();
+    const pageId = state.page.data.id;
+
+    db.ref(`pages/${pageId}/footnotes/`).update({[footnoteId]: null}, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      let allFootnotes = { ...state.page.data.footnotes };
+      delete allFootnotes[footnoteId];
+
+      dispatch(setFootnotes(allFootnotes));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
 export function createPage(pageData, pageId) {
   return dispatch => {
     console.log('pageId', pageId)
@@ -107,7 +171,6 @@ export function createPage(pageData, pageId) {
       });
   };
 }
-
 
 // rename to updateContent
 export function updatePage(pageId, contentId, content) {
@@ -333,6 +396,8 @@ export function fetchPages() {
       })
   };
 }
+
+
 
 // NAVIGATION ------------------------
 

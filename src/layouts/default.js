@@ -70,25 +70,67 @@ class DefaultLayout extends React.Component {
     super(props)
   }
 
+  initializeLittlefoot = () => {
+    console.log("add footnotes")
+    littlefoot({
+      anchorPattern: /(fn|footnote|note)[:\-_\w+]/gi,
+      footnoteSelector: 'li',
+      buttonTemplate: `<button
+        aria-controls="fncontent:<%= id %>"
+        aria-expanded="false"
+        aria-label="Footnote <%= number %>"
+        class="littlefoot-footnote__button"
+        id="<%= reference %>"
+        rel="footnote"
+        title="See Footnote <%= number %>"
+      />
+        <%= number %>
+      </button>`
+    })
+
+    console.log("add definitions")
+    littlefoot({
+      anchorPattern: /(def)[:\-_\w+]/gi,
+      footnoteSelector: 'span',
+      buttonTemplate: `<button
+        aria-controls="fncontent:<%= id %>"
+        aria-expanded="false"
+        aria-label="Glossary definition"
+        class="littlefoot-footnote__button"
+        id="<%= reference %>"
+        rel="footnote"
+        title="See definition"
+      />
+        ?
+      </button>`,
+      contentTemplate: `
+      <aside
+        alt="Footnote <%= number %>"
+        class="littlefoot-footnote is-positioned-bottom"
+        id="fncontent:<%= id %>"
+      >
+        <div class="littlefoot-footnote__wrapper">
+          <div class="littlefoot-footnote__content">
+            <%= content %>
+          </div>
+        </div>
+        <div class="littlefoot-footnote__tooltip"></div>
+      </aside>
+      `
+    })
+  }
+
   componentDidMount() {
     this.props.closeMenu();
+
     if (!this.props.isEditingPage) {
-      console.log("littlefoot!")
-      littlefoot({
-        anchorPattern: /(fn|footnote|note)[:\-_\w+]/gi,
-        footnoteSelector: 'div',
-        buttonTemplate: `<button
-          aria-controls="fncontent:<%= id %>"
-          aria-expanded="false"
-          aria-label="Footnote <%= number %>"
-          class="littlefoot-footnote__button"
-          id="<%= reference %>"
-          rel="footnote"
-          title="See Footnote <%= number %>"
-        />
-          <%= number %>
-        </button>`
-      })
+      this.initializeLittlefoot()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isEditingPage && !this.props.isEditingPage) {
+      this.initializeLittlefoot()
     }
   }
 

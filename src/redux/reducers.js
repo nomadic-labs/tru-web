@@ -228,6 +228,27 @@ export const page = (state={}, action) => {
           footnotes: action.footnotes
         }
       }
+
+    case 'UPDATE_DEFINITION':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          definitions: {
+            ...state.data.definitions,
+            [action.id]: action.definition
+          }
+        }
+      }
+
+    case 'SET_DEFINITIONS':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          definitions: action.definitions
+        }
+      }
     default:
       return state
   }

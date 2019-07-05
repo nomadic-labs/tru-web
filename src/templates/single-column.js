@@ -15,6 +15,7 @@ import Layout from "../layouts/default.js";
 import PageHeader from "../components/common/PageHeader";
 import DynamicSection from "../components/editing/DynamicSection";
 import Footnotes from "../components/common/Footnotes"
+import Definitions from "../components/common/Definitions"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -49,6 +50,7 @@ class SingleColumnPage extends React.Component {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content),
       footnotes: JSON.parse(this.props.data.pages.footnotes),
+      definitions: JSON.parse(this.props.data.pages.definitions),
     };
     this.props.onLoadPageData(initialPageData);
   };
@@ -67,7 +69,6 @@ class SingleColumnPage extends React.Component {
 
   render() {
     const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
-    const footnotes = this.props.pageData ? this.props.pageData.footnotes : JSON.parse(this.props.data.pages.footnotes);
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
 
@@ -98,6 +99,7 @@ class SingleColumnPage extends React.Component {
             })
           }
           <Footnotes />
+          <Definitions />
         </Layout>
       </div>
     );
@@ -120,6 +122,7 @@ export const query = graphql`
       category
       menuTitle
       footnotes
+      definitions
       header_image {
         imageSrc
       }

@@ -152,6 +152,70 @@ export function removeFootnote(footnoteId) {
   };
 }
 
+export function updateDefinition(id, definition) {
+  return { type: "UPDATE_DEFINITION", id, definition }
+}
+
+export function setDefinitions(definitions) {
+  return { type: "SET_DEFINITIONS", definitions }
+}
+
+export function saveDefinition(definitionId, definition) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const pageId = getState().page.data.id;
+
+    db.ref(`pages/${pageId}/definitions/${definitionId}`).update(definition, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "error"
+          )
+        );
+      }
+
+      dispatch(updateDefinition(definitionId, definition));
+      dispatch(
+        showNotification(
+          "Your changes have been saved.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
+export function removeDefinition(definitionId) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const state = getState();
+    const pageId = state.page.data.id;
+
+    db.ref(`pages/${pageId}/definitions/`).update({[definitionId]: null}, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      let allDefinitions = { ...state.page.data.definitions };
+      delete allDefinitions[definitionId];
+
+      dispatch(setDefinitions(allDefinitions));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
 export function createPage(pageData, pageId) {
   return dispatch => {
     console.log('pageId', pageId)

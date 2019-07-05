@@ -33,6 +33,7 @@ module.exports = {
               node.content = JSON.stringify(node.content);
               node.order = parseInt(node.order);
               node.footnotes = JSON.stringify(node.footnotes)
+              node.definitions = JSON.stringify(node.definitions)
 
               return node
             },

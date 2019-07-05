@@ -20,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
                 menuTitle
                 palette
                 footnotes
+                definitions
               }
             }
           }

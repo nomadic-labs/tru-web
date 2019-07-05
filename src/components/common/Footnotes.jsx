@@ -61,15 +61,15 @@ class Footnotes extends React.Component {
     }
 
     return (
-      <section className="footnotes-section pt-60 pb-60">
+      <section className="footnotes-section pt-60 pb-20">
         <Container>
-          <h2>Notes</h2>
-          <div className="footnotes">
+          <h3>Notes</h3>
+          <ol className="footnotes">
             {
               footnoteKeys.map((key, index) => {
                 const footnote = this.props.footnotes[key];
                 return(
-                  <div className="footnote mb-20 mt-20" id={key} key={key}>
+                  <li className="footnote mb-20 mt-20" id={key} key={key}>
                     <EditableParagraph content={footnote.content} onSave={this.updateFootnote(key)} onDelete={this.deleteFootnote(key)} />
                     {
                       this.props.isEditingPage &&
@@ -77,15 +77,15 @@ class Footnotes extends React.Component {
                         Reference: <code>{`#${key}`}</code>
                       </p>
                     }
-                  </div>
+                  </li>
                 )
               })
             }
-          </div>
+          </ol>
           {
             this.props.isEditingPage &&
             <div className="pt-10 pb-10">
-              <Button onClick={this.addFootnote}>Add footnote</Button>
+              <Button color="primary" variant="outlined" onClick={this.addFootnote}>Add footnote</Button>
             </div>
           }
         </Container>

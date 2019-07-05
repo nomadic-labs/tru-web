@@ -4100,6 +4100,28 @@ ul.cat li a:hover {
 }
 .review-form button{}
 
-.footnotes-section .footnote-print-only {
-	display: block !important;
+.footnotes-section {
+	.footnote-print-only {
+		display: block !important;
+	}
+
+	ol.footnotes {
+		padding-left: 1.5rem;
+
+		li.footnote {
+			list-style: decimal;
+			display: list-item !important;
+			padding-left: 1rem;
+		}
+	}
+}
+
+.definitions-section {
+	.definition {
+		font-size: 16px;
+	}
+
+	.footnote-print-only {
+		display: block !important;
+	}
 }

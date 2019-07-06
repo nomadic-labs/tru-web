@@ -21,6 +21,8 @@ exports.createPages = ({ graphql, actions }) => {
                 palette
                 footnotes
                 definitions
+                prev
+                next
               }
             }
           }

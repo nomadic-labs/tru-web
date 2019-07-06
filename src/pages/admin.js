@@ -162,8 +162,6 @@ class AdminPage extends React.Component {
     arr.push(page)
 
     const nextPage = this.nextPage(page)
-    console.log('page', page)
-    console.log('nextPage', nextPage)
     if (page === nextPage) {
       return arr
     }

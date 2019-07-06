@@ -16,6 +16,8 @@ import PageHeader from "../components/common/PageHeader";
 import DynamicSection from "../components/editing/DynamicSection";
 import Footnotes from "../components/common/Footnotes"
 import Definitions from "../components/common/Definitions"
+import PageNavigation from "../components/common/PageNavigation"
+import PageTopics from "../components/common/PageTopics"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -86,6 +88,7 @@ class SingleColumnPage extends React.Component {
             onUpdateHeaderImage={this.onUpdateHeaderImage}
             onUpdateTitle={this.onUpdateTitle}
           />
+          <PageTopics />
           {
             sections.map((section, index) => {
               return(
@@ -98,6 +101,7 @@ class SingleColumnPage extends React.Component {
               )
             })
           }
+          <PageNavigation />
           <Footnotes />
           <Definitions />
         </Layout>
@@ -126,6 +130,8 @@ export const query = graphql`
       header_image {
         imageSrc
       }
+      prev
+      next
     }
   }
 `;

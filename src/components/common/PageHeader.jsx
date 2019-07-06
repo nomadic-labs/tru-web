@@ -2,13 +2,14 @@ import React from "react";
 import { EditableText, EditableBackgroundImage } from "react-easy-editables";
 import { uploadImage } from "../../firebase/operations";
 import titleBg from "../../assets/images/illustrations/title-bg.png";
+import PageTopics from "./PageTopics"
 
 const defaultHeader = "https://firebasestorage.googleapis.com/v0/b/tru-web.appspot.com/o/images%2Fbg-botanical.png?alt=media&token=cce3440c-c686-41e8-a957-59dbaed77e04";
 
 const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpdateHeaderImage }) => {
   return (
     <EditableBackgroundImage
-      classes="breadcrumb-area d-flex pt-260 pb-180 align-items-center"
+      classes="breadcrumb-area d-flex pt-120 pb-80 align-items-center"
       onSave={ onUpdateHeaderImage }
       uploadImage={ uploadImage }
       content={ headerImage || { imageSrc: defaultHeader} }

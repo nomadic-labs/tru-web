@@ -71,7 +71,6 @@ class DefaultLayout extends React.Component {
   }
 
   initializeLittlefoot = () => {
-    console.log("add footnotes")
     littlefoot({
       anchorPattern: /(fn|footnote|note)[:\-_\w+]/gi,
       footnoteSelector: 'li',
@@ -88,7 +87,6 @@ class DefaultLayout extends React.Component {
       </button>`
     })
 
-    console.log("add definitions")
     littlefoot({
       anchorPattern: /(def)[:\-_\w+]/gi,
       footnoteSelector: 'span',

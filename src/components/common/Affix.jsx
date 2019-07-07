@@ -43,8 +43,7 @@ class Affix extends Component {
     getContainerDOM() {
         const container = this.props.container;
         if (container != document.body) {
-            const element = document.querySelector(container);
-            return ReactDOM.findDOMNode(element);
+            return ReactDOM.findDOMNode(this).parentNode;
         }
         return container;
     }

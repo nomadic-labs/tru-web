@@ -12,8 +12,8 @@ import {
   deleteContentItem,
 } from "../../redux/actions";
 
+import Affix from "../common/Affix"
 import Header from "../common/Header";
-import Container from "../common/Container";
 import Paragraph from "../common/Paragraph";
 import Image from "../common/Image";
 import ImageCarousel from "../common/ImageCarousel";
@@ -75,7 +75,7 @@ const mapStateToProps = state => {
 };
 
 
-const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
+const FixedSidebarSection = ({ content, type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
 
   const onAddSection = () => {
     savePageContent(() => addSection(sectionIndex))
@@ -105,39 +105,46 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
     savePageContent(() => deleteContentItem(sectionIndex, contentIndex))
   }
 
-  const classes = type === "contrast" ? "bg-primary" : "";
+  const sectionId = `fixed-sidebar-section-${sectionIndex}`
 
   return(
-    <section className={`dynamic-section pos-relative pt-60 pb-60 ${classes}`}>
-      <Container>
-      {
-        content.map((component, index ) => {
-          const Component = componentMap[component.type];
-          return (
-            <Component
-              content={component.content}
-              onSave={onUpdateContentItem(sectionIndex, index)}
-              onDelete={onDeleteContentItem(sectionIndex, index)}
-              key={index}
-              isEditingPage={isEditingPage}
-            />
-          )
-        })
-      }
-      {
-        isEditingPage &&
-        <SectionEditingActions
-          onDuplicateSection={onDuplicateSection}
-          onDeleteSection={onDeleteSection}
-          onAddSection={onAddSection}
-          onAddContrastSection={onAddContrastSection}
-          onAddContentItem={onAddContentItem}
-        />
-      }
-      </Container>
+    <section id={sectionId} className={`fixed-sidebar-section pos-relative row`}>
+        <div className={`col-12 col-md-6 sidebar bg-primary`}>
+          <Affix>
+            <div className="pt-60 pb-60 sidebar-inner">
+              <h2>Fixed content goes here</h2>
+            </div>
+          </Affix>
+        </div>
+        <div className={`col-12 col-md-6 pt-60 pb-60 content`}>
+        {
+          content.map((component, index ) => {
+            const Component = componentMap[component.type];
+            return (
+              <Component
+                content={component.content}
+                onSave={onUpdateContentItem(sectionIndex, index)}
+                onDelete={onDeleteContentItem(sectionIndex, index)}
+                key={index}
+                isEditingPage={isEditingPage}
+              />
+            )
+          })
+        }
+        {
+          isEditingPage &&
+          <SectionEditingActions
+            onDuplicateSection={onDuplicateSection}
+            onDeleteSection={onDeleteSection}
+            onAddSection={onAddSection}
+            onAddContrastSection={onAddContrastSection}
+            onAddContentItem={onAddContentItem}
+          />
+        }
+        </div>
     </section>
   )
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(DynamicSection);
+export default connect(mapStateToProps, mapDispatchToProps)(FixedSidebarSection);

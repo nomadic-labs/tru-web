@@ -46,7 +46,7 @@ const ArticlePreview = ({ article, topics, categories, direction }) => {
             <img className="img-fluid" src={image} />
           </div>
           <div className="card-body">
-            <h5 className="topics">{ category.label }</h5>
+            { category && <h5 className="topics">{ category.label }</h5> }
             <h4 className="">{ article.title }</h4>
             <p className="mb-0 topics">{ tagsString }</p>
           </div>

@@ -4,6 +4,8 @@ import Collapsible from 'react-collapsible';
 import { StaticQuery, Link, graphql } from "gatsby";
 import { find } from "lodash"
 import Grid from "@material-ui/core/Grid";
+import ArrowRight from "@material-ui/icons/ArrowForward"
+import ArrowLeft from "@material-ui/icons/ArrowBack"
 import Container from "./Container";
 
 import dylan7 from "../../assets/images/illustrations/Dylan_Minor7.png";
@@ -11,38 +13,49 @@ import dylan7 from "../../assets/images/illustrations/Dylan_Minor7.png";
 
 const mapStateToProps = state => {
   return {
-    currentPage: state.page.data.id,
-    nextPage: state.page.data.next,
-    prevPage: state.page.data.prev,
+    currentPage: state.page.data,
   };
 };
 
-const ArticlePreview = ({ article, category, topics }) => {
+const ArticlePreview = ({ article, topics, categories, direction }) => {
+  if (!article) {
+    return null
+  }
+
+  const category = categories[article.category]
   const image = article.header_image ? article.header_image.imageSrc : dylan7;
   const tags = article.topics || [];
   const tagsString = tags.map(tag => topics[tag]).join(", ")
 
   return(
-    <Link to={`/${article.slug}`}>
-      <div className="card">
-        <div className="card-body">
-          <div className="row">
-            <div className="col-3">
-              <img src={image} className="img-fluid" />
+    <div className="col-md-6">
+      <Link to={`/${article.slug}`}>
+        <div className={`card mb-4 mb-md-0 ${direction} ${direction == "prev" ? "d-none d-md-block" : ""}`}>
+          {
+            direction == "next" ?
+            <div className="card-header">
+              <h5 className="mb-0">Next Page</h5>
+              <ArrowRight className="ml-1" />
+            </div> :
+            <div className="card-header">
+              <ArrowLeft className="mr-1" />
+              <h5 className="mb-0">Previous Page</h5>
             </div>
-
-            <div className="col-9">
-              <h4 className="">{ article.title }</h4>
-              <p className="mb-0 topics">{ category.label }</p>
-              <p className="mb-0 topics">{ tagsString }</p>
-            </div>
+          }
+          <div className="card-image">
+            <img className="img-fluid" src={image} />
           </div>
-
+          <div className="card-body">
+            <h5 className="topics">{ category.label }</h5>
+            <h4 className="">{ article.title }</h4>
+            <p className="mb-0 topics">{ tagsString }</p>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
+
 
 class PageNavigationInner extends Component {
   constructor(props) {
@@ -90,7 +103,9 @@ class PageNavigationInner extends Component {
     }
 
     const nextCategory = this.nextCategory(currentCategory)
-    nextPage = find(this.props.pages, page => { return (page.category === nextCategory.id) && !page.prev})
+    if (nextCategory) {
+      nextPage = find(this.props.pages, page => { return (page.category === nextCategory.id) && !page.prev})
+    }
 
     if (nextPage) {
       return nextPage
@@ -100,7 +115,28 @@ class PageNavigationInner extends Component {
   }
 
   prevPage = page => {
-    return this.props.pages[page.prev];
+    let prevPage = this.props.pages[page.prev]
+
+    if (prevPage) {
+      return prevPage
+    }
+
+    const currentCategory = this.props.categories[page.category]
+
+    if (!currentCategory) {
+      return null
+    }
+
+    const prevCategory = this.prevCategory(currentCategory)
+    if (prevCategory) {
+      prevPage = find(this.props.pages, page => { return (page.category === prevCategory.id) && !page.next})
+    }
+
+    if (prevPage) {
+      return prevPage
+    }
+
+    return null
   }
 
   orderedCategories = (category, arr=[]) => {
@@ -125,19 +161,14 @@ class PageNavigationInner extends Component {
    }
 
   render() {
-    const page = this.props.pages[this.props.currentPage];
-    const nextPage = this.nextPage(page)
+    const nextPage = this.nextPage(this.props.currentPage)
+    const prevPage = this.prevPage(this.props.currentPage)
 
-    if (!nextPage) {
-      return null
-    }
-
-    const category = this.props.categories[nextPage.category]
     return(
-      <Container>
-        <h3>Next Page</h3>
-        <ArticlePreview article={nextPage} key={ nextPage.slug } topics={this.props.topics} category={category} />
-      </Container>
+      <div className="row">
+        <ArticlePreview article={prevPage} topics={this.props.topics} categories={this.props.categories} direction="prev" />
+        <ArticlePreview article={nextPage} topics={this.props.topics} categories={this.props.categories} direction="next" />
+      </div>
     )
   }
 }

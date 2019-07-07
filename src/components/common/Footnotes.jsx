@@ -61,35 +61,33 @@ class Footnotes extends React.Component {
     }
 
     return (
-      <section className="footnotes-section pt-60 pb-20">
-        <Container>
-          <h3>Notes</h3>
-          <ol className="footnotes">
-            {
-              footnoteKeys.map((key, index) => {
-                const footnote = this.props.footnotes[key];
-                return(
-                  <li className="footnote mb-20 mt-20" id={key} key={key}>
-                    <EditableParagraph content={footnote.content} onSave={this.updateFootnote(key)} onDelete={this.deleteFootnote(key)} />
-                    {
-                      this.props.isEditingPage &&
-                      <p>
-                        Reference: <code>{`#${key}`}</code>
-                      </p>
-                    }
-                  </li>
-                )
-              })
-            }
-          </ol>
+      <div className="footnotes-section mb-40">
+        <h3 className="">Notes</h3>
+        <ol className="footnotes">
           {
-            this.props.isEditingPage &&
-            <div className="pt-10 pb-10">
-              <Button color="primary" variant="outlined" onClick={this.addFootnote}>Add footnote</Button>
-            </div>
+            footnoteKeys.map((key, index) => {
+              const footnote = this.props.footnotes[key];
+              return(
+                <li className="footnote mb-20 mt-20 " id={key} key={key}>
+                  <EditableParagraph content={footnote.content} onSave={this.updateFootnote(key)} onDelete={this.deleteFootnote(key)} />
+                  {
+                    this.props.isEditingPage &&
+                    <p className="">
+                      Reference: <code>{`#${key}`}</code>
+                    </p>
+                  }
+                </li>
+              )
+            })
           }
-        </Container>
-      </section>
+        </ol>
+        {
+          this.props.isEditingPage &&
+          <div className="pt-10 pb-10">
+            <Button color="primary" variant="outlined" onClick={this.addFootnote}>Add footnote</Button>
+          </div>
+        }
+      </div>
     );
   }
 };

@@ -18,6 +18,7 @@ import Footnotes from "../components/common/Footnotes"
 import Definitions from "../components/common/Definitions"
 import PageNavigation from "../components/common/PageNavigation"
 import PageTopics from "../components/common/PageTopics"
+import Container from "../components/common/Container"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -88,7 +89,6 @@ class SingleColumnPage extends React.Component {
             onUpdateHeaderImage={this.onUpdateHeaderImage}
             onUpdateTitle={this.onUpdateTitle}
           />
-          <PageTopics />
           {
             sections.map((section, index) => {
               return(
@@ -101,9 +101,14 @@ class SingleColumnPage extends React.Component {
               )
             })
           }
-          <PageNavigation />
-          <Footnotes />
-          <Definitions />
+          <section id="end-matter" className="pt-60 pb-60">
+            <Container>
+              <PageTopics />
+              <Footnotes />
+              <Definitions />
+              <PageNavigation />
+            </Container>
+          </section>
         </Layout>
       </div>
     );

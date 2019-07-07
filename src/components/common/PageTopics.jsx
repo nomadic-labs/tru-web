@@ -38,14 +38,14 @@ const PageTopics = props => (
       const tagsString = props.page.topics.map(tag => topics[tag]).join(", ")
 
       return(
-        <Container className="mt-20">
+        <div className="mb-40">
           {
             props.page.topics.map(id => {
               const label = topics[id]
-              return <Chip key={id} className="my-2 mr-2" label={label} variant="outlined" color="primary" style={{ background: "white" }} />
+              return <Chip key={id} className="my-2 mr-2" label={label} variant="outlined" color="primary" />
             })
           }
-        </Container>
+        </div>
       )
     }}
   />

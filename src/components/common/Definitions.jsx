@@ -87,38 +87,36 @@ class Definitions extends React.Component {
     }
 
     return (
-      <section className="definitions-section pb-60">
-        <Container>
-          <h3>Glossary</h3>
-          <div className="definitions">
-            {
-              definitionKeys.map((key, index) => {
-                const definition = this.props.definitions[key];
-                return(
-                  <div className={`definition mb-20 mt-20 ${this.props.isEditingPage ? '' : 'd-flex'}`} key={key}>
-                    <span><em><EditableText content={definition.original.content} onSave={this.updateOriginal(key)} onDelete={this.deleteDefinition(key)} /></em></span>
-                    <span>&nbsp;--&nbsp;</span>
-                    <span id={key}><EditableText content={definition.definition.content} onSave={this.updateDefinition(key)} onDelete={this.deleteDefinition(key)} /></span>
-
-                    {
-                      this.props.isEditingPage &&
-                      <p>
-                        Reference: <code>{`#${key}`}</code>
-                      </p>
-                    }
-                  </div>
-                )
-              })
-            }
-          </div>
+      <div className="definitions-section mb-40">
+        <h3 className="">Glossary</h3>
+        <div className="definitions">
           {
-            this.props.isEditingPage &&
-            <div className="pt-10 pb-10">
-              <Button color="primary" variant="outlined" onClick={this.addDefinition}>Add definition</Button>
-            </div>
+            definitionKeys.map((key, index) => {
+              const definition = this.props.definitions[key];
+              return(
+                <div className={`definition mb-20 mt-20 ${this.props.isEditingPage ? '' : 'd-flex'}`} key={key}>
+                  <span><em><EditableText content={definition.original.content} onSave={this.updateOriginal(key)} onDelete={this.deleteDefinition(key)} /></em></span>
+                  <span>&nbsp;--&nbsp;</span>
+                  <span id={key}><EditableText content={definition.definition.content} onSave={this.updateDefinition(key)} onDelete={this.deleteDefinition(key)} /></span>
+
+                  {
+                    this.props.isEditingPage &&
+                    <p>
+                      Reference: <code>{`#${key}`}</code>
+                    </p>
+                  }
+                </div>
+              )
+            })
           }
-        </Container>
-      </section>
+        </div>
+        {
+          this.props.isEditingPage &&
+          <div className="pt-10 pb-10">
+            <Button color="primary" variant="outlined" onClick={this.addDefinition}>Add definition</Button>
+          </div>
+        }
+      </div>
     );
   }
 };

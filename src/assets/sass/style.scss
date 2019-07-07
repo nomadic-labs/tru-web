@@ -4125,3 +4125,94 @@ ul.cat li a:hover {
 		display: block !important;
 	}
 }
+
+section#end-matter {
+	border-top: 1px solid $light-blue;
+
+	.card, .card-header {
+		border-radius: 0;
+		border: none;
+	}
+
+	.card {
+		box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+		border-bottom: 3px solid $theme-secondary;
+		transition: all 0.3s linear;
+
+		.card-body {
+			h4, a, p {
+				color: $black;
+			}
+
+			h5 {
+				color: $theme-secondary;
+		    letter-spacing: 2px;
+		    font-weight: 600;
+		    font-size: 14px;
+		    text-transform: uppercase;
+			}
+		}
+
+		.card-header {
+			background-color: $theme-secondary;
+			color: white;
+	    display: flex;
+	    align-items: center;
+	    justify-content: flex-end;
+
+	    h5 {
+		    letter-spacing: 2px;
+		    font-weight: 600;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    line-height: 1;
+		    color: white;
+			}
+
+			svg {
+				transition: all 0.3s linear;
+			}
+		}
+
+		&.prev {
+			border-bottom: 3px solid $theme-secondary;
+
+			.card-header {
+				background-color: $theme-secondary;
+				justify-content: flex-start;
+			}
+
+			.card-body {
+				h5 {
+					color: $theme-secondary;
+				}
+			}
+
+			&:hover {
+				.card-header {
+					svg {
+						transform: translateX(-5px);
+					}
+				}
+			}
+		}
+
+		&:hover {
+			box-shadow: 0px 10px 10px rgba(0,0,0,.2);
+			transform: translateY(-5px);
+
+			.card-header {
+				svg {
+					transform: translateX(5px);
+				}
+			}
+
+			.card-body {
+				h4 {
+					color: $theme-primary;
+				}
+			}
+		}
+	}
+}
+

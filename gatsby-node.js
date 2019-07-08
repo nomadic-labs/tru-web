@@ -75,7 +75,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             use: loaders.null(),
           },
           {
-            test: /mapbox-gl/,
+            test: /littlefoot/,
             use: loaders.null(),
           },
         ],

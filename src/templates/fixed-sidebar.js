@@ -73,7 +73,7 @@ class FixedSidbarPage extends React.Component {
   render() {
     const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
-    const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
+    const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [], sidebar: {} }];
 
     return (
       <div>
@@ -93,6 +93,7 @@ class FixedSidbarPage extends React.Component {
             sections.map((section, index) => {
               return(
                 <FixedSidebarSection
+                  sidebar={ section.sidebar }
                   content={ section.content }
                   sectionIndex={index}
                   key={index}

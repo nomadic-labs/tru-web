@@ -4217,5 +4217,37 @@ section#end-matter {
 }
 
 .fixed-sidebar-section {
-	min-height: 100vh;
+	display: flex;
+	align-items: stretch;
+
+	.sidebar, .content {
+		flex: 1 1 50%;
+	}
+
+	.sidebar {
+		background-color: $theme-primary;
+	}
+
+	.sidebar-inner {
+		max-height: calc(100vh);
+
+		.edit-container {
+			height: 100%;
+		}
+
+		.lightbox-container {
+			display: flex;
+			height: 100%;
+
+			img {
+				object-fit: contain;
+			}
+		}
+	}
+
+	&:nth-of-type(even) {
+		.sidebar {
+	    background-color: $lighter-gray;
+		}
+  }
 }

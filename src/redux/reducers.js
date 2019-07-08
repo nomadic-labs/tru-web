@@ -122,6 +122,7 @@ export const page = (state={}, action) => {
           }
         }
       }
+
     case 'DELETE_SECTION':
       newSectionArr = [...state.data.content.sections];
       newSectionArr.splice(action.sectionIndex, 1);

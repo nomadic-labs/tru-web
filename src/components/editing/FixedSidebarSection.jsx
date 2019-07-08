@@ -23,7 +23,8 @@ import BouncingImageTopLeft from "../common/BouncingImageTopLeft";
 import BouncingImageTopRight from "../common/BouncingImageTopRight";
 import BouncingImageBottomLeft from "../common/BouncingImageBottomLeft";
 import BouncingImageBottomRight from "../common/BouncingImageBottomRight";
-import SectionEditingActions from "./SectionEditingActions"
+import SectionEditingActionsLimited from "./SectionEditingActionsLimited"
+import SectionEditingActionsFixedSidebar from "./SectionEditingActionsFixedSidebar"
 
 const componentMap = {
   header: Header,
@@ -75,7 +76,7 @@ const mapStateToProps = state => {
 };
 
 
-const FixedSidebarSection = ({ content, type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
+const FixedSidebarSection = ({ sidebar, content, type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
 
   const onAddSection = () => {
     savePageContent(() => addSection(sectionIndex))
@@ -105,18 +106,36 @@ const FixedSidebarSection = ({ content, type, sectionIndex, pageData, isEditingP
     savePageContent(() => deleteContentItem(sectionIndex, contentIndex))
   }
 
-  const sectionId = `fixed-sidebar-section-${sectionIndex}`
-
   return(
-    <section id={sectionId} className={`fixed-sidebar-section pos-relative row`}>
-        <div className={`col-12 col-md-6 sidebar bg-primary`}>
-          <Affix>
-            <div className="pt-60 pb-60 sidebar-inner">
-              <h2>Fixed content goes here</h2>
-            </div>
-          </Affix>
-        </div>
-        <div className={`col-12 col-md-6 pt-60 pb-60 content`}>
+    <section className={`fixed-sidebar-section`}>
+      <div className={`sidebar`}>
+        <Affix>
+          <div className="pt-40 pb-40 pr-40 pl-40 sidebar-inner pos-relative d-flex justify-content-center">
+            {
+              ((sidebar) => {
+                if (sidebar) {
+                  const Component = componentMap[sidebar.type];
+                  return(
+                    <Component
+                      content={sidebar.content}
+                      onSave={() => console.log("save sidebar thing")}
+                      onDelete={() => console.log("delete sidebar thing")}
+                      isEditingPage={isEditingPage}
+                    />
+                  )
+                }
+              })(sidebar)
+            }
+            {
+              (isEditingPage && !sidebar) &&
+              <SectionEditingActionsFixedSidebar
+                onAddContentItem={onAddContentItem}
+              />
+            }
+          </div>
+        </Affix>
+      </div>
+      <div className={`content pt-40 pb-40 pr-40 pl-40 pos-relative`}>
         {
           content.map((component, index ) => {
             const Component = componentMap[component.type];
@@ -133,15 +152,14 @@ const FixedSidebarSection = ({ content, type, sectionIndex, pageData, isEditingP
         }
         {
           isEditingPage &&
-          <SectionEditingActions
+          <SectionEditingActionsLimited
             onDuplicateSection={onDuplicateSection}
             onDeleteSection={onDeleteSection}
             onAddSection={onAddSection}
-            onAddContrastSection={onAddContrastSection}
             onAddContentItem={onAddContentItem}
           />
         }
-        </div>
+      </div>
     </section>
   )
 };

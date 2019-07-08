@@ -41,11 +41,12 @@ class Affix extends Component {
     }
 
     getContainerDOM() {
-        const container = this.props.container;
-        if (container != document.body) {
-            return ReactDOM.findDOMNode(this).parentNode;
-        }
-        return container;
+        // const container = this.props.container;
+        // console.log('container', container)
+        // if (container != document.body) {
+        // }
+        // return container;
+        return ReactDOM.findDOMNode(this).parentNode;
     }
 
     getInitPosition() {

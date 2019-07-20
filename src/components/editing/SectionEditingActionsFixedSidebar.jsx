@@ -95,10 +95,6 @@ class SectionEditingActionsFixedSidebar extends React.Component {
                 Image
               </MenuItem>
 
-              <MenuItem onClick={() => this.props.onAddContentItem("imageCarousel")}>
-                Image Carousel
-              </MenuItem>
-
               <MenuItem onClick={() => this.props.onAddContentItem("embeddedIframe")}>
                 Embedded Iframe
               </MenuItem>

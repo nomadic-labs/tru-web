@@ -156,12 +156,9 @@ export const page = (state={}, action) => {
     case 'ADD_CONTENT_ITEM':
       newSection = { ...state.data.content.sections[action.sectionIndex] }
       emptyContentItem = CONTENT_MAP[action.contentType];
-      newSection.content.push(emptyContentItem);
+      newSection.content ? newSection.content.push(emptyContentItem) : newSection.content = [emptyContentItem]
       newSectionArr = [...state.data.content.sections]
       newSectionArr.splice(action.sectionIndex, 1, newSection)
-
-      console.log("action.sectionIndex", action.sectionIndex)
-      console.log("state.data.content.sections", state.data.content.sections)
 
       return {
         ...state,
@@ -195,6 +192,58 @@ export const page = (state={}, action) => {
     case 'DELETE_CONTENT_ITEM':
       newSection = { ...state.data.content.sections[action.sectionIndex] }
       newSection.content.splice(action.contentIndex, 1);
+      newSectionArr = [...state.data.content.sections]
+      newSectionArr.splice(action.sectionIndex, 1, newSection)
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
+          }
+        }
+      }
+
+    case 'ADD_SIDEBAR_CONTENT':
+      newSection = { ...state.data.content.sections[action.sectionIndex] }
+      emptyContentItem = CONTENT_MAP[action.contentType];
+      newSection.sidebar = emptyContentItem;
+      newSectionArr = [...state.data.content.sections]
+      newSectionArr.splice(action.sectionIndex, 1, newSection)
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
+          }
+        }
+      }
+
+    case 'UPDATE_SIDEBAR_CONTENT':
+      newSection = {...state.data.content.sections[action.sectionIndex] }
+      newSection.sidebar.content = action.content
+      newSectionArr = [...state.data.content.sections]
+      newSectionArr.splice(action.sectionIndex, 1, newSection)
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            sections: newSectionArr
+          }
+        }
+      }
+
+    case 'DELETE_SIDEBAR_CONTENT':
+      newSection = { ...state.data.content.sections[action.sectionIndex] }
+      delete newSection.sidebar;
       newSectionArr = [...state.data.content.sections]
       newSectionArr.splice(action.sectionIndex, 1, newSection)
 

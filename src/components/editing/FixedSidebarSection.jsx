@@ -10,6 +10,9 @@ import {
   addContentItem,
   updateContentItem,
   deleteContentItem,
+  addSidebarContent,
+  updateSidebarContent,
+  deleteSidebarContent,
 } from "../../redux/actions";
 
 import Affix from "../common/Affix"
@@ -44,6 +47,9 @@ const mapDispatchToProps = dispatch => {
     onUpdatePageData: (page, id, data) => {
       dispatch(updatePage(page, id, data));
     },
+    savePageContent: (innerFunction) => {
+      dispatch(savePageContent(innerFunction));
+    },
     addSection: (sectionIndex, sectionType) => {
       dispatch(addSection(sectionIndex, sectionType));
     },
@@ -62,9 +68,15 @@ const mapDispatchToProps = dispatch => {
     deleteContentItem: (sectionIndex, contentIndex) => {
       dispatch(deleteContentItem(sectionIndex, contentIndex))
     },
-    savePageContent: (innerFunction) => {
-      dispatch(savePageContent(innerFunction));
+    addSidebarContent: (sectionIndex, contentType) => {
+      dispatch(addSidebarContent(sectionIndex, contentType))
     },
+    updateSidebarContent: (sectionIndex, content) => {
+      dispatch(updateSidebarContent(sectionIndex, content))
+    },
+    deleteSidebarContent: (sectionIndex) => {
+      dispatch(deleteSidebarContent(sectionIndex))
+    }
   };
 };
 
@@ -76,10 +88,10 @@ const mapStateToProps = state => {
 };
 
 
-const FixedSidebarSection = ({ sidebar, content, type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
+const FixedSidebarSection = ({ sidebar, content=[], type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem, addSidebarContent, updateSidebarContent, deleteSidebarContent }) => {
 
   const onAddSection = () => {
-    savePageContent(() => addSection(sectionIndex))
+    savePageContent(() => addSection(sectionIndex, "fixed-sidebar-section"))
   }
 
   const onAddContrastSection = () => {
@@ -106,10 +118,22 @@ const FixedSidebarSection = ({ sidebar, content, type, sectionIndex, pageData, i
     savePageContent(() => deleteContentItem(sectionIndex, contentIndex))
   }
 
+  const onAddSidebarContent = (contentType) => {
+    savePageContent(() => addSidebarContent(sectionIndex, contentType))
+  }
+
+  const onUpdateSidebarContent = (sectionIndex) => content => {
+    savePageContent(() => updateSidebarContent(sectionIndex, content))
+  }
+
+  const onDeleteSidebarContent = (sectionIndex) => () => {
+    savePageContent(() => deleteSidebarContent(sectionIndex))
+  }
+
   return(
     <section className={`fixed-sidebar-section`}>
       <div className={`sidebar`}>
-        <Affix>
+        <Affix disableOnMobile={true}>
           <div className="pt-40 pb-40 pr-40 pl-40 sidebar-inner pos-relative d-flex justify-content-center">
             {
               ((sidebar) => {
@@ -118,8 +142,8 @@ const FixedSidebarSection = ({ sidebar, content, type, sectionIndex, pageData, i
                   return(
                     <Component
                       content={sidebar.content}
-                      onSave={() => console.log("save sidebar thing")}
-                      onDelete={() => console.log("delete sidebar thing")}
+                      onSave={onUpdateSidebarContent(sectionIndex)}
+                      onDelete={onDeleteSidebarContent(sectionIndex)}
                       isEditingPage={isEditingPage}
                     />
                   )
@@ -129,7 +153,7 @@ const FixedSidebarSection = ({ sidebar, content, type, sectionIndex, pageData, i
             {
               (isEditingPage && !sidebar) &&
               <SectionEditingActionsFixedSidebar
-                onAddContentItem={onAddContentItem}
+                onAddContentItem={onAddSidebarContent}
               />
             }
           </div>
@@ -141,10 +165,10 @@ const FixedSidebarSection = ({ sidebar, content, type, sectionIndex, pageData, i
             const Component = componentMap[component.type];
             return (
               <Component
+                key={index}
                 content={component.content}
                 onSave={onUpdateContentItem(sectionIndex, index)}
                 onDelete={onDeleteContentItem(sectionIndex, index)}
-                key={index}
                 isEditingPage={isEditingPage}
               />
             )

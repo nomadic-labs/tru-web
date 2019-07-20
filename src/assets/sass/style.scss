@@ -4219,6 +4219,7 @@ section#end-matter {
 .fixed-sidebar-section {
 	display: flex;
 	align-items: stretch;
+	min-height: 80vh;
 
 	.sidebar, .content {
 		flex: 1 1 50%;

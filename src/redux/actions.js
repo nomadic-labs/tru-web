@@ -72,6 +72,18 @@ export function deleteContentItem(sectionIndex, contentIndex) {
   return { type: "DELETE_CONTENT_ITEM", sectionIndex, contentIndex };
 }
 
+export function addSidebarContent(sectionIndex, contentType) {
+  return { type: "ADD_SIDEBAR_CONTENT", sectionIndex, contentType };
+}
+
+export function updateSidebarContent(sectionIndex, content) {
+  return { type: "UPDATE_SIDEBAR_CONTENT", sectionIndex, content};
+}
+
+export function deleteSidebarContent(sectionIndex) {
+  return { type: "DELETE_SIDEBAR_CONTENT", sectionIndex };
+}
+
 export function toggleEditing() {
   return { type: "TOGGLE_EDITING" };
 }

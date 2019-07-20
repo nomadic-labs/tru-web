@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
+const isClient = (typeof window != 'undefined' && window.document);
+const isMobile = isClient && window.innerWidth;
+
 class Affix extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +24,7 @@ class Affix extends Component {
         width: 0,
         containerHeight: 0,
         containerWidth: 0,
+        isMobile: isMobile,
     }
 
     componentDidMount() {
@@ -52,12 +56,14 @@ class Affix extends Component {
     getInitPosition() {
         const container = this.getContainerDOM()
         const thisElm = ReactDOM.findDOMNode(this);
+        const isMobile = isClient && (window.innerWidth <= this.props.mobileBreakpoint)
 
         this.setState({
             height: thisElm.offsetHeight,
             width: thisElm.offsetWidth,
             containerHeight: container.offsetHeight,
             containerWidth: container.offsetWidth,
+            isMobile: isMobile,
         })
 
         const containerRect = container.getBoundingClientRect();
@@ -79,14 +85,23 @@ class Affix extends Component {
 
     handleTargetChange(evt) {
         const container = this.getContainerDOM()
+        const thisElm = ReactDOM.findDOMNode(this);
         const { top, left } = container.getBoundingClientRect()
+        const isMobile = isClient && (window.innerWidth <= this.props.mobileBreakpoint);
 
         this.setState({
             top: top,
             left: left,
             containerHeight: container.offsetHeight,
             containerWidth: container.offsetWidth,
+            isMobile: isMobile,
+            height: thisElm.offsetHeight,
+            width: thisElm.offsetWidth,
         })
+
+        if (this.props.disableOnMobile && isMobile) {
+            return;
+        }
 
         if (this.state.top < this.props.offsetTop) {
             if ( this.state.affixed == false) {
@@ -149,6 +164,8 @@ Affix.propTypes = {
     onChange: PropTypes.func,
     onTargetChange: PropTypes.func,
     zIndex: PropTypes.number,
+    disableOnMobile: PropTypes.bool,
+    mobileBreakpoint: PropTypes.number,
 }
 
 Affix.defaultProps = {
@@ -158,6 +175,8 @@ Affix.defaultProps = {
     onChange: (affixed) => ({}),
     onTargetChange: (state) => ({}),
     zIndex: 2,
+    disableOnMobile: false,
+    mobileBreakpoint: 992
 }
 
 

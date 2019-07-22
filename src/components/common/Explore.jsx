@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Collapsible from 'react-collapsible';
 import { StaticQuery, Link, graphql } from "gatsby";
-import { find } from "lodash"
+import { find, filter } from "lodash"
 import Grid from "@material-ui/core/Grid";
 
 import { MENU_CATEGORIES } from "../../utils/constants";
@@ -57,20 +57,8 @@ class Research extends Component {
     }
   }
 
-  sortPages = pages => {
-    return pages.sort((a, b) => (a.order - b.order));
-  }
-
-  filterPagesByTopic = pages => {
-    if (this.props.selectedTopics) {
-      return pages.filter(page => page.topics && page.topics.includes(this.props.selectedTopics.id));
-    }
-
-    return pages;
-  }
-
   filterPagesByCategory = (pages, category) => {
-    return pages.filter(page => page.category === category.id);
+    return filter(pages, page => page.category === category.id);
   }
 
   nextCategory = category => {
@@ -88,6 +76,36 @@ class Research extends Component {
 
     arr.push(category)
     return this.orderedCategories(this.nextCategory(category), arr)
+  }
+
+  nextPage = page => {
+    return this.props.pages[page.next];
+  }
+
+  prevPage = page => {
+    return this.props.pages[page.prev];
+  }
+
+  orderedPages = (page, arr=[]) => {
+    if (!page) {
+      return arr
+    }
+
+    arr.push(page)
+
+    const nextPage = this.nextPage(page)
+    if (page === nextPage) {
+      return arr
+    }
+    return this.orderedPages(this.nextPage(page), arr)
+  }
+
+  filterPagesByTopic = pages => {
+    if (this.props.selectedTopics) {
+      return pages.filter(page => page.topics && page.topics.includes(this.props.selectedTopics.id));
+    }
+
+    return pages;
   }
 
   componentDidUpdate(prevProps) {
@@ -111,12 +129,17 @@ class Research extends Component {
       )
     }
 
+    console.log("categories and pages on menu")
+    console.log(this.props.categories)
+    console.log(this.props.pages)
 
-    const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
+
     const pagesByCategory = [];
+    const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
 
     orderedCategories.forEach(category => {
-      const pages = this.sortPages(this.filterPagesByCategory(this.state.pages, category))
+      const categoryPages = this.filterPagesByCategory(this.props.pages, category)
+      const pages = this.orderedPages(categoryPages.find(page => !page.prev))
 
       if (pages.length > 0) {
         pagesByCategory.push({ ...category, pages })
@@ -157,6 +180,7 @@ const Explore = props => (
         allPages {
           edges {
             node {
+              id
               title
               slug
               header_image {
@@ -165,7 +189,8 @@ const Explore = props => (
               topics
               category
               menuTitle
-              order
+              next
+              prev
             }
           }
         }
@@ -190,7 +215,11 @@ const Explore = props => (
       }
     `}
     render={data => {
-      const pages = data.allPages.edges.map(edge => edge.node);
+      const pagesArr = data.allPages.edges.map(edge => edge.node);
+      const pages = pagesArr.reduce((obj, page) => {
+        obj[page.id] = page
+        return obj
+      }, {})
       const topicsArr = data.allTopics.edges.map(edge => edge.node);
       const topics = topicsArr.reduce((obj, topic) => {
         obj[topic.id] = topic.label

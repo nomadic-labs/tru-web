@@ -133,7 +133,7 @@ const FixedSidebarSection = ({ sidebar, content=[], type, sectionIndex, pageData
   return(
     <section className={`fixed-sidebar-section`}>
       <div className={`sidebar`}>
-        <Affix disableOnMobile={true}>
+        <Affix disableOnMobile={true} mobileBreakpoint={992}>
           <div className="pt-40 pb-40 pr-40 pl-40 sidebar-inner pos-relative d-flex justify-content-center">
             {
               ((sidebar) => {

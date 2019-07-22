@@ -269,12 +269,14 @@ class AdminPage extends React.Component {
   }
 
   render() {
+    console.log("categories and pages on admin page")
+    console.log(this.props.categories)
+    console.log(this.props.pages)
     const pagesByCategory = [];
     const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
 
     orderedCategories.forEach(category => {
       const categoryPages = this.filterPagesByCategory(this.props.pages, category)
-      console.log(categoryPages);
       const pages = this.orderedPages(categoryPages.find(page => !page.prev))
 
       if (pages.length > 0) {

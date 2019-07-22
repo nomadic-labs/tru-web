@@ -13,6 +13,7 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
       onSave={ onUpdateHeaderImage }
       uploadImage={ uploadImage }
       content={ headerImage || { imageSrc: defaultHeader} }
+      maxSize={1024 * 1024 * 12}
     >
       <div className="container">
         <div className="row">

@@ -12,10 +12,10 @@
 
 .fixed-sidebar-section {
   .sidebar-inner {
-    height: calc(100vh - 80px);
 
     .iframe-container {
-      height: 100%;
+      height: calc(100vh - 80px);
+      /*height: 100%;*/
       width: 100%;
 
       .embedded-iframe {

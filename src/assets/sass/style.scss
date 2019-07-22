@@ -4226,7 +4226,10 @@ section#end-matter {
 
 	.sidebar {
 		background-color: $theme-primary;
-		color: $white;
+
+		small { /*for image captions*/
+			color: $white;
+		}
 	}
 
 	.sidebar-inner {
@@ -4249,6 +4252,10 @@ section#end-matter {
 	&:nth-of-type(even) {
 		.sidebar {
 	    background-color: $lighter-gray;
+
+	    small { /*for image captions*/
+				color: initial;
+			}
 		}
   }
 }

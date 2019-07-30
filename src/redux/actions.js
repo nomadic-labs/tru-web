@@ -108,6 +108,14 @@ export function setFootnotes(footnotes) {
   return { type: "SET_FOOTNOTES", footnotes }
 }
 
+export function updatePageContentState(location, content) {
+  return { type: "UPDATE_PAGE_CONTENT", location, content };
+}
+
+export function setPageContentState(location, content) {
+  return { type: "SET_PAGE_CONTENT", location, content };
+}
+
 export function saveFootnote(footnoteId, footnote) {
   return (dispatch, getState) => {
     const db = firebase.database();
@@ -355,6 +363,64 @@ export function updateFirebaseData(updates, callback=null) {
         )
       );
     });
+  };
+}
+
+export function pushContentItem(location, content) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const pageId = getState().page.data.id;
+    const newKey = db.ref(`pages/${pageId}/content/${location}/`).push().key;
+    const newItem = { [newKey]: content }
+
+    db.ref(`pages/${pageId}/content/${location}/`).update(newItem, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(updatePageContentState(location, newItem));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    })
+  };
+}
+
+export function removeContentItem(location, itemId) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const state = getState();
+    const pageId = state.page.data.id;
+
+    db.ref(`pages/${pageId}/content/${location}/`).update({[itemId]: null}, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      const newContent = { ...state.page.data.content[location] }
+      delete newContent[itemId]
+
+      dispatch(setPageContentState(location, newContent));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    })
   };
 }
 

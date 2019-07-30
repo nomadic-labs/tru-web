@@ -526,3 +526,12 @@ section.dynamic-section {
     background-color: $dark-theme-secondary !important;
   }
 }
+
+.bg-primary {
+  .card {
+    .card-title, .card-text, .card-body, p, label {
+      color: $black;
+    }
+  }
+}
+

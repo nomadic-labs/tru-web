@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import Button from "@material-ui/core/Button"
+
 import { EditableLightboxImageUpload } from "react-easy-editables";
 import { uploadImage } from "../../firebase/operations";
 

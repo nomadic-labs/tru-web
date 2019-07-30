@@ -299,6 +299,34 @@ export const page = (state={}, action) => {
           definitions: action.definitions
         }
       }
+
+    case 'UPDATE_PAGE_CONTENT':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            [action.location]: {
+              ...state.data.content[action.location],
+              ...action.content
+            }
+          }
+        }
+      }
+
+    case 'SET_PAGE_CONTENT':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            [action.location]: action.content
+          }
+        }
+      }
+
     default:
       return state
   }

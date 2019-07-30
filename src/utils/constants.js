@@ -38,3 +38,13 @@ export const PALETTE_OPTIONS = [
   { label: "Light", value: "light" },
   { label: "Dark", value: "dark" },
 ];
+
+export const DEFAULT_COMPONENT_CONTENT = {
+  "featured-resources": {
+    "publication-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
+    "publication-item-details": { "text": "Author, date" },
+    "publication-item-title": { "text": "Publication title" },
+    "publication-item-description": { "text": "Summary" },
+    "publication-item-link": { "anchor": "link text", "link": "/" },
+  },
+}

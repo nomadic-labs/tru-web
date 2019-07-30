@@ -47,4 +47,9 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "publication-item-description": { "text": "Summary" },
     "publication-item-link": { "anchor": "link text", "link": "/" },
   },
+  "references": {
+    "reference-details": { "text": "Author, date" },
+    "reference-description": { "text": "Additional publication information or notes" },
+    "reference-link": { "anchor": "Title", "link": "/" },
+  },
 }

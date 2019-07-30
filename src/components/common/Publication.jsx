@@ -96,7 +96,7 @@ const Publication = props => {
       {...props}
     >
       <div className={`p-3 ${props.classes}`}>
-        <a href={content["publication-item-file"]["filepath"]} target="_blank" rel="noopener noreferrer">
+        <a href={content["publication-item-link"]["link"]} target="_blank" rel="noopener noreferrer">
           <div className={`card`}>
             <div className="card-img-top bg-light d-flex" style={{ height: "300px" }}>
               <img

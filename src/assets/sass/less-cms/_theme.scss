@@ -137,6 +137,10 @@ p {
   font-size: 14px;
 }
 
+.text-italic {
+  font-style: italic;
+}
+
 .btn-primary {
   background: $theme-primary;
 
@@ -533,5 +537,9 @@ section.dynamic-section {
       color: $black;
     }
   }
+}
+
+.text-italic {
+
 }
 

@@ -21,6 +21,7 @@ import PageHeader from "../components/common/PageHeader";
 import Carousel from "../components/common/Carousel";
 import Collection from "../components/common/Collection";
 import Publication from "../components/common/Publication";
+import Reference from "../components/common/Reference";
 
 import { uploadImage } from "../firebase/operations";
 
@@ -127,9 +128,20 @@ class ResourcesPage extends React.Component {
 
           <Section id="references" className="wow fadeIn pt-80 pb-80">
             <Container>
-              <h2 data-animation="fadeInUp" data-delay=".5s">
+              <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
                 <EditableText content={content["references-title"]} onSave={this.onSave("references-title")} />
               </h2>
+              <div className="md-mt-5">
+                <Collection
+                  items={content["references"]}
+                  Component={Reference}
+                  onSave={this.onSave('references')}
+                  onAddItem={this.onAddItem('references')}
+                  onDeleteItem={this.onDeleteItem('references')}
+                  isEditingPage={this.props.isEditingPage}
+                  defaultContent={DEFAULT_COMPONENT_CONTENT['references']}
+                />
+              </div>
             </Container>
           </Section>
         </main>

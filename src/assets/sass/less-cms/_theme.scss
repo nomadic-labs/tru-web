@@ -323,39 +323,32 @@ section.dynamic-section {
 
 .explore {
   margin-right: 80px;
+
+
   .article {
-    .line {
-      flex: 1;
-      height: 1px;
-      background: $light-blue;
-    }
 
     .topics {
       transition: all ease-in-out 0.3s;
     }
 
     .image {
-      position: absolute;
       background-size: cover;
-      height: 0;
-      width: 0;
-      opacity: 0;
+      height: 100px;
+      width: 100px;
       transition: all ease-in-out 0.3s;
+      opacity: 0.7;
     }
 
     .info {
-      display: flex;
       flex-wrap: wrap;
     }
 
     &:hover {
       .topics {
-        color: $theme-highlight;
+        color: $theme-primary;
       }
 
       .image {
-        height: 100px;
-        width: 100px;
         opacity: 1;
       }
     }
@@ -394,25 +387,10 @@ section.dynamic-section {
         transition: all ease-in-out 0.3s;
       }
 
-      .image {
-        position: absolute;
-        background-size: cover;
-        height: 0;
-        width: 0;
-        opacity: 0;
-        transition: all ease-in-out 0.3s;
-      }
 
-
-      &:hover {
+      &:hover, &:focus {
         .topics {
-          color: $theme-highlight;
-        }
-
-        .image {
-          height: 100px;
-          width: 100px;
-          opacity: 1;
+          color: $theme-primary;
         }
       }
     }

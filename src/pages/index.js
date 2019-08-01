@@ -142,7 +142,7 @@ class HomePage extends React.Component {
 
           <Section className="wow fadeIn pos-relative">
 
-            <Grid container id="explore-container" justify="flex-start">
+            <Grid container id="explore-container" justify="flex-center">
               <Grid item xs={11} sm={3} md={3} lg={3}>
                 <TopicSelector />
               </Grid>

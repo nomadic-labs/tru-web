@@ -34,14 +34,13 @@ const ArticlePreview = ({ article, topics }) => {
 
   return(
     <Link to={`/${article.slug}`}>
-      <div className="article d-flex pos-relative align-items-center pl-20 pt-20 pb-20">
+      <div className="article d-md-flex align-items-center pl-30 pt-20 pb-20">
         <div
-          className="image pos-absolute"
+          className="image rounded mb-3 my-md-0"
           style={{ background: `url(${image}) no-repeat center center`, backgroundSize: 'cover' }}
         />
-        <div className="ml-80 p-2 align-items-center pos-relative flex-grow bg-white info">
-          <h4 className="mb-0">{ article.title }</h4>
-          <div className="line mx-3"/>
+        <div className="p-md-4 align-items-center pos-relative flex-grow bg-white info">
+          <h4 className="mb-2">{ article.title }</h4>
           <p className="mb-0 topics">{ tagsString }</p>
         </div>
       </div>
@@ -79,11 +78,11 @@ class Research extends Component {
   }
 
   nextPage = page => {
-    return this.props.pages[page.next];
+    return this.state.pages[page.next];
   }
 
   prevPage = page => {
-    return this.props.pages[page.prev];
+    return this.state.pages[page.prev];
   }
 
   orderedPages = (page, arr=[]) => {
@@ -108,38 +107,15 @@ class Research extends Component {
     return pages;
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.selectedTopics != this.props.selectedTopics) {
-      if (this.props.selectedTopics) {
-        const topicId = this.props.selectedTopics.id
-        const filteredPages = this.props.pages.filter(page => page.topics && page.topics.includes(topicId))
-        return this.setState({ pages: filteredPages })
-      }
-
-      return this.setState({ pages: this.props.pages })
-    }
-   }
-
   render() {
-    if (this.state.pages.length === 0) {
-      return (
-        <div className="explore">
-          <div>No results.</div>
-        </div>
-      )
-    }
-
-    console.log("categories and pages on menu")
-    console.log(this.props.categories)
-    console.log(this.props.pages)
-
 
     const pagesByCategory = [];
     const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
 
     orderedCategories.forEach(category => {
       const categoryPages = this.filterPagesByCategory(this.props.pages, category)
-      const pages = this.orderedPages(categoryPages.find(page => !page.prev))
+      const pages = this.filterPagesByTopic(this.orderedPages(categoryPages.find(page => !page.prev)))
+
 
       if (pages.length > 0) {
         pagesByCategory.push({ ...category, pages })

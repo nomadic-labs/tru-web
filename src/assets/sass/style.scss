@@ -400,6 +400,7 @@ label {
 	display: inline-block;
 	margin-right: 20px;
 	text-align: center;
+	font-size: 24px;
 }
 .social-icon-right > a:hover {
 	color: $theme-secondary;
@@ -3864,7 +3865,6 @@ ul.cat li a:hover {
 .contact-list-address li {
 	padding-bottom: 52px;
 }
-.contact-list-address li:last-child{padding-bottom: 0;}
 #contact-form input {
 	height: 60px;
 	width: 100%;

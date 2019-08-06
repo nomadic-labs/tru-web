@@ -59,16 +59,10 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                                 <Link to={"/resources"}><h4>Resources</h4></Link>
 
                                 <div className="social-icon-right mt-40">
-                                    <a href="#">
-                                        <i className="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#">
+                                    <a href="https://twitter.com/LandandRefinery/">
                                         <i className="fab fa-twitter"></i>
                                     </a>
-                                    <a href="#">
-                                        <i className="fab fa-google-plus-g"></i>
-                                    </a>
-                                    <a href="#">
+                                    <a href="https://www.instagram.com/LandandRefinery/">
                                         <i className="fab fa-instagram"></i>
                                     </a>
                                 </div>

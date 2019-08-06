@@ -18,7 +18,7 @@ import PageHeader from "../components/common/PageHeader";
 
 import { uploadImage } from "../firebase/operations";
 
-const PAGE_ID = "contact"
+const PAGE_ID = "get-involved"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -84,48 +84,24 @@ class ContactPage extends React.Component {
               onUpdateHeaderImage={this.onUpdateHeaderImage}
               onUpdateTitle={this.onUpdateTitle}
             />
-            <div className="contact-area pt-115 pb-75">
+            <Section className="wow fadeIn pt-80 pb-80 bg-primary">
+              <Container>
+                <h2 data-animation="fadeInUp" data-delay=".5s">
+                  <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
+                </h2>
+                <div className="mt-40 mb-40">
+                  <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
+                </div>
+                <h4 data-animation="fadeInUp" data-delay=".5s">
+                  <EditableText content={content["intro-salutation"]} handleSave={this.onSave("intro-salutation")} />
+                </h4>
+              </Container>
+            </Section>
+
+            <Section className="wow fadeIn pt-80 pb-80">
                 <Container>
                     <div className="row">
                         <div className="col-12 mb-30">
-                            <div className="contact-adddress-wrapper">
-                                <ul className="contact-list-address">
-                                    <li>
-                                        <div className="contact-icon">
-                                            <i className="fa fa-info"></i>
-                                        </div>
-                                        <div className="contact-address-text">
-                                            <h5>The Land and the Refinery Project</h5>
-                                            <p>
-                                              <EditableText content={content["contact-address"]} onSave={this.onSave("contact-address")} />
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="contact-icon">
-                                            <i className="fa fa-envelope"></i>
-                                        </div>
-                                        <div className="contact-address-text">
-                                            <h5>Email</h5>
-                                            <p>
-                                              <EditableLink content={content["contact-email"]} onSave={this.onSave("contact-email")} />
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="contact-icon">
-                                            <i className="fa fa-external-link-alt"></i>
-                                        </div>
-                                        <div className="contact-address-text">
-                                            <h5>Website</h5>
-                                            <p>
-                                              <EditableLink content={content["contact-website"]} onSave={this.onSave("contact-website")} />
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </div>
                         </div>
                         <div className="col-12 mb-30">
                             <div className="row">
@@ -133,7 +109,7 @@ class ContactPage extends React.Component {
                                   <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-20">
                                     <EditableText content={content["form-title"]} handleSave={this.onSave("form-title")} />
                                   </h2>
-                                    <form action="" id="contact-form">
+                                    <form action="assets/mail.php" id="contact-form">
                                         <div className="row">
                                             <div className="col-xl-6 col-md-6">
                                                 <input name="name" placeholder="Name" type="text" required={true} />
@@ -141,14 +117,11 @@ class ContactPage extends React.Component {
                                             <div className="col-xl-6 col-md-6">
                                                 <input name="email" placeholder="Email address" type="email" required={true} />
                                             </div>
-                                            <div className="col-xl-6 col-md-6">
-                                                <input name="text" placeholder="Phone number (optional)" type="text" />
-                                            </div>
-                                            <div className="col-xl-6 col-md-6">
-                                                <input name="text" placeholder="Subject" type="text" />
+                                            <div className="col-md-12">
+                                                <input name="text" placeholder="Subject" type="text" required={true} />
                                             </div>
                                             <div className="col-md-12">
-                                                <textarea name="message" cols="30" rows="10" placeholder="Message" required={true}></textarea>
+                                                <textarea name="message" cols="30" rows="10" placeholder="Message" required={true} ></textarea>
                                                 <button className="btn" type="submit">send message</button>
                                             </div>
                                         </div>
@@ -159,7 +132,7 @@ class ContactPage extends React.Component {
                         </div>
                     </div>
                 </Container>
-            </div>
+            </Section>
         </main>
       </Layout>
     );
@@ -170,7 +143,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ContactPage);
 
 export const query = graphql`
   query {
-    pages(id: { eq: "contact" }) {
+    pages(id: { eq: "get-involved" }) {
       id
       slug
       content

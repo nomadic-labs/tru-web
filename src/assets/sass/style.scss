@@ -4259,3 +4259,29 @@ section#end-matter {
 		}
   }
 }
+
+.news-item {
+	border-bottom: 1px solid $light-blue;
+
+	a {
+		font-family: $header-font;
+		margin-top: 0px;
+		margin-bottom: 10px;
+		font-style: normal;
+		font-weight: 600;
+		text-transform: normal;
+		line-height: 1.4;
+		font-size: 22px;
+	}
+
+	p {
+		margin-top: 10px;
+	}
+
+	.date {
+		margin-top: 0;
+		margin-bottom: 4px;
+		font-size: 14px;
+		font-style: italic;
+	}
+}

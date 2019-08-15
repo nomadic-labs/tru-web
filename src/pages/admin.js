@@ -269,11 +269,9 @@ class AdminPage extends React.Component {
   }
 
   render() {
-    console.log("categories and pages on admin page")
-    console.log(this.props.categories)
-    console.log(this.props.pages)
     const pagesByCategory = [];
     const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
+    const uncategorizedPages = filter(this.props.pages, page => !Boolean(page.category))
 
     orderedCategories.forEach(category => {
       const categoryPages = this.filterPagesByCategory(this.props.pages, category)
@@ -374,6 +372,21 @@ class AdminPage extends React.Component {
                           )
                         })
                       }
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </Container>
+
+          <Container>
+            <h2>Uncategorized Pages</h2>
+            <div className="my-4">
+              {
+                uncategorizedPages.map(page => {
+                  return(
+                    <div className="ranked-item" key={page.id}>
+                      <span className="ml-3"><Link to={`/${page.slug}`}>{page.title}</Link></span>
                     </div>
                   )
                 })

@@ -71,6 +71,7 @@ class PublicationEditor extends React.Component {
               <LinkEditor
                 content={content["publication-item-link"]}
                 handleEditorChange={this.handleEditorChange("publication-item-link")}
+                editAnchorText={false}
               />
             </div>
           </div>
@@ -95,17 +96,20 @@ const Publication = props => {
       content={content}
       {...props}
     >
-      <div className={`p-3 ${props.classes}`}>
+      <div className={`${props.classes}`}>
         <a href={content["publication-item-link"]["link"]} target="_blank" rel="noopener noreferrer">
           <div className={`card`}>
-            <div className="card-img-top bg-light d-flex" style={{ height: "300px" }}>
-              <img
-                className="img-fluid w-100"
-                style={{ objectFit: "cover" }}
-                src={content["publication-item-image"]["imageSrc"]}
-                alt={content["publication-item-image"]["caption"]}
-              />
-            </div>
+            {
+              Boolean(content["publication-item-image"]["imageSrc"]) &&
+              <div className="card-img-top bg-light d-flex" style={{ height: "300px" }}>
+                <img
+                  className="img-fluid w-100"
+                  style={{ objectFit: "cover" }}
+                  src={content["publication-item-image"]["imageSrc"]}
+                  alt={content["publication-item-image"]["caption"]}
+                />
+              </div>
+            }
             <div className="card-body">
               <div className="card-title">
                 <h4 className="text-primary">
@@ -127,5 +131,17 @@ const Publication = props => {
     </Editable>
   );
 };
+
+Publication.defaultProps = {
+  content: {
+    "publication-item-image": { "imageSrc": "", "caption": "" },
+    "publication-item-details": { "text": "Author, date" },
+    "publication-item-title": { "text": "Publication title" },
+    "publication-item-description": { "text": "Summary" },
+    "publication-item-link": { "anchor": "link text", "link": "/" }
+  },
+  classes: "",
+  onSave: () => { console.log('implement a function to save changes') }
+}
 
 export default Publication;

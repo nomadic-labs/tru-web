@@ -87,7 +87,7 @@ class Definitions extends React.Component {
     }
 
     return (
-      <div className="definitions-section mb-40">
+      <div className="definitions-section mt-40">
         <h3 className="">Glossary</h3>
         <div className="definitions">
           {

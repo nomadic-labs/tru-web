@@ -38,7 +38,7 @@ const PageTopics = props => (
       const tagsString = props.page.topics.map(tag => topics[tag]).join(", ")
 
       return(
-        <div className="mb-40">
+        <div className="mt-40">
           {
             props.page.topics.map(id => {
               const label = topics[id]

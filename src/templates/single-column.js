@@ -101,7 +101,7 @@ class SingleColumnPage extends React.Component {
               )
             })
           }
-          <section id="end-matter" className="pt-60 pb-60">
+          <section id="end-matter">
             <Container>
               <PageTopics />
               <Footnotes />

@@ -41,7 +41,7 @@ export const PALETTE_OPTIONS = [
 
 export const DEFAULT_COMPONENT_CONTENT = {
   "featured-resources": {
-    "publication-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
+    "publication-item-image": { "imageSrc": "", "caption": "" },
     "publication-item-details": { "text": "Author, date" },
     "publication-item-title": { "text": "Publication title" },
     "publication-item-description": { "text": "Summary" },
@@ -51,5 +51,12 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "reference-details": { "text": "Author, date" },
     "reference-description": { "text": "Additional publication information or notes" },
     "reference-link": { "anchor": "Title", "link": "/" },
+  },
+  "featured-news": {
+    "publication-item-image": { "imageSrc": "", "caption": "" },
+    "publication-item-details": { "text": "Date" },
+    "publication-item-title": { "text": "News Title" },
+    "publication-item-description": { "text": "Preview" },
+    "publication-item-link": { "anchor": "link text", "link": "/" },
   },
 }

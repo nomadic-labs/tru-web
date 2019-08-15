@@ -36,6 +36,7 @@
     "react-helmet": "^5.2.0",
     "react-image-lightbox": "^5.1.0",
     "react-jss": "^8.6.1",
+    "react-masonry-component": "^6.2.1",
     "react-redux": "latest",
     "react-rte": "^0.16.1",
     "react-select": "^2.0.0",

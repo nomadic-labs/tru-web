@@ -135,22 +135,22 @@ class NewsPage extends React.Component {
             onUpdateHeaderImage={this.onUpdateHeaderImage}
             onUpdateTitle={this.onUpdateTitle}
           />
-          <Section id="featured-resources" className="wow fadeIn pt-80 pb-80 bg-primary pos-relative">
+          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 bg-primary pos-relative">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
-                <EditableText content={content["featured-resources-title"]} onSave={this.onSave("featured-resources-title")} />
+                <EditableText content={content["featured-news-title"]} onSave={this.onSave("featured-news-title")} />
               </h2>
             </Container>
             <div className="mx-5">
               <Carousel
-                collection={content["featured-resources"]}
+                collection={content["featured-news"]}
                 SlideComponent={Publication}
-                onSave={this.onSave('featured-resources')}
-                onAddItem={this.onAddItem('featured-resources')}
-                onDeleteItem={this.onDeleteItem('featured-resources')}
+                onSave={this.onSave('featured-news')}
+                onAddItem={this.onAddItem('featured-news')}
+                onDeleteItem={this.onDeleteItem('featured-news')}
                 options={{slidesToShow: 4}}
                 isEditingPage={this.props.isEditingPage}
-                defaultContent={DEFAULT_COMPONENT_CONTENT['featured-resources']}
+                defaultContent={DEFAULT_COMPONENT_CONTENT['featured-news']}
               />
             </div>
           </Section>

@@ -61,7 +61,7 @@ class Footnotes extends React.Component {
     }
 
     return (
-      <div className="footnotes-section mb-40">
+      <div className="footnotes-section mt-40">
         <h3 className="">Notes</h3>
         <ol className="footnotes">
           {

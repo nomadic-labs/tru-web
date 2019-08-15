@@ -97,7 +97,7 @@ class CreatePageModalComponent extends React.Component {
       lower: true,
       remove: /[$*_+~.,()'"!\-:@%^&?=]/g
     })
-    const lastPageInCategory = this.props.pages.find(page => page.category === this.state.page.category && !page.next)
+    const lastPageInCategory = Boolean(this.state.page.category) ? this.props.pages.find(page => page.category === this.state.page.category && !page.next) : null;
 
     let pageData = {
       title: this.state.page.title,

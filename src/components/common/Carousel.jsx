@@ -80,22 +80,19 @@ class EditableCarousel extends React.Component {
     const { viewportWidth } = this.state;
     const isMobile = Boolean(viewportWidth <= MAX_MOBILE_VIEWPORT_WIDTH)
     const { collection, SlideComponent, isEditingPage, options } = this.props;
+    const collectionLength = Object.keys(collection).length;
 
-    const slidesToShow = isMobile ? 1 : options.slidesToShow || DEFAULT_SLIDES_TO_SHOW;
-
-    const carouselOptions = {
-      infinite: false,
-      slidesToShow: slidesToShow,
-      slidesToScroll: options.slidesToShow || 1,
-      draggable: !isEditingPage,
-      swipe: !isEditingPage,
+    let slidesToShow = isMobile ? 1 : options.slidesToShow || DEFAULT_SLIDES_TO_SHOW;
+    if (collectionLength < slidesToShow) {
+      slidesToShow = collectionLength
     }
 
+
     var settings = {
-      infinite: true,
-      speed: 500,
+      infinite: options.infinite || true,
+      speed: options.speed || 500,
       slidesToShow: slidesToShow,
-      slidesToScroll: 1,
+      slidesToScroll: options.slidesToScroll || 1,
       prevArrow: <PrevArrow />,
       nextArrow: <NextArrow />,
       draggable: !isEditingPage,
@@ -113,7 +110,7 @@ class EditableCarousel extends React.Component {
 
     const collectionKeys = Object.keys(collection);
 
-    if (!isEditingPage && (collectionKeys.length < 1)) {
+    if (!isEditingPage && (collectionLength < 1)) {
       return <p>Coming soon!</p>
     }
 
@@ -128,6 +125,7 @@ class EditableCarousel extends React.Component {
                 content={content}
                 onSave={this.onSaveItem(key)}
                 onDelete={this.onDeleteItem(key)}
+                classes={'p-3'}
               />
             )
           })}

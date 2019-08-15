@@ -28,8 +28,8 @@ const ArticlePreview = ({ article, topics, categories, direction }) => {
   const tagsString = tags.map(tag => topics[tag]).join(", ")
 
   return(
-    <div className="col-md-6">
-      <Link to={`/${article.slug}`}>
+    <div className="col-md-6 mt-40 mb-40">
+      <Link to={`${article.slug}`}>
         <div className={`card mb-4 mb-md-0 ${direction} ${direction == "prev" ? "d-none d-md-block" : ""}`}>
           {
             direction == "next" ?

@@ -36,10 +36,10 @@ $theme-highlight: $yellow;
 
 /* LIGHT THEME */
 
-$light-theme-primary: $green;
+$light-theme-primary: $light-green;
 $light-theme-secondary: $dark-green;
 $light-theme-highlight: $red;
-$light-theme-bg: transparentize($light-green, 0.75);
+$light-theme-bg: transparentize($light-green, 0.5);
 
 
 /* DARK THEME */

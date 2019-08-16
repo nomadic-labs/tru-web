@@ -95,7 +95,6 @@ h5,
 h6 {
 	margin-top: 0px;
 	font-style: normal;
-	font-weight: 600;
 	text-transform: normal;
 	line-height: 1.4;
 }
@@ -109,7 +108,6 @@ h6 a {
 }
 h1 {
 	font-size: 40px;
-	font-weight: 600;
 }
 h2 {
 	font-size: 35px;
@@ -3493,19 +3491,18 @@ ul.cat li a:hover {
 .breadcrumb-text {
     position: relative;
     z-index: 1;
+    text-shadow: 0px 0px 30px $black;
 }
 .breadcrumb-text > h1 {
-	font-size: 90px;
+	font-size: 7.594em;
 	margin-bottom: 48px;
-	text-transform: capitalize;
-	line-height: 1;
-	font-weight: 600;
-	color: $black;
+	line-height: 1.2;
+	color: $white;
 }
 
 .breadcrumb-text span {
 	font-size: 1.4em;
-	color: $theme-primary;
+	color: $white;
 	font-weight: 600;
 	letter-spacing: 2px;
 	font-family: 'Rubik', sans-serif;

@@ -39,7 +39,7 @@ const ArticlePreview = ({ article, topics }) => {
           className="image rounded mb-3 my-md-0"
           style={{ background: `url(${image}) no-repeat center center`, backgroundSize: 'cover' }}
         />
-        <div className="p-md-4 align-items-center pos-relative flex-grow bg-white info">
+        <div className="p-md-4 align-items-center pos-relative flex-grow info">
           <h4 className="mb-2">{ article.title }</h4>
           <p className="mb-0 topics">{ tagsString }</p>
         </div>

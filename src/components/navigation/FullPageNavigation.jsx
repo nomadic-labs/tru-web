@@ -8,7 +8,6 @@ import { EditableImageUpload } from "react-easy-editables";
 import Explore from "../common/Explore";
 import Affix from "../common/Affix";
 import TopicSelector from "../common/TopicSelector";
-import plants06 from "../../assets/images/illustrations/plants-06.svg";
 import dylan3 from "../../assets/images/illustrations/Dylan_Minor3.png";
 
 import { closeMenu } from "../../redux/actions";
@@ -44,18 +43,21 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
         <div id="full-page-menu" className={`${showMenu ? 'info-open' : ''}`}>
             <div className="explore-content px-3 pos-relative">
                 <div className="row">
-                    <div className="col-md-3 bg-light p-5">
+                    <div className="col-md-3 bg-light p-5 bg-illustration">
 
                         <div className="inner-content">
                             <div className="image">
-                                <img src={dylan3} style={{ width: "200px" }} />
+                                <img src={dylan3} />
                             </div>
                             <div className="menu">
-                                <Link to={"/"}><h4>Home</h4></Link>
-                                <Link to={"/updates"}><h4>Project Updates</h4></Link>
-                                <Link to={"/resources"}><h4>Resources</h4></Link>
-                                <Link to={"/references"}><h4>References</h4></Link>
-                                <Link to={"/chemical-responsibilities-app"}><h4>Chemical Responsibilities App</h4></Link>
+                                <Link to={"/"}><h3>Home</h3></Link>
+                                <Link to={"/news"}><h3>News</h3></Link>
+                                <Link to={"/updates"}><h3>Project Updates</h3></Link>
+                                <Link to={"/resources"}><h3>Resources</h3></Link>
+                                <Link to={"/references"}><h3>References</h3></Link>
+                                <Link to={"/pollutionreporter"}><h3>Pollution Reporter App</h3></Link>
+                                <Link to={"/pollutionreporter"}><h3>Get Involved</h3></Link>
+                                <Link to={"/pollutionreporter"}><h3>Contact Us</h3></Link>
 
                                 <div className="social-icon-right mt-40">
                                     <a href="https://twitter.com/LandandRefinery/">
@@ -75,16 +77,18 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                                 <i className="far fa-window-close"></i>
                             </button>
                         </div>
-                        <Grid container>
+                        <Grid container className="mx-5">
+                          <Grid item xs={10} sm={10} md={11} lg={11}>
+                            <h1 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
+                              Explore the Research
+                            </h1>
+                          </Grid>
                           <Grid item xs={10} sm={2} md={3} lg={3}>
                               <TopicSelector />
                           </Grid>
 
                           <Grid item xs={10} sm={8} md={8} lg={8}>
-                            <div className="pt-80 pb-80">
-                              <h2 data-animation="fadeInUp" data-delay=".5s">
-                                Explore the Research
-                              </h2>
+                            <div className="">
                               <div className="mt-40 mb-40 pr-3" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
                                 <Explore />
                               </div>

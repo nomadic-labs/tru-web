@@ -43,7 +43,7 @@ const ArticlePreview = ({ article, topics, categories, direction }) => {
             </div>
           }
           <div className="card-image">
-            <img className="img-fluid" src={image} />
+            <img src={image} />
           </div>
           <div className="card-body">
             { category && <h5 className="topics">{ category.label }</h5> }

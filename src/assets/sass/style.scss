@@ -324,7 +324,7 @@ label {
 	margin-top: 3px;
 	padding: 8px 0;
 	font-family: $header-font;
-	font-weight: 700;
+	font-size: 1.2em;
 }
 .heder-button{}
 .heder-button a.btn {
@@ -479,8 +479,7 @@ label {
 .main-menu nav > ul > li:first-child{margin-left:0;}
 .main-menu nav > ul > li > a {
 	display: block;
-	font-size: 14px;
-	font-weight: 600;
+	font-size: 1em;
 	padding: 31px 0;
 	transition: all 0.3s ease 0s;
 	background: transparent;
@@ -3488,26 +3487,7 @@ ul.cat li a:hover {
   background-position: center center;
   background-size: cover;
 }
-.breadcrumb-text {
-    position: relative;
-    z-index: 1;
-    text-shadow: 0px 0px 30px $black;
-}
-.breadcrumb-text > h1 {
-	font-size: 7.594em;
-	margin-bottom: 48px;
-	line-height: 1.2;
-	color: $white;
-}
 
-.breadcrumb-text span {
-	font-size: 1.4em;
-	color: $white;
-	font-weight: 600;
-	letter-spacing: 2px;
-	font-family: 'Rubik', sans-serif;
-	text-transform: uppercase;
-}
 .breadcrumb-menu {}
 .breadcrumb-menu li {
 	display: inline-block;
@@ -4171,6 +4151,15 @@ section#end-matter {
 			}
 		}
 
+		.card-image {
+			img {
+				width: 100%;
+				height: auto;
+		    max-height: 240px;
+		    object-fit: cover;
+			}
+		}
+
 		&.prev {
 			border-bottom: 3px solid $theme-secondary;
 
@@ -4222,7 +4211,7 @@ section#end-matter {
 	}
 
 	.sidebar {
-		background-color: $theme-primary;
+		background-color: $lighter-gray;
 
 		small { /*for image captions*/
 			color: $white;
@@ -4248,7 +4237,7 @@ section#end-matter {
 
 	&:nth-of-type(even) {
 		.sidebar {
-	    background-color: $lighter-gray;
+	    background-color: $theme-primary;
 
 	    small { /*for image captions*/
 				color: initial;

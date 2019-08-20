@@ -84,7 +84,7 @@ class ContactPage extends React.Component {
               onUpdateHeaderImage={this.onUpdateHeaderImage}
               onUpdateTitle={this.onUpdateTitle}
             />
-            <Section className="wow fadeIn pt-80 pb-80 bg-primary">
+            <Section className="wow fadeIn pt-80 pb-80 bg-lighter">
               <Container>
                 <h2 data-animation="fadeInUp" data-delay=".5s">
                   <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
@@ -117,7 +117,7 @@ class ContactPage extends React.Component {
               </Container>
             </Section>
 
-            <Section className="wow fadeIn pt-80 pb-80">
+            <Section className="wow fadeIn pt-80 pb-80 bg-flower">
                 <Container>
                     <div className="row">
                         <div className="col-12 mb-30">

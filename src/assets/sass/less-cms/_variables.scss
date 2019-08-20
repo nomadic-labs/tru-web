@@ -8,6 +8,7 @@ $header-font: 'Lora', serif;
 
 $dark-blue: #3c5c78;
 $light-blue: #e2eaf2;
+$medium-blue: #4d7699;
 
 $dark-green: #2f6165;
 $light-green: #c3dbbc;
@@ -32,6 +33,7 @@ $lighter-gray: transparentize($light-gray, 0.5);
 /* DEFAULT THEME */
 
 $theme-primary: $dark-blue;
+$theme-primary-light: $light-blue;
 $theme-secondary: $green;
 $theme-highlight: $dark-yellow;
 

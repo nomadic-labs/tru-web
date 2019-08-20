@@ -3,20 +3,10 @@ import { EditableText, EditableBackgroundImage, EditableImageUpload } from "reac
 import { uploadImage } from "../../firebase/operations";
 import titleBg from "../../assets/images/illustrations/title-bg.png";
 import PageTopics from "./PageTopics"
+import Container from "./Container"
 
 const defaultHeader = "https://firebasestorage.googleapis.com/v0/b/tru-web.appspot.com/o/images%2Fbg-botanical.png?alt=media&token=cce3440c-c686-41e8-a957-59dbaed77e04";
 const styles = {
-  header: {
-    minHeight: "80vh",
-  },
-  headerText: {
-  },
-  headerImage: {
-    position: "absolute",
-    right: 0,
-    top: 0,
-    opacity: 0.75,
-  },
   image: {
     objectFit: 'cover',
     maxHeight: "60vh",
@@ -25,10 +15,10 @@ const styles = {
 
 const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpdateHeaderImage }) => {
   return (
-    <div className="breadcrumb-area d-flex pt-60 pb-60 bg-primary" style={ styles.header }>
-      <div className="container">
+    <div className="page-header breadcrumb-area d-flex pt-60 pb-60 bg-primary">
+      <Container xl={10} lg={10} md={11} sm={11} xs={11}>
         <div className="row justify-content-start pos-relative">
-          <div className="col-md-8" style={ styles.headerText }>
+          <div className="col-12 col-lg-6 d-flex align-items-center">
             <div className="breadcrumb-text pt-40 pb-40">
               <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={{ text: title }} onSave={ onUpdateTitle } />
@@ -38,7 +28,7 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
               </span>
             </div>
           </div>
-          <div className="col-md-8" style={ styles.headerImage }>
+          <div className="col-12 col-lg-6 align-items-center d-flex page-header-image">
             <EditableImageUpload
               onSave={ onUpdateHeaderImage }
               uploadImage={ uploadImage }
@@ -48,7 +38,7 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
             />
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

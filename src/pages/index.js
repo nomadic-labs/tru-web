@@ -93,25 +93,7 @@ class HomePage extends React.Component {
             onUpdateTitle={this.onUpdateTitle}
           />
 
-          <Section className="wow fadeIn pt-80 pb-80 pos-relative">
-            <div className="shape d-none d-xl-block">
-              <div className={`shape-item slider-03 ${this.props.isEditingPage ? '' : 'bounce-animate'}`}>
-                <EditableImageUpload
-                  content={content["intro-img-1"]}
-                  onSave={this.onSave("intro-img-1")}
-                  styles={{ container: {width: "5vw"} }}
-                  uploadImage={uploadImage}
-                />
-              </div>
-              <div className={`shape-item slider-04 ${this.props.isEditingPage ? '' : 'bounce-animate'}`} style={{ left: "3%" }}>
-                <EditableImageUpload
-                  content={content["intro-img-2"]}
-                  onSave={this.onSave("intro-img-2")}
-                  styles={{ container: {width: "15vw"} }}
-                  uploadImage={uploadImage}
-                />
-              </div>
-            </div>
+          <Section className="wow fadeIn pt-80 pb-80 pos-relative bg-white bg-flower">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
@@ -122,7 +104,7 @@ class HomePage extends React.Component {
             </Container>
           </Section>
 
-          <Section className="wow fadeIn pt-80 pb-80 bg-lighter">
+          <Section className="wow fadeIn pt-80 pb-80 bg-light bg-illustration">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["territory-title"]} handleSave={this.onSave("territory-title")} />
@@ -140,65 +122,30 @@ class HomePage extends React.Component {
 
           </Section>
 
-          <Section className="wow fadeIn pos-relative">
+          <Section className="wow fadeIn pos-relative bg-white bg-flower">
+            <Container>
+              <Grid container id="explore-container" justify="flex-center">
+                <Grid item xs={10} sm={10} md={11} lg={11}>
+                  <h1 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
+                    Explore the Research
+                  </h1>
+                </Grid>
+                <Grid item xs={10} sm={2} md={3} lg={3}>
+                    <TopicSelector />
+                </Grid>
 
-            <Grid container id="explore-container" justify="flex-center">
-              <Grid item xs={11} sm={3} md={3} lg={3}>
-                <TopicSelector />
-              </Grid>
-
-              <Grid item xs={11} sm={9} md={9} lg={9}>
-                <div className="pt-80 pb-80">
-                  <h2 data-animation="fadeInUp" data-delay=".5s">
-                    <EditableText content={content["research-title"]} handleSave={this.onSave("research-title")} />
-                  </h2>
-                  <div className="mt-40 pr-3" style={{ maxHeight: "calc(100vh - 160px)", overflow: "auto" }}>
-                    <Explore />
+                <Grid item xs={10} sm={8} md={8} lg={8}>
+                  <div className="">
+                    <div className="mt-40 mb-40 pr-3" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
+                      <Explore />
+                    </div>
                   </div>
-                </div>
+                </Grid>
               </Grid>
-            </Grid>
-
+            </Container>
           </Section>
 
           <Section className="wow fadeIn pt-80 pb-80 bg-primary pos-relative">
-            <div className="shape d-none d-xl-block">
-              <div className={`shape-item pro-01 ${this.props.isEditingPage ? '' : 'bounce-animate invert-color'}`}>
-                <EditableImageUpload
-                  content={content["intro-img-4"]}
-                  onSave={this.onSave("intro-img-4")}
-                  styles={{ container: {width: "3vw"} }}
-                  uploadImage={uploadImage}
-                />
-              </div>
-
-              <div className={`shape-item pro-02 ${this.props.isEditingPage ? '' : 'bounce-animate invert-color'}`}>
-                <EditableImageUpload
-                  content={content["intro-img-5"]}
-                  onSave={this.onSave("intro-img-5")}
-                  styles={{ container: {width: "6vw"} }}
-                  uploadImage={uploadImage}
-                />
-              </div>
-
-              <div className={`shape-item pro-03 ${this.props.isEditingPage ? '' : 'bounce-animate invert-color'}`}>
-                <EditableImageUpload
-                  content={content["intro-img-6"]}
-                  onSave={this.onSave("intro-img-6")}
-                  styles={{ container: {width: "3vw"} }}
-                  uploadImage={uploadImage}
-                />
-              </div>
-
-              <div className={`shape-item pro-04 ${this.props.isEditingPage ? '' : 'bounce-animate invert-color'}`}>
-                <EditableImageUpload
-                  content={content["intro-img-7"]}
-                  onSave={this.onSave("intro-img-7")}
-                  styles={{ container: {width: "2vw"} }}
-                  uploadImage={uploadImage}
-                />
-              </div>
-            </div>
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["cr-app-title"]} handleSave={this.onSave("cr-app-title")} />

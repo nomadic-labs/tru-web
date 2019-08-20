@@ -1,0 +1,57 @@
+.dark-palette {
+  section {
+    background-color: $dark-theme-bg;
+  }
+
+  section.dynamic-section {
+    &:nth-of-type(even) {
+      background-color: $dark-theme-bg-alt;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $dark-theme-primary;
+  }
+
+  a {
+    color: $black;
+
+    &:hover {
+      color: $dark-theme-secondary;
+    }
+
+    &:active, &:focus {
+      color: $dark-theme-highlight;
+    }
+  }
+
+  a:not([href]):not([tabindex]) {
+    color: $black;
+
+    &:hover {
+      color: $dark-theme-secondary;
+    }
+
+    &:active, &:focus {
+      color: $dark-theme-highlight;
+    }
+  }
+
+  p {
+    a {
+      color: $dark-theme-primary;
+    }
+  }
+
+  .bg-primary {
+    background-color: $dark-theme-primary !important;
+
+    h1, h2, h3, h4, h5, h6, p, a {
+      color: $white;
+    }
+  }
+
+  .bg-secondary {
+    background-color: $dark-theme-secondary !important;
+  }
+}

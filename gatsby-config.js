@@ -54,6 +54,6 @@ module.exports = {
       options: {
         precision: 8,
       },
-    }
+    },
   ]
 };

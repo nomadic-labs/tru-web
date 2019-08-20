@@ -11388,10 +11388,12 @@ react-dom@^16.8.0:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-easy-editables@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.2.0.tgz#667dd0cb8e2b842f7200c220abdcc67c38b8672d"
-  integrity sha512-VN9xnjhNDCyVZoY+wkYkKeT9qFpDmCVi/4E5TcMeewy3G0/D7IFuRYOLlI+ANFatMRgc/E19HvY1LftzkTgHCw==
+react-easy-editables@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.5.2.tgz#469b905a6b7c028de6e7ee304178c2c91c258295"
+  integrity sha512-31YEIpiXt1TDsGF2Mey2Z5hTsT4Ne6R+OUP+VKTdFokN1GJKSoJ0t6vfNHcBTbVbL84yl9c89uIE9fs6ttXMPg==
+  dependencies:
+    react-image-lightbox "^5.1.0"
 
 react-error-overlay@^3.0.0:
   version "3.0.0"

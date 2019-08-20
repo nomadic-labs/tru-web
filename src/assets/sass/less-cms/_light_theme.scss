@@ -1,0 +1,53 @@
+.light-palette {
+  section.dynamic-section {
+    &:nth-of-type(even) {
+      background-color: $light-theme-bg;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $light-theme-primary;
+  }
+
+  a {
+    color: $black;
+
+    &:hover {
+      color: $light-theme-secondary;
+    }
+
+    &:active, &:focus {
+      color: $light-theme-highlight;
+    }
+  }
+
+  a:not([href]):not([tabindex]) {
+    color: $black;
+
+    &:hover {
+      color: $light-theme-secondary;
+    }
+
+    &:active, &:focus {
+      color: $light-theme-highlight;
+    }
+  }
+
+  p {
+    a {
+      color: $light-theme-primary;
+    }
+  }
+
+  .bg-primary {
+    background-color: $light-theme-primary !important;
+
+    h1, h2, h3, h4, h5, h6, p, a {
+      color: $white;
+    }
+  }
+
+  .bg-secondary {
+    background-color: $light-theme-secondary !important;
+  }
+}

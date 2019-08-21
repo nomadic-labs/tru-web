@@ -54,14 +54,14 @@ p {
 
 
 section.dynamic-section {
-  &:nth-of-type(4n + 1) {
+  &:nth-of-type(4n+1) {
     background-color: $white;
     @include bg-flower;
   }
 }
 
 section.dynamic-section {
-  &:nth-of-type(4n + 3) {
+  &:nth-of-type(4n+3) {
     background-color: $white;
     @include bg-leaf;
   }
@@ -69,6 +69,12 @@ section.dynamic-section {
 
 section.dynamic-section {
   &:nth-of-type(4n+2) {
+    background-color: $theme-primary-light;
+  }
+}
+
+section.dynamic-section {
+  &:nth-of-type(4n+4) {
     background-color: $theme-primary-light;
   }
 }
@@ -119,8 +125,6 @@ section.dynamic-section {
 
 .bg-white {
   background-color: $white !important;
-  background-image: url('../../images/background_lines_light_blue.svg');
-  background-size: cover;
 }
 
 .bg-pink {
@@ -128,13 +132,11 @@ section.dynamic-section {
 }
 
 .bg-primary.bg-decorated {
-  background-image: url('../../images/background_lines_light_yellow.svg');
-  background-size: cover;
+  @include bg-topo-default;
 }
 
 .bg-light.bg-decorated {
-  background-image: url('../../images/background_lines_light.svg');
-  background-size: cover;
+  @include bg-topo-alt-white;
 }
 
 
@@ -214,24 +216,36 @@ section.dynamic-section {
 .btn-primary {
   background: $theme-primary;
 
-  &:hover {
+  &:hover, &:focus {
     background: $theme-secondary;
+  }
+
+  &:active  {
+    background: $theme-highlight;
   }
 }
 
 .btn-secondary {
   background: $theme-secondary;
 
-  &:hover {
+  &:hover, &:focus {
     background: $theme-highlight;
+  }
+
+  &:active  {
+    background: $theme-primary;
   }
 }
 
 .btn-highlight {
   background: $theme-highlight;
 
-  &:hover {
-    background: $pink;
+  &:hover, &:focus {
+    background: $theme-secondary;
+  }
+
+  &:active  {
+    background: $theme-primary;
   }
 }
 
@@ -445,11 +459,23 @@ section.dynamic-section {
 }
 
 .page-header {
+  &.bg-primary {
+    &.bg-decorated {
+      @include bg-topo;
+    }
+  }
+
   .page-header-image {
     .image-outline {
       border: 2px solid $light-yellow;
       padding: 40px;
     }
+  }
+}
+
+.footer-area {
+  .bg-light.bg-decorated {
+    @include bg-topo-alt-white;
   }
 }
 

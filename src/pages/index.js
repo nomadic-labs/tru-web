@@ -128,7 +128,7 @@ class HomePage extends React.Component {
                   Explore the Research
                 </h2>
               </Container>
-              <Grid container id="explore-container" justify="flex-center">
+              <Grid container id="explore-container" justify="center">
                 <Grid item xs={10} sm={10} md={11} lg={11}>
                 </Grid>
                 <Grid item xs={10} sm={2} md={3} lg={3}>

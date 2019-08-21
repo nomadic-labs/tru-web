@@ -69,12 +69,12 @@ class Research extends Component {
   }
 
   orderedCategories = (category, arr=[]) => {
-    if (!category) {
+    if (!Boolean(category)) {
       return arr
+    } else {
+      arr.push(category)
+      return this.orderedCategories(this.nextCategory(category), arr)
     }
-
-    arr.push(category)
-    return this.orderedCategories(this.nextCategory(category), arr)
   }
 
   nextPage = page => {
@@ -86,17 +86,15 @@ class Research extends Component {
   }
 
   orderedPages = (page, arr=[]) => {
-    if (!page) {
+    console.log('page', page)
+    if (!Boolean(page)) {
       return arr
-    }
-
-    arr.push(page)
-
-    const nextPage = this.nextPage(page)
-    if (page === nextPage) {
+    } else if (page === this.nextPage(page)) {
       return arr
+    } else {
+      arr.push(page)
+      return this.orderedPages(this.nextPage(page), arr)
     }
-    return this.orderedPages(this.nextPage(page), arr)
   }
 
   filterPagesByTopic = pages => {
@@ -112,10 +110,15 @@ class Research extends Component {
     const pagesByCategory = [];
     const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
 
+    console.log("orderedCategories", orderedCategories)
+
     orderedCategories.forEach(category => {
       const categoryPages = this.filterPagesByCategory(this.props.pages, category)
-      const pages = this.filterPagesByTopic(this.orderedPages(categoryPages.find(page => !page.prev)))
 
+      console.log("categoryPages", categoryPages)
+
+      const pages = this.filterPagesByTopic(this.orderedPages(categoryPages.find(page => !page.prev)))
+      debugger;
 
       if (pages.length > 0) {
         pagesByCategory.push({ ...category, pages })

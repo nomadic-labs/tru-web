@@ -1,36 +1,72 @@
 @mixin bg-flower {
   background-image: url('../../images/flower_light_blue.svg');
-  background-size: auto 120%;
-  background-position: center;
+  background-size: 40vw auto;
+  background-position: top;
   background-repeat: no-repeat;
   background-position-x: right;
 }
 
 @mixin bg-flower-light {
   background-image: url('../../images/flower_light_yellow.svg');
-  background-size: auto 120%;
-  background-position: center;
+  background-size: 40vw auto;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+@mixin bg-flower-dark {
+  background-image: url('../../images/flower_pink.svg');
+  background-size: 40vw auto;
+  background-position: top;
   background-repeat: no-repeat;
   background-position-x: right;
 }
 
 @mixin bg-leaf {
   background-image: url('../../images/leaf_light_blue.svg');
-  background-size: auto 120%;
-  background-position: center;
+  background-size: 40vw auto;
+  background-position: top;
   background-repeat: no-repeat;
   background-position-x: left;
 }
 
 @mixin bg-leaf-light {
   background-image: url('../../images/leaf_light_yellow.svg');
-  background-size: auto 120%;
-  background-position: center;
+  background-size: 40vw auto;
+  background-position: top;
   background-repeat: no-repeat;
   background-position-x: left;
 }
 
-@mixin bg-topo-white {
-  background-image: url('../../images/background_lines_light.svg');
+@mixin bg-leaf-dark {
+  background-image: url('../../images/leaf_pink.svg');
+  background-size: 40vw auto;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-position-x: left;
+}
+
+@mixin bg-topo {
+  background-image: url('../../images/background_lines_light_yellow.svg');
+  background-size: cover;
+}
+
+@mixin bg-topo-default {
+  background-image: url('../../images/background_lines_light_blue.svg');
+  background-size: cover;
+}
+
+@mixin bg-topo-alt-white {
+  background-image: url('../../images/background_lines_alt_light.svg');
+  background-size: cover;
+}
+
+@mixin bg-topo-light {
+  background-image: url('../../images/background_lines_light_green.svg');
+  background-size: cover;
+}
+
+@mixin bg-topo-dark {
+  background-image: url('../../images/background_lines_pink.svg');
   background-size: cover;
 }

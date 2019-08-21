@@ -105,7 +105,7 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
     savePageContent(() => deleteContentItem(sectionIndex, contentIndex))
   }
 
-  const classes = type === "contrast" ? "bg-primary bg-decorated" : "";
+  const classes = type === "contrast" ? "bg-primary" : "";
 
   return(
     <section className={`dynamic-section pos-relative pt-60 pb-60 ${classes}`}>

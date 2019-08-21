@@ -1,53 +1,477 @@
-.light-palette {
-  section.dynamic-section {
-    &:nth-of-type(even) {
-      background-color: $light-theme-bg;
-    }
+/* ----------- Typography -----------*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  color: $light-theme-primary;
+}
+
+.title {
+  font-weight: 4em;
+}
+
+p, ul, li {
+  font-size: 16px;
+  line-height: 1.8em;
+}
+
+a {
+  color: $black;
+
+  &:hover {
+    color: $light-theme-secondary;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    color: $light-theme-primary;
-  }
-
-  a {
-    color: $black;
-
-    &:hover {
-      color: $light-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $light-theme-highlight;
-    }
-  }
-
-  a:not([href]):not([tabindex]) {
-    color: $black;
-
-    &:hover {
-      color: $light-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $light-theme-highlight;
-    }
-  }
-
-  p {
-    a {
-      color: $light-theme-primary;
-    }
-  }
-
-  .bg-primary {
-    background-color: $light-theme-primary !important;
-
-    h1, h2, h3, h4, h5, h6, p, a {
-      color: $white;
-    }
-  }
-
-  .bg-secondary {
-    background-color: $light-theme-secondary !important;
+  &:active, &:focus {
+    color: $light-theme-highlight;
   }
 }
+
+a:not([href]):not([tabindex]) {
+  color: $black;
+
+  &:hover {
+    color: $light-theme-secondary;
+  }
+
+  &:active, &:focus {
+    color: $light-theme-highlight;
+  }
+}
+
+p {
+  a {
+    color: $light-theme-primary;
+    text-decoration: underline;
+  }
+}
+
+
+section.dynamic-section {
+  &:nth-of-type(4n + 1) {
+    background-color: $white;
+    @include bg-flower-light;
+  }
+}
+
+section.dynamic-section {
+  &:nth-of-type(4n + 3) {
+    background-color: $white;
+    @include bg-leaf-light;
+  }
+}
+
+section.dynamic-section {
+  &:nth-of-type(4n+2) {
+    background-color: $light-theme-primary-light;
+  }
+}
+
+.paragraph {
+  ul {
+    padding-left: 40px;
+
+    li {
+      list-style: unset;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.bg-primary {
+  background-color: $light-theme-primary !important;
+  color: $white;
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: $white;
+  }
+
+  .card {
+    .card-title, .card-text, .card-body, p, label {
+      color: $black;
+    }
+  }
+}
+
+.bg-secondary {
+  background-color: $light-theme-secondary !important;
+}
+
+.bg-dark {
+  background-color: $black !important;
+}
+
+.bg-light {
+  background-color: $light-gray !important;
+}
+
+.bg-lighter {
+  background-color: $light-gray;
+  background-image: url('../../images/background_lines_light.svg');
+  background-size: cover;
+}
+
+.bg-white {
+  background-color: $white !important;
+  background-image: url('../../images/background_lines_light_blue.svg');
+  background-size: cover;
+}
+
+.bg-pink {
+  background-color: $pink !important;
+}
+
+.bg-primary.bg-decorated {
+  background-image: url('../../images/background_lines_light_green.svg');
+  background-size: cover;
+}
+
+.bg-light.bg-decorated {
+  background-image: url('../../images/background_lines_light.svg');
+  background-size: cover;
+}
+
+
+.bg-illustration {
+  position: relative;
+  overflow: hidden;
+
+  .image {
+    position: absolute;
+    height: 80%;
+    filter: invert(100%) brightness(1);
+    opacity: 0.5;
+    top: 20px;
+    right: -50%;
+    z-index: 0;
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+.bg-flower {
+  @include bg-flower;
+}
+
+.bg-leaf {
+  @include bg-leaf;
+}
+
+.slider-height-sm {
+  max-height: 400px;
+  display: flex;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.text-lg {
+  font-size: 1.2em;
+}
+
+.text-primary {
+  color: $theme-primary !important;
+}
+
+.text-secondary {
+  color: $light-theme-secondary !important;
+}
+
+.text-highlight {
+  color: $theme-highlight !important;
+}
+
+.text-purple {
+  color: $purple !important;
+}
+
+.text-blue {
+  color: $dark-blue !important;
+}
+
+.text-dark-gray {
+  color: $dark-gray !important;
+}
+
+.text-small {
+  font-size: 14px;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.btn-primary {
+  background: $theme-primary;
+
+  &:hover {
+    background: $light-theme-secondary;
+  }
+}
+
+.btn-secondary {
+  background: $light-theme-secondary;
+
+  &:hover {
+    background: $theme-highlight;
+  }
+}
+
+.btn-highlight {
+  background: $theme-highlight;
+
+  &:hover {
+    background: $pink;
+  }
+}
+
+#full-page-menu {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: $white;
+  z-index: 10000;
+  left: 100%;
+  transition: all ease-in-out 0.5s;
+
+  &.info-open {
+    left: 0;
+  }
+
+  .sidebar {
+    position: absolute;
+    height: 100%;
+    font-family: $header-font;
+    font-weight: 700;
+
+    .rotate {
+      transform: rotate(90deg);
+    }
+  }
+
+  .explore-content {
+    height: 100%;
+
+    > div.row {
+      height: inherit;
+    }
+
+    .inner-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+
+      .menu {
+        z-index: 1;
+      }
+    }
+  }
+
+  .close-icon {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+
+
+    button {
+      transition: all 0.3s ease-out 0s;
+
+      &:hover {
+        color: $light-theme-secondary;
+      }
+
+      &:active, &:focus {
+        color: $theme-highlight;
+      }
+    }
+  }
+}
+
+.category {
+  transition: all ease-out 0.3s;
+
+  h4 {
+    transition: all ease-out 0.3s;
+  }
+
+  &.open {
+    color: $dark-blue;
+
+    h4 {
+      font-size: 28px;
+    }
+  }
+}
+
+.article-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .article {
+    .image {
+      object-fit: cover;
+    }
+  }
+}
+
+.topic {
+  position: relative;
+  cursor: pointer;
+
+  .text {
+    display: inline-block;
+    transition: transform .2s ease;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: $theme-primary;
+    width: 16px;
+    height: 2px;
+    top: 14px;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform .2s ease;
+  }
+
+  &:hover, &.selected {
+    &:before {
+      transform: scaleX(1);
+    }
+
+    .text {
+      transform: translateX(30px);
+      color: $theme-primary;
+    }
+  }
+}
+
+.freeze {
+  overflow: hidden !important;
+}
+
+.header-2-menu .menu-bar {
+  &:hover {
+    span {
+      background: $light-theme-secondary;
+    }
+  }
+
+  &:focus, &:active {
+    span {
+      background: $theme-highlight;
+    }
+  }
+}
+
+.text-glow {
+  text-shadow: 0px 0px 120px transparentize($white, 0.5);
+}
+
+.explore {
+  margin-right: 80px;
+
+
+  .article {
+
+    .topics {
+      transition: all ease-in-out 0.3s;
+    }
+
+    .image {
+      background-size: cover;
+      height: 100px;
+      width: 100px;
+      transition: all ease-in-out 0.3s;
+      opacity: 0.7;
+    }
+
+    .info {
+      flex-wrap: wrap;
+    }
+
+    &:hover {
+      .topics {
+        color: $theme-primary;
+      }
+
+      .image {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.flex-grow {
+  flex: 1 1 auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.breadcrumb-text {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0px 0px 30px $theme-primary;
+}
+.breadcrumb-text > h1 {
+  font-size: 7.594em;
+  margin-bottom: 48px;
+  line-height: 1.2;
+  color: $white;
+}
+
+.breadcrumb-text span {
+  font-size: 1.4em;
+  color: $theme-primary-light;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-family: $body-font, sans-serif;
+  text-transform: uppercase;
+}
+
+.page-header {
+  .page-header-image {
+    .image-outline {
+      border: 2px solid $light-green;
+      padding: 40px;
+    }
+  }
+}
+
+/* tablet and below */
+@media (max-width: 991px) {
+
+  .explore {
+    margin-right: 0;
+    .article {
+      .info {
+        display: block;
+      }
+
+      .line {
+        display: none;
+      }
+
+      .topics {
+        transition: all ease-in-out 0.3s;
+      }
+
+
+      &:hover, &:focus {
+        .topics {
+          color: $theme-primary;
+        }
+      }
+    }
+  }
+}
+
+
+

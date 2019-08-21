@@ -1,0 +1,36 @@
+@mixin bg-flower {
+  background-image: url('../../images/flower_light_blue.svg');
+  background-size: auto 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+@mixin bg-flower-light {
+  background-image: url('../../images/flower_light_yellow.svg');
+  background-size: auto 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+@mixin bg-leaf {
+  background-image: url('../../images/leaf_light_blue.svg');
+  background-size: auto 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-x: left;
+}
+
+@mixin bg-leaf-light {
+  background-image: url('../../images/leaf_light_yellow.svg');
+  background-size: auto 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-x: left;
+}
+
+@mixin bg-topo-white {
+  background-image: url('../../images/background_lines_light.svg');
+  background-size: cover;
+}

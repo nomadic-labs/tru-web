@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 
 export default (props) => {
   return (
-    <footer className="footer-area footer1 bg-light pt-75">
+    <footer className="footer-area footer1 bg-light bg-decorated pt-75">
       <Container>
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-6">

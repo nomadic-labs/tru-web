@@ -123,26 +123,27 @@ class HomePage extends React.Component {
           </Section>
 
           <Section className="wow fadeIn pos-relative bg-white bg-flower">
-            <Container>
+              <Container>
+                <h2 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
+                  Explore the Research
+                </h2>
+              </Container>
               <Grid container id="explore-container" justify="flex-center">
                 <Grid item xs={10} sm={10} md={11} lg={11}>
-                  <h1 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
-                    Explore the Research
-                  </h1>
                 </Grid>
                 <Grid item xs={10} sm={2} md={3} lg={3}>
+
+                  <div className="ml-5">
                     <TopicSelector />
+                  </div>
                 </Grid>
 
                 <Grid item xs={10} sm={8} md={8} lg={8}>
-                  <div className="">
                     <div className="mt-40 mb-40 pr-3" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
                       <Explore />
                     </div>
-                  </div>
                 </Grid>
               </Grid>
-            </Container>
           </Section>
 
           <Section className="wow fadeIn pt-80 pb-80 bg-primary pos-relative">

@@ -15,10 +15,10 @@ const styles = {
 
 const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpdateHeaderImage }) => {
   return (
-    <div className="page-header breadcrumb-area d-flex pt-60 pb-60 bg-primary">
+    <div className="page-header breadcrumb-area d-flex pt-60 pb-60 bg-primary bg-decorated">
       <Container xl={10} lg={10} md={11} sm={11} xs={11}>
         <div className="row justify-content-start pos-relative">
-          <div className="col-12 col-lg-6 d-flex align-items-center">
+          <div className="col-12 col-lg-6 d-flex align-items-center justify-content-center">
             <div className="breadcrumb-text pt-40 pb-40">
               <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={{ text: title }} onSave={ onUpdateTitle } />
@@ -28,14 +28,17 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
               </span>
             </div>
           </div>
+
           <div className="col-12 col-lg-6 align-items-center d-flex page-header-image">
-            <EditableImageUpload
-              onSave={ onUpdateHeaderImage }
-              uploadImage={ uploadImage }
-              content={ headerImage || { imageSrc: defaultHeader} }
-              maxSize={1024 * 1024 * 12}
-              styles={{ image: styles.image }}
-            />
+            <div className="image-outline">
+              <EditableImageUpload
+                onSave={ onUpdateHeaderImage }
+                uploadImage={ uploadImage }
+                content={ headerImage || { imageSrc: defaultHeader} }
+                maxSize={1024 * 1024 * 12}
+                styles={{ image: styles.image }}
+              />
+            </div>
           </div>
         </div>
       </Container>

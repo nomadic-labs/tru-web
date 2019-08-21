@@ -50,14 +50,14 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                                 <img src={dylan3} />
                             </div>
                             <div className="menu">
-                                <Link to={"/"}><h3>Home</h3></Link>
-                                <Link to={"/news"}><h3>News</h3></Link>
-                                <Link to={"/updates"}><h3>Project Updates</h3></Link>
-                                <Link to={"/resources"}><h3>Resources</h3></Link>
-                                <Link to={"/references"}><h3>References</h3></Link>
-                                <Link to={"/pollutionreporter"}><h3>Pollution Reporter App</h3></Link>
-                                <Link to={"/pollutionreporter"}><h3>Get Involved</h3></Link>
-                                <Link to={"/pollutionreporter"}><h3>Contact Us</h3></Link>
+                                <Link to={"/"}><h4>Home</h4></Link>
+                                <Link to={"/news"}><h4>News</h4></Link>
+                                <Link to={"/updates"}><h4>Project Updates</h4></Link>
+                                <Link to={"/resources"}><h4>Resources</h4></Link>
+                                <Link to={"/references"}><h4>References</h4></Link>
+                                <Link to={"/pollutionreporter"}><h4>Pollution Reporter App</h4></Link>
+                                <Link to={"/pollutionreporter"}><h4>Get Involved</h4></Link>
+                                <Link to={"/pollutionreporter"}><h4>Contact Us</h4></Link>
 
                                 <div className="social-icon-right mt-40">
                                     <a href="https://twitter.com/LandandRefinery/">
@@ -79,9 +79,9 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                         </div>
                         <Grid container className="mx-5">
                           <Grid item xs={10} sm={10} md={11} lg={11}>
-                            <h1 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
+                            <h2 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
                               Explore the Research
-                            </h1>
+                            </h2>
                           </Grid>
                           <Grid item xs={10} sm={2} md={3} lg={3}>
                               <TopicSelector />

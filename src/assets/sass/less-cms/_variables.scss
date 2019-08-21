@@ -41,6 +41,7 @@ $theme-highlight: $dark-yellow;
 /* LIGHT THEME */
 
 $light-theme-primary: $dark-green;
+$light-theme-primary-light: $light-green;
 $light-theme-secondary: $green;
 $light-theme-highlight: $pink;
 $light-theme-bg: $light-green;
@@ -49,6 +50,7 @@ $light-theme-bg: $light-green;
 /* DARK THEME */
 
 $dark-theme-primary: $purple;
+$dark-theme-primary-light: $pink;
 $dark-theme-secondary: $dark-green;
 $dark-theme-highlight: $pink;
 $dark-theme-bg: transparentize($gray, 0.9);

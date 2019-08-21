@@ -108,7 +108,7 @@ class ResourcesPage extends React.Component {
             onUpdateHeaderImage={this.onUpdateHeaderImage}
             onUpdateTitle={this.onUpdateTitle}
           />
-          <Section id="featured-resources" className="wow fadeIn pt-80 pb-80 bg-white pos-relative">
+          <Section id="featured-resources" className="wow fadeIn pt-80 pb-80 bg-lighter pos-relative">
             <Container sm={10} md={10} lg={10}>
               <div className="mb-5">
                 <Publication

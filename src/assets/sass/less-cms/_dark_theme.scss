@@ -106,9 +106,7 @@
   }
 
   .bg-lighter {
-    background-color: $light-gray;
-    background-image: url('../../images/background_lines_light.svg');
-    background-size: cover;
+    background-color: $lighter-gray !important;
   }
 
   .bg-white {

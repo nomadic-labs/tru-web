@@ -56,8 +56,8 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                                 <Link to={"/resources"}><h4>Resources</h4></Link>
                                 <Link to={"/references"}><h4>References</h4></Link>
                                 <Link to={"/pollutionreporter"}><h4>Pollution Reporter App</h4></Link>
-                                <Link to={"/pollutionreporter"}><h4>Get Involved</h4></Link>
-                                <Link to={"/pollutionreporter"}><h4>Contact Us</h4></Link>
+                                <Link to={"/get-involved"}><h4>Get Involved</h4></Link>
+                                <Link to={"/contact"}><h4>Contact Us</h4></Link>
 
                                 <div className="social-icon-right mt-40">
                                     <a href="https://twitter.com/LandandRefinery/">

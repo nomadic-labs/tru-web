@@ -22,6 +22,14 @@
   background-position-x: right;
 }
 
+@mixin bg-flower-alt {
+  background-image: url('../../images/flower_alt_light_blue.svg');
+  background-size: 40vw auto;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
 @mixin bg-leaf {
   background-image: url('../../images/leaf_light_blue.svg');
   background-size: 40vw auto;
@@ -40,6 +48,14 @@
 
 @mixin bg-leaf-dark {
   background-image: url('../../images/leaf_pink.svg');
+  background-size: 40vw auto;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-position-x: left;
+}
+
+@mixin bg-leaf-white {
+  background-image: url('../../images/leaf_white.svg');
   background-size: 40vw auto;
   background-position: top;
   background-repeat: no-repeat;

@@ -134,9 +134,7 @@ section.dynamic-section.basic-section {
 }
 
 .bg-lighter {
-  background-color: $light-gray;
-  background-image: url('../../images/background_lines_light.svg');
-  background-size: cover;
+  background-color: $lighter-gray !important;
 }
 
 .bg-white {
@@ -180,8 +178,16 @@ section.dynamic-section.basic-section {
   @include bg-flower;
 }
 
+.bg-flower-alt {
+  @include bg-flower-alt;
+}
+
 .bg-leaf {
   @include bg-leaf;
+}
+
+.bg-light.bg-leaf {
+  @include bg-leaf-white;
 }
 
 .slider-height-sm {

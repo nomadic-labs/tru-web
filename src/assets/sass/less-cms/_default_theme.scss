@@ -16,13 +16,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 4em;
 }
 
-p, ul, li {
+p, ul, li, a {
   font-size: 16px;
   line-height: 1.8em;
 }
 
 a {
-  color: $black;
+  color: $theme-primary;
 
   &:hover {
     color: $theme-secondary;
@@ -53,27 +53,27 @@ p {
 }
 
 
-section.dynamic-section {
+section.dynamic-section.basic-section {
   &:nth-of-type(4n+1) {
     background-color: $white;
     @include bg-flower;
   }
 }
 
-section.dynamic-section {
+section.dynamic-section.basic-section {
   &:nth-of-type(4n+3) {
     background-color: $white;
     @include bg-leaf;
   }
 }
 
-section.dynamic-section {
+section.dynamic-section.basic-section {
   &:nth-of-type(4n+2) {
     background-color: $theme-primary-light;
   }
 }
 
-section.dynamic-section {
+section.dynamic-section.basic-section {
   &:nth-of-type(4n+4) {
     background-color: $theme-primary-light;
   }
@@ -103,6 +103,22 @@ section.dynamic-section {
       color: $black;
     }
   }
+
+  .btn-primary {
+    background: $theme-highlight;
+    color: $white;
+
+    &:hover, &:focus {
+      background: $theme-secondary;
+      color: $white;
+    }
+
+    &:active  {
+      background: lighten($theme-secondary, 5%) !important;
+      color: $white;
+    }
+  }
+
 }
 
 .bg-secondary {
@@ -215,37 +231,40 @@ section.dynamic-section {
 
 .btn-primary {
   background: $theme-primary;
+  color: $white;
 
   &:hover, &:focus {
     background: $theme-secondary;
   }
 
   &:active  {
-    background: $theme-highlight;
+    background: lighten($theme-secondary, 10%) !important;
   }
 }
 
 .btn-secondary {
   background: $theme-secondary;
+  color: $white;
 
   &:hover, &:focus {
     background: $theme-highlight;
   }
 
   &:active  {
-    background: $theme-primary;
+    background: lighten($theme-highlight, 10%) !important;
   }
 }
 
 .btn-highlight {
   background: $theme-highlight;
+  color: $white;
 
   &:hover, &:focus {
     background: $theme-secondary;
   }
 
   &:active  {
-    background: $theme-primary;
+    background: lighten($theme-secondary, 10%) !important;
   }
 }
 
@@ -397,7 +416,6 @@ section.dynamic-section {
 .explore {
   margin-right: 80px;
 
-
   .article {
 
     .topics {
@@ -476,6 +494,50 @@ section.dynamic-section {
 .footer-area {
   .bg-light.bg-decorated {
     @include bg-topo-alt-white;
+  }
+}
+
+.fixed-sidebar-section {
+  display: flex;
+  align-items: stretch;
+
+  .sidebar, .content {
+    flex: 1 1 50%;
+  }
+
+  .sidebar {
+    background-color: $theme-primary-light;
+
+    small { /*for image captions*/
+      color: $white;
+    }
+  }
+
+  .sidebar-inner {
+    max-height: calc(100vh);
+
+    .edit-container {
+      height: 100%;
+    }
+
+    .lightbox-container {
+      display: flex;
+      height: 100%;
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+
+  &:nth-of-type(even) {
+    .sidebar {
+      background-color: $theme-primary;
+
+      small { /*for image captions*/
+        color: initial;
+      }
+    }
   }
 }
 

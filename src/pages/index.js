@@ -93,7 +93,7 @@ class HomePage extends React.Component {
             onUpdateTitle={this.onUpdateTitle}
           />
 
-          <Section className="wow fadeIn pt-80 pb-80 pos-relative bg-white bg-flower">
+          <Section className="wow fadeIn pt-80 pb-80 pos-relative bg-white bg-leaf">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
@@ -146,7 +146,7 @@ class HomePage extends React.Component {
               </Grid>
           </Section>
 
-          <Section className="wow fadeIn pt-80 pb-80 bg-primary pos-relative">
+          <Section className="wow fadeIn pt-80 pb-80 bg-primary">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["cr-app-title"]} handleSave={this.onSave("cr-app-title")} />

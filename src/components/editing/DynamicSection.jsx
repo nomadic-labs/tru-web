@@ -19,10 +19,8 @@ import Image from "../common/Image";
 import ImageCarousel from "../common/ImageCarousel";
 import EmbeddedIframe from "../common/EmbeddedIframe";
 import Timeline from "../common/Timeline";
-import BouncingImageTopLeft from "../common/BouncingImageTopLeft";
-import BouncingImageTopRight from "../common/BouncingImageTopRight";
-import BouncingImageBottomLeft from "../common/BouncingImageBottomLeft";
-import BouncingImageBottomRight from "../common/BouncingImageBottomRight";
+import Button from "../common/Button";
+import Link from "../common/Link";
 import SectionEditingActions from "./SectionEditingActions"
 
 const componentMap = {
@@ -32,10 +30,8 @@ const componentMap = {
   imageCarousel: ImageCarousel,
   embeddedIframe: EmbeddedIframe,
   timeline: Timeline,
-  bouncingImageTopLeft: BouncingImageTopLeft,
-  bouncingImageTopRight: BouncingImageTopRight,
-  bouncingImageBottomLeft: BouncingImageBottomLeft,
-  bouncingImageBottomRight: BouncingImageBottomRight,
+  button: Button,
+  link: Link,
 }
 
 const mapDispatchToProps = dispatch => {
@@ -105,7 +101,7 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
     savePageContent(() => deleteContentItem(sectionIndex, contentIndex))
   }
 
-  const classes = type === "contrast" ? "bg-primary" : "";
+  const classes = type === "contrast" ? "contrast-section bg-primary" : "basic-section";
 
   return(
     <section className={`dynamic-section pos-relative pt-60 pb-60 ${classes}`}>

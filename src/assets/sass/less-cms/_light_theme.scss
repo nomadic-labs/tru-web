@@ -37,27 +37,27 @@
   }
 
 
-  section.dynamic-section {
+  section.dynamic-section.basic-section {
     &:nth-of-type(4n + 1) {
       background-color: $white;
       @include bg-flower-light;
     }
   }
 
-  section.dynamic-section {
+  section.dynamic-section.basic-section {
     &:nth-of-type(4n + 3) {
       background-color: $white;
       @include bg-leaf-light;
     }
   }
 
-  section.dynamic-section {
+  section.dynamic-section.basic-section {
     &:nth-of-type(4n+2) {
       background-color: $light-theme-primary-light;
     }
   }
 
-  section.dynamic-section {
+  section.dynamic-section.basic-section {
     &:nth-of-type(4n+4) {
       background-color: $light-theme-primary-light;
     }
@@ -74,6 +74,21 @@
     .card {
       .card-title, .card-text, .card-body, p, label {
         color: $black;
+      }
+    }
+
+    .btn-primary {
+      background: $light-theme-highlight;
+      color: $white;
+
+      &:hover, &:focus {
+        background: $light-theme-secondary;
+        color: $white;
+      }
+
+      &:active  {
+        background: lighten($light-theme-secondary, 5%) !important;
+        color: $white;
       }
     }
   }
@@ -155,37 +170,46 @@
 
   .btn-primary {
     background: $light-theme-primary;
+    color: $white;
 
     &:hover, &.focus {
       background: $light-theme-secondary;
+      color: $white;
     }
 
     &:active  {
-      background: $light-theme-highlight;
+      background: lighten($light-theme-secondary, 10%) !important;
+      color: $white;
     }
   }
 
   .btn-secondary {
     background: $light-theme-secondary;
+    color: $white;
 
     &:hover, &.focus {
       background: $light-theme-highlight;
+      color: $white;
     }
 
     &:active  {
-      background: $light-theme-primary;
+      background: lighten($light-theme-highlight, 10%) !important;
+      color: $white;
     }
   }
 
   .btn-highlight {
     background: $light-theme-highlight;
+    color: $white;
 
     &:hover, &.focus {
       background: $light-theme-secondary;
+      color: $white;
     }
 
     &:active  {
-      background: $light-theme-primary;
+      background: lighten($light-theme-secondary, 10%) !important;
+      color: $white;
     }
   }
 
@@ -208,6 +232,27 @@
       }
     }
   }
+
+  .fixed-sidebar-section {
+    .sidebar {
+      background-color: $light-theme-primary-light;
+
+      small { /*for image captions*/
+        color: $white;
+      }
+    }
+
+    &:nth-of-type(even) {
+      .sidebar {
+        background-color: $light-theme-primary;
+
+        small { /*for image captions*/
+          color: initial;
+        }
+      }
+    }
+  }
+
 }
 
 

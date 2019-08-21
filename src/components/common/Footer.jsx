@@ -34,7 +34,7 @@ export default (props) => {
                   <div className="subscribes-form">
                       <form action="#">
                           <input placeholder="Enter your email" type="email" />
-                          <button className="btn">Subscribe</button>
+                        <button className="btn btn-primary">Subscribe</button>
                       </form>
                   </div>
               </div>

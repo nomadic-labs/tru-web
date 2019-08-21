@@ -1,5 +1,5 @@
 import React from "react";
-import { push } from "gatsby";
+import { push, Link } from "gatsby";
 import firebase from "../../firebase/init";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button"
@@ -152,9 +152,21 @@ class AccountButton extends React.Component {
                   props.deploy();
                   closeMenu();
                 }}
-                divider
               >
                 Publish changes
+              </MenuItem>
+            )}
+
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
+                  closeMenu();
+                }}
+                divider
+                component={Link}
+                to={'/admin'}
+              >
+                Website Configuration
               </MenuItem>
             )}
 

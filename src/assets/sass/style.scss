@@ -3029,14 +3029,16 @@ ul.cat li a:hover {
 	margin-top: 14px;
 	position: relative;
 	background: $theme-primary;
-	transition: .3s;
-	color: $white;
-	padding: 13px 42px;
+
+  &:hover, &:focus {
+    background: $theme-secondary;
+  }
+
+  &:active  {
+    background: lighten($theme-secondary, 10%) !important;
+  }
 }
-.subscribes-form form button.btn:hover {
-	color: $white;
-	background: $theme-highlight;
-	}
+
 .subscribe-button form button.btn {
 	background: $theme-secondary;
 	transition: .3s;
@@ -4202,49 +4204,6 @@ section#end-matter {
 	}
 }
 
-.fixed-sidebar-section {
-	display: flex;
-	align-items: stretch;
-
-	.sidebar, .content {
-		flex: 1 1 50%;
-	}
-
-	.sidebar {
-		background-color: $lighter-gray;
-
-		small { /*for image captions*/
-			color: $white;
-		}
-	}
-
-	.sidebar-inner {
-		max-height: calc(100vh);
-
-		.edit-container {
-			height: 100%;
-		}
-
-		.lightbox-container {
-			display: flex;
-			height: 100%;
-
-			img {
-				object-fit: contain;
-			}
-		}
-	}
-
-	&:nth-of-type(even) {
-		.sidebar {
-	    background-color: $theme-primary;
-
-	    small { /*for image captions*/
-				color: initial;
-			}
-		}
-  }
-}
 
 .news-item {
 	border-bottom: 1px solid $light-blue;

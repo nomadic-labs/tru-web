@@ -12,10 +12,8 @@ export const CONTENT_MAP = {
   imageCarousel: { type: "imageCarousel", content: {} },
   embeddedIframe: { type: "embeddedIframe" },
   timeline: { type: "timeline" },
-  bouncingImageTopLeft: { type: "bouncingImageTopLeft" },
-  bouncingImageTopRight: { type: "bouncingImageTopRight" },
-  bouncingImageBottomLeft: { type: "bouncingImageBottomLeft" },
-  bouncingImageBottomRight: { type: "bouncingImageBottomRight" },
+  button: { type: "button", content: { anchor: "Button", link: "/" } },
+  link: { type: "link", content: { anchor: "Link text", link: "/" } },
 }
 
 export const PAGE_TYPES = [

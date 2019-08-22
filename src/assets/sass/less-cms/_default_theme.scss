@@ -515,7 +515,7 @@ section.dynamic-section.basic-section {
     background-color: $theme-primary-light;
 
     small { /*for image captions*/
-      color: $white;
+      color: $black;
     }
   }
 
@@ -541,7 +541,7 @@ section.dynamic-section.basic-section {
       background-color: $theme-primary;
 
       small { /*for image captions*/
-        color: initial;
+        color: $white;
       }
     }
   }

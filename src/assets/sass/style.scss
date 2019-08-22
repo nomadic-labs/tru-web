@@ -4163,16 +4163,26 @@ section#end-matter {
 		}
 
 		&.prev {
-			border-bottom: 3px solid $theme-secondary;
+			border-bottom: 3px solid grayscale($theme-secondary);
 
 			.card-header {
-				background-color: $theme-secondary;
+				background-color: grayscale($theme-secondary);
 				justify-content: flex-start;
 			}
 
 			.card-body {
 				h5 {
-					color: $theme-secondary;
+					color: grayscale($theme-secondary);
+				}
+
+				h4 {
+					color: grayscale($theme-primary);
+				}
+			}
+
+			.card-image {
+				img {
+					filter: grayscale(1);
 				}
 			}
 
@@ -4180,6 +4190,12 @@ section#end-matter {
 				.card-header {
 					svg {
 						transform: translateX(-5px);
+					}
+				}
+
+				.card-body {
+					h4 {
+						color: grayscale($theme-primary);
 					}
 				}
 			}

@@ -236,7 +236,7 @@
       background-color: $light-theme-primary-light;
 
       small { /*for image captions*/
-        color: $white;
+        color: $black;
       }
     }
 
@@ -245,7 +245,7 @@
         background-color: $light-theme-primary;
 
         small { /*for image captions*/
-          color: initial;
+          color: $white;
         }
       }
     }

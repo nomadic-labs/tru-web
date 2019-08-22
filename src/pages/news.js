@@ -135,7 +135,7 @@ class NewsPage extends React.Component {
             onUpdateHeaderImage={this.onUpdateHeaderImage}
             onUpdateTitle={this.onUpdateTitle}
           />
-          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 bg-primary pos-relative">
+          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 bg-light bg-decorated pos-relative">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
                 <EditableText content={content["featured-news-title"]} onSave={this.onSave("featured-news-title")} />
@@ -155,7 +155,7 @@ class NewsPage extends React.Component {
             </div>
           </Section>
 
-          <Section id="references" className="wow fadeIn pt-80 pb-80">
+          <Section id="references" className="wow fadeIn pt-80 pb-80 bg-white">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
                 <EditableText content={content["references-title"]} onSave={this.onSave("references-title")} />

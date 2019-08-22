@@ -6,49 +6,56 @@ $header-font: 'Lora', serif;
 
 /*--------------------------- Custom colours ----------------------*/
 
-$pink: #F5C7B8;
-$red: #e45d50;
-$blue: #3C5C78;
-$light-blue: #E2EAF2;
-$light-green: #c3dbbc;
-$yellow: #ffac2a;
-$light-yellow: #f9e1b7;
+$dark-blue: #3c5c78;
+$light-blue: #e2eaf2;
+$medium-blue: #4d7699;
+
 $dark-green: #2f6165;
-$dark-purple: #423243;
-$green: #5FAA03;
-$brown: #b46547;
+$light-green: #c3dbbc;
+
+$dark-yellow: #ffac2a;
+$light-yellow: #f9e1b7;
+
+$purple: #423243;
+$pink: #f5c7b8;
+$green: #29702a;
 
 
 $black: #303539;
-$light-gray: #e2eaf2;
 $white: #FFFFFF;
+
+$gray: #4c4e56;
+$light-gray: #e2eaf2;
 $dark-gray: #A2A1A8;
 $lighter-gray: transparentize($light-gray, 0.5);
-$dull-gray: #817270;
 
 
 /* DEFAULT THEME */
 
-$theme-primary: $blue;
+$theme-primary: $dark-blue;
+$theme-primary-light: $light-blue;
 $theme-secondary: $green;
-$theme-highlight: $yellow;
+$theme-highlight: $dark-yellow;
 
 
 /* LIGHT THEME */
 
-$light-theme-primary: $green;
-$light-theme-secondary: $dark-green;
-$light-theme-highlight: $red;
-$light-theme-bg: transparentize($light-green, 0.75);
+$light-theme-primary: $dark-green;
+$light-theme-primary-light: $light-green;
+$light-theme-secondary: $green;
+$light-theme-highlight: $pink;
+$light-theme-bg: $light-green;
 
 
 /* DARK THEME */
 
-$dark-theme-primary: $dark-purple;
-$dark-theme-secondary: $dark-green;
-$dark-theme-highlight: $brown;
-$dark-theme-bg: transparentize($dull-gray, 0.9);
-$dark-theme-bg-alt: transparentize($dark-purple, 0.85);
+$dark-theme-primary: $purple;
+$dark-theme-primary-light: $pink;
+$dark-theme-secondary: $dark-yellow;
+$dark-theme-highlight: $green;
+$dark-theme-bg: transparentize($gray, 0.9);
+$dark-theme-bg-alt: transparentize($purple, 0.85);
+
 
 
 /*--------------------------- background Color variations ----------------------*/

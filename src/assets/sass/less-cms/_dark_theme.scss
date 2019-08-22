@@ -1,0 +1,254 @@
+  /* ----------- Typography -----------*/
+
+.dark-palette {
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $dark-theme-primary;
+  }
+
+  a {
+    color: $black;
+
+    &:hover {
+      color: $dark-theme-secondary;
+    }
+
+    &:active, &:focus {
+      color: $dark-theme-highlight;
+    }
+  }
+
+  a:not([href]):not([tabindex]) {
+    color: $black;
+
+    &:hover {
+      color: $dark-theme-secondary;
+    }
+
+    &:active, &:focus {
+      color: $dark-theme-highlight;
+    }
+  }
+
+  p {
+    a {
+      color: $dark-theme-primary;
+    }
+  }
+
+
+  section.dynamic-section.basic-section {
+    &:nth-of-type(4n + 1) {
+      background-color: $white;
+      @include bg-flower-dark;
+    }
+  }
+
+  section.dynamic-section.basic-section {
+    &:nth-of-type(4n + 3) {
+      background-color: $white;
+      @include bg-leaf-dark;
+    }
+  }
+
+  section.dynamic-section.basic-section {
+    &:nth-of-type(4n+2) {
+      background-color: $dark-theme-primary-light;
+    }
+  }
+
+  section.dynamic-section.basic-section {
+    &:nth-of-type(4n+4) {
+      background-color: $dark-theme-primary-light;
+    }
+  }
+
+  .bg-primary {
+    background-color: $dark-theme-primary !important;
+    color: $white;
+
+    h1, h2, h3, h4, h5, h6, p {
+      color: $white;
+    }
+
+    .card {
+      .card-title, .card-text, .card-body, p, label {
+        color: $black;
+      }
+    }
+
+    .btn-primary {
+      background: $dark-theme-secondary;
+      color: $white;
+
+      &:hover, &:focus {
+        background: $dark-theme-highlight;
+        color: $white;
+      }
+
+      &:active  {
+        background: darken($dark-theme-highlight, 5%) !important;
+        color: $white;
+      }
+    }
+  }
+
+  .bg-secondary {
+    background-color: $dark-theme-secondary !important;
+  }
+
+  .bg-dark {
+    background-color: $black !important;
+  }
+
+  .bg-light {
+    background-color: $light-gray !important;
+  }
+
+  .bg-lighter {
+    background-color: $lighter-gray !important;
+  }
+
+  .bg-white {
+    background-color: $white !important;
+  }
+
+  .bg-pink {
+    background-color: $pink !important;
+  }
+
+  .bg-primary.bg-decorated {
+    @include bg-topo-dark;
+  }
+
+  .bg-light.bg-decorated {
+    @include bg-topo-alt-white;
+  }
+
+
+  .bg-illustration {
+    position: relative;
+    overflow: hidden;
+
+    .image {
+      position: absolute;
+      height: 80%;
+      filter: invert(100%) brightness(1);
+      opacity: 0.5;
+      top: 20px;
+      right: -50%;
+      z-index: 0;
+
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+
+  .bg-flower {
+    @include bg-flower-dark;
+  }
+
+  .bg-leaf {
+    @include bg-leaf-dark;
+  }
+
+  .text-primary {
+    color: $dark-theme-primary !important;
+  }
+
+  .text-secondary {
+    color: $dark-theme-secondary !important;
+  }
+
+  .text-highlight {
+    color: $dark-theme-highlight !important;
+  }
+
+  .btn-primary {
+    background: $dark-theme-primary;
+    color: $white;
+
+    &:hover, &.focus {
+      background: $dark-theme-highlight;
+      color: $white;
+    }
+
+    &:active  {
+      background: darken($dark-theme-highlight, 10%) !important;
+      color: $white;
+    }
+  }
+
+  .btn-secondary {
+    background: $dark-theme-secondary;
+    color: $white;
+
+    &:hover, &.focus {
+      background: $dark-theme-highlight;
+      color: $white;
+    }
+
+    &:active  {
+      background: darken($dark-theme-secondary, 10%) !important;
+      color: $white;
+    }
+  }
+
+  .btn-highlight {
+    background: $dark-theme-highlight;
+    color: $white;
+
+    &:hover, &.focus {
+      background: $dark-theme-secondary;
+    }
+
+    &:active  {
+      background: darken($dark-theme-secondary, 10%) !important;
+    }
+  }
+
+  .breadcrumb-text {
+    text-shadow: 0px 0px 30px $dark-theme-primary;
+
+    > h1 {
+      color: $white;
+    }
+
+    span {
+      color: $theme-primary-light;
+    }
+  }
+
+  .page-header {
+    .page-header-image {
+      .image-outline {
+        border: 2px solid $dark-theme-primary-light;
+      }
+    }
+  }
+
+  .fixed-sidebar-section {
+    .sidebar {
+      background-color: $dark-theme-primary-light;
+
+      small { /*for image captions*/
+        color: $black;
+      }
+    }
+
+    &:nth-of-type(even) {
+      .sidebar {
+        background-color: $dark-theme-primary;
+
+        small { /*for image captions*/
+          color: $white;
+        }
+      }
+    }
+  }
+
+}
+
+

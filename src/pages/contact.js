@@ -84,7 +84,7 @@ class ContactPage extends React.Component {
               onUpdateHeaderImage={this.onUpdateHeaderImage}
               onUpdateTitle={this.onUpdateTitle}
             />
-            <div className="contact-area pt-115 pb-75">
+            <div className="contact-area pt-115 pb-75 bg-white bg-flower-alt">
                 <Container>
                     <div className="row">
                         <div className="col-12 mb-30">

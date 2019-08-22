@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { StaticQuery, graphql } from "gatsby";
 
-import plants10 from "../../assets/images/illustrations/plants-10.svg";
 
 import { selectTopic, unselectTopic } from "../../redux/actions";
 
@@ -42,10 +41,7 @@ const TopicSelector = props => {
       render={data => {
         const topics = data.allTopics.edges.map(edge => edge.node);
         return(
-          <div className="topic-selector p-5 pt-40 pb-80">
-            <div className="image bounce-animate">
-              <img src={plants10} style={{ width: "120px", height: "120px" }} />
-            </div>
+          <div className="topic-selector pt-40 pb-80">
             <div className="topics mt-4">
               <h4>Filter by Topic</h4>
               <ul>

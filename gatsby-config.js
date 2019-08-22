@@ -19,7 +19,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: "gatsby-source-firebase",
       options: {
@@ -54,6 +54,6 @@ module.exports = {
       options: {
         precision: 8,
       },
-    }
+    },
   ]
 };

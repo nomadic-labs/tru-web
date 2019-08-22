@@ -285,9 +285,11 @@ class AdminPage extends React.Component {
     return(
       <Layout>
         <ProtectedPage>
-          <h1 className="text-center">
-            Website Configuration
-          </h1>
+          <Container>
+            <h1 className="text-center mb-40">
+              Website Configuration
+            </h1>
+          </Container>
 
           <Container>
             <h2>Topics</h2>
@@ -367,7 +369,7 @@ class AdminPage extends React.Component {
                             <div className="ranked-item" key={page.id}>
                               <IconButton size="small" color="primary" onClick={this.movePageBack(page)} disabled={!page.prev}><ArrowUp /></IconButton>
                               <IconButton size="small" color="primary" onClick={this.movePageForward(page)} disabled={!page.next}><ArrowDown /></IconButton>
-                              <span className="ml-3"><Link to={`/${page.slug}`}>{page.title}</Link></span>
+                              <span className="ml-3"><Link to={page.slug}>{page.title}</Link></span>
                             </div>
                           )
                         })
@@ -386,7 +388,7 @@ class AdminPage extends React.Component {
                 uncategorizedPages.map(page => {
                   return(
                     <div className="ranked-item" key={page.id}>
-                      <span className="ml-3"><Link to={`/${page.slug}`}>{page.title}</Link></span>
+                      <span className="ml-3"><Link to={page.slug}>{page.title}</Link></span>
                     </div>
                   )
                 })

@@ -84,25 +84,42 @@ class ContactPage extends React.Component {
               onUpdateHeaderImage={this.onUpdateHeaderImage}
               onUpdateTitle={this.onUpdateTitle}
             />
-            <Section className="wow fadeIn pt-80 pb-80 bg-primary">
+            <Section className="wow fadeIn pt-80 pb-80 bg-light bg-leaf">
               <Container>
                 <h2 data-animation="fadeInUp" data-delay=".5s">
                   <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
                 </h2>
-                <div className="mt-40 mb-40">
-                  <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="mt-40 mb-40">
+                      <EditableImageUpload
+                        classes="img-fluid"
+                        content={content["get-involved-image"]}
+                        onSave={this.onSave("get-involved-image")}
+                        uploadImage={uploadImage}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-md-6">
+                    <div className="mt-40 mb-40">
+                      <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <h4 data-animation="fadeInUp" data-delay=".5s">
+                      <EditableText content={content["intro-salutation"]} handleSave={this.onSave("intro-salutation")} />
+                    </h4>
+                  </div>
                 </div>
-                <h4 data-animation="fadeInUp" data-delay=".5s">
-                  <EditableText content={content["intro-salutation"]} handleSave={this.onSave("intro-salutation")} />
-                </h4>
+
               </Container>
             </Section>
 
-            <Section className="wow fadeIn pt-80 pb-80">
+            <Section className="wow fadeIn pt-80 pb-80 bg-flower">
                 <Container>
                     <div className="row">
-                        <div className="col-12 mb-30">
-                        </div>
                         <div className="col-12 mb-30">
                             <div className="row">
                                 <div className="col-xl-12">
@@ -129,6 +146,11 @@ class ContactPage extends React.Component {
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-12 mb-30">
+                          <EditableParagraph content={content["form-post-text"]} handleSave={this.onSave("form-post-text")} />
                         </div>
                     </div>
                 </Container>

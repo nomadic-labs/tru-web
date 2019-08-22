@@ -9,20 +9,20 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font;
-  font-weight: 600;
+  color: $theme-primary;
 }
 
 .title {
   font-weight: 4em;
 }
 
-p, ul, li {
+p, ul, li, a {
   font-size: 16px;
   line-height: 1.8em;
 }
 
 a {
-  color: $black;
+  color: $theme-primary;
 
   &:hover {
     color: $theme-secondary;
@@ -52,6 +52,33 @@ p {
   }
 }
 
+
+section.dynamic-section.basic-section {
+  &:nth-of-type(4n+1) {
+    background-color: $white;
+    @include bg-flower;
+  }
+}
+
+section.dynamic-section.basic-section {
+  &:nth-of-type(4n+3) {
+    background-color: $white;
+    @include bg-leaf;
+  }
+}
+
+section.dynamic-section.basic-section {
+  &:nth-of-type(4n+2) {
+    background-color: $theme-primary-light;
+  }
+}
+
+section.dynamic-section.basic-section {
+  &:nth-of-type(4n+4) {
+    background-color: $theme-primary-light;
+  }
+}
+
 .paragraph {
   ul {
     padding-left: 40px;
@@ -67,9 +94,31 @@ p {
   background-color: $theme-primary !important;
   color: $white;
 
-  p {
+  h1, h2, h3, h4, h5, h6, p {
     color: $white;
   }
+
+  .card {
+    .card-title, .card-text, .card-body, p, label {
+      color: $black;
+    }
+  }
+
+  .btn-primary {
+    background: $theme-highlight;
+    color: $white;
+
+    &:hover, &:focus {
+      background: $theme-secondary;
+      color: $white;
+    }
+
+    &:active  {
+      background: lighten($theme-secondary, 5%) !important;
+      color: $white;
+    }
+  }
+
 }
 
 .bg-secondary {
@@ -94,6 +143,51 @@ p {
 
 .bg-pink {
   background-color: $pink !important;
+}
+
+.bg-primary.bg-decorated {
+  @include bg-topo-default;
+}
+
+.bg-light.bg-decorated {
+  @include bg-topo-alt-white;
+}
+
+
+.bg-illustration {
+  position: relative;
+  overflow: hidden;
+
+  .image {
+    position: absolute;
+    height: 80%;
+    filter: invert(100%) brightness(1);
+    opacity: 0.5;
+    top: 20px;
+    right: -50%;
+    z-index: 0;
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+.bg-flower {
+  @include bg-flower;
+}
+
+.bg-flower-alt {
+  @include bg-flower-alt;
+}
+
+.bg-leaf {
+  @include bg-leaf;
+}
+
+.bg-light.bg-leaf {
+  @include bg-leaf-white;
 }
 
 .slider-height-sm {
@@ -122,11 +216,11 @@ p {
 }
 
 .text-purple {
-  color: $dark-purple !important;
+  color: $purple !important;
 }
 
 .text-blue {
-  color: $blue !important;
+  color: $dark-blue !important;
 }
 
 .text-dark-gray {
@@ -143,29 +237,41 @@ p {
 
 .btn-primary {
   background: $theme-primary;
+  color: $white;
 
-  &:hover {
+  &:hover, &:focus {
     background: $theme-secondary;
+  }
+
+  &:active  {
+    background: lighten($theme-secondary, 10%) !important;
   }
 }
 
 .btn-secondary {
   background: $theme-secondary;
+  color: $white;
 
-  &:hover {
+  &:hover, &:focus {
     background: $theme-highlight;
+  }
+
+  &:active  {
+    background: lighten($theme-highlight, 10%) !important;
   }
 }
 
 .btn-highlight {
   background: $theme-highlight;
+  color: $white;
 
-  &:hover {
-    background: $red;
+  &:hover, &:focus {
+    background: $theme-secondary;
   }
-}
 
-.page-container {
+  &:active  {
+    background: lighten($theme-secondary, 10%) !important;
+  }
 }
 
 #full-page-menu {
@@ -202,13 +308,11 @@ p {
     .inner-content {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-end;
       height: 100%;
 
-      .image {
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
+      .menu {
+        z-index: 1;
       }
     }
   }
@@ -241,7 +345,7 @@ p {
   }
 
   &.open {
-    color: $blue;
+    color: $dark-blue;
 
     h4 {
       font-size: 28px;
@@ -293,12 +397,6 @@ p {
   }
 }
 
-section.dynamic-section {
-  &:nth-of-type(even) {
-    background-color: $lighter-gray;
-  }
-}
-
 .freeze {
   overflow: hidden !important;
 }
@@ -323,7 +421,6 @@ section.dynamic-section {
 
 .explore {
   margin-right: 80px;
-
 
   .article {
 
@@ -363,6 +460,92 @@ section.dynamic-section {
   cursor: pointer;
 }
 
+.breadcrumb-text {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0px 0px 30px $theme-primary;
+}
+.breadcrumb-text > h1 {
+  font-size: 7.594em;
+  margin-bottom: 48px;
+  line-height: 1.2;
+  color: $white;
+  hyphens: auto;
+}
+
+.breadcrumb-text span {
+  font-size: 1.4em;
+  color: $theme-primary-light;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-family: $body-font, sans-serif;
+  text-transform: uppercase;
+}
+
+.page-header {
+  &.bg-primary {
+    &.bg-decorated {
+      @include bg-topo;
+    }
+  }
+
+  .page-header-image {
+    .image-outline {
+      border: 2px solid $light-yellow;
+      padding: 40px;
+    }
+  }
+}
+
+.footer-area {
+  .bg-light.bg-decorated {
+    @include bg-topo-alt-white;
+  }
+}
+
+.fixed-sidebar-section {
+  display: flex;
+  align-items: stretch;
+
+  .sidebar, .content {
+    flex: 1 1 50%;
+  }
+
+  .sidebar {
+    background-color: $theme-primary-light;
+
+    small { /*for image captions*/
+      color: $black;
+    }
+  }
+
+  .sidebar-inner {
+    max-height: calc(100vh);
+
+    .edit-container {
+      height: 100%;
+    }
+
+    .lightbox-container {
+      display: flex;
+      height: 100%;
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+
+  &:nth-of-type(even) {
+    .sidebar {
+      background-color: $theme-primary;
+
+      small { /*for image captions*/
+        color: $white;
+      }
+    }
+  }
+}
 
 /* tablet and below */
 @media (max-width: 991px) {
@@ -397,127 +580,5 @@ section.dynamic-section {
   }
 }
 
-.light-palette {
-  section.dynamic-section {
-    &:nth-of-type(even) {
-      background-color: $light-theme-bg;
-    }
-  }
 
-  h1, h2, h3, h4, h5, h6 {
-    color: $light-theme-primary;
-  }
-
-  a {
-    color: $black;
-
-    &:hover {
-      color: $light-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $light-theme-highlight;
-    }
-  }
-
-  a:not([href]):not([tabindex]) {
-    color: $black;
-
-    &:hover {
-      color: $light-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $light-theme-highlight;
-    }
-  }
-
-  p {
-    a {
-      color: $light-theme-primary;
-    }
-  }
-
-  .bg-primary {
-    background-color: $light-theme-primary !important;
-
-    h1, h2, h3, h4, h5, h6, p, a {
-      color: $white;
-    }
-  }
-
-  .bg-secondary {
-    background-color: $light-theme-secondary !important;
-  }
-}
-
-.dark-palette {
-  section {
-    background-color: $dark-theme-bg;
-  }
-
-  section.dynamic-section {
-    &:nth-of-type(even) {
-      background-color: $dark-theme-bg-alt;
-    }
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: $dark-theme-primary;
-  }
-
-  a {
-    color: $black;
-
-    &:hover {
-      color: $dark-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $dark-theme-highlight;
-    }
-  }
-
-  a:not([href]):not([tabindex]) {
-    color: $black;
-
-    &:hover {
-      color: $dark-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $dark-theme-highlight;
-    }
-  }
-
-  p {
-    a {
-      color: $dark-theme-primary;
-    }
-  }
-
-  .bg-primary {
-    background-color: $dark-theme-primary !important;
-
-    h1, h2, h3, h4, h5, h6, p, a {
-      color: $white;
-    }
-  }
-
-  .bg-secondary {
-    background-color: $dark-theme-secondary !important;
-  }
-}
-
-.bg-primary {
-  .card {
-    .card-title, .card-text, .card-body, p, label {
-      color: $black;
-    }
-  }
-}
-
-.text-italic {
-
-}
 

@@ -238,8 +238,6 @@ export function removeDefinition(definitionId) {
 
 export function createPage(pageData, pageId) {
   return dispatch => {
-    console.log('pageId', pageId)
-    console.log('pageData', pageData)
     const db = firebase.database();
     db
       .ref(`pages/${pageId}/`)
@@ -255,6 +253,7 @@ export function createPage(pageData, pageId) {
       });
   };
 }
+
 
 // rename to updateContent
 export function updatePage(pageId, contentId, content) {

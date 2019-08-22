@@ -51,12 +51,12 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                             </div>
                             <div className="menu">
                                 <Link to={"/"}><h4>Home</h4></Link>
-                                <Link to={"/news"}><h4>News</h4></Link>
                                 <Link to={"/updates"}><h4>Project Updates</h4></Link>
+                                <Link to={"/pollutionreporter"}><h4>Pollution Reporter</h4></Link>
+                                <Link to={"/news"}><h4>News</h4></Link>
                                 <Link to={"/resources"}><h4>Resources</h4></Link>
+                                <Link to={"/get-involved"}><h4>Participate</h4></Link>
                                 <Link to={"/references"}><h4>References</h4></Link>
-                                <Link to={"/pollutionreporter"}><h4>Pollution Reporter App</h4></Link>
-                                <Link to={"/get-involved"}><h4>Get Involved</h4></Link>
                                 <Link to={"/contact"}><h4>Contact Us</h4></Link>
 
                                 <div className="social-icon-right mt-40">

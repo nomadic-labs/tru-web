@@ -14,10 +14,12 @@ export default (props) => {
                   </div>
                   <ul className="footer-menu">
                       <li><Link to="/">Home</Link></li>
-                      <li><Link to="/about">About</Link></li>
+                      <li><Link to="/updates">Project Updates</Link></li>
+                      <li><Link to="/pollutionreporter">Pollution Reporter</Link></li>
                       <li><Link to="/news">News</Link></li>
                       <li><Link to="/resources">Resources</Link></li>
-                      <li><Link to="/get-involved">Get Involved</Link></li>
+                      <li><Link to="/get-involved">Participate</Link></li>
+                      <li><Link to="/references">References</Link></li>
                       <li><Link to="/contact">Contact Us</Link></li>
                   </ul>
               </div>

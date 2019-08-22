@@ -57,7 +57,7 @@ class Navigation extends React.Component {
                                         <a href="/about">about</a>
                                     </li>
                                     <li><a href="/news">news</a></li>
-                                    <li><a href="/get-involved">get involved</a></li>
+                                    <li><a href="/get-involved">participate</a></li>
                                     <li><a href="/contact">contact us</a></li>
                                 </ul>
                             </nav>

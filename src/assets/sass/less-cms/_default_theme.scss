@@ -282,6 +282,8 @@ section.dynamic-section.basic-section {
   z-index: 10000;
   left: 100%;
   transition: all ease-in-out 0.5s;
+  top: 0;
+  bottom: 0;
 
   &.info-open {
     left: 0;
@@ -321,7 +323,7 @@ section.dynamic-section.basic-section {
     position: absolute;
     right: 20px;
     top: 16px;
-
+    z-index: 1;
 
     button {
       transition: all 0.3s ease-out 0s;
@@ -431,9 +433,10 @@ section.dynamic-section.basic-section {
     .image {
       background-size: cover;
       height: 100px;
-      width: 100px;
+      max-width: 100px;
       transition: all ease-in-out 0.3s;
       opacity: 0.7;
+      flex: 1 0 100px;
     }
 
     .info {
@@ -466,10 +469,15 @@ section.dynamic-section.basic-section {
     text-shadow: 0px 0px 30px $theme-primary;
 }
 .breadcrumb-text > h1 {
-  font-size: 7.594em;
+  font-size: calc(28px + 4vw);
   margin-bottom: 48px;
   line-height: 1.2;
   color: $white;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   hyphens: auto;
 }
 
@@ -492,7 +500,6 @@ section.dynamic-section.basic-section {
   .page-header-image {
     .image-outline {
       border: 2px solid $light-yellow;
-      padding: 40px;
     }
   }
 }
@@ -500,6 +507,14 @@ section.dynamic-section.basic-section {
 .footer-area {
   .bg-light.bg-decorated {
     @include bg-topo-alt-white;
+  }
+
+  .footer-menu li a {
+    color: $black;
+
+    &:hover, &:focus {
+      color: $theme-secondary;
+    }
   }
 }
 
@@ -549,6 +564,15 @@ section.dynamic-section.basic-section {
 
 /* tablet and below */
 @media (max-width: 991px) {
+  #full-page-menu {
+    position: fixed;
+
+    &.info-open {
+      position: absolute;
+      overflow-y: auto;
+    }
+  }
+
   .breadcrumb-text {
     h1 {
       hyphens: auto;

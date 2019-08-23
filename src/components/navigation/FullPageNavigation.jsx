@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 
 import { EditableImageUpload } from "react-easy-editables";
@@ -41,6 +40,11 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
     return (
       <aside>
         <div id="full-page-menu" className={`${showMenu ? 'info-open' : ''}`}>
+            <div className="close-icon">
+              <button onClick={closeMenu}>
+                <i className="far fa-window-close"></i>
+              </button>
+            </div>
             <div className="explore-content px-3 pos-relative">
                 <div className="row">
                     <div className="col-md-3 bg-light p-5 bg-illustration">
@@ -72,29 +76,26 @@ const FullPageNavigation = ({ showMenu, closeMenu }) => {
                     </div>
 
                     <div className="col-md-9" style={{height: "inherit"}}>
-                        <div className="close-icon">
-                            <button onClick={closeMenu}>
-                                <i className="far fa-window-close"></i>
-                            </button>
+                      <div className="row">
+                        <div className="col-12">
+                          <h2 data-animation="fadeInUp" data-delay=".5s" className="mt-80 pl-4">
+                            Explore the Research
+                          </h2>
                         </div>
-                        <Grid container className="mx-5">
-                          <Grid item xs={10} sm={10} md={11} lg={11}>
-                            <h2 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
-                              Explore the Research
-                            </h2>
-                          </Grid>
-                          <Grid item xs={10} sm={2} md={3} lg={3}>
-                              <TopicSelector />
-                          </Grid>
+                      </div>
 
-                          <Grid item xs={10} sm={8} md={8} lg={8}>
-                            <div className="">
-                              <div className="mt-40 mb-40 pr-3" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
-                                <Explore />
-                              </div>
-                            </div>
-                          </Grid>
-                        </Grid>
+                      <div className="row">
+                        <div className="d-none d-md-block col-md-3 col-lg-4">
+                          <div className="pl-4">
+                            <TopicSelector />
+                          </div>
+                        </div>
+                        <div className="col-md-9 col-lg-8">
+                          <div className="mt-40 mb-40 pr-3" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
+                            <Explore />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                 </div>
 

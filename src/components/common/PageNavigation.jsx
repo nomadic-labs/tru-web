@@ -8,7 +8,7 @@ import ArrowRight from "@material-ui/icons/ArrowForward"
 import ArrowLeft from "@material-ui/icons/ArrowBack"
 import Container from "./Container";
 
-import dylan7 from "../../assets/images/illustrations/Dylan_Minor7.png";
+import defaultImage from "../../assets/images/imperial-oil.jpg";
 
 
 const mapStateToProps = state => {
@@ -23,14 +23,14 @@ const ArticlePreview = ({ article, topics, categories, direction }) => {
   }
 
   const category = categories[article.category]
-  const image = article.header_image ? article.header_image.imageSrc : dylan7;
+  const image = article.header_image ? article.header_image.imageSrc : defaultImage;
   const tags = article.topics || [];
   const tagsString = tags.map(tag => topics[tag]).join(", ")
 
   return(
-    <div className="col-md-6 mt-40 mb-40">
+    <div className={`col-md-6 mt-40 mb-40 ${direction == "prev" ? "d-none d-md-block" : ""}`}>
       <Link to={`${article.slug}`}>
-        <div className={`card mb-4 mb-md-0 ${direction} ${direction == "prev" ? "d-none d-md-block" : ""}`}>
+        <div className={`card mb-4 mb-md-0 ${direction}`}>
           {
             direction == "next" ?
             <div className="card-header">

@@ -8,7 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import { MENU_CATEGORIES } from "../../utils/constants";
 import Affix from "./Affix";
 
-import dylan7 from "../../assets/images/illustrations/Dylan_Minor7.png";
+import defaultImage from "../../assets/images/imperial-oil.jpg";
+
 
 const mapStateToProps = state => {
   return {
@@ -28,7 +29,7 @@ const CategoryTitle = ({ label, count, open }) => {
 }
 
 const ArticlePreview = ({ article, topics }) => {
-  const image = article.header_image ? article.header_image.imageSrc : dylan7;
+  const image = article.header_image ? article.header_image.imageSrc : defaultImage;
   const tags = article.topics || [];
   const tagsString = tags.map(tag => topics[tag]).join(", ")
 

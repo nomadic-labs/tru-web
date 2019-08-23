@@ -126,20 +126,25 @@ class ContactPage extends React.Component {
                                   <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-20">
                                     <EditableText content={content["form-title"]} handleSave={this.onSave("form-title")} />
                                   </h2>
-                                    <form action="assets/mail.php" id="contact-form">
+                                    <form action="https://formspree.io/thelandandtherefinery@gmail.com" method="POST" id="contact-form">
                                         <div className="row">
                                             <div className="col-xl-6 col-md-6">
-                                                <input name="name" placeholder="Name" type="text" required={true} />
+                                                <input name="Name" placeholder="Name" type="text" required={true} />
                                             </div>
                                             <div className="col-xl-6 col-md-6">
-                                                <input name="email" placeholder="Email address" type="email" required={true} />
+                                                <input name="Email" placeholder="Email address" type="email" required={true} />
                                             </div>
                                             <div className="col-md-12">
-                                                <input name="text" placeholder="Subject" type="text" required={true} />
+                                                <input name="Subject" placeholder="Subject" type="text" required={true} />
                                             </div>
                                             <div className="col-md-12">
-                                                <textarea name="message" cols="30" rows="10" placeholder="Message" required={true} ></textarea>
-                                                <button className="btn" type="submit">send message</button>
+                                                <textarea name="Message" cols="30" rows="10" placeholder="Message" required={true} ></textarea>
+                                            </div>
+
+                                            <div className="col-md-12">
+                                              <input type="hidden" name="_next" value="https://www.landandrefinery.org/" />
+                                              <input type="text" name="_honey" style={{display:"none"}} />
+                                              <button className="btn" type="submit">send message</button>
                                             </div>
                                         </div>
                                         <p className="ajax-response"></p>

@@ -339,7 +339,6 @@ label {
 
 .menu-bar {
 	width: 20px;
-	padding-top: 22px;
 	margin-left: 0;
 	cursor: pointer;
 	position: relative;
@@ -525,9 +524,6 @@ label {
 	display: inline-block;
 	margin-top: 37px;
 	margin-right: 50px;
-}
-.header-2-menu .menu-bar {
-	padding-top: 37px;
 }
 .header-2-menu .header-right ul li {
 	margin-left: 20px;
@@ -2855,12 +2851,8 @@ ul.cat li a:hover {
 }
 .footer-menu li a {
 	color: $black;
-	font-size: 14px;
 	font-weight: 400;
 	transition: .3s;
-}
-.footer-menu li a:hover {
-	color: $black;
 }
 .footer-link{}
 .footer-link li {
@@ -2946,17 +2938,10 @@ ul.cat li a:hover {
 .footer1 .footer-title h4 {
 	font-size: 20px;
 	color: #112433;
-	font-weight: 600;
 	text-transform: capitalize;
 	position: relative;
 	margin-bottom: 0;
 	padding-bottom: 26px;
-}
-.footer1 .footer-menu li a {
-	color: $black;
-}
-.footer1 .footer-menu li a:hover {
-	color: $black;
 }
 .footer2-text{}
 .footer2-text p {

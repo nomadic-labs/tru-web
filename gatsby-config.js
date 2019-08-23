@@ -46,6 +46,14 @@ module.exports = {
             type: "Categories",
             path: "categories"
           },
+          {
+            type: "Categories",
+            path: "categories"
+          },
+          {
+            type: "Meta",
+            path: "meta"
+          }
         ]
       }
     },

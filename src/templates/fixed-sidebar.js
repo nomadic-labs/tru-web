@@ -104,7 +104,7 @@ class FixedSidbarPage extends React.Component {
               )
             })
           }
-          <section id="end-matter" className="pt-60 pb-60">
+          <section id="end-matter" className="my-md-5">
             <Container>
               <PageTopics />
               <Footnotes />

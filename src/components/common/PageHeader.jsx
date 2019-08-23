@@ -5,7 +5,7 @@ import titleBg from "../../assets/images/illustrations/title-bg.png";
 import PageTopics from "./PageTopics"
 import Container from "./Container"
 
-const defaultHeader = "https://firebasestorage.googleapis.com/v0/b/tru-web.appspot.com/o/images%2Fbg-botanical.png?alt=media&token=cce3440c-c686-41e8-a957-59dbaed77e04";
+const defaultHeader = "https://firebasestorage.googleapis.com/v0/b/tru-web.appspot.com/o/images%2Fimperial-oil.jpg?alt=media&token=f9072b5c-161a-4bd8-bd61-b3ad3b9c5853";
 const styles = {
   image: {
     objectFit: 'cover',
@@ -30,7 +30,7 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
           </div>
 
           <div className="col-12 col-lg-6 align-items-center d-flex page-header-image">
-            <div className="image-outline">
+            <div className="image-outline p-3 p-sm-4 p-md-5">
               <EditableImageUpload
                 onSave={ onUpdateHeaderImage }
                 uploadImage={ uploadImage }

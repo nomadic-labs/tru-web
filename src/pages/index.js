@@ -8,6 +8,8 @@ import {
   loadPageData,
   updateTitle,
   updateHeaderImage,
+  pushContentItem,
+  removeContentItem,
 } from "../redux/actions";
 import {
   EditableText,
@@ -19,6 +21,7 @@ import {
 } from "react-easy-editables";
 
 import { uploadImage } from "../firebase/operations";
+import { DEFAULT_COMPONENT_CONTENT } from '../utils/constants';
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
@@ -28,7 +31,11 @@ import Explore from "../components/common/Explore";
 import Affix from "../components/common/Affix";
 import TopicSelector from "../components/common/TopicSelector";
 import EmbeddedIframe from "../components/common/EmbeddedIframe";
-import PageHeader from "../components/common/PageHeader";
+import HomePageHeader from "../components/common/HomePageHeader";
+import Publication from "../components/common/Publication";
+import Carousel from "../components/common/Carousel";
+
+import ArrowDown from "../assets/images/green-arrow.svg";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -43,6 +50,12 @@ const mapDispatchToProps = dispatch => {
     },
     onUpdateHeaderImage: image => {
       dispatch(updateHeaderImage(image));
+    },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
     },
   };
 };
@@ -77,14 +90,22 @@ class HomePage extends React.Component {
     this.props.onUpdateHeaderImage(content)
   }
 
+  onAddItem = id => content => {
+    this.props.onPushContentItem(id, content);
+  }
+
+  onDeleteItem = id => itemId => {
+    this.props.onRemoveContentItem(id, itemId)
+  }
+
   render() {
     const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
-      <Layout location={this.props.location}>
+      <Layout location={this.props.location} palette={"light"}>
         <main>
-          <PageHeader
+          <HomePageHeader
             title={pageData.title}
             onSave={this.onSave}
             content={ content }
@@ -93,60 +114,118 @@ class HomePage extends React.Component {
             onUpdateTitle={this.onUpdateTitle}
           />
 
-          <Section className="wow fadeIn pt-80 pb-80 pos-relative bg-white bg-leaf">
+          <Section className="wow fadeIn pt-80 pb-80 pos-relative basic-section">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
               </h2>
-              <div className="mt-40 mb-40">
+              <div className="mt-40">
                 <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
+                <EditableLink classes={"btn btn-primary mt-20"} content={content["intro-more-btn"]} handleSave={this.onSave("intro-more-btn")} />
               </div>
             </Container>
           </Section>
 
-          <Section className="wow fadeIn pt-80 pb-80 bg-light bg-illustration">
+          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 basic-section">
+            <Container>
+              <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
+                <EditableText content={content["featured-news-title"]} onSave={this.onSave("featured-news-title")} />
+              </h2>
+              <Carousel
+                collection={content["featured-news"]}
+                SlideComponent={Publication}
+                onSave={this.onSave('featured-news')}
+                onAddItem={this.onAddItem('featured-news')}
+                onDeleteItem={this.onDeleteItem('featured-news')}
+                options={{slidesToShow: 1}}
+                isEditingPage={this.props.isEditingPage}
+                defaultContent={DEFAULT_COMPONENT_CONTENT['featured-news']}
+              />
+              <div className="mt-40">
+                <EditableParagraph content={content["news-description"]} handleSave={this.onSave("news-description")} />
+                <EditableLink classes={"btn btn-primary mt-20"} content={content["news-more-btn"]} handleSave={this.onSave("news-more-btn")} />
+              </div>
+            </Container>
+          </Section>
+
+          <Section className="wow fadeIn pt-80 pb-40 basic-section">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
-                <EditableText content={content["territory-title"]} handleSave={this.onSave("territory-title")} />
+                <EditableText content={content["explore-stories-title"]} handleSave={this.onSave("explore-stories-title")} />
               </h2>
             </Container>
 
             <Container>
               <div className="mt-40 mb-40">
-                <EditableParagraph content={content["territory-description"]} handleSave={this.onSave("territory-description")} />
-                <EmbeddedIframe content={content["territory-gmap"]} handleSave={this.onSave("territory-gmap")} classes={"my-4"} xs={12} sm={12} md={12} lg={12} />
-                <EditableParagraph content={content["territory-description1"]} handleSave={this.onSave("territory-description1")} />
-                <EditableLink classes={"btn btn-primary mt-20"} content={content["territory-more-btn"]} handleSave={this.onSave("territory-more-btn")} />
+                <EditableParagraph content={content["explore-stories-description"]} handleSave={this.onSave("explore-stories-description")} />
               </div>
+
+              <div id="start-here" className="pos-relative">
+                <div className="text-center">
+                  <a href="#first-story" data-scroll><h6 className="p-4">Start here</h6></a>
+                </div>
+                <div className="vertical-line text-center">
+                  <img src={ArrowDown} style={{ height: '400px', maxHeight: '80vh' }} />
+                </div>
+              </div>
+            </Container>
+          </Section>
+
+          <div id="first-story" className="first-story wow fadeIn pt-80 pb-80 bg-dylan">
+            <Container>
+
+              <h2 className="text-center mb-20">
+                <EditableText content={content["first-story-title"]} handleSave={this.onSave("first-story-title")} />
+              </h2>
+
+              <div className="card">
+                <EditableImageUpload
+                  classes="img-fluid card-img-top"
+                  content={content["first-story-bookcover"]}
+                  onSave={this.onSave("first-story-bookcover")}
+                  uploadImage={uploadImage}
+                />
+
+                <div className="card-body">
+                  <EditableParagraph
+                    content={content["first-story-description"]}
+                    handleSave={this.onSave("first-story-description")}
+                  />
+                </div>
+              </div>
+
+              <div className="text-center">
+                <EditableLink
+                  classes={"btn btn-primary mt-30"}
+                  content={content["first-story-button"]}
+                  handleSave={this.onSave("first-story-button")}
+                />
+              </div>
+
+            </Container>
+
+          </div>
+
+          <Section id="featured-stories" className="wow fadeIn pt-80 pb-80 bg-lighter">
+            <Container>
+              <h3 data-animation="fadeInUp" data-delay=".5s" className="mb-40">
+                <EditableText content={content["featured-stories-title"]} handleSave={this.onSave("featured-stories-title")} />
+              </h3>
+              <Carousel
+                collection={content["featured-stories"]}
+                SlideComponent={Publication}
+                onSave={this.onSave('featured-stories')}
+                onAddItem={this.onAddItem('featured-stories')}
+                onDeleteItem={this.onDeleteItem('featured-stories')}
+                options={{slidesToShow: 1}}
+                isEditingPage={this.props.isEditingPage}
+                defaultContent={DEFAULT_COMPONENT_CONTENT['featured-stories']}
+              />
             </Container>
 
           </Section>
 
-          <Section className="wow fadeIn pos-relative bg-white bg-flower">
-              <Container>
-                <h2 data-animation="fadeInUp" data-delay=".5s" className="mt-80">
-                  Explore the Research
-                </h2>
-              </Container>
-              <Grid container id="explore-container" justify="center">
-                <Grid item xs={10} sm={10} md={11} lg={11}>
-                </Grid>
-                <Grid item xs={10} sm={2} md={3} lg={3}>
-
-                  <div className="ml-5">
-                    <TopicSelector />
-                  </div>
-                </Grid>
-
-                <Grid item xs={10} sm={8} md={8} lg={8}>
-                    <div className="mt-40 mb-40 pr-3" style={{ height: "calc(100vh - 210px)", overflow: "auto" }}>
-                      <Explore />
-                    </div>
-                </Grid>
-              </Grid>
-          </Section>
-
-          <Section className="wow fadeIn pt-80 pb-80 bg-primary">
+          <Section className="wow fadeIn pt-80 pb-80 bg-primary contrast-section">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["cr-app-title"]} handleSave={this.onSave("cr-app-title")} />
@@ -167,7 +246,7 @@ class HomePage extends React.Component {
                   <div className="mt-40 mb-40 text-white">
                     <EditableParagraph content={content["cr-app-description"]} handleSave={this.onSave("cr-app-description")} />
                   </div>
-                  <EditableLink classes={"btn btn-secondary"} content={content["cr-app-button"]} handleSave={this.onSave("cr-app-button")} />
+                  <EditableLink classes={"btn btn-primary"} content={content["cr-app-button"]} handleSave={this.onSave("cr-app-button")} />
                 </div>
               </div>
             </Container>

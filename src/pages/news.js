@@ -145,6 +145,7 @@ class NewsPage extends React.Component {
               <Carousel
                 collection={content["featured-news"]}
                 SlideComponent={Publication}
+                slideClasses={'p-3'}
                 onSave={this.onSave('featured-news')}
                 onAddItem={this.onAddItem('featured-news')}
                 onDeleteItem={this.onDeleteItem('featured-news')}

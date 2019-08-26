@@ -53,12 +53,16 @@ class PublicationEditor extends React.Component {
                 />
               </h4>
             </div>
-            <div className="post-details text-italic mb-3">
-              <PlainTextEditor
-                content={content["publication-item-details"]}
-                handleEditorChange={this.handleEditorChange("publication-item-details")}
-              />
-            </div>
+
+            {
+              content["publication-item-details"] &&
+              <div className="post-details text-italic mb-3">
+                <PlainTextEditor
+                  content={content["publication-item-details"]}
+                  handleEditorChange={this.handleEditorChange("publication-item-details")}
+                />
+              </div>
+            }
 
             <div className="card-text mb-3">
               <PlainTextEditor
@@ -117,9 +121,12 @@ const Publication = props => {
                 </h4>
               </div>
 
-              <div className="post-details text-italic mb-3">
-                {content["publication-item-details"]["text"]}
-              </div>
+              {
+                content["publication-item-details"] &&
+                <div className="post-details text-italic mb-3">
+                  {content["publication-item-details"]["text"]}
+                </div>
+              }
 
               <p className="card-text">
                 {content["publication-item-description"]["text"]}

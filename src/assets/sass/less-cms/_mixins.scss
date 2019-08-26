@@ -1,5 +1,5 @@
 @mixin bg-flower {
-  background-image: url('../../images/flower_light_blue.svg');
+  background-image: url('../../images/flower_light_green.svg');
   background-size: 40vw auto;
   background-position: top right;
   background-repeat: no-repeat;
@@ -13,21 +13,21 @@
 }
 
 @mixin bg-flower-dark {
-  background-image: url('../../images/flower_pink.svg');
+  background-image: url('../../images/flower_light_blue.svg');
   background-size: 40vw auto;
   background-position: top right;
   background-repeat: no-repeat;
 }
 
 @mixin bg-flower-alt {
-  background-image: url('../../images/flower_alt_light_blue.svg');
+  background-image: url('../../images/flower_alt_light_yellow.svg');
   background-size: 40vw auto;
   background-position: top right;
   background-repeat: no-repeat;
 }
 
 @mixin bg-leaf {
-  background-image: url('../../images/leaf_light_blue.svg');
+  background-image: url('../../images/leaf_light_green.svg');
   background-size: 40vw auto;
   background-position: top left;
   background-repeat: no-repeat;
@@ -41,7 +41,7 @@
 }
 
 @mixin bg-leaf-dark {
-  background-image: url('../../images/leaf_pink.svg');
+  background-image: url('../../images/leaf_light_blue.svg');
   background-size: 40vw auto;
   background-position: top left;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@
 }
 
 @mixin bg-topo {
-  background-image: url('../../images/background_lines_light_yellow.svg');
+  background-image: url('../../images/background_lines_light_green.svg');
   background-size: cover;
 }
 
@@ -70,11 +70,18 @@
 }
 
 @mixin bg-topo-light {
-  background-image: url('../../images/background_lines_light_green.svg');
+  background-image: url('../../images/background_lines_light_yellow.svg');
   background-size: cover;
 }
 
 @mixin bg-topo-dark {
-  background-image: url('../../images/background_lines_pink.svg');
+  background-image: url('../../images/background_lines_light_blue.svg');
   background-size: cover;
+}
+
+@mixin bg-dylan {
+  background-image: url('../../images/illustrations/Dylan_Minor9.png');
+  background-size: auto 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }

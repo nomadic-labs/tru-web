@@ -29,7 +29,7 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
             </div>
           </div>
 
-          <div className="col-12 col-lg-6 align-items-center d-flex page-header-image">
+          <div className="col-12 col-lg-6 align-items-center justify-content-center d-flex page-header-image">
             <div className="image-outline p-3 p-sm-4 p-md-5">
               <EditableImageUpload
                 onSave={ onUpdateHeaderImage }

@@ -21,9 +21,9 @@ const CategoryTitle = ({ label, count, open }) => {
   return(
     <div className={`category d-flex align-items-center my-2 cursor-pointer text-primary ${open ? 'open' : ''}`}>
       { open ? <i className="fas fa-minus pr-3"></i> : <i className="fas fa-plus pr-3"></i> }
-      <h4 className="mb-0">
+      <h3 className="mb-0">
         {`${label} (${count})`}
-      </h4>
+      </h3>
     </div>
   )
 }

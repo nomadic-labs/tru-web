@@ -107,13 +107,13 @@ h6 a {
 	color: inherit;
 }
 h1 {
-	font-size: 7em;
+	font-size: calc(28px + 4vw);
 }
 h2 {
-	font-size: 3.375em;
+	font-size: calc(24px + 2vw);
 }
 h3 {
-	font-size: 2.25em;
+	font-size: 2em;
 }
 h4 {
 	font-size: 1.75em;
@@ -197,7 +197,7 @@ label {
 	-moz-user-select: none;
 	background: $theme-secondary;
 	border: medium none;
-	border-radius: 30px;
+	border-radius: 100px;
 	color: #fff;
 	display: inline-block;
 	font-size: 14px;
@@ -209,7 +209,7 @@ label {
 	touch-action: manipulation;
 	transition: all 0.3s ease 0s;
 	vertical-align: middle;
-	white-space: nowrap;
+	white-space: pre-wrap;
 	letter-spacing: 2px;
 	font-family: 'Rubik', sans-serif;
 }
@@ -354,7 +354,7 @@ label {
 }
 /* extra info */
 .extra-info {
-	background: $purple;
+	background: $dark-purple;
 	height: 100%;
 	width: 100%;
 	padding: 30px;
@@ -516,7 +516,7 @@ label {
 .main-menu nav > ul  > li:hover > .sub-menu li > a:hover{color:#fff;background:$theme-highlight;}
 /* header 3 */
 .header-2-menu .main-menu nav > ul > li > a {
-	padding: 42px 0;
+	padding: 32px 0;
 	text-transform: capitalize;
 }
 .header-2-menu .header-lang {

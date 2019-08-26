@@ -5,11 +5,19 @@ html, body {
   font-size: 14px;
   color: $black;
   background: $white;
+  scroll-behavior: smooth;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font;
   color: $theme-primary;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 
 .title {
@@ -53,27 +61,27 @@ p {
 }
 
 
-section.dynamic-section.basic-section {
+section.basic-section {
   &:nth-of-type(4n+1) {
     background-color: $white;
     @include bg-flower;
   }
 }
 
-section.dynamic-section.basic-section {
+section.basic-section {
   &:nth-of-type(4n+3) {
     background-color: $white;
     @include bg-leaf;
   }
 }
 
-section.dynamic-section.basic-section {
+section.basic-section {
   &:nth-of-type(4n+2) {
     background-color: $theme-primary-light;
   }
 }
 
-section.dynamic-section.basic-section {
+section.basic-section {
   &:nth-of-type(4n+4) {
     background-color: $theme-primary-light;
   }
@@ -145,12 +153,20 @@ section.dynamic-section.basic-section {
   background-color: $pink !important;
 }
 
+.bg-green {
+  background-color: $light-green !important;
+}
+
 .bg-primary.bg-decorated {
   @include bg-topo-default;
 }
 
 .bg-light.bg-decorated {
   @include bg-topo-alt-white;
+}
+
+.bg-dylan {
+  @include bg-dylan;
 }
 
 
@@ -216,7 +232,7 @@ section.dynamic-section.basic-section {
 }
 
 .text-purple {
-  color: $purple !important;
+  color: $dark-purple !important;
 }
 
 .text-blue {
@@ -425,13 +441,13 @@ section.dynamic-section.basic-section {
   margin-right: 80px;
 
   .article {
-
     .topics {
       transition: all ease-in-out 0.3s;
     }
 
     .image {
       background-size: cover;
+      background-color: $theme-primary-light;
       height: 100px;
       max-width: 100px;
       transition: all ease-in-out 0.3s;
@@ -499,8 +515,25 @@ section.dynamic-section.basic-section {
 
   .page-header-image {
     .image-outline {
-      border: 2px solid $light-yellow;
+      border: 2px solid $light-green;
     }
+  }
+}
+
+.image-outline {
+  border: 2px solid $light-green;
+}
+
+#start-here {
+  h6 {
+    background: url("../../images/circle-scribble.svg") no-repeat center center;
+    background-size: 100% 100%;
+  }
+}
+
+#featured-stories {
+  .slick-prev:before, .slick-next:before {
+    color: $theme-primary;
   }
 }
 

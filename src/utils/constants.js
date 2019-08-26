@@ -57,4 +57,10 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "publication-item-description": { "text": "Preview" },
     "publication-item-link": { "anchor": "link text", "link": "/" },
   },
+  "featured-stories": {
+    "publication-item-image": { "imageSrc": "", "caption": "" },
+    "publication-item-title": { "text": "Story title" },
+    "publication-item-description": { "text": "Preview" },
+    "publication-item-link": { "anchor": "link text", "link": "/" },
+  },
 }

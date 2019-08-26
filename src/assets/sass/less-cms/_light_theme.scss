@@ -37,27 +37,27 @@
   }
 
 
-  section.dynamic-section.basic-section {
+  section.basic-section {
     &:nth-of-type(4n + 1) {
       background-color: $white;
       @include bg-flower-light;
     }
   }
 
-  section.dynamic-section.basic-section {
+  section.basic-section {
     &:nth-of-type(4n + 3) {
       background-color: $white;
       @include bg-leaf-light;
     }
   }
 
-  section.dynamic-section.basic-section {
+  section.basic-section {
     &:nth-of-type(4n+2) {
       background-color: $light-theme-primary-light;
     }
   }
 
-  section.dynamic-section.basic-section {
+  section.basic-section {
     &:nth-of-type(4n+4) {
       background-color: $light-theme-primary-light;
     }
@@ -106,7 +106,7 @@
   }
 
   .bg-lighter {
-    background-color: $lighter-gray !important;
+    background-color: transparentize($light-theme-primary, 0.95) !important;
   }
 
   .bg-white {
@@ -119,6 +119,10 @@
 
   .bg-primary.bg-decorated {
     @include bg-topo-light;
+  }
+
+  .bg-decorated {
+    @include bg-topo-alt-white;
   }
 
   .bg-light.bg-decorated {
@@ -219,7 +223,7 @@
     }
 
     span {
-      color: $theme-primary-light;
+      color: $light-theme-primary-light;
     }
   }
 
@@ -229,6 +233,10 @@
         border: 2px solid $light-theme-primary-light;
       }
     }
+  }
+
+  .image-outline {
+    border: 2px solid $light-theme-primary-light;
   }
 
   .fixed-sidebar-section {
@@ -251,6 +259,11 @@
     }
   }
 
+  #featured-stories {
+    .slick-prev:before, .slick-next:before {
+      color: $light-theme-primary;
+    }
+  }
 }
 
 

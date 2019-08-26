@@ -125,7 +125,7 @@ class EditableCarousel extends React.Component {
                 content={content}
                 onSave={this.onSaveItem(key)}
                 onDelete={this.onDeleteItem(key)}
-                classes={'p-3'}
+                classes={this.props.slideClasses}
               />
             )
           })}

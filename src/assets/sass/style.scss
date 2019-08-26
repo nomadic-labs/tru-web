@@ -3837,7 +3837,6 @@ ul.cat li a:hover {
 	padding: 0 25px;
 	transition: .3s;
 	background: $light-gray;
-	text-transform: capitalize;
 }
 #contact-form textarea {
 	width: 100%;
@@ -3847,7 +3846,6 @@ ul.cat li a:hover {
 	margin-bottom: 30px;
 	transition: .3s;
 	background: $light-gray;
-	text-transform: capitalize;
 }
 .contact-form input::-moz-placeholder, .contact-form input::placeholder {
   color: $dark-gray;

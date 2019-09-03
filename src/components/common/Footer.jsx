@@ -20,20 +20,15 @@ class Footer extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log("this.props.data", this.props.data)
     this.state = { content: this.props.data.meta.about.content }
   }
 
   updateContent = id => input => {
-    console.log('id', id)
-    console.log('input', input)
-
     const dataToUpdate = {
       [`meta/footer/about/content/${id}`]: input
     }
 
     this.props.updateFirebaseData(dataToUpdate, () => {
-      console.log('done updating')
       this.setState({
         content: {
           ...this.state.content,

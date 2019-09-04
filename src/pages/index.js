@@ -103,7 +103,7 @@ class HomePage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
-      <Layout location={this.props.location} palette={"light"}>
+      <Layout location={this.props.location} palette={"default"}>
         <main>
           <HomePageHeader
             title={pageData.title}
@@ -114,17 +114,19 @@ class HomePage extends React.Component {
             onUpdateTitle={this.onUpdateTitle}
           />
 
-          <Section className="wow fadeIn pt-80 pb-80 pos-relative basic-section">
-            <Container>
-              <h2 data-animation="fadeInUp" data-delay=".5s">
-                <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
-              </h2>
-              <div className="mt-40">
-                <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
-                <EditableLink classes={"btn btn-primary mt-20"} content={content["intro-more-btn"]} handleSave={this.onSave("intro-more-btn")} />
-              </div>
-            </Container>
-          </Section>
+        {
+          //<Section className="wow fadeIn pt-80 pb-80 pos-relative basic-section">
+            //  <Container>
+            //    <h2 data-animation="fadeInUp" data-delay=".5s">
+          //        <EditableText content={content["intro-title"]} handleSave={this.onSave("intro-title")} />
+          //      </h2>
+          //      <div className="mt-40">
+        //          <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
+        //          <EditableLink classes={"btn btn-primary mt-20"} content={content["intro-more-btn"]} handleSave={this.onSave("intro-more-btn")} />
+        //        </div>
+        //      </Container>
+      //      </Section>
+        }
 
           <Section id="featured-news" className="wow fadeIn pt-80 pb-80 basic-section">
             <Container>
@@ -150,9 +152,9 @@ class HomePage extends React.Component {
 
           <Section className="wow fadeIn pt-80 pb-40 basic-section">
             <Container>
-              <h2 data-animation="fadeInUp" data-delay=".5s">
+              <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["explore-stories-title"]} handleSave={this.onSave("explore-stories-title")} />
-              </h2>
+              </h1>
             </Container>
 
             <Container>
@@ -164,53 +166,53 @@ class HomePage extends React.Component {
                 <div className="text-center">
                   <a href="#first-story" data-scroll><h6 className="p-4">Start here</h6></a>
                 </div>
-                <div className="vertical-line text-center">
-                  <img src={ArrowDown} style={{ height: '400px', maxHeight: '80vh' }} />
-                </div>
+                {
+                  //<div className="vertical-line text-center">
+                  //<img src={ArrowDown} style={{ height: '400px', maxHeight: '80vh' }} />
+                  //</div>
+                }
               </div>
             </Container>
           </Section>
 
-          <div id="first-story" className="first-story wow fadeIn pt-80 pb-80 bg-dylan">
-            <Container>
+          <Section id="featured-stories" className="wow fadeIn pt-80 pb-80 bg-light">
+            <div id="first-story" className="first-story wow fadeIn pt-80 pb-80 bg-dylan">
+              <section>
+                <Container>
+                  <h2 className="text-center mb-20">
+                    <EditableText content={content["first-story-title"]} handleSave={this.onSave("first-story-title")} />
+                  </h2>
 
-              <h2 className="text-center mb-20">
-                <EditableText content={content["first-story-title"]} handleSave={this.onSave("first-story-title")} />
-              </h2>
+                  <div className="card">
+                    <EditableImageUpload
+                             classes="img-fluid card-img-top"
+                             content={content["first-story-bookcover"]}
+                             onSave={this.onSave("first-story-bookcover")}
+                             uploadImage={uploadImage}
+                             />
 
-              <div className="card">
-                <EditableImageUpload
-                  classes="img-fluid card-img-top"
-                  content={content["first-story-bookcover"]}
-                  onSave={this.onSave("first-story-bookcover")}
-                  uploadImage={uploadImage}
-                />
-
-                <div className="card-body">
-                  <EditableParagraph
+                           <div className="pl-40 pr-40 pt-40 pb-40">
+                    <EditableParagraph
                     content={content["first-story-description"]}
                     handleSave={this.onSave("first-story-description")}
-                  />
-                </div>
-              </div>
+                    />
+                    </div>
 
-              <div className="text-center">
-                <EditableLink
-                  classes={"btn btn-primary mt-30"}
-                  content={content["first-story-button"]}
-                  handleSave={this.onSave("first-story-button")}
-                />
-              </div>
-
-            </Container>
-
-          </div>
-
-          <Section id="featured-stories" className="wow fadeIn pt-80 pb-80 bg-lighter">
+                  </div>
+                  <div className="text-center">
+                    <EditableLink
+                      classes={"btn btn-primary mt-30"}
+                      content={content["first-story-button"]}
+                      handleSave={this.onSave("first-story-button")}
+                    />
+                  </div>
+                </Container>
+              </section>
+            </div>
             <Container>
-              <h3 data-animation="fadeInUp" data-delay=".5s" className="mb-40">
+              <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-40">
                 <EditableText content={content["featured-stories-title"]} handleSave={this.onSave("featured-stories-title")} />
-              </h3>
+              </h2>
               <Carousel
                 collection={content["featured-stories"]}
                 SlideComponent={Publication}
@@ -223,9 +225,12 @@ class HomePage extends React.Component {
               />
             </Container>
 
+
+
           </Section>
 
           <Section className="wow fadeIn pt-80 pb-80 bg-primary contrast-section">
+
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["cr-app-title"]} handleSave={this.onSave("cr-app-title")} />
@@ -276,5 +281,3 @@ export const query = graphql`
     }
   }
 `;
-
-

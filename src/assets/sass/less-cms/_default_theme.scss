@@ -169,6 +169,23 @@ section.basic-section {
   @include bg-dylan;
 }
 
+.bg-landingpage {
+  background-color: $medium-blue !important;
+  height: 100%;
+  top:0;
+  position: absolute;
+  mix-blend-mode: multiply;
+  @include bg-topo-default;
+}
+
+.bg-header {
+  position: relative;
+  h1, h2, h3 {
+    color: $white;}
+    p {
+      color: $white;
+    }
+}
 
 .bg-illustration {
   position: relative;

@@ -16,11 +16,10 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
     >
       <div className="container">
         <div className="row">
-          <div className="col-xl-12">
-            <div className="breadcrumb-text text-left pt-30 pb-30 col-md-8">
+          <div className="col-xl-12 bg-header">
+            <div className="col-md-8 bg-landingpage">
             </div>
-
-            <div className="col-md-8 bg-white pt-30 pb-60 pl-30 pr-30 mb-40" data-animation="fadeInUp" data-delay=".3s">
+            <div className="col-md-8 pt-20 pb-20 pl-30 pr-30 mb-20" data-animation="fadeInUp" data-delay=".3s">
               <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={{ text: title }} onSave={ onUpdateTitle } />
               </h1>
@@ -33,11 +32,14 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
               <p>
               <EditableParagraph content={ content["intro-description"]} handleSave={ onSave("intro-description") }/>
               </p>
-              <EditableLink classes={"btn btn-primary mt-20"} content={content["intro-more-btn"]} handleSave={onSave("intro-more-btn")} />
-            </div>
+
+          {  // <EditableLink classes={"btn btn-primary mt-20"} content={content["intro-more-btn"]} handleSave={onSave("intro-more-btn")} />
+}
+          </div>
           </div>
         </div>
       </div>
+
     </EditableBackgroundImage>
   );
 };

@@ -32,9 +32,10 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
               <p>
               <EditableParagraph content={ content["intro-description"]} handleSave={ onSave("intro-description") }/>
               </p>
+              <a>
+                <EditableLink classes={"mt-20"} content={content["intro-more-btn"]} handleSave={onSave("intro-more-btn")} />
+              </a>
 
-          {  // <EditableLink classes={"btn btn-primary mt-20"} content={content["intro-more-btn"]} handleSave={onSave("intro-more-btn")} />
-}
           </div>
           </div>
         </div>

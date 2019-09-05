@@ -185,6 +185,12 @@ section.basic-section {
     p {
       color: $white;
     }
+  a {
+    text-decoration: underline;
+    color: $white;
+    font-family: $header-font, serif;
+    font-weight: bold;
+  }
 }
 
 .bg-illustration {

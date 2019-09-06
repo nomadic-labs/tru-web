@@ -148,49 +148,48 @@ class HomePage extends React.Component {
               <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["explore-stories-title"]} handleSave={this.onSave("explore-stories-title")} />
               </h1>
-            </Container>
-
-            <Container>
               <div className="mt-40 mb-40">
                 <EditableParagraph content={content["explore-stories-description"]} handleSave={this.onSave("explore-stories-description")} />
               </div>
             </Container>
           </Section>
 
-          <Section id="featured-stories" className="wow fadeIn pt-80 pb-80 bg-light">
-            <div id="first-story" className="first-story wow fadeIn pt-80 pb-80 bg-dylan">
-              <section>
-                <Container>
-                  <h2 className="text-center mb-20">
-                    <EditableText content={content["first-story-title"]} handleSave={this.onSave("first-story-title")} />
-                  </h2>
+          <Section id="first-story" className="wow fadeIn pb-80 bg-light">
+            <div className="first-story pt-80 pb-80 bg-dylan">
+              <Container>
+                <h2 className="text-center mb-20">
+                  <EditableText content={content["first-story-title"]} handleSave={this.onSave("first-story-title")} />
+                </h2>
 
-                  <div className="card">
-                    <EditableImageUpload
-                             classes="img-fluid card-img-top"
-                             content={content["first-story-bookcover"]}
-                             onSave={this.onSave("first-story-bookcover")}
-                             uploadImage={uploadImage}
-                             />
+                <div className="card">
+                  <EditableImageUpload
+                   classes="img-fluid card-img-top book-cover"
+                   content={content["first-story-bookcover"]}
+                   onSave={this.onSave("first-story-bookcover")}
+                   uploadImage={uploadImage}
+                   />
 
-                           <div className="pl-40 pr-40 pt-40 pb-40">
-                    <EditableParagraph
-                    content={content["first-story-description"]}
-                    handleSave={this.onSave("first-story-description")}
-                    />
-                    </div>
-
+                 <div className="pl-40 pr-40 pt-40 pb-40">
+                  <EditableParagraph
+                  content={content["first-story-description"]}
+                  handleSave={this.onSave("first-story-description")}
+                  />
                   </div>
-                  <div className="text-center">
-                    <EditableLink
-                      classes={"btn btn-primary mt-30"}
-                      content={content["first-story-button"]}
-                      handleSave={this.onSave("first-story-button")}
-                    />
-                  </div>
-                </Container>
-              </section>
+
+                </div>
+                <div className="text-center">
+                  <EditableLink
+                    classes={"btn btn-primary mt-30"}
+                    content={content["first-story-button"]}
+                    handleSave={this.onSave("first-story-button")}
+                  />
+                </div>
+              </Container>
             </div>
+
+          </Section>
+
+          <Section id="featured-stories" className="wow fadeIn pb-80 bg-light">
             <Container>
               <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-40">
                 <EditableText content={content["featured-stories-title"]} handleSave={this.onSave("featured-stories-title")} />
@@ -207,9 +206,6 @@ class HomePage extends React.Component {
                 defaultContent={DEFAULT_COMPONENT_CONTENT['featured-stories']}
               />
             </Container>
-
-
-
           </Section>
 
           <Section className="wow fadeIn pt-80 pb-80 bg-primary contrast-section">

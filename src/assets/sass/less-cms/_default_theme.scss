@@ -561,7 +561,8 @@ section.basic-section {
 }
 
 .footer-area {
-  .bg-light.bg-decorated {
+  &.bg-light.bg-decorated {
+    background-color: $light-blue !important;
     @include bg-topo-alt-white;
   }
 

@@ -33,7 +33,7 @@ class PublicationEditor extends React.Component {
     const { content } = this.state;
 
     return(
-      <div className={`p-3 ${this.props.classes}`}>
+      <div className={`p-3 publication ${this.props.classes}`}>
         <div className={`card`}>
           <div className="card-body">
             <div className="card-img-top bg-light">
@@ -46,12 +46,12 @@ class PublicationEditor extends React.Component {
           </div>
           <div className="card-body">
             <div className="card-title mb-4">
-              <h4>
+              <h5>
                 <PlainTextEditor
                   content={content["publication-item-title"]}
                   handleEditorChange={this.handleEditorChange("publication-item-title")}
                 />
-              </h4>
+              </h5>
             </div>
 
             {
@@ -100,12 +100,12 @@ const Publication = props => {
       content={content}
       {...props}
     >
-      <div className={`${props.classes}`}>
+      <div className={`${props.classes} publication`}>
         <a href={content["publication-item-link"]["link"]} target="_blank" rel="noopener noreferrer">
           <div className={`card`}>
             {
               Boolean(content["publication-item-image"]["imageSrc"]) &&
-              <div className="card-img-top bg-light d-flex" style={{ height: "300px" }}>
+              <div className="card-img-top bg-light d-flex">
                 <img
                   className="img-fluid w-100"
                   style={{ objectFit: "cover" }}
@@ -116,9 +116,9 @@ const Publication = props => {
             }
             <div className="card-body">
               <div className="card-title">
-                <h4 className="text-primary">
+                <h5 className="text-primary">
                   { content["publication-item-title"]["text"] }
-                </h4>
+                </h5>
               </div>
 
               {

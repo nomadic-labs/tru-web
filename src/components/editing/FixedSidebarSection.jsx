@@ -130,25 +130,21 @@ const FixedSidebarSection = ({ sidebar, content=[], type, sectionIndex, pageData
     savePageContent(() => deleteSidebarContent(sectionIndex))
   }
 
+  const SidebarComponent = sidebar ? componentMap[sidebar.type] : null;
+
   return(
     <section className={`fixed-sidebar-section`}>
       <div className={`sidebar`}>
         <Affix disableOnMobile={true} mobileBreakpoint={992}>
           <div className="pt-40 pb-40 pr-40 pl-40 sidebar-inner pos-relative d-flex justify-content-center">
             {
-              ((sidebar) => {
-                if (sidebar) {
-                  const Component = componentMap[sidebar.type];
-                  return(
-                    <Component
-                      content={sidebar.content}
-                      onSave={onUpdateSidebarContent(sectionIndex)}
-                      onDelete={onDeleteSidebarContent(sectionIndex)}
-                      isEditingPage={isEditingPage}
-                    />
-                  )
-                }
-              })(sidebar)
+              SidebarComponent &&
+              <SidebarComponent
+                content={sidebar.content}
+                onSave={onUpdateSidebarContent(sectionIndex)}
+                onDelete={onDeleteSidebarContent(sectionIndex)}
+                isEditingPage={isEditingPage}
+              />
             }
             {
               (isEditingPage && !sidebar) &&

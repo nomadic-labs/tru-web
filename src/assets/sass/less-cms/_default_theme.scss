@@ -618,6 +618,32 @@ section.basic-section {
   }
 }
 
+.publication {
+  .card {
+    .card-img-top {
+      height: 300px;
+    }
+  }
+
+  &.featured-story {
+    .card {
+      .card-img-top {
+        height: 180px;
+      }
+    }
+  }
+}
+
+.book-cover {
+  &.card-img-top {
+    img {
+      max-height: 50vh;
+      height: 300px !important;
+      object-fit: cover;
+    }
+  }
+}
+
 /* tablet and below */
 @media (max-width: 991px) {
   #full-page-menu {

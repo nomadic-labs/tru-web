@@ -63,4 +63,7 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "publication-item-description": { "text": "Preview" },
     "publication-item-link": { "anchor": "link text", "link": "/" },
   },
+  "app-screeshot": {
+    "screenshot-item-image": { "imageSrc": "", "caption": "", "title": "" },
+  },
 }

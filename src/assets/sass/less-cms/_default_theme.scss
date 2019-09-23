@@ -581,6 +581,7 @@ section.basic-section {
 
   .sidebar, .content {
     flex: 1 1 50%;
+    min-height: 100vh;
   }
 
   .sidebar {

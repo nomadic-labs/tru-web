@@ -150,7 +150,7 @@ section.basic-section {
 }
 
 .bg-pink {
-  background-color: $pink !important;
+  background-color: $rust !important;
 }
 
 .bg-green {
@@ -175,7 +175,7 @@ section.basic-section {
   top:0;
   position: absolute;
   mix-blend-mode: multiply;
-  @include bg-topo-default;
+//  @include bg-topo-default;
 }
 
 .bg-header {

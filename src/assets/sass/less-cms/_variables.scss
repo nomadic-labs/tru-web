@@ -17,13 +17,11 @@ $dark-yellow: #ffac2a;
 $light-yellow: #F9F29D;
 
 $dark-purple: #423243;
-$light-purple: #cfccd0;
+$light-purple: #999da4;
 
-$pink: #f5c7b8;
-$green: #29702a;
+$rust: #B46547;
 
-
-$black: #303539;
+$black: #000000;
 $white: #FFFFFF;
 
 $gray: #4c4e56;
@@ -52,9 +50,9 @@ $light-theme-bg: $light-green;
 /* DARK THEME */
 
 $dark-theme-primary: $dark-purple;
-$dark-theme-primary-light: $light-blue;
-$dark-theme-secondary: $dark-yellow;
-$dark-theme-highlight: $dark-blue;
+$dark-theme-primary-light: $light-purple;
+$dark-theme-secondary: $rust;
+$dark-theme-highlight: $light-gray;
 $dark-theme-bg: transparentize($gray, 0.9);
 $dark-theme-bg-alt: transparentize($dark-purple, 0.85);
 

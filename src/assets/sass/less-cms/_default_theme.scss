@@ -2,7 +2,7 @@
 
 html, body {
   font-family: $body-font;
-  font-size: 14px;
+  font-size: 16px;
   color: $black;
   background: $white;
   scroll-behavior: smooth;
@@ -64,26 +64,34 @@ p {
 section.basic-section {
   &:nth-of-type(4n+1) {
     background-color: $white;
-    @include bg-flower;
-  }
-}
-
-section.basic-section {
-  &:nth-of-type(4n+3) {
-    background-color: $white;
-    @include bg-leaf;
+    @include bg-flower-light;
+    h1,h2,h3 {
+      color: $theme-secondary;
+    }
+    p {
+      color: $black;
+    }
+    p.card-text {
+      color: $black;
+    }
   }
 }
 
 section.basic-section {
   &:nth-of-type(4n+2) {
-    background-color: $theme-primary-light;
+    background-color: $light-green;
+  }
+}
+
+section.basic-section {
+  &:nth-of-type(4n+3) {
+    background-color: $dark-green;
   }
 }
 
 section.basic-section {
   &:nth-of-type(4n+4) {
-    background-color: $theme-primary-light;
+    background-color: $light-blue;
   }
 }
 
@@ -103,7 +111,7 @@ section.basic-section {
   color: $white;
 
   h1, h2, h3, h4, h5, h6, p {
-    color: $white;
+    color: $theme-highlight;
   }
 
   .card {
@@ -134,11 +142,11 @@ section.basic-section {
 }
 
 .bg-dark {
-  background-color: $black !important;
+  background-color: $medium-blue !important;
 }
 
 .bg-light {
-  background-color: $light-green !important;
+  background-color: $light-blue !important;
 }
 
 .bg-lighter {
@@ -170,24 +178,30 @@ section.basic-section {
 }
 
 .bg-landingpage {
-  background-color: $medium-blue !important;
+  background-color: $white; opacity:0.75 !important;
   height: 100%;
   top:0;
   position: absolute;
-  mix-blend-mode: multiply;
 //  @include bg-topo-default;
 }
 
 .bg-header {
   position: relative;
+  height: 80vh;
+  max-width: 80vw;
+  @media (max-width: 767px) {
+    margin: auto;
+    height: 100%;
+  }
+
   h1, h2, h3 {
-    color: $white;}
+    color: $medium-blue;}
     p {
-      color: $white;
+      color: $medium-blue;
     }
   a {
     text-decoration: underline;
-    color: $white;
+    color: $medium-blue;
     font-family: $header-font, serif;
     font-weight: bold;
   }
@@ -199,10 +213,10 @@ section.basic-section {
 
   .image {
     position: absolute;
-    height: 80%;
+    height: 100vh;
     filter: invert(100%) brightness(1);
     opacity: 0.5;
-    top: 20px;
+    top: 20%;
     right: -50%;
     z-index: 0;
 
@@ -505,13 +519,13 @@ section.basic-section {
 .breadcrumb-text {
     position: relative;
     z-index: 1;
-    text-shadow: 0px 0px 30px $theme-primary;
+    //text-shadow: 0px 0px 30px $theme-primary;
 }
 .breadcrumb-text > h1 {
   font-size: calc(28px + 4vw);
   margin-bottom: 48px;
   line-height: 1.2;
-  color: $white;
+  color: $theme-highlight;
   -ms-word-break: break-all;
   word-break: break-all;
   word-break: break-word;
@@ -532,20 +546,17 @@ section.basic-section {
 .page-header {
   &.bg-primary {
     &.bg-decorated {
-      @include bg-topo;
+      @include bg-topo-alt-white;
     }
   }
 
   .page-header-image {
     .image-outline {
-      border: 2px solid $light-green;
+      outline: 1px solid $white;
     }
   }
 }
 
-.image-outline {
-  border: 2px solid $light-green;
-}
 
 #start-here {
   h6 {
@@ -555,6 +566,7 @@ section.basic-section {
 }
 
 #featured-stories {
+
   .slick-prev:before, .slick-next:before {
     color: $theme-primary;
   }
@@ -630,7 +642,9 @@ section.basic-section {
   &.featured-story {
     .card {
       .card-img-top {
-        height: 180px;
+        height: 400px;
+        max-height: 50vh;
+        object-fit: cover;
       }
     }
   }
@@ -640,7 +654,7 @@ section.basic-section {
   &.card-img-top {
     img {
       max-height: 50vh;
-      height: 300px !important;
+      height: 360px !important;
       object-fit: cover;
     }
   }

@@ -116,9 +116,9 @@ const Publication = props => {
             }
             <div className="card-body">
               <div className="card-title">
-                <h5 className="text-primary">
+                <h4 className="text-primary">
                   { content["publication-item-title"]["text"] }
-                </h5>
+                </h4>
               </div>
 
               {

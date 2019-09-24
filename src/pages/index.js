@@ -131,19 +131,8 @@ class HomePage extends React.Component {
       //      </Section>
         }
 
-          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 basic-section">
-            <Container>
-              <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
-                <EditableText content={content["featured-news-title"]} onSave={this.onSave("featured-news-title")} />
-              </h2>
-              <div className="mt-40">
-                <EditableParagraph content={content["news-description"]} handleSave={this.onSave("news-description")} />
-                <EditableLink classes={"btn btn-primary mt-20"} content={content["news-more-btn"]} handleSave={this.onSave("news-more-btn")} />
-              </div>
-            </Container>
-          </Section>
 
-          <Section className="wow fadeIn pt-80 pb-40 basic-section">
+          <Section className="wow fadeIn pt-100 pb-80 bg-primary basic-section">
             <Container>
               <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["explore-stories-title"]} handleSave={this.onSave("explore-stories-title")} />
@@ -152,9 +141,31 @@ class HomePage extends React.Component {
                 <EditableParagraph content={content["explore-stories-description"]} handleSave={this.onSave("explore-stories-description")} />
               </div>
             </Container>
+
+                      {//<Section id="featured-stories" className="wow fadeIn pb-80 bg-light">
+                      }
+                        <Container>
+                          <Carousel
+                            collection={content["featured-stories"]}
+                            SlideComponent={Publication}
+                            slideClasses={"mx-2 featured-story"}
+                            onSave={this.onSave('featured-stories')}
+                            onAddItem={this.onAddItem('featured-stories')}
+                            onDeleteItem={this.onDeleteItem('featured-stories')}
+                            options={{slidesToShow: 1}}
+                            isEditingPage={this.props.isEditingPage}
+                            defaultContent={DEFAULT_COMPONENT_CONTENT['featured-stories']}
+                          />
+                        </Container>
+                      {//</Section>
+                      }
+
           </Section>
 
-          <Section id="first-story" className="wow fadeIn pb-80 bg-light">
+            { /*
+              <Section id="first-story" className="wow fadeIn pb-80 bg-light">
+
+
             <div className="first-story pt-80 pb-80 bg-dylan">
               <Container>
                 <h2 className="text-center mb-20">
@@ -187,35 +198,19 @@ class HomePage extends React.Component {
               </Container>
             </div>
 
-          </Section>
+                      </Section>
+            */}
 
-          <Section id="featured-stories" className="wow fadeIn pb-80 bg-light">
-            <Container>
-              <h2 data-animation="fadeInUp" data-delay=".5s" className="mb-40">
-                <EditableText content={content["featured-stories-title"]} handleSave={this.onSave("featured-stories-title")} />
-              </h2>
-              <Carousel
-                collection={content["featured-stories"]}
-                SlideComponent={Publication}
-                slideClasses={"mx-2 featured-story"}
-                onSave={this.onSave('featured-stories')}
-                onAddItem={this.onAddItem('featured-stories')}
-                onDeleteItem={this.onDeleteItem('featured-stories')}
-                options={{slidesToShow: 2}}
-                isEditingPage={this.props.isEditingPage}
-                defaultContent={DEFAULT_COMPONENT_CONTENT['featured-stories']}
-              />
-            </Container>
-          </Section>
 
-          <Section className="wow fadeIn pt-80 pb-80 bg-primary contrast-section">
+
+          <Section className="wow fadeIn pt-80 pb-80 bg-light basic-section">
 
             <Container>
-              <h2 data-animation="fadeInUp" data-delay=".5s">
+              <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={content["cr-app-title"]} handleSave={this.onSave("cr-app-title")} />
-              </h2>
+              </h1>
               <div className="row">
-                <div className="col-12">
+                <div className="app-pic col-xl-6 col-lg-6 col-md-6 col-xs-12">
                   <div className="mt-40 mb-40">
                     <Carousel
                       collection={content["cr-app-images"]}
@@ -224,14 +219,14 @@ class HomePage extends React.Component {
                       onSave={this.onSave('cr-app-images')}
                       onAddItem={this.onAddItem('cr-app-images')}
                       onDeleteItem={this.onDeleteItem('cr-app-images')}
-                      options={{slidesToShow: 3}}
+                      options={{slidesToShow: 1}}
                       isEditingPage={this.props.isEditingPage}
                       defaultContent={DEFAULT_COMPONENT_CONTENT['app-screeshot']}
                     />
                   </div>
                 </div>
 
-                <div className="col-12">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-xs-12">
                   <div className="mt-40 mb-40 text-white">
                     <EditableParagraph content={content["cr-app-description"]} handleSave={this.onSave("cr-app-description")} />
                   </div>
@@ -240,6 +235,37 @@ class HomePage extends React.Component {
               </div>
             </Container>
           </Section>
+
+          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 bg-secondary basic-section">
+            <Container>
+              <h1 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
+                <EditableText content={content["featured-news-title"]} onSave={this.onSave("featured-news-title")} />
+              </h1>
+              <div className="mt-40">
+                <EditableParagraph content={content["news-description"]} handleSave={this.onSave("news-description")} />
+              </div>
+{//currently using featured stories as placeholder
+}
+              <div className="col-12">
+                <div className="mt-40 mb-40">
+                    <Carousel
+                      collection={content["featured-stories"]}
+                      SlideComponent={Publication}
+                      slideClasses={"mx-2 featured-story"}
+                      onSave={this.onSave('featured-stories')}
+                      onAddItem={this.onAddItem('featured-stories')}
+                      onDeleteItem={this.onDeleteItem('featured-stories')}
+                      options={{slidesToShow: 3}}
+                      isEditingPage={this.props.isEditingPage}
+                      defaultContent={DEFAULT_COMPONENT_CONTENT['featured-stories']}
+                    />
+                </div>
+                <EditableLink classes={"btn btn-primary mt-20"} content={content["news-more-btn"]} handleSave={this.onSave("news-more-btn")} />
+
+              </div>
+            </Container>
+          </Section>
+
         </main>
       </Layout>
     );

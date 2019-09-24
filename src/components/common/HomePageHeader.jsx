@@ -16,15 +16,15 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
     >
       <div className="container">
         <div className="row">
-          <div className="col-xl-12 bg-header">
-            <div className="col-md-8 bg-landingpage">
+          <div className="col-xl-8 col-md-8 col-sm-10 col-xs-10 bg-header">
+            <div className="col-xl-10 md bg-landingpage">
             </div>
-            <div className="col-md-8 pt-20 pb-20 pl-30 pr-30 mb-20" data-animation="fadeInUp" data-delay=".3s">
+            <div className="col-xl-10 pt-20 pb-20 pl-30 pr-30 mb-20" data-animation="fadeInUp" data-delay=".3s">
               <h1 data-animation="fadeInUp" data-delay=".5s">
                 <EditableText content={{ text: title }} onSave={ onUpdateTitle } />
               </h1>
               <div className="pb-10">
-                <img src={Branch} style={{ width: "240px", maxWidth: "100vw" }} />
+                <img src={Branch} style={{ width: "180px", maxWidth: "100vw" }} />
               </div>
               <h2>
                 <EditableText content={ content["header-subtitle"] } handleSave={ onSave("header-subtitle") } placeholder="Subtitle" />

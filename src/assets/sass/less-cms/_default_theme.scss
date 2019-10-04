@@ -80,6 +80,9 @@ section.basic-section {
 section.basic-section {
   &:nth-of-type(4n+2) {
     background-color: $light-green;
+    h1, h2, h3 {
+      color: $theme-secondary;
+    }
   }
 }
 
@@ -316,7 +319,7 @@ section.basic-section {
 
 .btn-highlight {
   background: $theme-highlight;
-  color: $white;
+  color: $theme-secondary;
 
   &:hover, &:focus {
     background: $theme-secondary;
@@ -657,6 +660,22 @@ section.basic-section {
       height: 360px !important;
       object-fit: cover;
     }
+  }
+}
+
+#home-page {
+  .bg-secondary {
+    h1 {
+      color: $theme-highlight;
+    }
+
+    p {
+      color: $white;
+    }
+  }
+
+  .btn-primary {
+    background-color: $theme-secondary;
   }
 }
 

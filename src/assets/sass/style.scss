@@ -468,7 +468,32 @@ label {
 	border-bottom: 1px solid #c4d9bb;
 }
 
-.main-menu-area {}
+.main-menu-area {
+	.menu-button {
+		font-family: $header-font;
+		background-color: $theme-primary;
+		color: $white;
+		height: 100%;
+		cursor: pointer;
+
+		.menu-bar {
+			width: 20px;
+			margin-left: 0;
+			cursor: pointer;
+			position: relative;
+		}
+		.menu-bar span {
+			display: block;
+			margin: 5px 0;
+			transition: .3s;
+			margin-left: auto;
+			width: 100%;
+			background: $white;
+			height: 2px;
+		}
+	}
+
+}
 .main-menu  ul {}
 .main-menu nav > ul > li {
 	display: inline-block;
@@ -487,6 +512,7 @@ label {
 	text-transform: uppercase;
 	font-family: $header-font;
 }
+
 /*.main-menu nav > ul  > li:hover > a,.main-menu nav > ul  > li.active > a{color:#112433;}*/
 /* sub-menu */
 .main-menu nav > ul  > li .sub-menu {
@@ -516,7 +542,7 @@ label {
 .main-menu nav > ul  > li:hover > .sub-menu li > a:hover{color:#fff;background:$theme-highlight;}
 /* header 3 */
 .header-2-menu .main-menu nav > ul > li > a {
-	padding: 32px 0;
+	padding: 22px 0;
 	text-transform: capitalize;
 }
 .header-2-menu .header-lang {

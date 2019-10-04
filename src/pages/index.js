@@ -243,7 +243,7 @@ class HomePage extends React.Component {
                   <Carousel
                     collection={content["featured-news"]}
                     SlideComponent={Publication}
-                    slideClasses={"mx-1"}
+                    slideClasses={"mx-2"}
                     onSave={this.onSave('featured-news')}
                     onAddItem={this.onAddItem('featured-news')}
                     onDeleteItem={this.onDeleteItem('featured-news')}

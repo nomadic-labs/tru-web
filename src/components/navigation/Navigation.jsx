@@ -41,37 +41,38 @@ class Navigation extends React.Component {
   render() {
     return (
       <header>
-        <div id="sticky-header" className="main-menu-area header-2-menu pl-55 pr-55">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-8 col-md-6 d-flex align-items-stretch">
-                        <div className="header-logo text-left d-flex align-items-center">
-                            <a href="/">The Land and the Refinery</a>
-                        </div>
+        <div id="sticky-header" className="main-menu-area header-2-menu pl-55 pr-0">
+          <div className="row">
+              <div className="col-8 col-md-5 d-flex align-items-stretch">
+                  <div className="header-logo text-left d-flex align-items-center">
+                      <a href="/">The Land and the Refinery</a>
+                  </div>
+              </div>
+              <div className="col-4 col-md-5 d-none d-md-block">
+                  <div className="main-menu">
+                      <nav id="mobile-menu">
+                          <ul className="text-right">
+                              <li className="">
+                                  <a href="/about">about</a>
+                              </li>
+                              <li><a href="/news">news</a></li>
+                              <li><a href="/get-involved">participate</a></li>
+                              <li><a href="/contact">contact us</a></li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+              <div className="col-4 col-md-2 d-flex justify-content-end align-items-center">
+                  <div className="menu-button d-flex align-items-center px-3" onClick={this.props.openMenu}>
+                    <span className="mr-2">Menu</span>
+                    <div className="menu-bar info-bar text-right">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                    <div className="col-5 d-none d-md-block">
-                        <div className="main-menu">
-                            <nav id="mobile-menu">
-                                <ul className="text-right">
-                                    <li className="">
-                                        <a href="/about">about</a>
-                                    </li>
-                                    <li><a href="/news">news</a></li>
-                                    <li><a href="/get-involved">participate</a></li>
-                                    <li><a href="/contact">contact us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <div className="col-4 col-md-1 d-flex justify-content-end align-items-center">
-                        <div className="menu-bar info-bar text-right" onClick={this.props.openMenu}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                  </div>
+              </div>
+          </div>
         </div>
       </header>
     );

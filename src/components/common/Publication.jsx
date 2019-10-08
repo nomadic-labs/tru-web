@@ -64,14 +64,14 @@ class PublicationEditor extends React.Component {
               </div>
             }
 
-            <div className="card-text mb-3">
+            <div className="card-text mb-3" style={{ color: "#000000"}}>
               <PlainTextEditor
                 content={content["publication-item-description"]}
                 handleEditorChange={this.handleEditorChange("publication-item-description")}
               />
             </div>
 
-            <div className="card-text mb-3">
+            <div className="card-text mb-3" style={{ color: "#000000"}}>
               <LinkEditor
                 content={content["publication-item-link"]}
                 handleEditorChange={this.handleEditorChange("publication-item-link")}
@@ -128,7 +128,7 @@ const Publication = props => {
                 </div>
               }
 
-              <p className="card-text">
+              <p className="card-text" style={{ color: "#000000"}}>
                 {content["publication-item-description"]["text"]}
               </p>
             </div>

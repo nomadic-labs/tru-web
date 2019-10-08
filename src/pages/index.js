@@ -231,7 +231,7 @@ class HomePage extends React.Component {
             </Container>
           </Section>
 
-          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 bg-secondary basic-section">
+          <Section id="featured-news" className="wow fadeIn pt-80 pb-80 bg-secondary contrast-section">
             <Container>
               <h1 data-animation="fadeInUp" data-delay=".5s" className="mb-4">
                 <EditableText content={content["featured-news-title"]} onSave={this.onSave("featured-news-title")} />

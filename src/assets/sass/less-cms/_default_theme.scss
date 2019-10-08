@@ -32,12 +32,8 @@ p, ul, li, a {
 a {
   color: $theme-primary;
 
-  &:hover {
+  &:hover, &:active, &:focus {
     color: $theme-secondary;
-  }
-
-  &:active, &:focus {
-    color: $theme-highlight;
   }
 }
 
@@ -121,18 +117,23 @@ section.contrast-section {
     }
   }
 
-  .btn-primary {
+  .btn-primary:not(:disabled):not(.disabled) {
     background: $theme-highlight;
     color: $theme-secondary;
 
-    &:hover, &:focus {
+    &:hover, &:focus, &:active {
       background: $theme-primary-light;
       color: $theme-secondary;
     }
+  }
 
-    &:active  {
-      background: lighten($theme-secondary, 5%) !important;
-      color: $white;
+  .btn-highlight:not(:disabled):not(.disabled) {
+    background: $theme-highlight;
+    color: $theme-secondary;
+
+    &:hover, &:focus, &:active {
+      background: $theme-primary-light;
+      color: $theme-secondary;
     }
   }
 }
@@ -162,17 +163,12 @@ section.contrast-section {
     }
   }
 
-  .btn-primary {
+  .btn-primary:not(:disabled):not(.disabled) {
     background: $theme-highlight;
     color: $theme-secondary !important;
 
-    &:hover, &:focus {
+    &:hover, &:focus, &:active {
       background: $theme-secondary;
-      color: $white;
-    }
-
-    &:active  {
-      background: lighten($theme-secondary, 5%) !important;
       color: $white;
     }
   }
@@ -229,8 +225,6 @@ section.contrast-section {
 
 .bg-header {
   position: relative;
-  height: 80vh;
-  max-width: 80vw;
   @media (max-width: 767px) {
     margin: auto;
     height: 100%;
@@ -330,16 +324,12 @@ section.contrast-section {
   font-style: italic;
 }
 
-.btn-primary {
+.btn-primary:not(:disabled):not(.disabled) {
   background: $theme-primary;
   color: $white;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: $theme-secondary;
-  }
-
-  &:active  {
-    background: lighten($theme-secondary, 10%) !important;
   }
 }
 
@@ -347,12 +337,8 @@ section.contrast-section {
   background: $theme-secondary;
   color: $white;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: $theme-highlight;
-  }
-
-  &:active  {
-    background: lighten($theme-highlight, 10%) !important;
   }
 }
 
@@ -360,12 +346,8 @@ section.contrast-section {
   background: $theme-highlight;
   color: $theme-secondary;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: $theme-secondary;
-  }
-
-  &:active  {
-    background: lighten($theme-secondary, 10%) !important;
   }
 }
 
@@ -574,13 +556,13 @@ section.contrast-section {
 .page-header {
   &.bg-primary {
     &.bg-decorated {
-      @include bg-topo-alt-white;
+      @include bg-topo;
     }
   }
 
   .page-header-image {
     .image-outline {
-      outline: 1px solid $white;
+      border: 1px solid $theme-primary-light;
     }
   }
 }
@@ -699,8 +681,11 @@ section.contrast-section {
     }
   }
 
-  .btn-primary {
+  .btn-primary:not(:disabled):not(.disabled) {
     background-color: $theme-secondary;
+    &:hover {
+      background-color: $theme-primary;
+    }
   }
 }
 

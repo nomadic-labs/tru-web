@@ -9,12 +9,8 @@
   a {
     color: $black;
 
-    &:hover {
+    &:hover, &:active, &:focus {
       color: $dark-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $dark-theme-highlight;
     }
   }
 
@@ -87,7 +83,7 @@
     background-color: $dark-theme-contrast-bg;
     color: $white;
 
-    h1, h2, h3, h4, h5, h6, p {
+    h1, h2, h3, h4, h5, h6, p, a {
       color: $white;
     }
 
@@ -97,13 +93,13 @@
       }
     }
 
-    .btn-primary {
-      background: $dark-theme-highlight;
-      color: $dark-theme-secondary;
+    .btn-primary:not(:disabled):not(.disabled) {
+      background: $dark-theme-primary-light;
+      color: $white;
 
       &:hover, &:focus {
-        background: $dark-theme-primary-light;
-        color: $dark-theme-secondary;
+        background: $dark-theme-primary;
+        color: $white;
       }
 
       &:active  {
@@ -216,46 +212,32 @@
     color: $dark-theme-highlight !important;
   }
 
-  .btn-primary {
+  .btn-primary:not(:disabled):not(.disabled) {
     background: $dark-theme-primary;
     color: $white;
 
-    &:hover, &.focus {
+    &:hover, &:focus, &:active {
       background: $dark-theme-highlight;
-      color: $white;
-    }
-
-    &:active  {
-      background: darken($dark-theme-highlight, 10%) !important;
       color: $white;
     }
   }
 
-  .btn-secondary {
+  .btn-secondary:not(:disabled):not(.disabled) {
     background: $dark-theme-secondary;
     color: $white;
 
-    &:hover, &.focus {
+    &:hover, &:focus, &:active {
       background: $dark-theme-highlight;
-      color: $white;
-    }
-
-    &:active  {
-      background: darken($dark-theme-secondary, 10%) !important;
       color: $white;
     }
   }
 
-  .btn-highlight {
+  .btn-highlight:not(:disabled):not(.disabled) {
     background: $dark-theme-highlight;
     color: $white;
 
-    &:hover, &.focus {
+    &:hover, &:focus, &:active {
       background: $dark-theme-secondary;
-    }
-
-    &:active  {
-      background: darken($dark-theme-secondary, 10%) !important;
     }
   }
 

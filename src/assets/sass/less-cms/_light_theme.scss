@@ -9,12 +9,8 @@
   a {
     color: $black;
 
-    &:hover {
+    &:hover, &:active, &:focus {
       color: $light-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $light-theme-highlight;
     }
   }
 
@@ -32,13 +28,14 @@
 
   p {
     a {
-      color: $light-theme-primary;
+      color: $light-theme-secondary;
     }
   }
 
   section.basic-section {
     &:nth-of-type(4n + 1) {
       background-color: $light-theme-primary-bg;
+      background-image: none;
       h1,h2,h3 {
         color: $light-theme-secondary;
       }
@@ -80,7 +77,7 @@
     background-color: $light-theme-contrast-bg;
     color: $light-theme-primary;
 
-    h1, h2, h3, h4, h5, h6, p {
+    h1, h2, h3, h4, h5, h6, p, a {
       color: $light-theme-primary;
     }
 
@@ -214,7 +211,7 @@
     color: $light-theme-highlight !important;
   }
 
-  .btn-primary {
+  .btn-primary:not(:disabled):not(.disabled) {
     background: $light-theme-secondary;
     color: $white;
 
@@ -229,7 +226,7 @@
     }
   }
 
-  .btn-secondary {
+  .btn-secondary:not(:disabled):not(.disabled) {
     background: $light-theme-secondary;
     color: $white;
 
@@ -244,7 +241,7 @@
     }
   }
 
-  .btn-highlight {
+  .btn-highlight:not(:disabled):not(.disabled) {
     background: $light-theme-highlight;
     color: $white;
 

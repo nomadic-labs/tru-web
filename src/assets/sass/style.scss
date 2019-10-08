@@ -3888,15 +3888,7 @@ ul.cat li a:hover {
 .contact-form textarea::-moz-placeholder, .contact-form textarea::placeholder {
   color: $dark-gray;
 }
-#contact-form .btn {
-	cursor: pointer;
-	padding: 18px 60px;
-	background: $theme-highlight;
-	transition: .3s;
-}
-#contact-form .btn:hover {
-	background:$theme-secondary;
-}
+
 /* shop */
 .pro-filter select {
 	border: 2px solid #eaedff;

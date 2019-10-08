@@ -144,7 +144,7 @@ class ContactPage extends React.Component {
                                             <div className="col-md-12">
                                               <input type="hidden" name="_next" value="https://www.landandrefinery.org/" />
                                               <input type="text" name="_honey" style={{display:"none"}} />
-                                              <button className="btn" type="submit">send message</button>
+                                              <button className="btn btn-primary" type="submit">send message</button>
                                             </div>
                                         </div>
                                         <p className="ajax-response"></p>

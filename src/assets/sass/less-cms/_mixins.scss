@@ -1,5 +1,5 @@
 @mixin bg-flower {
-  background-image: url('../../images/flower_light_green.svg');
+  background-image: url('../../images/flower_light_blue.svg');
   background-size: 20vw auto;
   background-position: top 5% right 5%;
   background-repeat: no-repeat;
@@ -7,6 +7,13 @@
 
 @mixin bg-flower-light {
   background-image: url('../../images/flower_light_yellow.svg');
+  background-size: 20vw auto;
+  background-position: top 5% right 5%;
+  background-repeat: no-repeat;
+}
+
+@mixin bg-flower-white {
+  background-image: url('../../images/flower_white.svg');
   background-size: 20vw auto;
   background-position: top 5% right 5%;
   background-repeat: no-repeat;
@@ -27,7 +34,7 @@
 }
 
 @mixin bg-leaf {
-  background-image: url('../../images/leaf_light_green.svg');
+  background-image: url('../../images/leaf_light_blue.svg');
   background-size: 30vw auto;
   background-position: top left;
   background-repeat: no-repeat;

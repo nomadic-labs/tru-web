@@ -429,25 +429,31 @@ export function savePageContent(innerFunction) {
       const content = getState().page.data.content;
       const pageId = getState().page.data.id;
 
+      console.log("content", content)
+      console.log("pageId", pageId)
+
       const db = firebase.database();
 
-      db.ref(`pages/${pageId}/content/`).update(content, error => {
-        if (error) {
+      db.ref(`pages/${pageId}/content/`)
+        .update(content)
+        .then(res => {
+          console.log('res', res)
+          dispatch(
+            showNotification(
+              "Your changes have been saved. Publish your changes to make them public.",
+              "success"
+            )
+          );
+        })
+        .catch(error => {
+          console.log('error', error)
           return dispatch(
             showNotification(
               `There was an error saving your changes: ${error}`,
               "success"
             )
           );
-        }
-
-        dispatch(
-          showNotification(
-            "Your changes have been saved. Publish your changes to make them public.",
-            "success"
-          )
-        );
-      });
+        })
     });
   };
 }

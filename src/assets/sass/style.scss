@@ -325,6 +325,9 @@ label {
 	padding: 8px 0;
 	font-family: $header-font;
 	font-size: 1.2em;
+	a {
+		color: $black;
+	}
 }
 .heder-button{}
 .heder-button a.btn {
@@ -471,7 +474,7 @@ label {
 .main-menu-area {
 	.menu-button {
 		font-family: $header-font;
-		background-color: $theme-primary;
+		background-color: $theme-secondary;
 		color: $white;
 		height: 100%;
 		cursor: pointer;
@@ -544,6 +547,11 @@ label {
 .header-2-menu .main-menu nav > ul > li > a {
 	padding: 22px 0;
 	text-transform: capitalize;
+	color: $black;
+	&:hover, &:active, &:focus {
+		text-decoration: underline;
+		color: $black;
+	}
 }
 .header-2-menu .header-lang {
 	padding: 0 0px 20px;

@@ -64,7 +64,7 @@ p {
 section.basic-section {
   &:nth-of-type(4n+1) {
     background-color: $white;
-    @include bg-flower-light;
+    @include bg-flower;
     h1,h2,h3 {
       color: $theme-secondary;
     }
@@ -79,7 +79,7 @@ section.basic-section {
 
 section.basic-section {
   &:nth-of-type(4n+2) {
-    background-color: $light-green;
+    background-color: $theme-primary-bg;
     h1, h2, h3 {
       color: $theme-secondary;
     }
@@ -88,13 +88,52 @@ section.basic-section {
 
 section.basic-section {
   &:nth-of-type(4n+3) {
-    background-color: $dark-green;
+    background-color: $white;
+    @include bg-leaf;
+
+    h1,h2,h3 {
+      color: $theme-secondary;
+    }
   }
 }
 
 section.basic-section {
   &:nth-of-type(4n+4) {
-    background-color: $light-blue;
+    background-color: $theme-secondary-bg;
+
+    h1,h2,h3 {
+      color: $theme-secondary;
+    }
+  }
+}
+
+section.contrast-section {
+  background-color: $theme-contrast-bg;
+  color: $white;
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: $theme-highlight;
+  }
+
+  .card {
+    .card-title, .card-text, .card-body, p, label {
+      color: $black;
+    }
+  }
+
+  .btn-primary {
+    background: $theme-highlight;
+    color: $theme-secondary;
+
+    &:hover, &:focus {
+      background: $theme-primary-light;
+      color: $theme-secondary;
+    }
+
+    &:active  {
+      background: lighten($theme-secondary, 5%) !important;
+      color: $white;
+    }
   }
 }
 
@@ -114,7 +153,7 @@ section.basic-section {
   color: $white;
 
   h1, h2, h3, h4, h5, h6, p {
-    color: $theme-highlight;
+    color: $white;
   }
 
   .card {
@@ -125,7 +164,7 @@ section.basic-section {
 
   .btn-primary {
     background: $theme-highlight;
-    color: $white;
+    color: $theme-secondary !important;
 
     &:hover, &:focus {
       background: $theme-secondary;
@@ -459,20 +498,6 @@ section.basic-section {
   overflow: hidden !important;
 }
 
-.header-2-menu .menu-bar {
-  &:hover {
-    span {
-      background: $theme-secondary;
-    }
-  }
-
-  &:focus, &:active {
-    span {
-      background: $theme-highlight;
-    }
-  }
-}
-
 .text-glow {
   text-shadow: 0px 0px 120px transparentize($white, 0.5);
 }
@@ -528,7 +553,7 @@ section.basic-section {
   font-size: calc(28px + 4vw);
   margin-bottom: 48px;
   line-height: 1.2;
-  color: $theme-highlight;
+  color: $white;
   -ms-word-break: break-all;
   word-break: break-all;
   word-break: break-word;

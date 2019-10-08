@@ -40,12 +40,12 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <header>
+      <header role="navigation">
         <div id="sticky-header" className="main-menu-area header-2-menu pl-55 pr-0">
           <div className="row">
               <div className="col-8 col-md-5 d-flex align-items-stretch">
                   <div className="header-logo text-left d-flex align-items-center">
-                      <a href="/">The Land and the Refinery</a>
+                      <strong><a href="/">The Land and the Refinery</a></strong>
                   </div>
               </div>
               <div className="col-4 col-md-5 d-none d-md-block">
@@ -63,7 +63,7 @@ class Navigation extends React.Component {
                   </div>
               </div>
               <div className="col-4 col-md-2 d-flex justify-content-end align-items-center">
-                  <div className="menu-button d-flex align-items-center px-3" onClick={this.props.openMenu}>
+                  <div className="menu-button d-flex align-items-center px-3" onClick={this.props.openMenu} tabIndex="0">
                     <span className="mr-2">Menu</span>
                     <div className="menu-bar info-bar text-right">
                         <span></span>

@@ -1,55 +1,62 @@
 @mixin bg-flower {
-  background-image: url('../../images/flower_light_green.svg');
-  background-size: 40vw auto;
-  background-position: top right;
+  background-image: url('../../images/flower_light_blue.svg');
+  background-size: 20vw auto;
+  background-position: top 5% right 5%;
   background-repeat: no-repeat;
 }
 
 @mixin bg-flower-light {
   background-image: url('../../images/flower_light_yellow.svg');
-  background-size: 40vw auto;
-  background-position: top right;
+  background-size: 20vw auto;
+  background-position: top 5% right 5%;
+  background-repeat: no-repeat;
+}
+
+@mixin bg-flower-white {
+  background-image: url('../../images/flower_white.svg');
+  background-size: 20vw auto;
+  background-position: top 5% right 5%;
   background-repeat: no-repeat;
 }
 
 @mixin bg-flower-dark {
   background-image: url('../../images/flower_light_blue.svg');
-  background-size: 40vw auto;
-  background-position: top right;
+  background-size: 20vw auto;
+  background-position: top 5% right 5%;
   background-repeat: no-repeat;
 }
 
 @mixin bg-flower-alt {
-  background-image: url('../../images/flower_alt_light_yellow.svg');
-  background-size: 40vw auto;
-  background-position: top right;
+  background-image: url('../../images/flower_alt_light_green.svg');
+  background-size: 20vw auto;
+  background-position: top 5% right 5%;
   background-repeat: no-repeat;
 }
 
 @mixin bg-leaf {
-  background-image: url('../../images/leaf_light_green.svg');
-  background-size: 40vw auto;
+  background-image: url('../../images/leaf_light_blue.svg');
+  background-size: 30vw auto;
   background-position: top left;
   background-repeat: no-repeat;
 }
 
 @mixin bg-leaf-light {
   background-image: url('../../images/leaf_light_yellow.svg');
-  background-size: 40vw auto;
+  background-size: 30vw auto;
   background-position: top left;
   background-repeat: no-repeat;
 }
 
 @mixin bg-leaf-dark {
   background-image: url('../../images/leaf_light_blue.svg');
-  background-size: 40vw auto;
+  background-size: 30vw auto;
   background-position: top left;
   background-repeat: no-repeat;
 }
 
 @mixin bg-leaf-white {
   background-image: url('../../images/leaf_white.svg');
-  background-size: 40vw auto;
+  background-size: 30vw auto;
   background-position: top left;
   background-repeat: no-repeat;
 }
@@ -84,4 +91,5 @@
   background-size: auto 100%;
   background-position: center center;
   background-repeat: no-repeat;
+  background-blend-mode: darken;
 }

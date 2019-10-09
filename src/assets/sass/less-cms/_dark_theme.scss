@@ -9,12 +9,8 @@
   a {
     color: $black;
 
-    &:hover {
+    &:hover, &:active, &:focus {
       color: $dark-theme-secondary;
-    }
-
-    &:active, &:focus {
-      color: $dark-theme-highlight;
     }
   }
 
@@ -37,29 +33,79 @@
   }
 
 
-  section.dynamic-section.basic-section {
-    &:nth-of-type(4n + 1) {
-      background-color: $white;
-      @include bg-flower-dark;
+  section.basic-section {
+    &:nth-of-type(4n+1) {
+      background-color: $dark-theme-primary-bg;
+      @include bg-flower-white;
+      h1,h2,h3 {
+        color: $dark-theme-secondary;
+      }
+      p {
+        color: $black;
+      }
+      p.card-text {
+        color: $black;
+      }
     }
   }
 
-  section.dynamic-section.basic-section {
-    &:nth-of-type(4n + 3) {
-      background-color: $white;
-      @include bg-leaf-dark;
-    }
-  }
-
-  section.dynamic-section.basic-section {
+  section.basic-section {
     &:nth-of-type(4n+2) {
-      background-color: $dark-theme-primary-light;
+      background-color: $dark-theme-secondary-bg;
+      h1, h2, h3 {
+        color: $dark-theme-secondary;
+      }
     }
   }
 
-  section.dynamic-section.basic-section {
+  section.basic-section {
+    &:nth-of-type(4n+3) {
+      background-color: $dark-theme-primary-bg;
+      @include bg-leaf-white;
+
+      h1,h2,h3 {
+        color: $dark-theme-secondary;
+      }
+    }
+  }
+
+  section.basic-section {
     &:nth-of-type(4n+4) {
-      background-color: $dark-theme-primary-light;
+      background-color: $dark-theme-secondary-bg;
+
+      h1,h2,h3 {
+        color: $dark-theme-secondary;
+      }
+    }
+  }
+
+  section.contrast-section {
+    background-color: $dark-theme-contrast-bg;
+    color: $white;
+
+    h1, h2, h3, h4, h5, h6, p, a {
+      color: $white;
+    }
+
+    .card {
+      .card-title, .card-text, .card-body, p, label {
+        color: $black;
+      }
+    }
+
+    .btn-primary:not(:disabled):not(.disabled) {
+      background: $dark-theme-primary-light;
+      color: $white;
+
+      &:hover, &:focus {
+        background: $dark-theme-primary;
+        color: $white;
+      }
+
+      &:active  {
+        background: lighten($dark-theme-secondary, 5%) !important;
+        color: $white;
+      }
     }
   }
 
@@ -114,7 +160,7 @@
   }
 
   .bg-pink {
-    background-color: $pink !important;
+    background-color: $rust !important;
   }
 
   .bg-primary.bg-decorated {
@@ -166,46 +212,32 @@
     color: $dark-theme-highlight !important;
   }
 
-  .btn-primary {
+  .btn-primary:not(:disabled):not(.disabled) {
     background: $dark-theme-primary;
     color: $white;
 
-    &:hover, &.focus {
+    &:hover, &:focus, &:active {
       background: $dark-theme-highlight;
-      color: $white;
-    }
-
-    &:active  {
-      background: darken($dark-theme-highlight, 10%) !important;
       color: $white;
     }
   }
 
-  .btn-secondary {
+  .btn-secondary:not(:disabled):not(.disabled) {
     background: $dark-theme-secondary;
     color: $white;
 
-    &:hover, &.focus {
+    &:hover, &:focus, &:active {
       background: $dark-theme-highlight;
-      color: $white;
-    }
-
-    &:active  {
-      background: darken($dark-theme-secondary, 10%) !important;
       color: $white;
     }
   }
 
-  .btn-highlight {
+  .btn-highlight:not(:disabled):not(.disabled) {
     background: $dark-theme-highlight;
     color: $white;
 
-    &:hover, &.focus {
+    &:hover, &:focus, &:active {
       background: $dark-theme-secondary;
-    }
-
-    &:active  {
-      background: darken($dark-theme-secondary, 10%) !important;
     }
   }
 
@@ -217,7 +249,7 @@
     }
 
     span {
-      color: $theme-primary-light;
+      color: $dark-yellow;
     }
   }
 
@@ -250,5 +282,3 @@
   }
 
 }
-
-

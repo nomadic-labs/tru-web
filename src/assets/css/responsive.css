@@ -135,7 +135,7 @@
 }
 .header-2-menu {
 	padding-left: 15px;
-	padding-right: 15px;
+	/*padding-right: 15px;*/
 }
 .header-icon {
 	display: none;
@@ -222,7 +222,7 @@
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
 .header-2-menu {
-	padding-top: 12px;
+	/*padding-top: 12px;*/
 }
 .sticky {
 	padding-top: 12px;
@@ -296,7 +296,7 @@
 }
 .header-2-menu {
 	padding-left: 15px;
-	padding-right: 15px;
+	/*padding-right: 15px;*/
 }
 .about2-img {
 	margin-left: 0;
@@ -502,7 +502,7 @@
 }
 .header-2-menu {
 	padding-left: 15px;
-	padding-right: 15px;
+	/*padding-right: 15px;*/
 }
 .deal-img.pl-100.mb-30 {
 	padding-left: 0;
@@ -632,7 +632,7 @@
 	margin-bottom: 15px;
 }
 .header-2-menu {
-	padding-top: 12px;
+	/*padding-top: 12px;*/
 }
 .sticky {
 	padding-top: 12px;

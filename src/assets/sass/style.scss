@@ -107,10 +107,10 @@ h6 a {
 	color: inherit;
 }
 h1 {
-	font-size: calc(28px + 4vw);
+	font-size: calc(16px + 4vw);
 }
 h2 {
-	font-size: calc(24px + 2vw);
+	font-size: calc(16px + 2vw);
 }
 h3 {
 	font-size: 2em;
@@ -325,6 +325,9 @@ label {
 	padding: 8px 0;
 	font-family: $header-font;
 	font-size: 1.2em;
+	a {
+		color: $black;
+	}
 }
 .heder-button{}
 .heder-button a.btn {
@@ -416,7 +419,7 @@ label {
 	margin-bottom: 7px;
 }
 .side-info {
-	border-top: 1px solid $pink;
+	border-top: 1px solid $rust;
 	padding-top: 25px;
 }
 .contact-list h4 {
@@ -433,7 +436,7 @@ label {
 }
 
 .side-menu ul li:hover a {
-  color: $pink; }
+  color: $rust; }
 .header-right {
 	margin-left: 35px;
 	margin-top: 24px;
@@ -468,7 +471,32 @@ label {
 	border-bottom: 1px solid #c4d9bb;
 }
 
-.main-menu-area {}
+.main-menu-area {
+	.menu-button {
+		font-family: $header-font;
+		background-color: $theme-secondary;
+		color: $white;
+		height: 100%;
+		cursor: pointer;
+
+		.menu-bar {
+			width: 20px;
+			margin-left: 0;
+			cursor: pointer;
+			position: relative;
+		}
+		.menu-bar span {
+			display: block;
+			margin: 5px 0;
+			transition: .3s;
+			margin-left: auto;
+			width: 100%;
+			background: $white;
+			height: 2px;
+		}
+	}
+
+}
 .main-menu  ul {}
 .main-menu nav > ul > li {
 	display: inline-block;
@@ -487,6 +515,7 @@ label {
 	text-transform: uppercase;
 	font-family: $header-font;
 }
+
 /*.main-menu nav > ul  > li:hover > a,.main-menu nav > ul  > li.active > a{color:#112433;}*/
 /* sub-menu */
 .main-menu nav > ul  > li .sub-menu {
@@ -516,8 +545,13 @@ label {
 .main-menu nav > ul  > li:hover > .sub-menu li > a:hover{color:#fff;background:$theme-highlight;}
 /* header 3 */
 .header-2-menu .main-menu nav > ul > li > a {
-	padding: 32px 0;
+	padding: 22px 0;
 	text-transform: capitalize;
+	color: $black;
+	&:hover, &:active, &:focus {
+		text-decoration: underline;
+		color: $black;
+	}
 }
 .header-2-menu .header-lang {
 	padding: 0 0px 20px;
@@ -3813,7 +3847,7 @@ ul.cat li a:hover {
 	overflow: hidden;
 }
 .contact-address-text h5 {
-	color: $theme-highlight;
+	color: $theme-secondary;
 	letter-spacing: 2px;
 	font-weight: 600;
 	font-size: 14px;
@@ -3854,15 +3888,7 @@ ul.cat li a:hover {
 .contact-form textarea::-moz-placeholder, .contact-form textarea::placeholder {
   color: $dark-gray;
 }
-#contact-form .btn {
-	cursor: pointer;
-	padding: 18px 60px;
-	background: $theme-highlight;
-	transition: .3s;
-}
-#contact-form .btn:hover {
-	background:$theme-secondary;
-}
+
 /* shop */
 .pro-filter select {
 	border: 2px solid #eaedff;
@@ -4098,7 +4124,7 @@ section#end-matter {
 
 	.card {
 		box-shadow: 0px 0px 5px rgba(0,0,0,.1);
-		border-bottom: 3px solid $theme-secondary;
+		border-bottom: 3px solid $theme-primary;
 		transition: all 0.3s linear;
 
 		.card-body {
@@ -4116,7 +4142,7 @@ section#end-matter {
 		}
 
 		.card-header {
-			background-color: $theme-secondary;
+			background-color: $theme-primary;
 			color: white;
 	    display: flex;
 	    align-items: center;
@@ -4146,16 +4172,16 @@ section#end-matter {
 		}
 
 		&.prev {
-			border-bottom: 3px solid grayscale($theme-secondary);
+			border-bottom: 3px solid grayscale($theme-primary);
 
 			.card-header {
-				background-color: grayscale($theme-secondary);
+				background-color: grayscale($theme-primary);
 				justify-content: flex-start;
 			}
 
 			.card-body {
 				h5 {
-					color: grayscale($theme-secondary);
+					color: grayscale($theme-primary);
 				}
 
 				h4 {

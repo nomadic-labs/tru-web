@@ -74,7 +74,7 @@ const mapStateToProps = state => {
 const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, onUpdatePageData, savePageContent, addSection, deleteSection, duplicateSection, addContentItem, updateContentItem, deleteContentItem }) => {
 
   const onAddSection = () => {
-    savePageContent(() => addSection(sectionIndex))
+    savePageContent(() => addSection(sectionIndex, "default"))
   }
 
   const onAddContrastSection = () => {
@@ -101,7 +101,7 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
     savePageContent(() => deleteContentItem(sectionIndex, contentIndex))
   }
 
-  const classes = type === "contrast" ? "contrast-section bg-primary" : "basic-section";
+  const classes = type === "contrast" ? "contrast-section" : "basic-section";
 
   return(
     <section className={`dynamic-section pos-relative pt-60 pb-60 ${classes}`}>

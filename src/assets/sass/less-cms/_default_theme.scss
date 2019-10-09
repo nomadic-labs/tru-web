@@ -2,7 +2,7 @@
 
 html, body {
   font-family: $body-font;
-  font-size: 14px;
+  font-size: 16px;
   color: $black;
   background: $white;
   scroll-behavior: smooth;
@@ -32,12 +32,8 @@ p, ul, li, a {
 a {
   color: $theme-primary;
 
-  &:hover {
+  &:hover, &:active, &:focus {
     color: $theme-secondary;
-  }
-
-  &:active, &:focus {
-    color: $theme-highlight;
   }
 }
 
@@ -65,6 +61,24 @@ section.basic-section {
   &:nth-of-type(4n+1) {
     background-color: $white;
     @include bg-flower;
+    h1,h2,h3 {
+      color: $theme-secondary;
+    }
+    p {
+      color: $black;
+    }
+    p.card-text {
+      color: $black;
+    }
+  }
+}
+
+section.basic-section {
+  &:nth-of-type(4n+2) {
+    background-color: $theme-primary-bg;
+    h1, h2, h3 {
+      color: $theme-secondary;
+    }
   }
 }
 
@@ -72,18 +86,55 @@ section.basic-section {
   &:nth-of-type(4n+3) {
     background-color: $white;
     @include bg-leaf;
-  }
-}
 
-section.basic-section {
-  &:nth-of-type(4n+2) {
-    background-color: $theme-primary-light;
+    h1,h2,h3 {
+      color: $theme-secondary;
+    }
   }
 }
 
 section.basic-section {
   &:nth-of-type(4n+4) {
-    background-color: $theme-primary-light;
+    background-color: $theme-secondary-bg;
+
+    h1,h2,h3 {
+      color: $theme-secondary;
+    }
+  }
+}
+
+section.contrast-section {
+  background-color: $theme-contrast-bg;
+  color: $white;
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: $theme-highlight;
+  }
+
+  .card {
+    .card-title, .card-text, .card-body, p, label {
+      color: $black;
+    }
+  }
+
+  .btn-primary:not(:disabled):not(.disabled) {
+    background: $theme-highlight;
+    color: $theme-secondary;
+
+    &:hover, &:focus, &:active {
+      background: $theme-primary-light;
+      color: $theme-secondary;
+    }
+  }
+
+  .btn-highlight:not(:disabled):not(.disabled) {
+    background: $theme-highlight;
+    color: $theme-secondary;
+
+    &:hover, &:focus, &:active {
+      background: $theme-primary-light;
+      color: $theme-secondary;
+    }
   }
 }
 
@@ -112,17 +163,12 @@ section.basic-section {
     }
   }
 
-  .btn-primary {
+  .btn-primary:not(:disabled):not(.disabled) {
     background: $theme-highlight;
-    color: $white;
+    color: $theme-secondary !important;
 
-    &:hover, &:focus {
+    &:hover, &:focus, &:active {
       background: $theme-secondary;
-      color: $white;
-    }
-
-    &:active  {
-      background: lighten($theme-secondary, 5%) !important;
       color: $white;
     }
   }
@@ -134,15 +180,15 @@ section.basic-section {
 }
 
 .bg-dark {
-  background-color: $black !important;
+  background-color: $medium-blue !important;
 }
 
 .bg-light {
-  background-color: $light-gray !important;
+  background-color: $light-blue !important;
 }
 
 .bg-lighter {
-  background-color: $lighter-gray !important;
+  background-color: $light-yellow !important;
 }
 
 .bg-white {
@@ -150,7 +196,7 @@ section.basic-section {
 }
 
 .bg-pink {
-  background-color: $pink !important;
+  background-color: $rust !important;
 }
 
 .bg-green {
@@ -169,6 +215,33 @@ section.basic-section {
   @include bg-dylan;
 }
 
+.bg-landingpage {
+  background-color: $white; opacity:0.75 !important;
+  height: 100%;
+  top:0;
+  position: absolute;
+//  @include bg-topo-default;
+}
+
+.bg-header {
+  position: relative;
+  @media (max-width: 767px) {
+    margin: auto;
+    height: 100%;
+  }
+
+  h1, h2, h3 {
+    color: $medium-blue;}
+    p {
+      color: $medium-blue;
+    }
+  a {
+    text-decoration: underline;
+    color: $medium-blue;
+    font-family: $header-font, serif;
+    font-weight: bold;
+  }
+}
 
 .bg-illustration {
   position: relative;
@@ -176,10 +249,10 @@ section.basic-section {
 
   .image {
     position: absolute;
-    height: 80%;
+    height: 100vh;
     filter: invert(100%) brightness(1);
     opacity: 0.5;
-    top: 20px;
+    top: 20%;
     right: -50%;
     z-index: 0;
 
@@ -251,16 +324,12 @@ section.basic-section {
   font-style: italic;
 }
 
-.btn-primary {
+.btn-primary:not(:disabled):not(.disabled) {
   background: $theme-primary;
   color: $white;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: $theme-secondary;
-  }
-
-  &:active  {
-    background: lighten($theme-secondary, 10%) !important;
   }
 }
 
@@ -268,25 +337,17 @@ section.basic-section {
   background: $theme-secondary;
   color: $white;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: $theme-highlight;
-  }
-
-  &:active  {
-    background: lighten($theme-highlight, 10%) !important;
   }
 }
 
 .btn-highlight {
   background: $theme-highlight;
-  color: $white;
+  color: $theme-secondary;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: $theme-secondary;
-  }
-
-  &:active  {
-    background: lighten($theme-secondary, 10%) !important;
   }
 }
 
@@ -419,20 +480,6 @@ section.basic-section {
   overflow: hidden !important;
 }
 
-.header-2-menu .menu-bar {
-  &:hover {
-    span {
-      background: $theme-secondary;
-    }
-  }
-
-  &:focus, &:active {
-    span {
-      background: $theme-highlight;
-    }
-  }
-}
-
 .text-glow {
   text-shadow: 0px 0px 120px transparentize($white, 0.5);
 }
@@ -482,7 +529,7 @@ section.basic-section {
 .breadcrumb-text {
     position: relative;
     z-index: 1;
-    text-shadow: 0px 0px 30px $theme-primary;
+    //text-shadow: 0px 0px 30px $theme-primary;
 }
 .breadcrumb-text > h1 {
   font-size: calc(28px + 4vw);
@@ -515,14 +562,11 @@ section.basic-section {
 
   .page-header-image {
     .image-outline {
-      border: 2px solid $light-green;
+      border: 1px solid $theme-primary-light;
     }
   }
 }
 
-.image-outline {
-  border: 2px solid $light-green;
-}
 
 #start-here {
   h6 {
@@ -532,13 +576,15 @@ section.basic-section {
 }
 
 #featured-stories {
+
   .slick-prev:before, .slick-next:before {
     color: $theme-primary;
   }
 }
 
 .footer-area {
-  .bg-light.bg-decorated {
+  &.bg-light.bg-decorated {
+    background-color: $light-blue !important;
     @include bg-topo-alt-white;
   }
 
@@ -596,6 +642,62 @@ section.basic-section {
   }
 }
 
+.publication {
+  .card {
+    .card-img-top {
+      height: 300px;
+    }
+  }
+
+  &.featured-story {
+    .card {
+      .card-img-top {
+        height: 400px;
+        max-height: 50vh;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &.featured-news {
+    .card {
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.book-cover {
+  &.card-img-top {
+    img {
+      max-height: 50vh;
+      height: 360px !important;
+      object-fit: cover;
+    }
+  }
+}
+
+#home-page {
+  .bg-secondary {
+    h1 {
+      color: $theme-highlight;
+    }
+
+    p {
+      color: $white;
+    }
+  }
+
+  .btn-primary:not(:disabled):not(.disabled) {
+    background-color: $theme-secondary;
+    &:hover {
+      background-color: $theme-primary;
+    }
+  }
+}
+
 /* tablet and below */
 @media (max-width: 991px) {
   #full-page-menu {
@@ -637,6 +739,3 @@ section.basic-section {
     }
   }
 }
-
-
-

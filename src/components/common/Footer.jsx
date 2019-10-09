@@ -52,6 +52,7 @@ class Footer extends React.Component {
                     </div>
                     <ul className="footer-menu">
                         <li><Link to="/">Home</Link></li>
+                        <li><Link to="/explore-stories">Stories</Link></li>
                         <li><Link to="/updates">Project Updates</Link></li>
                         <li><Link to="/pollutionreporter">Pollution Reporter</Link></li>
                         <li><Link to="/news">News</Link></li>

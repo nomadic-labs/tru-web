@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowUp from '@material-ui/icons/KeyboardArrowUp';
 import ArrowDown from '@material-ui/icons/KeyboardArrowDown';
+import DeleteForever from '@material-ui/icons/DeleteForever';
 
 
 import Layout from '../layouts/default';
@@ -268,6 +269,33 @@ class AdminPage extends React.Component {
     this.props.updateFirebaseData(dataToUpdate, this.props.fetchCategories)
   }
 
+  deletePage = page => () => {
+    if (!window.confirm("Are you sure you want to delete this page?")) {
+      return false
+    }
+
+    console.log('delete page', page)
+
+    const prevPage = this.prevPage(page)
+    const nextPage = this.nextPage(page)
+
+    let dataToUpdate = {
+      [`pages/${page.id}`]: null,
+    }
+
+    if (nextPage) {
+      dataToUpdate[`pages/${nextPage.id}/prev`] = page.prev || null
+    }
+
+    if (prevPage) {
+      dataToUpdate[`pages/${prevPage.id}/next`] = page.next || null
+    }
+
+    console.log('dataToUpdate', dataToUpdate)
+
+    this.props.updateFirebaseData(dataToUpdate, this.props.fetchPages)
+  }
+
   render() {
     const pagesByCategory = [];
     const orderedCategories = this.orderedCategories(find(this.props.categories, cat => !cat.prev));
@@ -369,6 +397,7 @@ class AdminPage extends React.Component {
                             <div className="ranked-item" key={page.id}>
                               <IconButton size="small" color="primary" onClick={this.movePageBack(page)} disabled={!page.prev}><ArrowUp /></IconButton>
                               <IconButton size="small" color="primary" onClick={this.movePageForward(page)} disabled={!page.next}><ArrowDown /></IconButton>
+                              <IconButton size="small" color="primary" onClick={this.deletePage(page)}><DeleteForever /></IconButton>
                               <span className="ml-3"><Link to={page.slug}>{page.title}</Link></span>
                             </div>
                           )
@@ -388,6 +417,7 @@ class AdminPage extends React.Component {
                 uncategorizedPages.map(page => {
                   return(
                     <div className="ranked-item" key={page.id}>
+                      <IconButton size="small" color="primary" onClick={this.deletePage(page)}><DeleteForever /></IconButton>
                       <span className="ml-3"><Link to={page.slug}>{page.title}</Link></span>
                     </div>
                   )

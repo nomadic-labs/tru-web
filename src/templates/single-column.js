@@ -91,6 +91,10 @@ class SingleColumnPage extends React.Component {
           />
           {
             sections.map((section, index) => {
+              if (!section) {
+                return null
+              }
+
               return(
                 <DynamicSection
                   content={ section.content }

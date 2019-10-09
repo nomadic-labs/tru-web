@@ -1,9 +1,9 @@
 {
-  "name": "react-cms-starter",
-  "description": "Quick start for editable website using Gatsby, Firebase, and React Easy Editables",
+  "name": "tru-web",
+  "description": "Land and Refinery website",
   "version": "1.0.0",
   "author": "Sharon Kennedy <sharon@nomadiclabs.ca>",
-  "url": "https://github.com/nomadic-labs/react-easy-editables.git",
+  "url": "https://github.com/nomadic-labs/tru-web.git",
   "engines": {
     "node": "^8.9.4"
   },
@@ -16,7 +16,7 @@
     "browserslist": "^3.2.0",
     "caniuse-db": "^1.0.30000867",
     "eslint-plugin-flowtype": "^2.50.3",
-    "firebase": "^6.4.2",
+    "firebase": "^4.9.1",
     "firebase-tools": "^6.1.1",
     "gatsby": "^2.14.4",
     "gatsby-cli": "^1.1.58",
@@ -35,7 +35,7 @@
     "react-collapsible": "^2.6.0",
     "react-dom": "^16.9.0",
     "react-easy-editables": "^0.5.4",
-    "react-firebaseui": "^4.0.0",
+    "react-firebaseui": "^1.1.6",
     "react-helmet": "^5.2.0",
     "react-image-lightbox": "^5.1.0",
     "react-jss": "^8.6.1",

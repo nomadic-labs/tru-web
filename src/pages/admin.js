@@ -270,8 +270,10 @@ class AdminPage extends React.Component {
   }
 
   deletePage = page => () => {
-    if (!window.confirm("Are you sure you want to delete this page?")) {
-      return false
+    if (typeof window !== 'undefined')  {
+      if (!window.confirm("Are you sure you want to delete this page?")) {
+        return false
+      }
     }
 
     console.log('delete page', page)

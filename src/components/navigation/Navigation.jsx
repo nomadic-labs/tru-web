@@ -52,9 +52,8 @@ class Navigation extends React.Component {
                   <div className="main-menu">
                       <nav id="mobile-menu">
                           <ul className="text-right">
-                              <li className="">
-                                  <a href="/about">about</a>
-                              </li>
+                              <li><a href="/about">about</a></li>
+                              <li><a href="/explore-stories">stories</a></li>
                               <li><a href="/news">news</a></li>
                               <li><a href="/get-involved">participate</a></li>
                               <li><a href="/contact">contact us</a></li>

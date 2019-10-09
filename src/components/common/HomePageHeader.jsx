@@ -29,12 +29,8 @@ const PageHeader = ({ onSave, content, title, headerImage, onUpdateTitle, onUpda
               <h2>
                 <EditableText content={ content["header-subtitle"] } handleSave={ onSave("header-subtitle") } placeholder="Subtitle" />
               </h2>
-              <p>
               <EditableParagraph content={ content["intro-description"]} handleSave={ onSave("intro-description") }/>
-              </p>
-              <a>
-                <EditableLink classes={"mt-20"} content={content["intro-more-btn"]} handleSave={onSave("intro-more-btn")} />
-              </a>
+              <EditableLink classes={"mt-20"} content={content["intro-more-btn"]} handleSave={onSave("intro-more-btn")} />
 
           </div>
           </div>

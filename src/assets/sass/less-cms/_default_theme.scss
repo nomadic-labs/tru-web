@@ -658,6 +658,15 @@ section.contrast-section {
       }
     }
   }
+
+  &.featured-news {
+    .card {
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
 }
 
 .book-cover {

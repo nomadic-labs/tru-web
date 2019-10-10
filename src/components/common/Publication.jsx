@@ -64,6 +64,16 @@ class PublicationEditor extends React.Component {
               </div>
             }
 
+            {
+              content["publication-item-source"] &&
+              <div className="post-details text-muted mb-3">
+                <PlainTextEditor
+                  content={content["publication-item-source"]}
+                  handleEditorChange={this.handleEditorChange("publication-item-source")}
+                />
+              </div>
+            }
+
             <div className="card-text mb-3" style={{ color: "#000000"}}>
               <PlainTextEditor
                 content={content["publication-item-description"]}
@@ -125,6 +135,13 @@ const Publication = props => {
                 content["publication-item-details"] &&
                 <div className="post-details text-italic mb-3">
                   {content["publication-item-details"]["text"]}
+                </div>
+              }
+
+              {
+                content["publication-item-source"] &&
+                <div className="post-details text-muted mb-3">
+                  {content["publication-item-source"]["text"]}
                 </div>
               }
 

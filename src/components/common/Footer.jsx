@@ -81,7 +81,7 @@ class Footer extends React.Component {
             <div className="row">
                 <div className="col-xl-12 text-center">
                     <div className="copyright">
-                        <p>Copyright <i className="far fa-copyright"></i> 2019 <a href="https://technoscienceunit.org/">TRU.</a> All Rights Reserved</p>
+                        <p>Copyright <i className="far fa-copyright"></i> 2019 <a href="https://technoscienceunit.org/">Technoscience Research Unit.</a> All Rights Reserved</p>
                     </div>
                 </div>
             </div>

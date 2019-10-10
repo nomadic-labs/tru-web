@@ -53,6 +53,7 @@ export const DEFAULT_COMPONENT_CONTENT = {
   "featured-news": {
     "publication-item-image": { "imageSrc": "", "caption": "" },
     "publication-item-details": { "text": "Date" },
+    "publication-item-source": { "text": "Source" },
     "publication-item-title": { "text": "News Title" },
     "publication-item-description": { "text": "Preview" },
     "publication-item-link": { "anchor": "link text", "link": "/" },

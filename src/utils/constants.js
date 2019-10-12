@@ -68,3 +68,16 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "screenshot-item-image": { "imageSrc": "", "caption": "", "title": "" },
   },
 }
+
+export const PERMANENT_PAGES = [
+  "home",
+  "about",
+  "contact",
+  "explore-stories",
+  "get-involved",
+  "news",
+  "resources",
+  "references",
+  "updates",
+  "pollutionreporter"
+]

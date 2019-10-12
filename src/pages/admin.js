@@ -19,6 +19,8 @@ import Layout from '../layouts/default';
 import ProtectedPage from "../layouts/protected-page"
 import Container from "../components/common/Container"
 
+import { PERMANENT_PAGES } from "../utils/constants"
+
 import {
   pushTopic,
   removeTopic,
@@ -143,6 +145,10 @@ class AdminPage extends React.Component {
       return arr
     }
 
+    if (arr.includes(category)) {
+      return arr
+    }
+
     arr.push(category)
     return this.orderedCategories(this.nextCategory(category), arr)
   }
@@ -157,6 +163,10 @@ class AdminPage extends React.Component {
 
   orderedPages = (page, arr=[]) => {
     if (!page) {
+      return arr
+    }
+
+    if (arr.includes(page)) {
       return arr
     }
 
@@ -399,7 +409,7 @@ class AdminPage extends React.Component {
                             <div className="ranked-item" key={page.id}>
                               <IconButton size="small" color="primary" onClick={this.movePageBack(page)} disabled={!page.prev}><ArrowUp /></IconButton>
                               <IconButton size="small" color="primary" onClick={this.movePageForward(page)} disabled={!page.next}><ArrowDown /></IconButton>
-                              <IconButton size="small" color="primary" onClick={this.deletePage(page)}><DeleteForever /></IconButton>
+                              <IconButton size="small" color="primary" onClick={this.deletePage(page)} disabled={PERMANENT_PAGES.includes(page.id)}><DeleteForever /></IconButton>
                               <span className="ml-3"><Link to={page.slug}>{page.title}</Link></span>
                             </div>
                           )
@@ -419,7 +429,7 @@ class AdminPage extends React.Component {
                 uncategorizedPages.map(page => {
                   return(
                     <div className="ranked-item" key={page.id}>
-                      <IconButton size="small" color="primary" onClick={this.deletePage(page)}><DeleteForever /></IconButton>
+                      <IconButton size="small" color="primary" onClick={this.deletePage(page)} disabled={PERMANENT_PAGES.includes(page.id)}><DeleteForever /></IconButton>
                       <span className="ml-3"><Link to={page.slug}>{page.title}</Link></span>
                     </div>
                   )

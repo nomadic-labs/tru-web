@@ -74,6 +74,10 @@ class Research extends Component {
       return arr
     }
 
+    if (arr.includes(category)) {
+      return arr
+    }
+
     arr.push(category)
     return this.orderedCategories(this.nextCategory(category), arr)
   }
@@ -88,6 +92,10 @@ class Research extends Component {
 
   orderedPages = (page, arr=[]) => {
     if (!page) {
+      return arr
+    }
+
+    if (arr.includes(page)) {
       return arr
     }
 
@@ -116,6 +124,8 @@ class Research extends Component {
     orderedCategories.forEach(category => {
       const categoryPages = this.filterPagesByCategory(this.props.pages, category)
       const pages = this.filterPagesByTopic(this.orderedPages(categoryPages.find(page => !page.prev)))
+
+      console.log('ordered pages', pages)
 
       if (pages.length > 0) {
         pagesByCategory.push({ ...category, pages })

@@ -1,10 +1,17 @@
 import React from "react";
 import slugify from "slugify";
 import { StaticQuery, graphql } from "gatsby";
-import { filter, orderBy } from 'lodash';
+import { map, find } from 'lodash';
 
 import { connect } from "react-redux";
-import { toggleNewPageModal, createPage, updateFirebaseData } from "../../redux/actions";
+import {
+  toggleNewPageModal,
+  createPage,
+  updateFirebaseData,
+  fetchTopics,
+  fetchCategories,
+  fetchPages,
+} from "../../redux/actions";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -28,6 +35,9 @@ const mapStateToProps = state => {
     showNewPageModal: state.adminTools.showNewPageModal,
     newPage: state.adminTools.newPage,
     page: state.page.data,
+    categories: state.categories.categories,
+    topics: state.topics.topics,
+    pages: state.pages.pages,
   };
 };
 
@@ -41,7 +51,16 @@ const mapDispatchToProps = dispatch => {
     },
     createPage: (pageData, pageId) => {
       dispatch(createPage(pageData, pageId));
-    }
+    },
+    fetchTopics: () => {
+      dispatch(fetchTopics())
+    },
+    fetchCategories: () => {
+      dispatch(fetchCategories())
+    },
+    fetchPages: () => {
+      dispatch(fetchPages())
+    },
   };
 };
 
@@ -53,7 +72,7 @@ const emptyPage = {
     type: PAGE_TYPES[0].value,
   }
 
-class CreatePageModalComponent extends React.Component {
+class CreatePageModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,6 +100,12 @@ class CreatePageModalComponent extends React.Component {
         palette: this.props.page.palette || "default",
       } })
     }
+
+    if (!prevProps.showNewPageModal && this.props.showNewPageModal) {
+      this.props.fetchTopics()
+      this.props.fetchCategories()
+      this.props.fetchPages()
+    }
   }
 
   _updatePage(field, value) {
@@ -97,7 +122,8 @@ class CreatePageModalComponent extends React.Component {
       lower: true,
       remove: /[$*_+~.,()'"!\-:@%^&?=]/g
     })
-    const lastPageInCategory = Boolean(this.state.page.category) ? this.props.pages.find(page => page.category === this.state.page.category && !page.next) : null;
+
+    const lastPageInCategory = Boolean(this.state.page.category) ? find(this.props.pages, (page => page.category === this.state.page.category && !page.next)) : null;
 
     let pageData = {
       title: this.state.page.title,
@@ -200,11 +226,11 @@ class CreatePageModalComponent extends React.Component {
                 id: "menu-group"
               }}
             >
-              {this.props.categories.map(category => (
+              {map(this.props.categories, (category => (
                 <MenuItem key={category.id} value={category.id}>
                   {category.label}
                 </MenuItem>
-              ))}
+              )))}
             </Select>
           </FormControl>
 
@@ -220,17 +246,17 @@ class CreatePageModalComponent extends React.Component {
               renderValue={selected => (
                 <div>
                   {selected.map(topic => {
-                    const label = this.props.topics.find(t => t.id === topic)
+                    const label = find(this.props.topics, ((t, key) => key === topic))
                     return <Chip key={topic} label={label.label} className="mx-1" />
                   })}
                 </div>
               )}
             >
-              {this.props.topics.map(topic => (
-                <MenuItem key={topic.id} value={topic.id}>
+              {map(this.props.topics, ((topic, key) => (
+                <MenuItem key={key} value={key}>
                   {topic.label}
                 </MenuItem>
-              ))}
+              )))}
             </Select>
           </FormControl>
 
@@ -249,56 +275,11 @@ class CreatePageModalComponent extends React.Component {
   }
 }
 
-const CreatePageModalContainer = props => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allPages {
-          edges {
-            node {
-              id
-              title
-              slug
-              order
-              prev
-              next
-              category
-            }
-          }
-        }
-        allTopics {
-          edges {
-            node {
-              id
-              label
-            }
-          }
-        }
-        allCategories {
-          edges  {
-            node {
-              id
-              label
-            }
-          }
-        }
-      }
-    `}
-    render={data => (
-      <CreatePageModalComponent
-        {...props}
-        topics={data.allTopics.edges.map(edge => edge.node)}
-        categories={data.allCategories.edges.map(edge => edge.node)}
-        pages={data.allPages.edges.map(edge => edge.node)}
-      />
-    )}
-  />
-);
 
-CreatePageModalComponent.defaultProps = {
+CreatePageModal.defaultProps = {
   page: emptyPage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  CreatePageModalContainer
+  CreatePageModal
 );

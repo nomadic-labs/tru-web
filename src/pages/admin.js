@@ -286,8 +286,6 @@ class AdminPage extends React.Component {
       }
     }
 
-    console.log('delete page', page)
-
     const prevPage = this.prevPage(page)
     const nextPage = this.nextPage(page)
 
@@ -302,8 +300,6 @@ class AdminPage extends React.Component {
     if (prevPage) {
       dataToUpdate[`pages/${prevPage.id}/next`] = page.next || null
     }
-
-    console.log('dataToUpdate', dataToUpdate)
 
     this.props.updateFirebaseData(dataToUpdate, this.props.fetchPages)
   }

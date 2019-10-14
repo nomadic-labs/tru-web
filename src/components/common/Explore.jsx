@@ -125,8 +125,6 @@ class Research extends Component {
       const categoryPages = this.filterPagesByCategory(this.props.pages, category)
       const pages = this.filterPagesByTopic(this.orderedPages(categoryPages.find(page => !page.prev)))
 
-      console.log('ordered pages', pages)
-
       if (pages.length > 0) {
         pagesByCategory.push({ ...category, pages })
       }

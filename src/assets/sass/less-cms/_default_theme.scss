@@ -113,8 +113,12 @@ section.contrast-section {
   background-color: $theme-contrast-bg;
   color: $white;
 
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6, a {
     color: $theme-highlight;
+  }
+
+  p {
+    color: $white;
   }
 
   .card {
@@ -141,6 +145,18 @@ section.contrast-section {
       background: $theme-primary-light;
       color: $theme-secondary;
     }
+  }
+
+  .littlefoot-footnote__button {
+    background-color: $white;
+
+    &.is-active, &:hover {
+      color: $dark-gray;
+    }
+  }
+
+  .littlefoot-footnote__content p {
+    color: $black;
   }
 }
 

@@ -21,7 +21,6 @@ import Section from "../components/common/Section";
 import Container from "../components/common/Container";
 import PageHeader from "../components/common/PageHeader";
 import MasonryGallery from "../components/common/MasonryGallery";
-import Collection from "../components/common/Collection";
 import Publication from "../components/common/Publication";
 import Reference from "../components/common/Reference";
 

@@ -20,7 +20,6 @@ import Section from "../components/common/Section";
 import Container from "../components/common/Container";
 import PageHeader from "../components/common/PageHeader";
 import Carousel from "../components/common/Carousel";
-import Collection from "../components/common/Collection";
 import Publication from "../components/common/Publication";
 import Reference from "../components/common/Reference";
 import Explore from "../components/common/Explore";

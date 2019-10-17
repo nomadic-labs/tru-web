@@ -74,7 +74,7 @@ class NewsPage extends React.Component {
   componentDidMount() {
     const parser = new Parser()
     const cors_proxy = "https://cors-anywhere.herokuapp.com/"
-    const url = 'https://news.google.com/rss/search?q=Sarnia+OR+aamjiwnaang+OR+%22imperial+oil%22+OR+%22chemical+valley%22)+AND+(spill+OR+leak+OR+flare+OR+pollution+Or+release+-%22news+release%22)&hl=en-CA&gl=CA&ceid=CA:en'
+    const url = 'https://news.google.com/rss/search?q=aamjiwnaang%20OR%20%22imperial%20oil%22%20OR%20%22chemical%20valley%22)%20AND%20(spill%20OR%20leak%20%20OR%20flare%20OR%20pollution%20OR%20chemical%20OR%20Ministry%20of%20Environment%20OR%20release%20%20-%22news%20release%22&hl=en-CA&gl=CA&ceid=CA%3Aen'
     const feed = parser.parseURL(cors_proxy + url, (err, data) => {
       if (err) {
         return console.error(err)

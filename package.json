@@ -20,6 +20,7 @@
     "firebase-tools": "^6.1.1",
     "gatsby": "^2.14.4",
     "gatsby-cli": "^1.1.58",
+    "gatsby-plugin-google-analytics": "^2.1.23",
     "gatsby-plugin-manifest": "^2.2.9",
     "gatsby-plugin-react-helmet": "^3.1.5",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",

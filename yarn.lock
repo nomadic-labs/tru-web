@@ -12552,10 +12552,10 @@ react-dom@^16.9.0:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
-react-easy-editables@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.6.1.tgz#0e86e976385837c08c18a70b5ae8ae5fd4734b8d"
-  integrity sha512-s8JA9Bhk2LFcxBccxkBH32V1LO4I3RvL9X8xwaUXvrnW/aUiQmwmQHskpNV3eRbCa68j9J2TB6cOu7bpNVCzWg==
+react-easy-editables@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.6.2.tgz#feef4421b74ca80720b03a94e0ecadc05e88a8ea"
+  integrity sha512-fNQFN4UeNuS/zQH+QEWy0VGSq6oKnhuENsukgbwNfPWOoLkHAVIplxNm2wI1WtBLq/A8Tq91eCxE1VYKu7GMTw==
   dependencies:
     react-image-lightbox "^5.1.0"
 

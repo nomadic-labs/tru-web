@@ -11,7 +11,7 @@ export const CONTENT_MAP = {
   image: { type: "image" },
   imageCarousel: { type: "imageCarousel", content: {} },
   embeddedIframe: { type: "embeddedIframe" },
-  timeline: { type: "timeline" },
+  timeline: { type: "timeline", content: { alignment: "left" } },
   button: { type: "button", content: { anchor: "Button", link: "/" } },
   link: { type: "link", content: { anchor: "Link text", link: "/" } },
 }

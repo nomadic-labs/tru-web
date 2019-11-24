@@ -12,12 +12,6 @@
     p {
 
       &:before {
-        content: "";
-        height: 16px;
-        width: 16px;
-        display: inline-flex;
-        margin-right: 20px;
-        flex-shrink: 0;
       }
 
       &.timeline1 {
@@ -35,6 +29,12 @@
 
       &.timeline3 {
         &:before {
+          content: "";
+          height: 16px;
+          width: 16px;
+          display: inline-flex;
+          margin-right: 20px;
+          flex-shrink: 0;
           width: 0;
           height: 0;
           border-left: 8px solid transparent;

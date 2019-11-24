@@ -12569,11 +12569,12 @@ react-dom@^16.9.0:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
-react-easy-editables@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.7.1.tgz#d5b120572c0703cec398cb9aa9f2927215e45995"
-  integrity sha512-vU+cDlbWDdDOCSoX4a1b2H2JbsmDRxuNN9jZgqTgGkGecCxc5+r48RnaCpNUUguSlvGs8VRLMneTk7xHpNCwVg==
+react-easy-editables@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.7.4.tgz#929c9e9dd0d230f41f7b283b4deac81479e3f9f0"
+  integrity sha512-iaxy8Ay2zUdLUGwX+J4C29IMycYeBEVeq0IslibMRdSHVL8eRoktxivTlHRmrQ+4inPDsiXWkt96MQXGVjrIVg==
   dependencies:
+    react-gsheets-timeline "^0.3.2"
     react-image-lightbox "^5.1.0"
 
 react-error-overlay@^3.0.0:
@@ -12598,10 +12599,10 @@ react-firebaseui@^1.1.6:
     firebaseui "^2.7.0"
     react "^15"
 
-react-gsheets-timeline@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-gsheets-timeline/-/react-gsheets-timeline-0.3.0.tgz#74ec42c48cd835ac9e04ed99c6a58206a6eda742"
-  integrity sha512-ug73HBadP/fY2S/N4KNiGIT35qf9lb7nthwQGbLQ5BpOgN8SbU2U5JUPfBlaUa2YyoDs6aBbjxzs80DT6SBKcQ==
+react-gsheets-timeline@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-gsheets-timeline/-/react-gsheets-timeline-0.3.2.tgz#12f6e97b3c91a80da0bb71871f61706073da21c2"
+  integrity sha512-ZsrerEFb4xHsZ0vkUfih7BZqc0NOm4/d6Px/0LR660sJVBZCHPP1DNNzGWTEBIZVoJ1do+Fyp0HzjjHbr/HB3g==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.11.2"
     "@fortawesome/free-solid-svg-icons" "^5.11.2"

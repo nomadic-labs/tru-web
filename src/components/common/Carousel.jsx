@@ -88,7 +88,7 @@ class EditableCarousel extends React.Component {
     }
 
 
-    var settings = {
+    const settings = {
       infinite: options.infinite || true,
       speed: options.speed || 500,
       slidesToShow: slidesToShow,

@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "./Container"
 import { EditableTimeline } from "react-easy-editables"
+import "@fortawesome/fontawesome-free/css/all.css"
 
 const defaults = {
   icons: [<i className="fas fa-crow" />, <i className="fas fa-fish" />, <i className="fas fa-spider" />, <i className="fas fa-otter" />, <i className="fas fa-frog" />, <i className="fas fa-cat" />],

@@ -2,11 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {
-  PlainTextEditor,
-  RichTextEditor,
   ImageUploadEditor,
-  FileUploadEditor,
-  LinkEditor,
   Editable
 } from 'react-easy-editables';
 
@@ -39,7 +35,7 @@ class AppScreenshotEditor extends React.Component {
             <div className="card-img-top bg-light">
               <ImageUploadEditor
                 content={content["screenshot-item-image"]}
-                handleEditorChange={this.handleEditorChange("screenshot-item-image")}
+                onContentChange={this.handleEditorChange("screenshot-item-image")}
                 uploadImage={uploadImage}
               />
             </div>

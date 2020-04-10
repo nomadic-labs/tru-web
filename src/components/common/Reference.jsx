@@ -4,9 +4,6 @@ import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
 import {
   PlainTextEditor,
-  RichTextEditor,
-  ImageUploadEditor,
-  FileUploadEditor,
   LinkEditor,
   Editable
 } from 'react-easy-editables';
@@ -38,21 +35,21 @@ class ReferenceEditor extends React.Component {
         <h5 className="">
           <LinkEditor
             content={content["reference-link"]}
-            handleEditorChange={this.handleEditorChange("reference-link")}
+            onContentChange={this.handleEditorChange("reference-link")}
           />
         </h5>
 
         <div className="text-italic mb-2">
           <PlainTextEditor
             content={content["reference-details"]}
-            handleEditorChange={this.handleEditorChange("reference-details")}
+            onContentChange={this.handleEditorChange("reference-details")}
           />
         </div>
 
         <div className="text-italic mb-2">
           <PlainTextEditor
             content={content["reference-description"]}
-            handleEditorChange={this.handleEditorChange("reference-description")}
+            onContentChange={this.handleEditorChange("reference-description")}
           />
         </div>
       </div>

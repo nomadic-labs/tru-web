@@ -43,12 +43,12 @@ class Navigation extends React.Component {
       <header role="navigation">
         <div id="sticky-header" className="main-menu-area header-2-menu pl-55 pr-0">
           <div className="row">
-              <div className="col-8 col-md-5 d-flex align-items-stretch">
+              <div className="col-8 col-md-4 d-flex align-items-stretch">
                   <div className="header-logo text-left d-flex align-items-center">
                       <strong><a href="/">The Land and the Refinery</a></strong>
                   </div>
               </div>
-              <div className="col-4 col-md-5 d-none d-md-block">
+              <div className="col-4 col-md-6 d-none d-md-block">
                   <div className="main-menu">
                       <nav id="mobile-menu">
                           <ul className="text-right">

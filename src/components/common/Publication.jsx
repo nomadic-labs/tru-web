@@ -39,7 +39,7 @@ class PublicationEditor extends React.Component {
             <div className="card-img-top bg-light">
               <ImageUploadEditor
                 content={content["publication-item-image"]}
-                handleEditorChange={this.handleEditorChange("publication-item-image")}
+                onContentChange={this.handleEditorChange("publication-item-image")}
                 uploadImage={uploadImage}
               />
             </div>
@@ -49,7 +49,7 @@ class PublicationEditor extends React.Component {
               <h5>
                 <PlainTextEditor
                   content={content["publication-item-title"]}
-                  handleEditorChange={this.handleEditorChange("publication-item-title")}
+                  onContentChange={this.handleEditorChange("publication-item-title")}
                 />
               </h5>
             </div>
@@ -59,7 +59,7 @@ class PublicationEditor extends React.Component {
               <div className="post-details text-italic mb-3">
                 <PlainTextEditor
                   content={content["publication-item-details"]}
-                  handleEditorChange={this.handleEditorChange("publication-item-details")}
+                  onContentChange={this.handleEditorChange("publication-item-details")}
                 />
               </div>
             }
@@ -69,7 +69,7 @@ class PublicationEditor extends React.Component {
               <div className="post-details text-muted mb-3">
                 <PlainTextEditor
                   content={content["publication-item-source"]}
-                  handleEditorChange={this.handleEditorChange("publication-item-source")}
+                  onContentChange={this.handleEditorChange("publication-item-source")}
                 />
               </div>
             }
@@ -84,7 +84,7 @@ class PublicationEditor extends React.Component {
             <div className="card-text mb-3" style={{ color: "#000000"}}>
               <LinkEditor
                 content={content["publication-item-link"]}
-                handleEditorChange={this.handleEditorChange("publication-item-link")}
+                onContentChange={this.handleEditorChange("publication-item-link")}
                 editAnchorText={false}
               />
             </div>

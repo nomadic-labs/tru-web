@@ -77,7 +77,7 @@ class PublicationEditor extends React.Component {
             <div className="card-text mb-3" style={{ color: "#000000"}}>
               <PlainTextEditor
                 content={content["publication-item-description"]}
-                handleEditorChange={this.handleEditorChange("publication-item-description")}
+                onContentChange={this.handleEditorChange("publication-item-description")}
               />
             </div>
 

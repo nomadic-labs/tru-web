@@ -8,7 +8,7 @@ import ArrowRight from "@material-ui/icons/ArrowForward"
 import ArrowLeft from "@material-ui/icons/ArrowBack"
 import Container from "./Container";
 
-import defaultImage from "../../assets/images/imperial-oil.jpg";
+import defaultImage from "../../assets/images/imperialoil.jpg";
 
 
 const mapStateToProps = state => {

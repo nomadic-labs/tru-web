@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import { MENU_CATEGORIES } from "../../utils/constants";
 import Affix from "./Affix";
 
-import defaultImage from "../../assets/images/imperial-oil.jpg";
+import defaultImage from "../../assets/images/imperialoil.jpg";
 
 
 const mapStateToProps = state => {
